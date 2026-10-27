@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prequal data upload · Valkra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #F8FAFC; --surface: #FFFFFF; --ink: #111827; --ink-2: #4B5563;
+  --muted: #6B7280; --line: #E5E7EB; --yellow: #FEEA27; --ok: #067647; --err: #B42318;
+  --sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.55; }
+.wrap { max-width: 520px; margin: 0 auto; padding: 40px 16px 64px; display: grid; gap: 16px; }
+.hero { background: var(--ink); color: #fff; border-radius: 12px; padding: 24px 22px; display: grid; gap: 8px; }
+.hero .eyebrow { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,.7); font-weight: 500; }
+.hero h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.hero p { margin: 0; color: rgba(255,255,255,.78); font-weight: 300; font-size: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px 16px; display: grid; gap: 12px; }
+label { font-size: 12.5px; color: var(--muted); display: grid; gap: 6px; }
+input[type="password"] {
+  font: 400 14px var(--sans); padding: 10px 12px; border: 1px solid var(--line);
+  border-radius: 8px; background: #fff; color: var(--ink);
+}
+.btn { font: 500 13px var(--sans); background: var(--yellow); color: var(--ink); border: 0; border-radius: 8px; padding: 10px 14px; cursor: pointer; justify-self: start; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn.ghost { background: var(--surface); border: 1px solid var(--line); }
+.msg { font-size: 13px; color: var(--ink-2); min-height: 1.2em; }
+.msg.ok { color: var(--ok); }
+.msg.err { color: var(--err); }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+a { color: var(--ink-2); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Valkra Performance · Beheer</div>
+    <h1>Prequal JSON upload</h1>
+    <p>Vervangt <code>data/valkra-nk-prequal.json</code> op GitHub. Bezoekers zien de nieuwe data via de raw-URL (cache ~5 min).</p>
+  </header>
+
+  <section class="card" id="gate">
+    <label>Wachtwoord
+      <input type="password" id="pw" autocomplete="current-password" autofocus>
+    </label>
+    <button type="button" class="btn" id="unlock">Doorgaan</button>
+    <div class="msg" id="gate-msg" role="status"></div>
+  </section>
+
+  <section class="card" id="uploader" hidden>
+    <div class="row">
+      <label class="btn" for="file">JSON kiezen</label>
+      <input class="visually-hidden" type="file" id="file" accept="application/json,.json">
+      <button type="button" class="btn ghost" id="lock">Wachtwoord vergeten</button>
+    </div>
+    <div class="msg" id="msg" role="status">Kies een <code>valkra-nk-prequal.json</code> uit de model-export.</div>
+    <p style="margin:0;font-size:12.5px;color:var(--muted)"><a href="/">← Terug naar dashboard</a></p>
+  </section>
+</div>
+<script>
+(function () {
+  const KEY = "valkra_upload_pw";
+  const $ = (id) => document.getElementById(id);
+
+  function problems(D) {
+    const p = [];
+    if (!D || typeof D !== "object") return ["geen JSON-object"];
+    if (!D.meta || !D.meta.generated_at) p.push("meta.generated_at");
+    if (!D.meta || !D.meta.model) p.push("meta.model");
+    if (!D.forecast || !D.forecast.split1_cutoff || !D.forecast.split2_cutoff) p.push("forecast");
+    if (!D.position_curve || !Array.isArray(D.position_curve.times) || D.position_curve.times.length < 2) p.push("position_curve");
+    if (!Array.isArray(D.drivers) || !D.drivers.length) p.push("drivers");
+    if (!Array.isArray(D.irating_bands)) p.push("irating_bands");
+    if (!Array.isArray(D.irating_histogram)) p.push("irating_histogram");
+    if (!D.irating_density || !Array.isArray(D.irating_density.irating)) p.push("irating_density");
+    if (!D.irating_summary) p.push("irating_summary");
+    return p;
+  }
+
+  function showUploader(on) {
+    $("gate").hidden = on;
+    $("uploader").hidden = !on;
+  }
+
+  function setMsg(el, text, kind) {
+    el.textContent = text;
+    el.className = "msg" + (kind ? " " + kind : "");
+  }
+
+  if (sessionStorage.getItem(KEY)) showUploader(true);
+
+  $("unlock").addEventListener("click", () => {
+    const pw = $("pw").value;
+    if (!pw) { setMsg($("gate-msg"), "Vul een wachtwoord in.", "err"); return; }
+    sessionStorage.setItem(KEY, pw);
+    $("pw").value = "";
+    setMsg($("gate-msg"), "");
+    showUploader(true);
+  });
+  $("pw").addEventListener("keydown", (e) => { if (e.key === "Enter") $("unlock").click(); });
+
+  $("lock").addEventListener("click", () => {
+    sessionStorage.removeItem(KEY);
+    showUploader(false);
+  });
+
+  $("file").addEventListener("change", async (e) => {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    const msg = $("msg");
+    let data;
+    try { data = JSON.parse(await file.text()); }
+    catch (_) { setMsg(msg, `${file.name} is geen geldige JSON.`, "err"); return; }
+    const p = problems(data);
+    if (p.length) { setMsg(msg, `${file.name} mist: ${p.join(", ")}.`, "err"); return; }
+
+    const password = sessionStorage.getItem(KEY);
+    if (!password) { showUploader(false); return; }
+
+    setMsg(msg, "Uploaden…");
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, data }),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.ok) {
+        if (res.status === 401) {
+          sessionStorage.removeItem(KEY);
+          showUploader(false);
+          setMsg($("gate-msg"), out.error || "Onjuist wachtwoord.", "err");
+          return;
+        }
+        setMsg(msg, out.error || `Upload mislukt (HTTP ${res.status}).`, "err");
+        return;
+      }
+      const when = new Date(out.generated_at).toLocaleString("nl-NL", { timeZone: "Europe/Amsterdam" });
+      setMsg(msg, `Opgeslagen: stand ${when}. Bezoekers zien dit na ~5 min via GitHub raw.`, "ok");
+    } catch (err) {
+      setMsg(msg, `Netwerkfout: ${err.message}`, "err");
+    }
+  });
+})();
+</script>
+</body>
+</html>

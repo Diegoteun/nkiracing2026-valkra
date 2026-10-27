@@ -7,6 +7,9 @@ Prequal-data en voorspelling voor het NK iRacing 2026 (SRVN.nl, powered by KNAF)
 | Bestand | Wat |
 | :--- | :--- |
 | `site/valkra-nk-prequal.html` | Het dashboard. Eén bestand, zonder build-stap. |
+| `public/index.html` | Zelfde dashboard voor Vercel (`/`). |
+| `public/upload.html` | Wachtwoord-pagina om JSON te vervangen (`/upload`). |
+| `api/upload.js` | Vercel-functie: controleert wachtwoord en commit naar GitHub. |
 | `data/valkra-nk-prequal.json` | Alle data. Dit bestand wordt bijgewerkt. |
 | `data/valkra-nk-prequal-rijders.csv` | Dezelfde rijderslijst als spreadsheet. |
 
@@ -41,10 +44,26 @@ Alle tijden zijn seconden: `103.25` is 1:43.25.
 
 1. Open een ingelogd tabblad op members-ng.iracing.com en draai `model/fetch_iracing.js`. Dat geeft één JSON-tekst met een controlegetal.
 2. Sla die tekst op als bestand en draai `python3 model/ingest.py <bestand>`. Dat controleert de data en schrijft `model/input/roster.json` en `model/input/laps.json`.
-3. Draai `python3 model/build.py` (Python 3.9+ met numpy). Dat schrijft `data/` en `site/` opnieuw.
+3. Draai `python3 model/build.py` (Python 3.9+ met numpy). Dat schrijft `data/`, `site/` en `public/index.html` opnieuw.
 4. Commit en push naar `main`.
 
+Of upload alleen de JSON via de Vercel-pagina `/upload` (zie hieronder).
+
 Tijdens de prequal-week gebeurt dit elke ochtend om 10:00 automatisch.
+
+## Upload op Vercel
+
+Deploy deze repo op Vercel. Zet deze environment variables in het project (niet in git):
+
+| Variable | Waarde |
+| :--- | :--- |
+| `UPLOAD_PASSWORD` | Gedeeld wachtwoord voor `/upload` |
+| `GITHUB_TOKEN` | Fine-grained PAT met Contents read/write op deze repo |
+| `GITHUB_REPO` | optioneel, default `Diegoteun/nkiracing2026-valkra` |
+| `GITHUB_BRANCH` | optioneel, default `main` |
+| `GITHUB_PATH` | optioneel, default `data/valkra-nk-prequal.json` |
+
+Daarna: `https://<project>.vercel.app/upload` → wachtwoord → kies `valkra-nk-prequal.json`. De API commit het bestand op `main`; het dashboard blijft de GitHub raw-URL laden.
 
 ## Model in het kort
 

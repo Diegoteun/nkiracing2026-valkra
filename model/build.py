@@ -5,6 +5,7 @@ Reads model/input/roster.json and model/input/laps.json, simulates the prequal a
   data/valkra-nk-prequal.json           data file for the website
   data/valkra-nk-prequal-rijders.csv    one row per driver
   site/valkra-nk-prequal.html           the dashboard (loads the JSON, with a built-in copy as fallback)
+  public/index.html                     same dashboard for Vercel
 
 Run from the repository root:  python3 model/build.py
 Needs: Python 3.9+ and numpy.
@@ -242,6 +243,8 @@ assert template.count("/*__DATA__*/null") == 1 and template.count("/*__DATA_URL_
 page = (template.replace("/*__DATA__*/null", json.dumps(out, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"))
                 .replace("/*__DATA_URL__*/", json.dumps(RAW_URL)))
 open(ROOT / "site" / "valkra-nk-prequal.html", "w").write(page)
+(ROOT / "public").mkdir(exist_ok=True)
+open(ROOT / "public" / "index.html", "w").write(page)
 
 print(f"Stand {generated}: grens split 1 ≈{out['forecast']['split1_range']['likely']} "
       f"({out['forecast']['split1_range']['low']}–{out['forecast']['split1_range']['high']}), "
