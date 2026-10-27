@@ -55,14 +55,16 @@ def load_rows():
 
 
 roster, laps_in, rows = load_rows()
-rel = [r for r in rows if r["status"] == "reliable"]
-x = np.log([r["ir"] for r in rel]); y = np.array([r["best"] for r in rel])
+# Pace curve = practice pace: fitted on practice bests of drivers with 20+ practice laps.
+# A prequal attempt is then practice pace + an attempt offset (measured below), so prequal gains are counted once.
+rel = [r for r in rows if r["pBest"] is not None and r["pLaps"] >= MIN_LAPS_RELIABLE and r["pBest"] < 115]
+x = np.log([r["ir"] for r in rel]); y = np.array([r["pBest"] for r in rel])
 b, a = np.polyfit(x, y, 1)
 r2 = float(1 - ((y - (a + b * x)) ** 2).sum() / ((y - y.mean()) ** 2).sum())
 
-# Prequal attempt vs practice best, measured on drivers with 20+ practice laps
+# Prequal attempt vs practice best: drivers with 20+ practice laps and exactly one prequal session (one attempt)
 pairs = [(r["ir"], r["qBest"] - r["pBest"]) for r in rows
-         if r["qBest"] and r["pBest"] and r["pLaps"] >= MIN_LAPS_RELIABLE and abs(r["qBest"] - r["pBest"]) < 1.5]
+         if r["qBest"] and r["pBest"] and r["pLaps"] >= MIN_LAPS_RELIABLE and r["qSess"] == 1 and abs(r["qBest"] - r["pBest"]) < 1.5]
 d_hi = [d for ir, d in pairs if ir >= 4000]; d_lo = [d for ir, d in pairs if ir < 4000]
 ATT = dict(mu=st.mean(d for _, d in pairs), sd_hi=st.pstdev(d_hi), sd_lo=st.pstdev(d_lo), n=len(pairs))
 
@@ -78,8 +80,8 @@ def make_pace(top):
 
 def simulate(top, n, seed, att_shift=0.0, p_second=1.0, drop=0, collect=False):
     pace, b2 = make_pace(top)
-    rh = [r["best"] - pace(r["ir"]) for r in rel if r["ir"] >= 4000]
-    rl = [r["best"] - pace(r["ir"]) for r in rel if r["ir"] < 4000]
+    rh = [r["pBest"] - pace(r["ir"]) for r in rel if r["ir"] >= 4000]
+    rl = [r["pBest"] - pace(r["ir"]) for r in rel if r["ir"] < 4000]
     nonrun = [r["id"] for r in rows if r["best"] is None]
     rnd = random.Random(seed)
     grid = [round(102.0 + i * 0.02, 2) for i in range(161)]
@@ -92,10 +94,13 @@ def simulate(top, n, seed, att_shift=0.0, p_second=1.0, drop=0, collect=False):
         for r in rows:
             if r["id"] in dropped:
                 continue
-            if r["status"] == "reliable":
-                mu = r["best"]
+            # mu = practice-level pace; a prequal lap counts as one attempt (pace + ATT["mu"])
+            if r["pBest"] is not None and r["pLaps"] >= MIN_LAPS_RELIABLE:
+                mu = r["pBest"]
+                if r["qBest"] is not None:
+                    mu = min(mu, r["qBest"] - ATT["mu"])
             elif r["qBest"] is not None:
-                mu = r["qBest"]                    # a prequal lap is a measurement, however few laps before it
+                mu = r["qBest"] - ATT["mu"]
             else:
                 mu = pace(r["ir"]) + rnd.choice(rh if r["ir"] >= 4000 else rl)
                 if r["best"] is not None:
@@ -125,7 +130,7 @@ def simulate(top, n, seed, att_shift=0.0, p_second=1.0, drop=0, collect=False):
 
 def med_10k(top, n=30000, seed=3):
     pace, _ = make_pace(top); rnd = random.Random(seed)
-    rh = [r["best"] - pace(r["ir"]) for r in rel if r["ir"] >= 4000]
+    rh = [r["pBest"] - pace(r["ir"]) for r in rel if r["ir"] >= 4000]
     return st.median(min(max(ABSOLUTE_TOP, pace(10000) + rnd.choice(rh) + rnd.gauss(ATT["mu"], ATT["sd_hi"]))
                          for _ in range(2)) for _ in range(n))
 
