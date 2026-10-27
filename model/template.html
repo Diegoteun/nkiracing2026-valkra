@@ -147,7 +147,7 @@ table { border-collapse: collapse; width: 100%; }
 .seg button[aria-pressed="true"] { background: var(--ink); color: #FFFFFF; }
 #q { font: 13px var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; width: min(220px, 100%); }
 .seg button:focus-visible, #q:focus-visible, .list th button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.list { min-width: 820px; }
+.list { min-width: 880px; }
 .list thead th { position: sticky; top: 0; background: var(--surface); padding: 0; }
 .list th button { all: unset; display: block; padding: 8px 10px; cursor: pointer; }
 .list th.l, .list th.l button { text-align: left; }
@@ -196,7 +196,7 @@ table { border-collapse: collapse; width: 100%; }
   <header class="hero">
     <div class="eyebrow">Valkra Performance · Data · NK iRacing 2026</div>
     <h1>Prequal VIR: wat is nodig voor split 1?</h1>
-    <p>Alle leden van de SRVN.nl NK-league, met hun iRating, hun tijden op Virginia International Raceway en een voorspelling van de prequal. Wie nog niet of weinig reed, is ingeschat op zijn iRating.</p>
+    <p>Alle leden van de SRVN.nl NK-league, met hun iRating, hun tijden op Virginia International Raceway en een voorspelling van de prequal. Wie nog niet of weinig reed, is ingeschat op zijn iRating; de verwachting gaat ervan uit dat alle leden een tijd zetten.</p>
     <span class="stamp" id="stamp">Data laden…</span>
   </header>
 
@@ -238,7 +238,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="list-head">
       <div>
         <h2 id="list-title">Alle rijders</h2>
-        <p class="cap">Gesorteerd op verwachte prequal-plek. Klik op een kolom om anders te sorteren.</p>
+        <p class="cap">Verw. eindplek: verwachting na de laatste prequal-sessie, als alle leden een tijd zetten. Nu: huidige prequal-stand.</p>
       </div>
       <div class="controls">
         <div class="seg" role="group" aria-label="Welke rijders">
@@ -252,7 +252,8 @@ table { border-collapse: collapse; width: 100%; }
       <table class="list">
         <thead>
           <tr>
-            <th><button type="button" data-key="pos">Verw. plek</button></th>
+            <th><button type="button" data-key="pos">Verw. eindplek</button></th>
+            <th><button type="button" data-key="now">Nu</button></th>
             <th class="l"><button type="button" data-key="name">Rijder</button></th>
             <th><button type="button" data-key="ir">iRating</button></th>
             <th class="static l">Licentie</th>
@@ -355,7 +356,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       r2 ? { cls: "", lbl: "Grens split 2 (P60)", val: "≈" + lap2(r2.likely), sub: `verwacht tussen ${lap2(r2.low)} en ${lap2(r2.high)}` }
          : { cls: "", lbl: "Grens split 2 (P60)", val: "≈" + lap2(F.split2_cutoff.p50), sub: `80% zeker tussen ${lap2(F.split2_cutoff.p10)} en ${lap2(F.split2_cutoff.p90)}` }
     ];
-    if (fast) tiles.push({ cls: "accent", lbl: "Snelste tijd tot nu", val: lap(fast.time), sub: `${esc(fast.name)}, ${esc(fast.session)}` + (F.absolute_top_time ? `. Verwachte toptijd ${lap1(F.absolute_top_time + 0.05)}` : "") });
+    if (fast) tiles.push({ cls: "accent", lbl: "Snelste tijd tot nu", val: lap(fast.time), sub: `${esc(fast.name)}${fast.session === "prequal" ? ", P1 in de prequal-stand" : ", in de training"}` + (F.absolute_top_time ? `. Verwachte toptijd ${lap1(F.absolute_top_time + 0.05)}` : "") });
     $("tiles").innerHTML = tiles.map(t => `<div class="tile ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
 
     const g = new Date(D.meta.generated_at);
@@ -494,8 +495,8 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     renderList();
   }
 
-  const val = { pos: d => d.expected_position.p50 + d.expected_prequal.p50 / 1000, name: d => d.name, ir: d => d.irating, best: d => d.best_time, laps: d => d.laps_total, exp: d => d.expected_prequal.p50 };
-  const defDir = { pos: "asc", name: "asc", ir: "desc", best: "asc", laps: "desc", exp: "asc" };
+  const val = { pos: d => d.expected_position.p50 + d.expected_prequal.p50 / 1000, now: d => d.prequal_position_now, name: d => d.name, ir: d => d.irating, best: d => d.best_time, laps: d => d.laps_total, exp: d => d.expected_prequal.p50 };
+  const defDir = { pos: "asc", now: "asc", name: "asc", ir: "desc", best: "asc", laps: "desc", exp: "asc" };
   const splitOf = p => p <= 30 ? ["s1", "Split 1"] : p <= 60 ? ["s2", "Split 2"] : ["s3", "Split 3"];
   function renderList() {
     let rows = list.drivers;
@@ -509,13 +510,14 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       if (y == null) return -1;
       return (typeof x === "string" ? x.localeCompare(y, "nl") : x - y) * mult;
     });
-    if (!rows.length) { $("rows").innerHTML = `<tr><td colspan="8" class="empty">Geen rijder gevonden met "${esc(list.query)}".</td></tr>`; return; }
+    if (!rows.length) { $("rows").innerHTML = `<tr><td colspan="9" class="empty">Geen rijder gevonden met "${esc(list.query)}".</td></tr>`; return; }
     const maxIr = Math.max(...list.drivers.map(d => d.irating));
     $("rows").innerHTML = rows.map(d => {
       const [sc, sl] = splitOf(d.expected_position.p50);
       const locked = d.prequal_sessions_used >= 2;
       return `<tr>
         <td class="pos">P${d.expected_position.p50}<small>${d.expected_position.p10}–${d.expected_position.p90}</small></td>
+        <td class="num">${d.prequal_position_now ? "P" + d.prequal_position_now : '<span class="none">–</span>'}</td>
         <td class="l name">${esc(d.name)}</td>
         <td><span class="irwrap"><span class="irbar"><span style="width:${(d.irating / maxIr * 100).toFixed(1)}%"></span></span><span class="num">${d.irating}</span></span></td>
         <td class="l"><span class="chip ${esc(d.license)}">${esc(d.license)}</span><span class="sr">${Number(d.safety_rating).toFixed(2)}</span></td>

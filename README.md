@@ -31,7 +31,7 @@ Met `#beheer` achter de URL verschijnt de knop **JSON importeren**. Die laat een
 - `meta.generated_at`: stand van de data.
 - `forecast.split1_range` en `forecast.split2_range`: verwachte grens voor split 1 (P30) en split 2 (P60), als `low`, `likely` en `high`, in seconden.
 - `forecast.fastest_so_far`: snelste tijd tot nu.
-- `drivers[]`: per rijder iRating, licentie, beste tijd, ronden, `time_status`, `expected_prequal` en `expected_position` (p10/p50/p90), en `chance_split1`/`chance_split2` in procenten.
+- `drivers[]`: per rijder iRating, licentie, beste tijd, ronden, `time_status`, `prequal_position_now` (huidige prequal-stand), `expected_prequal` en `expected_position` (verwachte eindstand, p10/p50/p90), en `chance_p1`/`chance_split1`/`chance_split2` in procenten.
 - `position_curve`: verwachte positie per prequal-tijd.
 - `irating_bands`, `irating_histogram`, `irating_density`, `irating_summary`: voor de tabellen en de verdeling.
 
@@ -39,8 +39,8 @@ Alle tijden zijn seconden: `103.25` is 1:43.25.
 
 ## Data bijwerken
 
-1. Open een ingelogd tabblad op members-ng.iracing.com en draai `model/fetch_iracing.js`.
-2. Sla `roster` en `laps` uit het resultaat op als `model/input/roster.json` en `model/input/laps.json`.
+1. Open een ingelogd tabblad op members-ng.iracing.com en draai `model/fetch_iracing.js`. Dat geeft één JSON-tekst met een controlegetal.
+2. Sla die tekst op als bestand en draai `python3 model/ingest.py <bestand>`. Dat controleert de data en schrijft `model/input/roster.json` en `model/input/laps.json`.
 3. Draai `python3 model/build.py` (Python 3.9+ met numpy). Dat schrijft `data/` en `site/` opnieuw.
 4. Commit en push naar `main`.
 

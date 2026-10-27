@@ -93,6 +93,8 @@ def simulate(top, n, seed, att_shift=0.0, p_second=1.0, drop=0, collect=False):
                 continue
             if r["status"] == "reliable":
                 mu = r["best"]
+            elif r["qBest"] is not None:
+                mu = r["qBest"]                    # a prequal lap is a measurement, however few laps before it
             else:
                 mu = pace(r["ir"]) + rnd.choice(rh if r["ir"] >= 4000 else rl)
                 if r["best"] is not None:
@@ -148,6 +150,11 @@ for r in rows:
     r["s2"] = round(sum(v <= 60 for v in rk) / N_BASE * 100, 1)
 for k, r in enumerate(sorted(rows, key=lambda r: (r["exp"]["p50"], -r["ir"])), 1):
     r["pos"] = {"p10": min(r["rng"][0], k), "p50": k, "p90": max(r["rng"][1], k)}
+# current prequal standings (ties: higher iRating first)
+for k, r in enumerate(sorted((r for r in rows if r["qBest"] is not None), key=lambda r: (r["qBest"], -r["ir"])), 1):
+    r["now"] = k
+for r in rows:
+    r["p1"] = round(sum(v == 1 for v in R["rank"][r["id"]]) / N_BASE * 100, 1)
 
 scenarios = [{}, dict(att_shift=0.1), dict(att_shift=0.2), dict(p_second=0.5), dict(drop=11),
              dict(drop=11, p_second=0.5, att_shift=0.1)]
@@ -182,8 +189,9 @@ fastest = min((r for r in rows if r["best"] is not None), key=lambda r: r["best"
 drivers = [dict(name=r["name"], car_number=r["num"], irating=r["ir"], license=r["lic"], safety_rating=r["sr"],
                 practice_best=r["pBest"], practice_laps=r["pLaps"], prequal_best=r["qBest"], prequal_laps=r["qLaps"],
                 prequal_sessions_used=r["qSess"], best_time=r["best"], laps_total=r["laps"], time_status=r["status"],
-                model_time=round(pace(r["ir"]), 3), expected_prequal=r["exp"], expected_position=r["pos"],
-                chance_split1=r["s1"], chance_split2=r["s2"])
+                model_time=round(pace(r["ir"]), 3), prequal_position_now=r.get("now"),
+                expected_prequal=r["exp"], expected_position=r["pos"],
+                chance_p1=r["p1"], chance_split1=r["s1"], chance_split2=r["s2"])
            for r in sorted(rows, key=lambda r: r["pos"]["p50"])]
 
 generated = laps_in.get("fetched_at") or datetime.now(timezone.utc).isoformat(timespec="seconds")
