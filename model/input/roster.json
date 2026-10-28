@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-27T20:40:51.185Z",
+ "fetched_at": "2026-10-28T18:54:35.101Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_id": 138636,
@@ -50,9 +50,9 @@
    "cust_id": 203590,
    "name": "Barry Arends",
    "car_number": "268",
-   "irating": 4968,
+   "irating": 4952,
    "license": "A",
-   "safety_rating": 3.12
+   "safety_rating": 3.55
   },
   {
    "cust_id": 937690,
@@ -170,9 +170,9 @@
    "cust_id": 1562310,
    "name": "Dennis De Konink",
    "car_number": "75",
-   "irating": 1493,
+   "irating": 1568,
    "license": "B",
-   "safety_rating": 3.35
+   "safety_rating": 3.38
   },
   {
    "cust_id": 737386,
@@ -194,9 +194,9 @@
    "cust_id": 371410,
    "name": "Didier Brobbel",
    "car_number": "224",
-   "irating": 6372,
+   "irating": 6348,
    "license": "A",
-   "safety_rating": 4.43
+   "safety_rating": 4.66
   },
   {
    "cust_id": 1102231,
@@ -386,9 +386,9 @@
    "cust_id": 912688,
    "name": "Justin De Jong",
    "car_number": "155",
-   "irating": 6822,
+   "irating": 6843,
    "license": "A",
-   "safety_rating": 2.38
+   "safety_rating": 2.64
   },
   {
    "cust_id": 377046,
@@ -418,9 +418,9 @@
    "cust_id": 1557725,
    "name": "Kees Meurs",
    "car_number": "286",
-   "irating": 1519,
+   "irating": 1468,
    "license": "A",
-   "safety_rating": 1.74
+   "safety_rating": 1.76
   },
   {
    "cust_id": 761872,
@@ -450,9 +450,9 @@
    "cust_id": 1019076,
    "name": "Kevin Versantvoort",
    "car_number": "207",
-   "irating": 3597,
+   "irating": 3500,
    "license": "A",
-   "safety_rating": 4.1
+   "safety_rating": 4.04
   },
   {
    "cust_id": 1342343,
@@ -461,6 +461,14 @@
    "irating": 2261,
    "license": "A",
    "safety_rating": 3.36
+  },
+  {
+   "cust_id": 936099,
+   "name": "Kris Louwers2",
+   "car_number": null,
+   "irating": 5735,
+   "license": "A",
+   "safety_rating": 2.74
   },
   {
    "cust_id": 460018,
@@ -490,17 +498,17 @@
    "cust_id": 1237168,
    "name": "Lennon Henriquez",
    "car_number": null,
-   "irating": 7736,
+   "irating": 7779,
    "license": "B",
-   "safety_rating": 2.48
+   "safety_rating": 3.79
   },
   {
    "cust_id": 644286,
    "name": "Leroy Bolkestein",
    "car_number": "103",
-   "irating": 3789,
+   "irating": 3829,
    "license": "A",
-   "safety_rating": 3.36
+   "safety_rating": 3.45
   },
   {
    "cust_id": 382864,
@@ -578,17 +586,17 @@
    "cust_id": 1569414,
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 687,
+   "irating": 595,
    "license": "D",
-   "safety_rating": 2.58
+   "safety_rating": 2.28
   },
   {
    "cust_id": 1024584,
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3353,
+   "irating": 3365,
    "license": "A",
-   "safety_rating": 2.56
+   "safety_rating": 2.85
   },
   {
    "cust_id": 1176867,
@@ -650,9 +658,9 @@
    "cust_id": 1028127,
    "name": "Patrick A Hesterman",
    "car_number": "105",
-   "irating": 2978,
+   "irating": 2945,
    "license": "A",
-   "safety_rating": 2.43
+   "safety_rating": 2.26
   },
   {
    "cust_id": 1073252,
@@ -770,9 +778,9 @@
    "cust_id": 1364568,
    "name": "Sander Jorritsma",
    "car_number": "229",
-   "irating": 4007,
+   "irating": 3923,
    "license": "A",
-   "safety_rating": 4.88
+   "safety_rating": 4.54
   },
   {
    "cust_id": 1176588,
@@ -866,9 +874,9 @@
    "cust_id": 1504412,
    "name": "Tommy Vlieger",
    "car_number": "249",
-   "irating": 1719,
+   "irating": 1749,
    "license": "A",
-   "safety_rating": 3.16
+   "safety_rating": 3.25
   },
   {
    "cust_id": 365100,
@@ -885,6 +893,14 @@
    "irating": 1721,
    "license": "A",
    "safety_rating": 3.1
+  },
+  {
+   "cust_id": 1325013,
+   "name": "Vincent Van Der Linden2",
+   "car_number": "198",
+   "irating": 939,
+   "license": "A",
+   "safety_rating": 2.73
   },
   {
    "cust_id": 1070721,
@@ -922,9 +938,9 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 8364,
+   "irating": 8445,
    "license": "A",
-   "safety_rating": 3.86
+   "safety_rating": 4.38
   }
  ]
 }
