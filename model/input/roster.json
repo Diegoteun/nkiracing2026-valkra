@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-28T22:57:54.896Z",
+ "fetched_at": "2026-10-29T14:11:26.428Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_id": 138636,
@@ -946,9 +946,17 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 8445,
+   "irating": 8496,
    "license": "A",
-   "safety_rating": 4.38
+   "safety_rating": 4.53
+  },
+  {
+   "cust_id": 1056946,
+   "name": "Roy Kerkhof",
+   "car_number": null,
+   "irating": 1813,
+   "license": "A",
+   "safety_rating": 4.99
   }
  ]
 }

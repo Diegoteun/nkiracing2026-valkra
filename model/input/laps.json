@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-28T22:57:54.896Z",
+ "fetched_at": "2026-10-29T14:11:26.428Z",
  "track": "Virginia International Raceway – Full Course",
  "sessions_used": [
   89612440,
@@ -13,7 +13,8 @@
   89684261,
   89700348,
   89708268,
-  89708267
+  89708267,
+  89723863
  ],
  "drivers": [
   {
@@ -108,9 +109,9 @@
    "cust_id": 382864,
    "practice_best": null,
    "practice_laps": 0,
-   "prequal_best": 103.2494,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1
+   "prequal_best": 102.916,
+   "prequal_laps": 6,
+   "prequal_sessions_used": 2
   },
   {
    "cust_id": 392585,
@@ -196,9 +197,9 @@
    "cust_id": 602622,
    "practice_best": 103.9798,
    "practice_laps": 117,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0
+   "prequal_best": 104.0603,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1
   },
   {
    "cust_id": 609781,
@@ -276,9 +277,9 @@
    "cust_id": 764408,
    "practice_best": null,
    "practice_laps": 0,
-   "prequal_best": 102.9466,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1
+   "prequal_best": 102.937,
+   "prequal_laps": 6,
+   "prequal_sessions_used": 2
   },
   {
    "cust_id": 793423,
@@ -516,9 +517,9 @@
    "cust_id": 1102231,
    "practice_best": 103.6134,
    "practice_laps": 86,
-   "prequal_best": 103.8886,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1
+   "prequal_best": 103.3964,
+   "prequal_laps": 6,
+   "prequal_sessions_used": 2
   },
   {
    "cust_id": 1107000,
@@ -620,9 +621,9 @@
    "cust_id": 1217836,
    "practice_best": 105.1552,
    "practice_laps": 43,
-   "prequal_best": 108.0138,
-   "prequal_laps": 1,
-   "prequal_sessions_used": 1
+   "prequal_best": 105.9888,
+   "prequal_laps": 4,
+   "prequal_sessions_used": 2
   },
   {
    "cust_id": 1228010,
