@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-29T20:43:07.647Z",
+ "fetched_at": "2026-10-29T22:48:24.986Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_id": 138636,
@@ -90,7 +90,7 @@
    "cust_id": 1550201,
    "name": "Brandon Uffelie",
    "car_number": "212",
-   "irating": 1465,
+   "irating": 1413,
    "license": "B",
    "safety_rating": 3.78
   },
@@ -114,9 +114,9 @@
    "cust_id": 908269,
    "name": "Chico Leentvaar3",
    "car_number": "170",
-   "irating": 3247,
+   "irating": 3202,
    "license": "A",
-   "safety_rating": 2.34
+   "safety_rating": 2.31
   },
   {
    "cust_id": 167281,
@@ -138,9 +138,9 @@
    "cust_id": 566271,
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5084,
+   "irating": 5134,
    "license": "A",
-   "safety_rating": 3.92
+   "safety_rating": 3.88
   },
   {
    "cust_id": 502029,
@@ -770,9 +770,9 @@
    "cust_id": 1538667,
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1681,
+   "irating": 1711,
    "license": "B",
-   "safety_rating": 3.51
+   "safety_rating": 3.59
   },
   {
    "cust_id": 1577874,

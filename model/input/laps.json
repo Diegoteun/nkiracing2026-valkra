@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-10-29T20:43:07.647Z",
+ "fetched_at": "2026-10-29T22:48:24.986Z",
  "track": "Virginia International Raceway – Full Course",
  "sessions_used": [
   89612440,
@@ -15,6 +15,7 @@
   89708268,
   89708267,
   89723863,
+  89732182,
   89732181
  ],
  "drivers": [
@@ -61,7 +62,7 @@
   {
    "cust_id": 332024,
    "practice_best": 103.5085,
-   "practice_laps": 119,
+   "practice_laps": 127,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 0
@@ -101,7 +102,7 @@
   {
    "cust_id": 379980,
    "practice_best": 103.4307,
-   "practice_laps": 107,
+   "practice_laps": 140,
    "prequal_best": 103.4597,
    "prequal_laps": 3,
    "prequal_sessions_used": 1
@@ -148,16 +149,16 @@
   },
   {
    "cust_id": 460018,
-   "practice_best": 103.616,
-   "practice_laps": 19,
+   "practice_best": 103.6027,
+   "practice_laps": 41,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 1
   },
   {
    "cust_id": 500148,
-   "practice_best": 104.5736,
-   "practice_laps": 27,
+   "practice_best": 104.1473,
+   "practice_laps": 53,
    "prequal_best": 103.9493,
    "prequal_laps": 3,
    "prequal_sessions_used": 1
@@ -180,8 +181,8 @@
   },
   {
    "cust_id": 566271,
-   "practice_best": 103.0059,
-   "practice_laps": 55,
+   "practice_best": 102.7733,
+   "practice_laps": 60,
    "prequal_best": 102.6728,
    "prequal_laps": 6,
    "prequal_sessions_used": 2
@@ -196,8 +197,8 @@
   },
   {
    "cust_id": 602622,
-   "practice_best": 103.9798,
-   "practice_laps": 117,
+   "practice_best": 103.5727,
+   "practice_laps": 147,
    "prequal_best": 103.412,
    "prequal_laps": 6,
    "prequal_sessions_used": 2
@@ -253,7 +254,7 @@
   {
    "cust_id": 705452,
    "practice_best": 103.0825,
-   "practice_laps": 116,
+   "practice_laps": 129,
    "prequal_best": 103.1541,
    "prequal_laps": 2,
    "prequal_sessions_used": 1
@@ -284,8 +285,8 @@
   },
   {
    "cust_id": 793423,
-   "practice_best": 108.7341,
-   "practice_laps": 20,
+   "practice_best": 106.1194,
+   "practice_laps": 47,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 1
@@ -293,15 +294,15 @@
   {
    "cust_id": 848209,
    "practice_best": 106.9116,
-   "practice_laps": 14,
+   "practice_laps": 20,
    "prequal_best": 107.4358,
    "prequal_laps": 3,
    "prequal_sessions_used": 1
   },
   {
    "cust_id": 885918,
-   "practice_best": 104.6978,
-   "practice_laps": 103,
+   "practice_best": 104.3924,
+   "practice_laps": 121,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 0
@@ -317,7 +318,7 @@
   {
    "cust_id": 891391,
    "practice_best": 104.6722,
-   "practice_laps": 43,
+   "practice_laps": 60,
    "prequal_best": 105.9306,
    "prequal_laps": 2,
    "prequal_sessions_used": 1
@@ -357,7 +358,7 @@
   {
    "cust_id": 937690,
    "practice_best": 104.0348,
-   "practice_laps": 152,
+   "practice_laps": 179,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 1
@@ -412,8 +413,8 @@
   },
   {
    "cust_id": 1024584,
-   "practice_best": 103.477,
-   "practice_laps": 116,
+   "practice_best": 103.2284,
+   "practice_laps": 121,
    "prequal_best": 103.2781,
    "prequal_laps": 6,
    "prequal_sessions_used": 2
@@ -429,7 +430,7 @@
   {
    "cust_id": 1028172,
    "practice_best": 104.7554,
-   "practice_laps": 159,
+   "practice_laps": 185,
    "prequal_best": 105.2204,
    "prequal_laps": 3,
    "prequal_sessions_used": 1
@@ -477,7 +478,7 @@
   {
    "cust_id": 1062772,
    "practice_best": 103.8075,
-   "practice_laps": 203,
+   "practice_laps": 243,
    "prequal_best": 105.0091,
    "prequal_laps": 3,
    "prequal_sessions_used": 1
@@ -565,15 +566,15 @@
   {
    "cust_id": 1157491,
    "practice_best": 105.0543,
-   "practice_laps": 46,
+   "practice_laps": 53,
    "prequal_best": 105.1437,
    "prequal_laps": 11,
    "prequal_sessions_used": 4
   },
   {
    "cust_id": 1158266,
-   "practice_best": null,
-   "practice_laps": 0,
+   "practice_best": 104.4951,
+   "practice_laps": 41,
    "prequal_best": 104.3683,
    "prequal_laps": 2,
    "prequal_sessions_used": 1
@@ -596,24 +597,24 @@
   },
   {
    "cust_id": 1176867,
-   "practice_best": 104.2352,
-   "practice_laps": 13,
+   "practice_best": 102.9875,
+   "practice_laps": 55,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 0
   },
   {
    "cust_id": 1184391,
-   "practice_best": 106.5332,
-   "practice_laps": 15,
+   "practice_best": 104.7896,
+   "practice_laps": 31,
    "prequal_best": 104.7822,
    "prequal_laps": 3,
    "prequal_sessions_used": 1
   },
   {
    "cust_id": 1190039,
-   "practice_best": 104.4792,
-   "practice_laps": 15,
+   "practice_best": 104.0149,
+   "practice_laps": 52,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 1
@@ -677,7 +678,7 @@
   {
    "cust_id": 1316738,
    "practice_best": 106.5358,
-   "practice_laps": 67,
+   "practice_laps": 74,
    "prequal_best": 106.5256,
    "prequal_laps": 6,
    "prequal_sessions_used": 3
@@ -701,7 +702,7 @@
   {
    "cust_id": 1342343,
    "practice_best": 104.3513,
-   "practice_laps": 22,
+   "practice_laps": 26,
    "prequal_best": 104.4931,
    "prequal_laps": 6,
    "prequal_sessions_used": 2
@@ -733,7 +734,7 @@
   {
    "cust_id": 1398811,
    "practice_best": 104.4433,
-   "practice_laps": 137,
+   "practice_laps": 146,
    "prequal_best": 105.0304,
    "prequal_laps": 3,
    "prequal_sessions_used": 1
@@ -748,8 +749,8 @@
   },
   {
    "cust_id": 1493620,
-   "practice_best": null,
-   "practice_laps": 0,
+   "practice_best": 105.5078,
+   "practice_laps": 5,
    "prequal_best": 105.8789,
    "prequal_laps": 2,
    "prequal_sessions_used": 1
@@ -765,7 +766,7 @@
   {
    "cust_id": 1502285,
    "practice_best": 104.2288,
-   "practice_laps": 113,
+   "practice_laps": 121,
    "prequal_best": 104.2862,
    "prequal_laps": 6,
    "prequal_sessions_used": 2
@@ -781,7 +782,7 @@
   {
    "cust_id": 1509116,
    "practice_best": 106.071,
-   "practice_laps": 18,
+   "practice_laps": 48,
    "prequal_best": 106.5195,
    "prequal_laps": 6,
    "prequal_sessions_used": 2
@@ -837,10 +838,34 @@
   {
    "cust_id": 1577874,
    "practice_best": 104.1219,
-   "practice_laps": 165,
+   "practice_laps": 214,
    "prequal_best": null,
    "prequal_laps": 0,
    "prequal_sessions_used": 1
+  },
+  {
+   "cust_id": 847138,
+   "practice_best": 115.5845,
+   "practice_laps": 1,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0
+  },
+  {
+   "cust_id": 908269,
+   "practice_best": 104.3613,
+   "practice_laps": 22,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0
+  },
+  {
+   "cust_id": 1176588,
+   "practice_best": 103.086,
+   "practice_laps": 43,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0
   }
  ]
 }
