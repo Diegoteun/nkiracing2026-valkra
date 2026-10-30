@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-10-29T22:48:24.986Z",
+  "generated_at": "2026-10-30T12:08:22.767Z",
   "league": {
    "id": 15445,
    "name": "SRVN.nl iRacing (Powered by KNAF)"
@@ -26,7 +26,8 @@
    89708267,
    89723863,
    89732182,
-   89732181
+   89732181,
+   89747400
   ],
   "field_size": 122,
   "simulations": 20000,
@@ -38,39 +39,39 @@
   },
   "model": {
    "description": "Tempo per iRating: lap = a + b*ln(iRating), gefit op rijders met 20+ ronden; boven 7.000 iRating vlakker, zodat een rijder van 10.000 in de prequal mediaan 1:42.30 rijdt. Rijders met minder dan 20 ronden of zonder tijd krijgen het modeltempo plus de spreiding van hun iRating-groep, nooit trager dan hun gereden tijd. Iedereen rijdt zijn resterende prequal-sessies (max 2); een poging = beste tijd of modeltempo + afwijking uit het gemeten verschil tussen prequal en training. Geen poging sneller dan de absolute toptijd.",
-   "a": 115.4892,
-   "b": -1.4256,
+   "a": 115.4699,
+   "b": -1.4233,
    "knee_irating": 7000,
-   "slope_above_knee": -1.2817,
-   "pace_at_10000": 102.41,
+   "slope_above_knee": -1.2968,
+   "pace_at_10000": 102.406,
    "expected_prequal_at_10000": 102.3,
    "absolute_top_time": 102.25,
-   "r2": 0.604,
+   "r2": 0.603,
    "fit_n": 74,
-   "spread_irating_4000_plus": 0.331,
-   "spread_irating_below_4000": 0.701,
-   "attempt_mean": 0.04,
-   "attempt_sd": 0.469,
-   "attempt_sd_irating_4000_plus": 0.321,
-   "attempt_n": 36,
+   "spread_irating_4000_plus": 0.337,
+   "spread_irating_below_4000": 0.696,
+   "attempt_mean": 0.032,
+   "attempt_sd": 0.461,
+   "attempt_sd_irating_4000_plus": 0.299,
+   "attempt_n": 39,
    "expected_position": "Volgorde van de verwachte prequal-tijd (p50); p10/p90 uit de simulaties."
   }
  },
  "forecast": {
   "split1_cutoff": {
-   "p10": 103.043,
-   "p50": 103.112,
-   "p90": 103.151
+   "p10": 103.035,
+   "p50": 103.099,
+   "p90": 103.147
   },
   "split2_cutoff": {
    "p10": 103.714,
-   "p50": 103.773,
+   "p50": 103.771,
    "p90": 103.864
   },
   "safe_split1": 103.0,
   "absolute_top_time": 102.25,
   "split1_range": {
-   "low": 103.11,
+   "low": 103.1,
    "likely": 103.15,
    "high": 103.21
   },
@@ -271,8 +272,8 @@
    1,
    1,
    1,
-   2,
-   2,
+   1,
+   1,
    2,
    2,
    2,
@@ -281,19 +282,19 @@
    3,
    3,
    4,
+   4,
+   4,
    5,
-   5,
-   5,
-   7,
-   7,
-   7,
+   6,
+   6,
    8,
    9,
-   10,
+   9,
    11,
    11,
    11,
-   11,
+   12,
+   12,
    13,
    14,
    14,
@@ -303,15 +304,15 @@
    19,
    20,
    21,
-   21,
-   23,
+   22,
+   24,
    25,
    25,
    27,
    28,
    28,
-   28,
-   31,
+   29,
+   32,
    32,
    33,
    35,
@@ -322,12 +323,12 @@
    38,
    39,
    39,
-   39,
+   40,
    41,
-   43,
    43,
    44,
    45,
+   46,
    46,
    47,
    48,
@@ -338,11 +339,11 @@
    51,
    52,
    53,
-   53,
+   54,
    54,
    55,
-   56,
    57,
+   58,
    58,
    58,
    59,
@@ -352,11 +353,12 @@
    63,
    63,
    64,
-   65,
+   64,
    65,
    66,
    67,
    67,
+   67,
    68,
    68,
    69,
@@ -367,20 +369,21 @@
    71,
    71,
    71,
-   72,
+   73,
    73,
    74,
-   74,
    75,
+   76,
    76,
    77,
    77,
    77,
    78,
-   78,
+   79,
+   79,
    80,
    80,
-   80,
+   81,
    81,
    81,
    82,
@@ -391,10 +394,8 @@
    84,
    84,
    84,
-   85,
-   85,
    86,
-   86,
+   87,
    87,
    87,
    89,
@@ -402,14 +403,14 @@
    90,
    91,
    91,
-   91,
+   92,
    92,
    92,
    93,
    93,
    94,
    94,
-   94,
+   95,
    96,
    98,
    98,
@@ -432,6 +433,8 @@
    2,
    2,
    2,
+   2,
+   2,
    3,
    3,
    3,
@@ -441,49 +444,47 @@
    4,
    4,
    4,
-   5,
-   5,
+   6,
    6,
    6,
    7,
-   7,
+   8,
+   8,
    9,
-   9,
-   9,
-   10,
    11,
-   12,
+   11,
    13,
    13,
    13,
    14,
+   14,
    15,
    16,
-   16,
+   17,
    18,
    19,
    20,
    22,
    23,
-   23,
+   24,
    24,
    26,
-   27,
    28,
-   29,
+   28,
    30,
+   31,
    31,
    31,
    34,
    35,
-   35,
+   36,
    37,
    38,
    38,
    40,
    40,
    41,
-   42,
+   41,
    42,
    43,
    44,
@@ -493,12 +494,12 @@
    49,
    49,
    50,
+   51,
    52,
    52,
    53,
    54,
    54,
-   55,
    55,
    56,
    57,
@@ -509,14 +510,15 @@
    61,
    62,
    63,
-   64,
+   63,
    64,
    64,
    66,
    66,
    67,
+   67,
    68,
-   68,
+   69,
    70,
    70,
    70,
@@ -524,55 +526,54 @@
    71,
    72,
    72,
-   73,
+   72,
    73,
    73,
    74,
    74,
    75,
-   75,
-   77,
+   76,
+   76,
    77,
    78,
-   78,
+   79,
    79,
    80,
    80,
-   81,
+   80,
    81,
    82,
    83,
    83,
+   83,
    84,
    84,
-   85,
+   84,
    85,
    85,
    86,
    86,
+   86,
    87,
    87,
-   87,
-   88,
-   88,
    88,
    89,
    90,
    90,
-   90,
+   91,
    92,
    93,
-   93,
    94,
    94,
    94,
+   95,
    95,
    95,
    96,
    96,
    97,
    97,
-   97,
+   98,
    99,
    101,
    101,
@@ -592,6 +593,8 @@
    1,
    1,
    1,
+   3,
+   3,
    4,
    4,
    4,
@@ -602,17 +605,15 @@
    5,
    5,
    5,
-   6,
    6,
    6,
    7,
    8,
    8,
    9,
-   9,
-   11,
-   11,
-   11,
+   10,
+   10,
+   12,
    13,
    13,
    15,
@@ -624,14 +625,14 @@
    19,
    19,
    21,
-   22,
+   21,
    23,
    24,
    26,
-   26,
+   27,
    27,
    29,
-   30,
+   31,
    31,
    32,
    33,
@@ -662,7 +663,7 @@
    57,
    57,
    58,
-   59,
+   58,
    60,
    60,
    61,
@@ -674,12 +675,13 @@
    66,
    67,
    67,
-   68,
+   67,
+   69,
    69,
    70,
    70,
    71,
-   71,
+   72,
    73,
    73,
    74,
@@ -691,38 +693,37 @@
    76,
    77,
    77,
-   78,
+   77,
    78,
    79,
    80,
    80,
    81,
    82,
+   82,
    83,
    83,
-   84,
    84,
    84,
    85,
    86,
-   87,
+   86,
+   86,
    87,
    87,
    88,
    88,
-   89,
+   88,
    89,
    89,
    90,
    90,
    90,
    91,
-   91,
-   92,
-   92,
    93,
    93,
    93,
+   94,
    95,
    96,
    97,
@@ -757,20 +758,20 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 102.363,
+   "model_time": 102.359,
    "prequal_position_now": null,
    "expected_prequal": {
     "p10": 102.25,
-    "p50": 102.315,
-    "p90": 102.881
+    "p50": 102.329,
+    "p90": 102.885
    },
    "expected_position": {
     "p10": 1,
     "p50": 1,
-    "p90": 17
+    "p90": 18
    },
-   "chance_p1": 39.2,
-   "chance_split1": 96.1,
+   "chance_p1": 41.6,
+   "chance_split1": 95.9,
    "chance_split2": 100.0
   },
   {
@@ -787,7 +788,7 @@
    "best_time": 102.4964,
    "laps_total": 24,
    "time_status": "reliable",
-   "model_time": 102.586,
+   "model_time": 102.584,
    "prequal_position_now": 1,
    "expected_prequal": {
     "p10": 102.25,
@@ -797,9 +798,9 @@
    "expected_position": {
     "p10": 1,
     "p50": 2,
-    "p90": 5
+    "p90": 4
    },
-   "chance_p1": 12.5,
+   "chance_p1": 16.1,
    "chance_split1": 100.0,
    "chance_split2": 100.0
   },
@@ -817,7 +818,7 @@
    "best_time": 102.5362,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.678,
+   "model_time": 102.677,
    "prequal_position_now": 2,
    "expected_prequal": {
     "p10": 102.536,
@@ -827,7 +828,7 @@
    "expected_position": {
     "p10": 3,
     "p50": 3,
-    "p90": 7
+    "p90": 6
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
@@ -847,19 +848,19 @@
    "best_time": 102.5976,
    "laps_total": 25,
    "time_status": "reliable",
-   "model_time": 102.825,
+   "model_time": 102.826,
    "prequal_position_now": 3,
    "expected_prequal": {
     "p10": 102.25,
-    "p50": 102.598,
+    "p50": 102.591,
     "p90": 102.598
    },
    "expected_position": {
     "p10": 2,
     "p50": 4,
-    "p90": 8
+    "p90": 7
    },
-   "chance_p1": 8.2,
+   "chance_p1": 9.2,
    "chance_split1": 100.0,
    "chance_split2": 100.0
   },
@@ -877,7 +878,7 @@
    "best_time": 102.6026,
    "laps_total": 14,
    "time_status": "few_laps",
-   "model_time": 103.053,
+   "model_time": 103.054,
    "prequal_position_now": 4,
    "expected_prequal": {
     "p10": 102.603,
@@ -888,6 +889,36 @@
     "p10": 5,
     "p50": 5,
     "p90": 9
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 100.0,
+   "chance_split2": 100.0
+  },
+  {
+   "name": "Lennon Henriquez",
+   "car_number": null,
+   "irating": 7822,
+   "license": "A",
+   "safety_rating": 3.69,
+   "practice_best": 109.8455,
+   "practice_laps": 3,
+   "prequal_best": 102.6592,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 2,
+   "best_time": 102.6592,
+   "laps_total": 6,
+   "time_status": "few_laps",
+   "model_time": 102.725,
+   "prequal_position_now": 5,
+   "expected_prequal": {
+    "p10": 102.659,
+    "p50": 102.659,
+    "p90": 102.659
+   },
+   "expected_position": {
+    "p10": 6,
+    "p50": 6,
+    "p90": 11
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
@@ -907,16 +938,16 @@
    "best_time": 102.6728,
    "laps_total": 66,
    "time_status": "reliable",
-   "model_time": 103.309,
-   "prequal_position_now": 5,
+   "model_time": 103.31,
+   "prequal_position_now": 6,
    "expected_prequal": {
     "p10": 102.673,
     "p50": 102.673,
     "p90": 102.673
    },
    "expected_position": {
-    "p10": 6,
-    "p50": 6,
+    "p10": 7,
+    "p50": 7,
     "p90": 12
    },
    "chance_p1": 0.0,
@@ -937,19 +968,19 @@
    "best_time": 102.7113,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 102.405,
-   "prequal_position_now": 6,
+   "model_time": 102.401,
+   "prequal_position_now": 7,
    "expected_prequal": {
-    "p10": 102.301,
+    "p10": 102.326,
     "p50": 102.711,
     "p90": 102.711
    },
    "expected_position": {
     "p10": 2,
-    "p50": 7,
+    "p50": 8,
     "p90": 12
    },
-   "chance_p1": 8.9,
+   "chance_p1": 8.4,
    "chance_split1": 100.0,
    "chance_split2": 100.0
   },
@@ -968,15 +999,15 @@
    "laps_total": 34,
    "time_status": "reliable",
    "model_time": 102.72,
-   "prequal_position_now": 7,
+   "prequal_position_now": 8,
    "expected_prequal": {
     "p10": 102.711,
     "p50": 102.711,
     "p90": 102.711
    },
    "expected_position": {
-    "p10": 8,
-    "p50": 8,
+    "p10": 9,
+    "p50": 9,
     "p90": 14
    },
    "chance_p1": 0.0,
@@ -997,16 +1028,16 @@
    "best_time": 102.8014,
    "laps_total": 81,
    "time_status": "reliable",
-   "model_time": 102.893,
-   "prequal_position_now": 8,
+   "model_time": 102.894,
+   "prequal_position_now": 9,
    "expected_prequal": {
     "p10": 102.801,
     "p50": 102.801,
     "p90": 102.801
    },
    "expected_position": {
-    "p10": 9,
-    "p50": 9,
+    "p10": 10,
+    "p50": 10,
     "p90": 16
    },
    "chance_p1": 0.0,
@@ -1027,81 +1058,21 @@
    "best_time": 102.8313,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 102.782,
-   "prequal_position_now": 9,
+   "model_time": 102.783,
+   "prequal_position_now": 10,
    "expected_prequal": {
-    "p10": 102.414,
+    "p10": 102.447,
     "p50": 102.831,
     "p90": 102.831
    },
    "expected_position": {
     "p10": 3,
-    "p50": 10,
+    "p50": 11,
     "p90": 17
    },
-   "chance_p1": 4.1,
+   "chance_p1": 3.5,
    "chance_split1": 100.0,
    "chance_split2": 100.0
-  },
-  {
-   "name": "Milan Schröer2",
-   "car_number": "109",
-   "irating": 6672,
-   "license": "A",
-   "safety_rating": 2.23,
-   "practice_best": 102.9875,
-   "practice_laps": 55,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": 102.9875,
-   "laps_total": 55,
-   "time_status": "reliable",
-   "model_time": 102.936,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.504,
-    "p50": 102.853,
-    "p90": 103.182
-   },
-   "expected_position": {
-    "p10": 5,
-    "p50": 11,
-    "p90": 34
-   },
-   "chance_p1": 1.2,
-   "chance_split1": 84.9,
-   "chance_split2": 100.0
-  },
-  {
-   "name": "Lennon Henriquez",
-   "car_number": null,
-   "irating": 7822,
-   "license": "A",
-   "safety_rating": 3.69,
-   "practice_best": 109.8455,
-   "practice_laps": 3,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 1,
-   "best_time": 109.8455,
-   "laps_total": 3,
-   "time_status": "few_laps",
-   "model_time": 102.725,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.276,
-    "p50": 102.856,
-    "p90": 103.471
-   },
-   "expected_position": {
-    "p10": 2,
-    "p50": 12,
-    "p90": 47
-   },
-   "chance_p1": 4.4,
-   "chance_split1": 71.8,
-   "chance_split2": 97.5
   },
   {
    "name": "Tom Walstra",
@@ -1117,16 +1088,16 @@
    "best_time": 102.7282,
    "laps_total": 20,
    "time_status": "reliable",
-   "model_time": 102.84,
-   "prequal_position_now": 10,
+   "model_time": 102.841,
+   "prequal_position_now": 11,
    "expected_prequal": {
     "p10": 102.863,
     "p50": 102.863,
     "p90": 102.863
    },
    "expected_position": {
-    "p10": 13,
-    "p50": 13,
+    "p10": 12,
+    "p50": 12,
     "p90": 19
    },
    "chance_p1": 0.0,
@@ -1136,9 +1107,9 @@
   {
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 8507,
+   "irating": 8522,
    "license": "A",
-   "safety_rating": 4.48,
+   "safety_rating": 4.33,
    "practice_best": null,
    "practice_laps": 0,
    "prequal_best": 102.8646,
@@ -1147,19 +1118,19 @@
    "best_time": 102.8646,
    "laps_total": 2,
    "time_status": "few_laps",
-   "model_time": 102.617,
-   "prequal_position_now": 11,
+   "model_time": 102.613,
+   "prequal_position_now": 12,
    "expected_prequal": {
-    "p10": 102.451,
+    "p10": 102.487,
     "p50": 102.864,
     "p90": 102.865
    },
    "expected_position": {
     "p10": 4,
-    "p50": 14,
+    "p50": 13,
     "p90": 19
    },
-   "chance_p1": 3.2,
+   "chance_p1": 2.7,
    "chance_split1": 100.0,
    "chance_split2": 100.0
   },
@@ -1178,15 +1149,15 @@
    "laps_total": 6,
    "time_status": "few_laps",
    "model_time": 102.73,
-   "prequal_position_now": 12,
+   "prequal_position_now": 13,
    "expected_prequal": {
     "p10": 102.916,
     "p50": 102.916,
     "p90": 102.916
    },
    "expected_position": {
-    "p10": 15,
-    "p50": 15,
+    "p10": 14,
+    "p50": 14,
     "p90": 22
    },
    "chance_p1": 0.0,
@@ -1208,15 +1179,15 @@
    "laps_total": 6,
    "time_status": "few_laps",
    "model_time": 103.467,
-   "prequal_position_now": 13,
+   "prequal_position_now": 14,
    "expected_prequal": {
     "p10": 102.937,
     "p50": 102.937,
     "p90": 102.937
    },
    "expected_position": {
-    "p10": 16,
-    "p50": 16,
+    "p10": 15,
+    "p50": 15,
     "p90": 23
    },
    "chance_p1": 0.0,
@@ -1237,20 +1208,20 @@
    "best_time": 103.086,
    "laps_total": 43,
    "time_status": "reliable",
-   "model_time": 103.079,
+   "model_time": 103.08,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 102.598,
-    "p50": 102.955,
-    "p90": 103.28
+    "p10": 102.625,
+    "p50": 102.954,
+    "p90": 103.257
    },
    "expected_position": {
-    "p10": 7,
-    "p50": 17,
-    "p90": 39
+    "p10": 8,
+    "p50": 16,
+    "p90": 38
    },
    "chance_p1": 0.5,
-   "chance_split1": 74.2,
+   "chance_split1": 75.3,
    "chance_split2": 100.0
   },
   {
@@ -1268,18 +1239,48 @@
    "laps_total": 41,
    "time_status": "reliable",
    "model_time": 103.345,
-   "prequal_position_now": 14,
+   "prequal_position_now": 15,
    "expected_prequal": {
     "p10": 102.956,
     "p50": 102.956,
     "p90": 102.956
    },
    "expected_position": {
-    "p10": 18,
-    "p50": 18,
+    "p10": 17,
+    "p50": 17,
     "p90": 25
    },
    "chance_p1": 0.0,
+   "chance_split1": 100.0,
+   "chance_split2": 100.0
+  },
+  {
+   "name": "Milan Schröer2",
+   "car_number": "109",
+   "irating": 6672,
+   "license": "A",
+   "safety_rating": 2.23,
+   "practice_best": 102.9875,
+   "practice_laps": 55,
+   "prequal_best": 102.9773,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 102.9773,
+   "laps_total": 58,
+   "time_status": "reliable",
+   "model_time": 102.937,
+   "prequal_position_now": 16,
+   "expected_prequal": {
+    "p10": 102.598,
+    "p50": 102.977,
+    "p90": 102.977
+   },
+   "expected_position": {
+    "p10": 7,
+    "p50": 18,
+    "p90": 25
+   },
+   "chance_p1": 0.8,
    "chance_split1": 100.0,
    "chance_split2": 100.0
   },
@@ -1297,8 +1298,8 @@
    "best_time": 103.0097,
    "laps_total": 15,
    "time_status": "few_laps",
-   "model_time": 103.016,
-   "prequal_position_now": 15,
+   "model_time": 103.018,
+   "prequal_position_now": 17,
    "expected_prequal": {
     "p10": 103.01,
     "p50": 103.01,
@@ -1328,19 +1329,19 @@
    "laps_total": 159,
    "time_status": "reliable",
    "model_time": 103.639,
-   "prequal_position_now": 16,
+   "prequal_position_now": 18,
    "expected_prequal": {
-    "p10": 102.603,
+    "p10": 102.632,
     "p50": 103.011,
     "p90": 103.011
    },
    "expected_position": {
-    "p10": 7,
+    "p10": 8,
     "p50": 20,
     "p90": 27
    },
-   "chance_p1": 0.7,
-   "chance_split1": 99.6,
+   "chance_p1": 0.6,
+   "chance_split1": 99.5,
    "chance_split2": 100.0
   },
   {
@@ -1358,7 +1359,7 @@
    "laps_total": 27,
    "time_status": "reliable",
    "model_time": 103.508,
-   "prequal_position_now": 17,
+   "prequal_position_now": 19,
    "expected_prequal": {
     "p10": 103.034,
     "p50": 103.034,
@@ -1370,7 +1371,7 @@
     "p90": 29
    },
    "chance_p1": 0.0,
-   "chance_split1": 96.3,
+   "chance_split1": 95.7,
    "chance_split2": 100.0
   },
   {
@@ -1387,20 +1388,20 @@
    "best_time": 103.0719,
    "laps_total": 55,
    "time_status": "reliable",
-   "model_time": 103.031,
-   "prequal_position_now": 18,
+   "model_time": 103.033,
+   "prequal_position_now": 20,
    "expected_prequal": {
-    "p10": 102.662,
-    "p50": 103.069,
+    "p10": 102.696,
+    "p50": 103.072,
     "p90": 103.072
    },
    "expected_position": {
-    "p10": 9,
+    "p10": 11,
     "p50": 22,
     "p90": 30
    },
-   "chance_p1": 0.9,
-   "chance_split1": 94.0,
+   "chance_p1": 0.5,
+   "chance_split1": 92.8,
    "chance_split2": 100.0
   },
   {
@@ -1417,20 +1418,20 @@
    "best_time": 103.0782,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 103.335,
-   "prequal_position_now": 19,
+   "model_time": 103.336,
+   "prequal_position_now": 21,
    "expected_prequal": {
-    "p10": 102.671,
-    "p50": 103.077,
+    "p10": 102.697,
+    "p50": 103.078,
     "p90": 103.078
    },
    "expected_position": {
-    "p10": 10,
+    "p10": 11,
     "p50": 23,
-    "p90": 30
+    "p90": 31
    },
    "chance_p1": 0.4,
-   "chance_split1": 91.1,
+   "chance_split1": 89.6,
    "chance_split2": 100.0
   },
   {
@@ -1447,51 +1448,21 @@
    "best_time": 103.0943,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 103.007,
-   "prequal_position_now": 20,
+   "model_time": 103.008,
+   "prequal_position_now": 22,
    "expected_prequal": {
-    "p10": 102.688,
+    "p10": 102.719,
     "p50": 103.094,
     "p90": 103.094
    },
    "expected_position": {
-    "p10": 10,
+    "p10": 12,
     "p50": 24,
     "p90": 31
    },
-   "chance_p1": 0.6,
-   "chance_split1": 85.4,
+   "chance_p1": 0.4,
+   "chance_split1": 83.3,
    "chance_split2": 100.0
-  },
-  {
-   "name": "Kris Louwers2",
-   "car_number": null,
-   "irating": 5735,
-   "license": "A",
-   "safety_rating": 2.74,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.151,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.576,
-    "p50": 103.103,
-    "p90": 103.67
-   },
-   "expected_position": {
-    "p10": 6,
-    "p50": 25,
-    "p90": 55
-   },
-   "chance_p1": 1.4,
-   "chance_split1": 51.0,
-   "chance_split2": 93.8
   },
   {
    "name": "Rick Postema",
@@ -1508,20 +1479,50 @@
    "laps_total": 131,
    "time_status": "reliable",
    "model_time": 103.5,
-   "prequal_position_now": 23,
+   "prequal_position_now": 25,
    "expected_prequal": {
-    "p10": 102.716,
-    "p50": 103.13,
+    "p10": 102.732,
+    "p50": 103.117,
     "p90": 103.154
    },
    "expected_position": {
-    "p10": 11,
-    "p50": 26,
+    "p10": 12,
+    "p50": 25,
     "p90": 35
    },
-   "chance_p1": 0.4,
-   "chance_split1": 54.6,
+   "chance_p1": 0.3,
+   "chance_split1": 53.7,
    "chance_split2": 100.0
+  },
+  {
+   "name": "Kris Louwers2",
+   "car_number": null,
+   "irating": 5735,
+   "license": "A",
+   "safety_rating": 2.74,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.152,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 102.587,
+    "p50": 103.12,
+    "p90": 103.67
+   },
+   "expected_position": {
+    "p10": 6,
+    "p50": 26,
+    "p90": 55
+   },
+   "chance_p1": 1.3,
+   "chance_split1": 49.3,
+   "chance_split2": 93.8
   },
   {
    "name": "Justin van der Linden",
@@ -1537,8 +1538,8 @@
    "best_time": 103.1433,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 103.364,
-   "prequal_position_now": 21,
+   "model_time": 103.365,
+   "prequal_position_now": 23,
    "expected_prequal": {
     "p10": 103.143,
     "p50": 103.143,
@@ -1550,15 +1551,15 @@
     "p90": 34
    },
    "chance_p1": 0.0,
-   "chance_split1": 37.8,
+   "chance_split1": 33.0,
    "chance_split2": 100.0
   },
   {
    "name": "Joep van Tilburg",
    "car_number": "176",
-   "irating": 4049,
+   "irating": 3951,
    "license": "A",
-   "safety_rating": 4.99,
+   "safety_rating": 4.28,
    "practice_best": 103.5707,
    "practice_laps": 121,
    "prequal_best": 103.1475,
@@ -1567,8 +1568,8 @@
    "best_time": 103.1475,
    "laps_total": 126,
    "time_status": "reliable",
-   "model_time": 103.648,
-   "prequal_position_now": 22,
+   "model_time": 103.683,
+   "prequal_position_now": 24,
    "expected_prequal": {
     "p10": 103.147,
     "p50": 103.147,
@@ -1580,38 +1581,8 @@
     "p90": 35
    },
    "chance_p1": 0.0,
-   "chance_split1": 21.4,
+   "chance_split1": 16.9,
    "chance_split2": 100.0
-  },
-  {
-   "name": "Daan van der Ven",
-   "car_number": null,
-   "irating": 5518,
-   "license": "A",
-   "safety_rating": 3.48,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.206,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.633,
-    "p50": 103.148,
-    "p90": 103.717
-   },
-   "expected_position": {
-    "p10": 8,
-    "p50": 29,
-    "p90": 57
-   },
-   "chance_p1": 1.8,
-   "chance_split1": 46.7,
-   "chance_split2": 92.6
   },
   {
    "name": "Barry Arends",
@@ -1628,20 +1599,50 @@
    "laps_total": 60,
    "time_status": "reliable",
    "model_time": 103.345,
-   "prequal_position_now": 24,
+   "prequal_position_now": 26,
    "expected_prequal": {
-    "p10": 102.754,
-    "p50": 103.163,
+    "p10": 102.778,
+    "p50": 103.158,
     "p90": 103.163
    },
    "expected_position": {
-    "p10": 13,
-    "p50": 30,
+    "p10": 14,
+    "p50": 29,
     "p90": 36
    },
-   "chance_p1": 0.4,
-   "chance_split1": 47.6,
+   "chance_p1": 0.2,
+   "chance_split1": 45.8,
    "chance_split2": 100.0
+  },
+  {
+   "name": "Daan van der Ven",
+   "car_number": null,
+   "irating": 5518,
+   "license": "A",
+   "safety_rating": 3.48,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.207,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 102.645,
+    "p50": 103.17,
+    "p90": 103.725
+   },
+   "expected_position": {
+    "p10": 9,
+    "p50": 30,
+    "p90": 57
+   },
+   "chance_p1": 1.6,
+   "chance_split1": 43.8,
+   "chance_split2": 92.4
   },
   {
    "name": "Kelvin Huurman3",
@@ -1658,7 +1659,7 @@
    "laps_total": 209,
    "time_status": "reliable",
    "model_time": 104.063,
-   "prequal_position_now": 25,
+   "prequal_position_now": 27,
    "expected_prequal": {
     "p10": 103.214,
     "p50": 103.214,
@@ -1670,7 +1671,7 @@
     "p90": 39
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.7,
+   "chance_split1": 0.3,
    "chance_split2": 100.0
   },
   {
@@ -1687,20 +1688,20 @@
    "best_time": 103.2154,
    "laps_total": 67,
    "time_status": "reliable",
-   "model_time": 103.331,
-   "prequal_position_now": 26,
+   "model_time": 103.332,
+   "prequal_position_now": 28,
    "expected_prequal": {
-    "p10": 102.804,
+    "p10": 102.83,
     "p50": 103.215,
     "p90": 103.215
    },
    "expected_position": {
-    "p10": 14,
+    "p10": 16,
     "p50": 32,
     "p90": 38
    },
-   "chance_p1": 0.2,
-   "chance_split1": 37.6,
+   "chance_p1": 0.1,
+   "chance_split1": 36.3,
    "chance_split2": 100.0
   },
   {
@@ -1718,7 +1719,7 @@
    "laps_total": 127,
    "time_status": "reliable",
    "model_time": 103.886,
-   "prequal_position_now": 27,
+   "prequal_position_now": 29,
    "expected_prequal": {
     "p10": 103.278,
     "p50": 103.278,
@@ -1748,50 +1749,20 @@
    "laps_total": 38,
    "time_status": "reliable",
    "model_time": 103.855,
-   "prequal_position_now": 28,
+   "prequal_position_now": 30,
    "expected_prequal": {
-    "p10": 102.733,
-    "p50": 103.328,
+    "p10": 102.732,
+    "p50": 103.33,
     "p90": 103.332
    },
    "expected_position": {
     "p10": 12,
     "p50": 34,
-    "p90": 43
+    "p90": 42
    },
-   "chance_p1": 1.2,
-   "chance_split1": 32.0,
+   "chance_p1": 1.3,
+   "chance_split1": 31.8,
    "chance_split2": 100.0
-  },
-  {
-   "name": "Danny Jansen",
-   "car_number": null,
-   "irating": 3880,
-   "license": "A",
-   "safety_rating": 3.67,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.708,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.518,
-    "p50": 103.372,
-    "p90": 104.509
-   },
-   "expected_position": {
-    "p10": 5,
-    "p50": 35,
-    "p90": 82
-   },
-   "chance_p1": 2.2,
-   "chance_split1": 36.4,
-   "chance_split2": 71.3
   },
   {
    "name": "Niek Jacobs",
@@ -1801,27 +1772,27 @@
    "safety_rating": 4.18,
    "practice_best": 103.5085,
    "practice_laps": 127,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": 103.5085,
-   "laps_total": 127,
+   "prequal_best": 103.3622,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 103.3622,
+   "laps_total": 130,
    "time_status": "reliable",
    "model_time": 103.615,
-   "prequal_position_now": null,
+   "prequal_position_now": 31,
    "expected_prequal": {
-    "p10": 103.02,
-    "p50": 103.373,
-    "p90": 103.705
+    "p10": 102.973,
+    "p50": 103.362,
+    "p90": 103.362
    },
    "expected_position": {
-    "p10": 25,
-    "p50": 36,
-    "p90": 57
+    "p10": 23,
+    "p50": 35,
+    "p90": 44
    },
-   "chance_p1": 0.0,
-   "chance_split1": 17.0,
-   "chance_split2": 95.1
+   "chance_p1": 0.1,
+   "chance_split1": 20.2,
+   "chance_split2": 100.0
   },
   {
    "name": "Leroy Bolkestein",
@@ -1840,18 +1811,48 @@
    "model_time": 103.722,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 102.522,
-    "p50": 103.376,
-    "p90": 104.549
+    "p10": 102.515,
+    "p50": 103.37,
+    "p90": 104.49
    },
    "expected_position": {
-    "p10": 5,
-    "p50": 37,
-    "p90": 83
+    "p10": 4,
+    "p50": 36,
+    "p90": 81
    },
-   "chance_p1": 3.7,
-   "chance_split1": 36.3,
-   "chance_split2": 70.5
+   "chance_p1": 4.0,
+   "chance_split1": 36.5,
+   "chance_split2": 71.5
+  },
+  {
+   "name": "Danny Jansen",
+   "car_number": null,
+   "irating": 3880,
+   "license": "A",
+   "safety_rating": 3.67,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.708,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 102.51,
+    "p50": 103.377,
+    "p90": 104.523
+   },
+   "expected_position": {
+    "p10": 4,
+    "p50": 37,
+    "p90": 81
+   },
+   "chance_p1": 2.6,
+   "chance_split1": 36.5,
+   "chance_split2": 71.0
   },
   {
    "name": "Diego Teunissen",
@@ -1868,7 +1869,7 @@
    "laps_total": 92,
    "time_status": "reliable",
    "model_time": 104.141,
-   "prequal_position_now": 29,
+   "prequal_position_now": 32,
    "expected_prequal": {
     "p10": 103.396,
     "p50": 103.396,
@@ -1897,20 +1898,20 @@
    "best_time": 103.4078,
    "laps_total": 75,
    "time_status": "reliable",
-   "model_time": 104.246,
-   "prequal_position_now": 30,
+   "model_time": 104.245,
+   "prequal_position_now": 33,
    "expected_prequal": {
-    "p10": 102.815,
+    "p10": 102.832,
     "p50": 103.408,
     "p90": 103.408
    },
    "expected_position": {
-    "p10": 15,
+    "p10": 16,
     "p50": 39,
     "p90": 46
    },
-   "chance_p1": 0.8,
-   "chance_split1": 26.2,
+   "chance_p1": 0.7,
+   "chance_split1": 25.6,
    "chance_split2": 100.0
   },
   {
@@ -1928,7 +1929,7 @@
    "laps_total": 153,
    "time_status": "reliable",
    "model_time": 103.683,
-   "prequal_position_now": 31,
+   "prequal_position_now": 34,
    "expected_prequal": {
     "p10": 103.412,
     "p50": 103.412,
@@ -1941,36 +1942,6 @@
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 100.0
-  },
-  {
-   "name": "Dick Jansen",
-   "car_number": "346",
-   "irating": 3271,
-   "license": "A",
-   "safety_rating": 2.77,
-   "practice_best": 103.6346,
-   "practice_laps": 45,
-   "prequal_best": 103.4615,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 103.4615,
-   "laps_total": 48,
-   "time_status": "reliable",
-   "model_time": 103.952,
-   "prequal_position_now": 33,
-   "expected_prequal": {
-    "p10": 102.858,
-    "p50": 103.458,
-    "p90": 103.462
-   },
-   "expected_position": {
-    "p10": 17,
-    "p50": 41,
-    "p90": 49
-   },
-   "chance_p1": 0.4,
-   "chance_split1": 23.1,
    "chance_split2": 100.0
   },
   {
@@ -1987,51 +1958,51 @@
    "best_time": 103.4307,
    "laps_total": 143,
    "time_status": "reliable",
-   "model_time": 104.406,
-   "prequal_position_now": 32,
+   "model_time": 104.405,
+   "prequal_position_now": 35,
    "expected_prequal": {
-    "p10": 102.854,
-    "p50": 103.46,
+    "p10": 102.866,
+    "p50": 103.456,
     "p90": 103.46
+   },
+   "expected_position": {
+    "p10": 17,
+    "p50": 41,
+    "p90": 49
+   },
+   "chance_p1": 0.6,
+   "chance_split1": 21.9,
+   "chance_split2": 100.0
+  },
+  {
+   "name": "Dick Jansen",
+   "car_number": "346",
+   "irating": 3271,
+   "license": "A",
+   "safety_rating": 2.77,
+   "practice_best": 103.6346,
+   "practice_laps": 45,
+   "prequal_best": 103.4615,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 103.4615,
+   "laps_total": 48,
+   "time_status": "reliable",
+   "model_time": 103.951,
+   "prequal_position_now": 36,
+   "expected_prequal": {
+    "p10": 102.868,
+    "p50": 103.462,
+    "p90": 103.462
    },
    "expected_position": {
     "p10": 17,
     "p50": 42,
     "p90": 49
    },
-   "chance_p1": 0.6,
-   "chance_split1": 23.1,
+   "chance_p1": 0.5,
+   "chance_split1": 22.6,
    "chance_split2": 100.0
-  },
-  {
-   "name": "Max De Rooij",
-   "car_number": null,
-   "irating": 2326,
-   "license": "A",
-   "safety_rating": 3.48,
-   "practice_best": 103.7169,
-   "practice_laps": 59,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": 103.7169,
-   "laps_total": 59,
-   "time_status": "reliable",
-   "model_time": 104.438,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.992,
-    "p50": 103.503,
-    "p90": 103.978
-   },
-   "expected_position": {
-    "p10": 24,
-    "p50": 43,
-    "p90": 67
-   },
-   "chance_p1": 0.1,
-   "chance_split1": 16.4,
-   "chance_split2": 79.1
   },
   {
    "name": "Milan Wassenburg",
@@ -2048,19 +2019,19 @@
    "laps_total": 20,
    "time_status": "reliable",
    "model_time": 103.826,
-   "prequal_position_now": 34,
+   "prequal_position_now": 37,
    "expected_prequal": {
-    "p10": 102.925,
-    "p50": 103.513,
+    "p10": 102.93,
+    "p50": 103.518,
     "p90": 103.518
    },
    "expected_position": {
-    "p10": 20,
-    "p50": 44,
+    "p10": 21,
+    "p50": 43,
     "p90": 51
    },
    "chance_p1": 0.2,
-   "chance_split1": 19.2,
+   "chance_split1": 18.8,
    "chance_split2": 100.0
   },
   {
@@ -2077,16 +2048,16 @@
    "best_time": 103.5204,
    "laps_total": 72,
    "time_status": "reliable",
-   "model_time": 104.471,
-   "prequal_position_now": 35,
+   "model_time": 104.47,
+   "prequal_position_now": 38,
    "expected_prequal": {
     "p10": 103.52,
     "p50": 103.52,
     "p90": 103.52
    },
    "expected_position": {
-    "p10": 45,
-    "p50": 45,
+    "p10": 44,
+    "p50": 44,
     "p90": 53
    },
    "chance_p1": 0.0,
@@ -2110,18 +2081,18 @@
    "model_time": 103.572,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 102.995,
-    "p50": 103.526,
-    "p90": 104.085
+    "p10": 103.015,
+    "p50": 103.538,
+    "p90": 104.103
    },
    "expected_position": {
-    "p10": 24,
-    "p50": 46,
+    "p10": 26,
+    "p50": 45,
     "p90": 70
    },
    "chance_p1": 0.1,
-   "chance_split1": 15.7,
-   "chance_split2": 75.1
+   "chance_split1": 14.2,
+   "chance_split2": 75.2
   },
   {
    "name": "Jorrit Drent",
@@ -2138,19 +2109,19 @@
    "laps_total": 32,
    "time_status": "reliable",
    "model_time": 103.959,
-   "prequal_position_now": 36,
+   "prequal_position_now": 39,
    "expected_prequal": {
-    "p10": 102.984,
-    "p50": 103.592,
+    "p10": 103.015,
+    "p50": 103.594,
     "p90": 103.594
    },
    "expected_position": {
-    "p10": 24,
-    "p50": 47,
+    "p10": 25,
+    "p50": 46,
     "p90": 55
    },
-   "chance_p1": 0.1,
-   "chance_split1": 15.3,
+   "chance_p1": 0.2,
+   "chance_split1": 14.4,
    "chance_split2": 99.9
   },
   {
@@ -2170,18 +2141,18 @@
    "model_time": 103.662,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.084,
-    "p50": 103.614,
+    "p10": 103.098,
+    "p50": 103.63,
     "p90": 104.173
    },
    "expected_position": {
-    "p10": 29,
-    "p50": 48,
-    "p90": 73
+    "p10": 30,
+    "p50": 47,
+    "p90": 72
    },
-   "chance_p1": 0.1,
-   "chance_split1": 11.2,
-   "chance_split2": 68.4
+   "chance_p1": 0.0,
+   "chance_split1": 10.3,
+   "chance_split2": 67.3
   },
   {
    "name": "Kris Verstijnen",
@@ -2197,21 +2168,21 @@
    "best_time": 103.6027,
    "laps_total": 41,
    "time_status": "reliable",
-   "model_time": 103.385,
+   "model_time": 103.386,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.234,
-    "p50": 103.639,
-    "p90": 104.046
+    "p10": 103.245,
+    "p50": 103.634,
+    "p90": 104.012
    },
    "expected_position": {
     "p10": 37,
-    "p50": 49,
-    "p90": 69
+    "p50": 48,
+    "p90": 68
    },
    "chance_p1": 0.0,
-   "chance_split1": 5.0,
-   "chance_split2": 69.5
+   "chance_split1": 4.0,
+   "chance_split2": 71.1
   },
   {
    "name": "Albert Priem",
@@ -2228,20 +2199,20 @@
    "laps_total": 45,
    "time_status": "reliable",
    "model_time": 103.538,
-   "prequal_position_now": 48,
+   "prequal_position_now": 52,
    "expected_prequal": {
-    "p10": 103.237,
-    "p50": 103.647,
-    "p90": 104.036
+    "p10": 103.257,
+    "p50": 103.637,
+    "p90": 104.022
    },
    "expected_position": {
-    "p10": 37,
-    "p50": 50,
-    "p90": 68
+    "p10": 38,
+    "p50": 49,
+    "p90": 67
    },
    "chance_p1": 0.0,
-   "chance_split1": 4.8,
-   "chance_split2": 68.6
+   "chance_split1": 3.8,
+   "chance_split2": 70.7
   },
   {
    "name": "Patrick A Hesterman",
@@ -2258,20 +2229,80 @@
    "laps_total": 77,
    "time_status": "reliable",
    "model_time": 104.101,
-   "prequal_position_now": 37,
+   "prequal_position_now": 40,
    "expected_prequal": {
-    "p10": 103.061,
-    "p50": 103.671,
+    "p10": 103.086,
+    "p50": 103.672,
     "p90": 103.672
    },
    "expected_position": {
-    "p10": 28,
+    "p10": 29,
+    "p50": 50,
+    "p90": 57
+   },
+   "chance_p1": 0.1,
+   "chance_split1": 11.0,
+   "chance_split2": 99.3
+  },
+  {
+   "name": "Max De Rooij",
+   "car_number": null,
+   "irating": 2326,
+   "license": "A",
+   "safety_rating": 3.48,
+   "practice_best": 103.7169,
+   "practice_laps": 59,
+   "prequal_best": 103.6722,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 103.6722,
+   "laps_total": 62,
+   "time_status": "reliable",
+   "model_time": 104.437,
+   "prequal_position_now": 41,
+   "expected_prequal": {
+    "p10": 103.088,
+    "p50": 103.672,
+    "p90": 103.672
+   },
+   "expected_position": {
+    "p10": 29,
     "p50": 51,
     "p90": 57
    },
    "chance_p1": 0.1,
-   "chance_split1": 12.3,
-   "chance_split2": 99.0
+   "chance_split1": 10.8,
+   "chance_split2": 98.9
+  },
+  {
+   "name": "Kevin Messak",
+   "car_number": "311",
+   "irating": 3007,
+   "license": "A",
+   "safety_rating": 2.82,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 104.071,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 102.877,
+    "p50": 103.717,
+    "p90": 104.874
+   },
+   "expected_position": {
+    "p10": 18,
+    "p50": 52,
+    "p90": 91
+   },
+   "chance_p1": 0.8,
+   "chance_split1": 18.7,
+   "chance_split2": 54.3
   },
   {
    "name": "Sander Jorritsma",
@@ -2288,50 +2319,20 @@
    "laps_total": 3,
    "time_status": "few_laps",
    "model_time": 103.693,
-   "prequal_position_now": 38,
+   "prequal_position_now": 42,
    "expected_prequal": {
-    "p10": 103.125,
-    "p50": 103.732,
+    "p10": 103.144,
+    "p50": 103.733,
     "p90": 103.737
    },
    "expected_position": {
-    "p10": 31,
-    "p50": 52,
+    "p10": 33,
+    "p50": 53,
     "p90": 60
    },
-   "chance_p1": 0.0,
-   "chance_split1": 9.4,
-   "chance_split2": 94.5
-  },
-  {
-   "name": "Kevin Messak",
-   "car_number": "311",
-   "irating": 3007,
-   "license": "A",
-   "safety_rating": 2.82,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 104.072,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.871,
-    "p50": 103.737,
-    "p90": 104.883
-   },
-   "expected_position": {
-    "p10": 18,
-    "p50": 53,
-    "p90": 91
-   },
-   "chance_p1": 0.8,
-   "chance_split1": 18.8,
-   "chance_split2": 53.2
+   "chance_p1": 0.1,
+   "chance_split1": 8.6,
+   "chance_split2": 94.4
   },
   {
    "name": "Quinten Klumpert",
@@ -2347,20 +2348,20 @@
    "best_time": 103.7513,
    "laps_total": 77,
    "time_status": "reliable",
-   "model_time": 104.473,
-   "prequal_position_now": 39,
+   "model_time": 104.472,
+   "prequal_position_now": 43,
    "expected_prequal": {
-    "p10": 103.143,
-    "p50": 103.75,
+    "p10": 103.162,
+    "p50": 103.751,
     "p90": 103.751
    },
    "expected_position": {
-    "p10": 32,
+    "p10": 34,
     "p50": 54,
     "p90": 60
    },
-   "chance_p1": 0.0,
-   "chance_split1": 9.0,
+   "chance_p1": 0.1,
+   "chance_split1": 8.0,
    "chance_split2": 91.1
   },
   {
@@ -2377,21 +2378,21 @@
    "best_time": 103.7593,
    "laps_total": 90,
    "time_status": "reliable",
-   "model_time": 104.272,
-   "prequal_position_now": 40,
+   "model_time": 104.271,
+   "prequal_position_now": 44,
    "expected_prequal": {
-    "p10": 103.155,
-    "p50": 103.755,
+    "p10": 103.168,
+    "p50": 103.759,
     "p90": 103.759
    },
    "expected_position": {
-    "p10": 33,
+    "p10": 34,
     "p50": 55,
     "p90": 61
    },
    "chance_p1": 0.1,
-   "chance_split1": 8.5,
-   "chance_split2": 87.4
+   "chance_split1": 8.0,
+   "chance_split2": 86.9
   },
   {
    "name": "Kevin Versantvoort",
@@ -2408,19 +2409,19 @@
    "laps_total": 11,
    "time_status": "few_laps",
    "model_time": 103.855,
-   "prequal_position_now": 41,
+   "prequal_position_now": 45,
    "expected_prequal": {
-    "p10": 103.164,
-    "p50": 103.766,
+    "p10": 103.179,
+    "p50": 103.768,
     "p90": 103.77
    },
    "expected_position": {
-    "p10": 33,
+    "p10": 35,
     "p50": 56,
     "p90": 62
    },
-   "chance_p1": 0.0,
-   "chance_split1": 8.2,
+   "chance_p1": 0.1,
+   "chance_split1": 7.6,
    "chance_split2": 82.1
   },
   {
@@ -2437,21 +2438,21 @@
    "best_time": 103.7874,
    "laps_total": 49,
    "time_status": "reliable",
-   "model_time": 104.33,
-   "prequal_position_now": 42,
+   "model_time": 104.329,
+   "prequal_position_now": 46,
    "expected_prequal": {
-    "p10": 103.223,
+    "p10": 103.23,
     "p50": 103.824,
     "p90": 103.833
    },
    "expected_position": {
-    "p10": 36,
+    "p10": 37,
     "p50": 57,
     "p90": 64
    },
    "chance_p1": 0.0,
-   "chance_split1": 6.4,
-   "chance_split2": 64.5
+   "chance_split1": 6.1,
+   "chance_split2": 64.6
   },
   {
    "name": "Ruud Lopez",
@@ -2467,20 +2468,20 @@
    "best_time": 103.8075,
    "laps_total": 246,
    "time_status": "reliable",
-   "model_time": 104.628,
-   "prequal_position_now": 57,
+   "model_time": 104.627,
+   "prequal_position_now": 62,
    "expected_prequal": {
-    "p10": 103.25,
-    "p50": 103.843,
-    "p90": 104.452
+    "p10": 103.255,
+    "p50": 103.842,
+    "p90": 104.426
    },
    "expected_position": {
     "p10": 38,
     "p50": 58,
-    "p90": 80
+    "p90": 79
    },
    "chance_p1": 0.0,
-   "chance_split1": 5.6,
+   "chance_split1": 5.5,
    "chance_split2": 46.1
   },
   {
@@ -2497,21 +2498,21 @@
    "best_time": 104.0617,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 104.416,
+   "model_time": 104.415,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.344,
-    "p50": 103.851,
-    "p90": 104.33
+    "p10": 103.336,
+    "p50": 103.843,
+    "p90": 104.311
    },
    "expected_position": {
     "p10": 41,
     "p50": 59,
-    "p90": 77
+    "p90": 76
    },
    "chance_p1": 0.0,
-   "chance_split1": 3.1,
-   "chance_split2": 45.0
+   "chance_split1": 3.0,
+   "chance_split2": 45.5
   },
   {
    "name": "Otto Karis",
@@ -2528,10 +2529,10 @@
    "laps_total": 35,
    "time_status": "reliable",
    "model_time": 103.877,
-   "prequal_position_now": 43,
+   "prequal_position_now": 47,
    "expected_prequal": {
-    "p10": 103.257,
-    "p50": 103.855,
+    "p10": 103.269,
+    "p50": 103.856,
     "p90": 103.859
    },
    "expected_position": {
@@ -2540,8 +2541,8 @@
     "p90": 65
    },
    "chance_p1": 0.0,
-   "chance_split1": 5.6,
-   "chance_split2": 54.7
+   "chance_split1": 5.3,
+   "chance_split2": 54.9
   },
   {
    "name": "Thimo Baum",
@@ -2558,20 +2559,20 @@
    "laps_total": 46,
    "time_status": "reliable",
    "model_time": 104.102,
-   "prequal_position_now": 44,
+   "prequal_position_now": 48,
    "expected_prequal": {
-    "p10": 103.3,
-    "p50": 103.895,
+    "p10": 103.32,
+    "p50": 103.902,
     "p90": 103.902
    },
    "expected_position": {
-    "p10": 40,
+    "p10": 41,
     "p50": 61,
     "p90": 66
    },
    "chance_p1": 0.0,
-   "chance_split1": 4.6,
-   "chance_split2": 45.6
+   "chance_split1": 4.0,
+   "chance_split2": 45.0
   },
   {
    "name": "Patrick Strijdonck",
@@ -2587,21 +2588,21 @@
    "best_time": 103.9029,
    "laps_total": 50,
    "time_status": "reliable",
-   "model_time": 104.368,
-   "prequal_position_now": 45,
+   "model_time": 104.367,
+   "prequal_position_now": 49,
    "expected_prequal": {
-    "p10": 103.306,
-    "p50": 103.903,
+    "p10": 103.308,
+    "p50": 103.902,
     "p90": 103.903
    },
    "expected_position": {
     "p10": 40,
     "p50": 62,
-    "p90": 67
+    "p90": 66
    },
    "chance_p1": 0.0,
-   "chance_split1": 4.4,
-   "chance_split2": 43.0
+   "chance_split1": 4.5,
+   "chance_split2": 43.3
   },
   {
    "name": "Marc Verlinden",
@@ -2617,21 +2618,21 @@
    "best_time": 103.873,
    "laps_total": 42,
    "time_status": "reliable",
-   "model_time": 104.553,
-   "prequal_position_now": 52,
+   "model_time": 104.551,
+   "prequal_position_now": 56,
    "expected_prequal": {
-    "p10": 103.316,
-    "p50": 103.912,
+    "p10": 103.317,
+    "p50": 103.907,
     "p90": 104.414
    },
    "expected_position": {
     "p10": 40,
     "p50": 63,
-    "p90": 79
+    "p90": 78
    },
    "chance_p1": 0.0,
-   "chance_split1": 4.3,
-   "chance_split2": 40.7
+   "chance_split1": 4.2,
+   "chance_split2": 40.5
   },
   {
    "name": "Berends Jelmer",
@@ -2647,11 +2648,11 @@
    "best_time": 103.9493,
    "laps_total": 56,
    "time_status": "reliable",
-   "model_time": 104.515,
-   "prequal_position_now": 46,
+   "model_time": 104.513,
+   "prequal_position_now": 50,
    "expected_prequal": {
-    "p10": 103.348,
-    "p50": 103.945,
+    "p10": 103.352,
+    "p50": 103.948,
     "p90": 103.949
    },
    "expected_position": {
@@ -2660,15 +2661,15 @@
     "p90": 68
    },
    "chance_p1": 0.0,
-   "chance_split1": 3.8,
-   "chance_split2": 38.2
+   "chance_split1": 3.6,
+   "chance_split2": 37.8
   },
   {
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1711,
+   "irating": 1654,
    "license": "B",
-   "safety_rating": 3.59,
+   "safety_rating": 3.58,
    "practice_best": 104.1034,
    "practice_laps": 109,
    "prequal_best": 104.0079,
@@ -2677,8 +2678,8 @@
    "best_time": 104.0079,
    "laps_total": 115,
    "time_status": "reliable",
-   "model_time": 104.876,
-   "prequal_position_now": 47,
+   "model_time": 104.922,
+   "prequal_position_now": 51,
    "expected_prequal": {
     "p10": 104.008,
     "p50": 104.008,
@@ -2694,36 +2695,6 @@
    "chance_split2": 0.0
   },
   {
-   "name": "Jeroen Wijnbergen",
-   "car_number": "34",
-   "irating": 3231,
-   "license": "A",
-   "safety_rating": 2.43,
-   "practice_best": 104.0149,
-   "practice_laps": 52,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 1,
-   "best_time": 104.0149,
-   "laps_total": 52,
-   "time_status": "reliable",
-   "model_time": 103.969,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.443,
-    "p50": 104.054,
-    "p90": 104.641
-   },
-   "expected_position": {
-    "p10": 46,
-    "p50": 66,
-    "p90": 85
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 2.3,
-   "chance_split2": 29.5
-  },
-  {
    "name": "Bart Tonkes",
    "car_number": "128",
    "irating": 1635,
@@ -2737,51 +2708,21 @@
    "best_time": 104.0348,
    "laps_total": 179,
    "time_status": "reliable",
-   "model_time": 104.94,
+   "model_time": 104.938,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.475,
-    "p50": 104.074,
-    "p90": 104.677
+    "p10": 103.477,
+    "p50": 104.07,
+    "p90": 104.647
    },
    "expected_position": {
     "p10": 48,
-    "p50": 67,
-    "p90": 86
+    "p50": 66,
+    "p90": 85
    },
    "chance_p1": 0.0,
-   "chance_split1": 1.9,
-   "chance_split2": 27.6
-  },
-  {
-   "name": "Jelmer Jekel",
-   "car_number": "313",
-   "irating": 2288,
-   "license": "A",
-   "safety_rating": 3.81,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 104.461,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.267,
-    "p50": 104.111,
-    "p90": 105.287
-   },
-   "expected_position": {
-    "p10": 38,
-    "p50": 68,
-    "p90": 102
-   },
-   "chance_p1": 0.1,
-   "chance_split1": 6.0,
-   "chance_split2": 33.7
+   "chance_split1": 1.8,
+   "chance_split2": 28.0
   },
   {
    "name": "Cas Brinckhuizen",
@@ -2800,25 +2741,55 @@
    "model_time": 103.831,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.519,
-    "p50": 104.122,
-    "p90": 104.713
+    "p10": 103.516,
+    "p50": 104.111,
+    "p90": 104.703
    },
    "expected_position": {
     "p10": 50,
-    "p50": 69,
-    "p90": 87
+    "p50": 67,
+    "p90": 86
    },
    "chance_p1": 0.0,
    "chance_split1": 1.5,
-   "chance_split2": 24.1
+   "chance_split2": 25.3
+  },
+  {
+   "name": "Jelmer Jekel",
+   "car_number": "313",
+   "irating": 2288,
+   "license": "A",
+   "safety_rating": 3.81,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 104.46,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.258,
+    "p50": 104.113,
+    "p90": 105.262
+   },
+   "expected_position": {
+    "p10": 38,
+    "p50": 68,
+    "p90": 101
+   },
+   "chance_p1": 0.1,
+   "chance_split1": 5.9,
+   "chance_split2": 33.2
   },
   {
    "name": "Chico Leentvaar3",
    "car_number": "170",
-   "irating": 3202,
+   "irating": 3259,
    "license": "A",
-   "safety_rating": 2.31,
+   "safety_rating": 2.55,
    "practice_best": 104.3613,
    "practice_laps": 22,
    "prequal_best": null,
@@ -2827,21 +2798,21 @@
    "best_time": 104.3613,
    "laps_total": 22,
    "time_status": "reliable",
-   "model_time": 103.982,
+   "model_time": 103.957,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.637,
-    "p50": 104.148,
-    "p90": 104.624
+    "p10": 103.64,
+    "p50": 104.139,
+    "p90": 104.613
    },
    "expected_position": {
     "p10": 54,
-    "p50": 70,
-    "p90": 85
+    "p50": 69,
+    "p90": 84
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.6,
-   "chance_split2": 18.5
+   "chance_split1": 0.5,
+   "chance_split2": 18.9
   },
   {
    "name": "Ruben Prinsen3",
@@ -2857,21 +2828,21 @@
    "best_time": 104.1219,
    "laps_total": 214,
    "time_status": "reliable",
-   "model_time": 105.223,
+   "model_time": 105.221,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.549,
-    "p50": 104.153,
-    "p90": 104.757
+    "p10": 103.568,
+    "p50": 104.161,
+    "p90": 104.749
    },
    "expected_position": {
-    "p10": 51,
-    "p50": 71,
-    "p90": 88
+    "p10": 52,
+    "p50": 70,
+    "p90": 87
    },
    "chance_p1": 0.0,
-   "chance_split1": 1.3,
-   "chance_split2": 22.6
+   "chance_split1": 1.0,
+   "chance_split2": 21.6
   },
   {
    "name": "Danny Lugt",
@@ -2887,21 +2858,21 @@
    "best_time": 104.3924,
    "laps_total": 121,
    "time_status": "reliable",
-   "model_time": 105.124,
+   "model_time": 105.122,
    "prequal_position_now": null,
    "expected_prequal": {
     "p10": 103.662,
-    "p50": 104.184,
-    "p90": 104.659
+    "p50": 104.173,
+    "p90": 104.637
    },
    "expected_position": {
     "p10": 55,
-    "p50": 72,
-    "p90": 86
+    "p50": 71,
+    "p90": 84
    },
    "chance_p1": 0.0,
    "chance_split1": 0.5,
-   "chance_split2": 16.7
+   "chance_split2": 16.8
   },
   {
    "name": "Ron Gravesteijn",
@@ -2920,18 +2891,18 @@
    "model_time": 104.108,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.619,
-    "p50": 104.221,
-    "p90": 104.821
+    "p10": 103.618,
+    "p50": 104.209,
+    "p90": 104.803
    },
    "expected_position": {
     "p10": 54,
-    "p50": 73,
+    "p50": 72,
     "p90": 89
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.9,
-   "chance_split2": 18.2
+   "chance_split1": 0.8,
+   "chance_split2": 18.4
   },
   {
    "name": "Tycho Van Dijk",
@@ -2947,8 +2918,8 @@
    "best_time": 104.2288,
    "laps_total": 127,
    "time_status": "reliable",
-   "model_time": 104.867,
-   "prequal_position_now": 49,
+   "model_time": 104.865,
+   "prequal_position_now": 53,
    "expected_prequal": {
     "p10": 104.286,
     "p50": 104.286,
@@ -2956,8 +2927,8 @@
    },
    "expected_position": {
     "p10": 72,
-    "p50": 74,
-    "p90": 79
+    "p50": 73,
+    "p90": 78
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2978,20 +2949,20 @@
    "laps_total": 65,
    "time_status": "reliable",
    "model_time": 103.604,
-   "prequal_position_now": 50,
+   "prequal_position_now": 54,
    "expected_prequal": {
-    "p10": 103.936,
+    "p10": 103.974,
     "p50": 104.351,
     "p90": 104.351
    },
    "expected_position": {
-    "p10": 66,
-    "p50": 75,
-    "p90": 80
+    "p10": 67,
+    "p50": 74,
+    "p90": 79
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 4.4
+   "chance_split2": 3.2
   },
   {
    "name": "Freek Van Santvoord",
@@ -3007,21 +2978,21 @@
    "best_time": 104.3683,
    "laps_total": 43,
    "time_status": "reliable",
-   "model_time": 104.323,
-   "prequal_position_now": 51,
+   "model_time": 104.322,
+   "prequal_position_now": 55,
    "expected_prequal": {
-    "p10": 103.762,
+    "p10": 103.788,
     "p50": 104.368,
     "p90": 104.368
    },
    "expected_position": {
-    "p10": 59,
-    "p50": 76,
+    "p10": 60,
+    "p50": 75,
     "p90": 80
    },
    "chance_p1": 0.0,
    "chance_split1": 0.3,
-   "chance_split2": 11.2
+   "chance_split2": 10.4
   },
   {
    "name": "Rudy Vermeule",
@@ -3037,51 +3008,21 @@
    "best_time": 115.5845,
    "laps_total": 1,
    "time_status": "few_laps",
-   "model_time": 104.719,
+   "model_time": 104.717,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.519,
-    "p50": 104.376,
-    "p90": 105.54
+    "p10": 103.513,
+    "p50": 104.37,
+    "p90": 105.484
    },
    "expected_position": {
-    "p10": 50,
-    "p50": 77,
-    "p90": 106
+    "p10": 49,
+    "p50": 76,
+    "p90": 105
    },
    "chance_p1": 0.0,
-   "chance_split1": 2.2,
-   "chance_split2": 20.5
-  },
-  {
-   "name": "Tiemen Scholten",
-   "car_number": null,
-   "irating": 1800,
-   "license": "A",
-   "safety_rating": 4.99,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 104.803,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.604,
-    "p50": 104.455,
-    "p90": 105.602
-   },
-   "expected_position": {
-    "p10": 53,
-    "p50": 78,
-    "p90": 108
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 1.5,
-   "chance_split2": 16.8
+   "chance_split1": 2.1,
+   "chance_split2": 20.8
   },
   {
    "name": "Roy Kerkhof",
@@ -3097,21 +3038,51 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 104.793,
+   "model_time": 104.791,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.601,
-    "p50": 104.456,
-    "p90": 105.636
+    "p10": 103.591,
+    "p50": 104.448,
+    "p90": 105.597
    },
    "expected_position": {
     "p10": 53,
-    "p50": 79,
-    "p90": 108
+    "p50": 77,
+    "p90": 107
    },
    "chance_p1": 0.0,
-   "chance_split1": 1.6,
-   "chance_split2": 16.9
+   "chance_split1": 1.4,
+   "chance_split2": 17.3
+  },
+  {
+   "name": "Tiemen Scholten",
+   "car_number": null,
+   "irating": 1800,
+   "license": "A",
+   "safety_rating": 4.99,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 104.802,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.601,
+    "p50": 104.457,
+    "p90": 105.556
+   },
+   "expected_position": {
+    "p10": 53,
+    "p50": 78,
+    "p90": 107
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 1.5,
+   "chance_split2": 16.7
   },
   {
    "name": "Jaimy Peters",
@@ -3127,21 +3098,21 @@
    "best_time": 104.4433,
    "laps_total": 149,
    "time_status": "reliable",
-   "model_time": 105.06,
-   "prequal_position_now": 58,
+   "model_time": 105.058,
+   "prequal_position_now": 63,
    "expected_prequal": {
-    "p10": 103.885,
-    "p50": 104.485,
+    "p10": 103.893,
+    "p50": 104.476,
     "p90": 105.03
    },
    "expected_position": {
     "p10": 64,
-    "p50": 80,
+    "p50": 79,
     "p90": 94
    },
    "chance_p1": 0.0,
    "chance_split1": 0.2,
-   "chance_split2": 7.0
+   "chance_split2": 6.8
   },
   {
    "name": "Klaas De Boer3",
@@ -3157,17 +3128,17 @@
    "best_time": 104.3513,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 104.478,
-   "prequal_position_now": 53,
+   "model_time": 104.477,
+   "prequal_position_now": 57,
    "expected_prequal": {
     "p10": 104.493,
     "p50": 104.493,
     "p90": 104.493
    },
    "expected_position": {
-    "p10": 79,
-    "p50": 81,
-    "p90": 85
+    "p10": 78,
+    "p50": 80,
+    "p90": 84
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3187,20 +3158,20 @@
    "best_time": 140.8215,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 104.92,
+   "model_time": 104.919,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.719,
-    "p50": 104.573,
-    "p90": 105.714
+    "p10": 103.72,
+    "p50": 104.571,
+    "p90": 105.724
    },
    "expected_position": {
     "p10": 58,
-    "p50": 82,
+    "p50": 81,
     "p90": 109
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.8,
+   "chance_split1": 0.9,
    "chance_split2": 12.2
   },
   {
@@ -3217,21 +3188,21 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 104.991,
+   "model_time": 104.989,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.786,
-    "p50": 104.639,
-    "p90": 105.791
+    "p10": 103.779,
+    "p50": 104.633,
+    "p90": 105.787
    },
    "expected_position": {
     "p10": 60,
-    "p50": 83,
-    "p90": 111
+    "p50": 82,
+    "p90": 110
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.6,
-   "chance_split2": 10.2
+   "chance_split1": 0.7,
+   "chance_split2": 10.5
   },
   {
    "name": "Timo Geurts3",
@@ -3247,51 +3218,21 @@
    "best_time": 104.613,
    "laps_total": 29,
    "time_status": "reliable",
-   "model_time": 104.225,
+   "model_time": 104.224,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.059,
-    "p50": 104.658,
-    "p90": 105.25
+    "p10": 104.057,
+    "p50": 104.646,
+    "p90": 105.237
    },
    "expected_position": {
-    "p10": 70,
-    "p50": 84,
+    "p10": 69,
+    "p50": 83,
     "p90": 101
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.1,
+   "chance_split1": 0.0,
    "chance_split2": 3.3
-  },
-  {
-   "name": "Evert Geurtsen5",
-   "car_number": "91",
-   "irating": 1529,
-   "license": "C",
-   "safety_rating": 2.14,
-   "practice_best": 107.3783,
-   "practice_laps": 14,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": 107.3783,
-   "laps_total": 14,
-   "time_status": "few_laps",
-   "model_time": 105.036,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.843,
-    "p50": 104.686,
-    "p90": 105.845
-   },
-   "expected_position": {
-    "p10": 62,
-    "p50": 85,
-    "p90": 111
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 0.5,
-   "chance_split2": 8.7
   },
   {
    "name": "Mitch Hendriks2",
@@ -3307,21 +3248,51 @@
    "best_time": 104.906,
    "laps_total": 53,
    "time_status": "reliable",
-   "model_time": 104.603,
+   "model_time": 104.601,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.18,
-    "p50": 104.689,
-    "p90": 105.173
+    "p10": 104.182,
+    "p50": 104.679,
+    "p90": 105.153
    },
    "expected_position": {
-    "p10": 73,
-    "p50": 86,
+    "p10": 72,
+    "p50": 84,
     "p90": 99
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 1.6
+   "chance_split2": 1.4
+  },
+  {
+   "name": "Evert Geurtsen5",
+   "car_number": "91",
+   "irating": 1529,
+   "license": "C",
+   "safety_rating": 2.14,
+   "practice_best": 107.3783,
+   "practice_laps": 14,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": 107.3783,
+   "laps_total": 14,
+   "time_status": "few_laps",
+   "model_time": 105.034,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.838,
+    "p50": 104.688,
+    "p90": 105.822
+   },
+   "expected_position": {
+    "p10": 62,
+    "p50": 85,
+    "p90": 111
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.3,
+   "chance_split2": 8.7
   },
   {
    "name": "Ivo Dahlmans",
@@ -3337,21 +3308,21 @@
    "best_time": 104.6722,
    "laps_total": 62,
    "time_status": "reliable",
-   "model_time": 104.52,
-   "prequal_position_now": 75,
+   "model_time": 104.519,
+   "prequal_position_now": 80,
    "expected_prequal": {
-    "p10": 104.107,
-    "p50": 104.711,
-    "p90": 105.309
+    "p10": 104.115,
+    "p50": 104.709,
+    "p90": 105.287
    },
    "expected_position": {
     "p10": 71,
-    "p50": 87,
+    "p50": 86,
     "p90": 102
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 2.7
+   "chance_split2": 2.4
   },
   {
    "name": "Yoeri Pluim",
@@ -3367,21 +3338,21 @@
    "best_time": 105.6617,
    "laps_total": 9,
    "time_status": "few_laps",
-   "model_time": 105.067,
+   "model_time": 105.065,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.866,
-    "p50": 104.714,
-    "p90": 105.537
+    "p10": 103.877,
+    "p50": 104.712,
+    "p90": 105.53
    },
    "expected_position": {
-    "p10": 63,
-    "p50": 88,
+    "p10": 64,
+    "p50": 87,
     "p90": 106
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.4,
-   "chance_split2": 7.9
+   "chance_split1": 0.3,
+   "chance_split2": 7.6
   },
   {
    "name": "Roy Van De Geer",
@@ -3397,21 +3368,51 @@
    "best_time": 104.7822,
    "laps_total": 34,
    "time_status": "reliable",
-   "model_time": 104.577,
-   "prequal_position_now": 54,
+   "model_time": 104.576,
+   "prequal_position_now": 58,
    "expected_prequal": {
-    "p10": 104.17,
+    "p10": 104.189,
     "p50": 104.782,
     "p90": 104.782
    },
    "expected_position": {
     "p10": 72,
-    "p50": 89,
-    "p90": 90
+    "p50": 88,
+    "p90": 89
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 1.7
+  },
+  {
+   "name": "Jeroen Wijnbergen",
+   "car_number": "34",
+   "irating": 3231,
+   "license": "A",
+   "safety_rating": 2.43,
+   "practice_best": 104.0149,
+   "practice_laps": 52,
+   "prequal_best": 104.7872,
+   "prequal_laps": 2,
+   "prequal_sessions_used": 2,
+   "best_time": 104.0149,
+   "laps_total": 54,
+   "time_status": "reliable",
+   "model_time": 103.969,
+   "prequal_position_now": 59,
+   "expected_prequal": {
+    "p10": 104.787,
+    "p50": 104.787,
+    "p90": 104.787
+   },
+   "expected_position": {
+    "p10": 85,
+    "p50": 89,
+    "p90": 91
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Raymon Van Zutphen",
@@ -3427,11 +3428,11 @@
    "best_time": 104.7554,
    "laps_total": 188,
    "time_status": "reliable",
-   "model_time": 104.847,
-   "prequal_position_now": 64,
+   "model_time": 104.845,
+   "prequal_position_now": 69,
    "expected_prequal": {
-    "p10": 104.192,
-    "p50": 104.792,
+    "p10": 104.202,
+    "p50": 104.791,
     "p90": 105.22
    },
    "expected_position": {
@@ -3441,7 +3442,7 @@
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 1.7
+   "chance_split2": 1.4
   },
   {
    "name": "Michel Van Der Ven",
@@ -3460,12 +3461,12 @@
    "model_time": 103.679,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.218,
-    "p50": 104.808,
-    "p90": 105.394
+    "p10": 104.214,
+    "p50": 104.806,
+    "p90": 105.388
    },
    "expected_position": {
-    "p10": 74,
+    "p10": 73,
     "p50": 91,
     "p90": 104
    },
@@ -3487,11 +3488,11 @@
    "best_time": 104.8003,
    "laps_total": 40,
    "time_status": "reliable",
-   "model_time": 104.602,
-   "prequal_position_now": 65,
+   "model_time": 104.601,
+   "prequal_position_now": 70,
    "expected_prequal": {
-    "p10": 104.246,
-    "p50": 104.838,
+    "p10": 104.255,
+    "p50": 104.836,
     "p90": 105.317
    },
    "expected_position": {
@@ -3501,7 +3502,7 @@
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 1.3
+   "chance_split2": 1.2
   },
   {
    "name": "Dannick Eljon2",
@@ -3517,21 +3518,21 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 105.22,
+   "model_time": 105.217,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.016,
-    "p50": 104.87,
-    "p90": 106.025
+    "p10": 104.012,
+    "p50": 104.864,
+    "p90": 105.98
    },
    "expected_position": {
-    "p10": 69,
+    "p10": 68,
     "p50": 93,
-    "p90": 113
+    "p90": 112
    },
    "chance_p1": 0.0,
    "chance_split1": 0.1,
-   "chance_split2": 4.6
+   "chance_split2": 4.7
   },
   {
    "name": "Ben Dam",
@@ -3547,15 +3548,15 @@
    "best_time": 104.5142,
    "laps_total": 57,
    "time_status": "reliable",
-   "model_time": 104.411,
-   "prequal_position_now": 55,
+   "model_time": 104.41,
+   "prequal_position_now": 60,
    "expected_prequal": {
     "p10": 104.873,
     "p50": 104.873,
     "p90": 104.873
    },
    "expected_position": {
-    "p10": 87,
+    "p10": 88,
     "p50": 94,
     "p90": 94
    },
@@ -3577,21 +3578,21 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 105.242,
+   "model_time": 105.24,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.035,
-    "p50": 104.885,
-    "p90": 106.048
+    "p10": 104.064,
+    "p50": 104.894,
+    "p90": 106.03
    },
    "expected_position": {
     "p10": 69,
     "p50": 95,
-    "p90": 113
+    "p90": 112
    },
    "chance_p1": 0.0,
    "chance_split1": 0.1,
-   "chance_split2": 4.3
+   "chance_split2": 4.0
   },
   {
    "name": "Tommy Vlieger",
@@ -3607,8 +3608,8 @@
    "best_time": 104.8975,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.904,
-   "prequal_position_now": 56,
+   "model_time": 104.902,
+   "prequal_position_now": 61,
    "expected_prequal": {
     "p10": 104.897,
     "p50": 104.897,
@@ -3637,21 +3638,21 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 105.333,
+   "model_time": 105.331,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.132,
-    "p50": 104.985,
-    "p90": 106.143
+    "p10": 104.136,
+    "p50": 104.984,
+    "p90": 106.148
    },
    "expected_position": {
-    "p10": 72,
+    "p10": 71,
     "p50": 97,
-    "p90": 114
+    "p90": 113
    },
    "chance_p1": 0.0,
    "chance_split1": 0.1,
-   "chance_split2": 3.0
+   "chance_split2": 2.9
   },
   {
    "name": "Jasper Bloem",
@@ -3667,10 +3668,10 @@
    "best_time": 105.0719,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 104.87,
-   "prequal_position_now": 59,
+   "model_time": 104.868,
+   "prequal_position_now": 64,
    "expected_prequal": {
-    "p10": 104.481,
+    "p10": 104.479,
     "p50": 105.071,
     "p90": 105.072
    },
@@ -3681,7 +3682,7 @@
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 0.3
+   "chance_split2": 0.4
   },
   {
    "name": "Kees Meurs",
@@ -3697,12 +3698,12 @@
    "best_time": 105.0852,
    "laps_total": 95,
    "time_status": "reliable",
-   "model_time": 105.075,
-   "prequal_position_now": 72,
+   "model_time": 105.072,
+   "prequal_position_now": 77,
    "expected_prequal": {
-    "p10": 104.519,
-    "p50": 105.124,
-    "p90": 105.735
+    "p10": 104.528,
+    "p50": 105.117,
+    "p90": 105.705
    },
    "expected_position": {
     "p10": 82,
@@ -3727,8 +3728,8 @@
    "best_time": 104.6692,
    "laps_total": 24,
    "time_status": "reliable",
-   "model_time": 104.265,
-   "prequal_position_now": 60,
+   "model_time": 104.264,
+   "prequal_position_now": 65,
    "expected_prequal": {
     "p10": 105.126,
     "p50": 105.126,
@@ -3757,8 +3758,8 @@
    "best_time": 105.0543,
    "laps_total": 64,
    "time_status": "reliable",
-   "model_time": 105.661,
-   "prequal_position_now": 61,
+   "model_time": 105.658,
+   "prequal_position_now": 66,
    "expected_prequal": {
     "p10": 105.144,
     "p50": 105.144,
@@ -3776,9 +3777,9 @@
   {
    "name": "Sylvester Van Den Bos",
    "car_number": "189",
-   "irating": 1560,
+   "irating": 1585,
    "license": "A",
-   "safety_rating": 2.28,
+   "safety_rating": 2.36,
    "practice_best": null,
    "practice_laps": 0,
    "prequal_best": 105.1565,
@@ -3787,10 +3788,10 @@
    "best_time": 105.1565,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 105.007,
-   "prequal_position_now": 62,
+   "model_time": 104.983,
+   "prequal_position_now": 67,
    "expected_prequal": {
-    "p10": 104.556,
+    "p10": 104.562,
     "p50": 105.156,
     "p90": 105.156
    },
@@ -3817,15 +3818,15 @@
    "best_time": 105.2116,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 104.894,
-   "prequal_position_now": 63,
+   "model_time": 104.892,
+   "prequal_position_now": 68,
    "expected_prequal": {
-    "p10": 104.621,
-    "p50": 105.212,
+    "p10": 104.618,
+    "p50": 105.209,
     "p90": 105.212
    },
    "expected_position": {
-    "p10": 85,
+    "p10": 84,
     "p50": 103,
     "p90": 103
    },
@@ -3847,15 +3848,15 @@
    "best_time": 105.3425,
    "laps_total": 120,
    "time_status": "reliable",
-   "model_time": 105.264,
-   "prequal_position_now": 73,
+   "model_time": 105.261,
+   "prequal_position_now": 78,
    "expected_prequal": {
-    "p10": 104.779,
-    "p50": 105.379,
+    "p10": 104.777,
+    "p50": 105.371,
     "p90": 105.828
    },
    "expected_position": {
-    "p10": 89,
+    "p10": 88,
     "p50": 104,
     "p90": 111
    },
@@ -3877,15 +3878,15 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 105.731,
+   "model_time": 105.728,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.527,
-    "p50": 105.38,
-    "p90": 106.535
+    "p10": 104.535,
+    "p50": 105.386,
+    "p90": 106.53
    },
    "expected_position": {
-    "p10": 83,
+    "p10": 82,
     "p50": 105,
     "p90": 117
    },
@@ -3907,11 +3908,11 @@
    "best_time": 105.408,
    "laps_total": 7,
    "time_status": "few_laps",
-   "model_time": 104.977,
-   "prequal_position_now": 66,
+   "model_time": 104.975,
+   "prequal_position_now": 71,
    "expected_prequal": {
-    "p10": 104.813,
-    "p50": 105.408,
+    "p10": 104.811,
+    "p50": 105.404,
     "p90": 105.408
    },
    "expected_position": {
@@ -3937,10 +3938,10 @@
    "best_time": 105.4209,
    "laps_total": 27,
    "time_status": "reliable",
-   "model_time": 104.694,
-   "prequal_position_now": 67,
+   "model_time": 104.692,
+   "prequal_position_now": 72,
    "expected_prequal": {
-    "p10": 104.832,
+    "p10": 104.839,
     "p50": 105.429,
     "p90": 105.429
    },
@@ -3967,11 +3968,11 @@
    "best_time": 105.4979,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 104.882,
-   "prequal_position_now": 68,
+   "model_time": 104.88,
+   "prequal_position_now": 73,
    "expected_prequal": {
-    "p10": 104.906,
-    "p50": 105.497,
+    "p10": 104.907,
+    "p50": 105.498,
     "p90": 105.498
    },
    "expected_position": {
@@ -3997,8 +3998,8 @@
    "best_time": 105.5941,
    "laps_total": 20,
    "time_status": "reliable",
-   "model_time": 105.148,
-   "prequal_position_now": 69,
+   "model_time": 105.146,
+   "prequal_position_now": 74,
    "expected_prequal": {
     "p10": 105.594,
     "p50": 105.594,
@@ -4027,8 +4028,8 @@
    "best_time": 105.6111,
    "laps_total": 21,
    "time_status": "reliable",
-   "model_time": 105.441,
-   "prequal_position_now": 70,
+   "model_time": 105.438,
+   "prequal_position_now": 75,
    "expected_prequal": {
     "p10": 105.611,
     "p50": 105.611,
@@ -4057,17 +4058,17 @@
    "best_time": 105.774,
    "laps_total": 2,
    "time_status": "few_laps",
-   "model_time": 102.796,
-   "prequal_position_now": 71,
+   "model_time": 102.797,
+   "prequal_position_now": 76,
    "expected_prequal": {
-    "p10": 105.365,
-    "p50": 105.773,
+    "p10": 105.395,
+    "p50": 105.771,
     "p90": 105.774
    },
    "expected_position": {
     "p10": 104,
     "p50": 111,
-    "p90": 112
+    "p90": 111
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4087,17 +4088,17 @@
    "best_time": 105.5078,
    "laps_total": 7,
    "time_status": "few_laps",
-   "model_time": 105.272,
-   "prequal_position_now": 74,
+   "model_time": 105.269,
+   "prequal_position_now": 79,
    "expected_prequal": {
-    "p10": 105.282,
+    "p10": 105.298,
     "p50": 105.879,
     "p90": 105.879
    },
    "expected_position": {
-    "p10": 102,
+    "p10": 103,
     "p50": 112,
-    "p90": 113
+    "p90": 112
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4117,8 +4118,8 @@
    "best_time": 105.1552,
    "laps_total": 47,
    "time_status": "reliable",
-   "model_time": 104.937,
-   "prequal_position_now": 76,
+   "model_time": 104.935,
+   "prequal_position_now": 81,
    "expected_prequal": {
     "p10": 105.989,
     "p50": 105.989,
@@ -4128,36 +4129,6 @@
     "p10": 111,
     "p50": 113,
     "p90": 114
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 0.0,
-   "chance_split2": 0.0
-  },
-  {
-   "name": "Dennis De Konink",
-   "car_number": "75",
-   "irating": 1611,
-   "license": "B",
-   "safety_rating": 3.36,
-   "practice_best": 106.0041,
-   "practice_laps": 29,
-   "prequal_best": 107.8761,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 106.0041,
-   "laps_total": 32,
-   "time_status": "reliable",
-   "model_time": 104.961,
-   "prequal_position_now": 82,
-   "expected_prequal": {
-    "p10": 105.441,
-    "p50": 106.039,
-    "p90": 106.634
-   },
-   "expected_position": {
-    "p10": 105,
-    "p50": 114,
-    "p90": 118
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4177,17 +4148,47 @@
    "best_time": 106.1194,
    "laps_total": 47,
    "time_status": "reliable",
-   "model_time": 105.546,
+   "model_time": 105.543,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 105.559,
-    "p50": 106.158,
-    "p90": 106.757
+    "p10": 105.548,
+    "p50": 106.152,
+    "p90": 106.744
    },
    "expected_position": {
     "p10": 107,
-    "p50": 115,
+    "p50": 114,
     "p90": 119
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Dennis De Konink",
+   "car_number": "75",
+   "irating": 1611,
+   "license": "B",
+   "safety_rating": 3.36,
+   "practice_best": 106.0041,
+   "practice_laps": 29,
+   "prequal_best": 106.4573,
+   "prequal_laps": 6,
+   "prequal_sessions_used": 2,
+   "best_time": 106.0041,
+   "laps_total": 35,
+   "time_status": "reliable",
+   "model_time": 104.959,
+   "prequal_position_now": 82,
+   "expected_prequal": {
+    "p10": 106.457,
+    "p50": 106.457,
+    "p90": 106.457
+   },
+   "expected_position": {
+    "p10": 114,
+    "p50": 115,
+    "p90": 117
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4207,8 +4208,8 @@
    "best_time": 106.071,
    "laps_total": 54,
    "time_status": "reliable",
-   "model_time": 105.264,
-   "prequal_position_now": 77,
+   "model_time": 105.261,
+   "prequal_position_now": 83,
    "expected_prequal": {
     "p10": 106.519,
     "p50": 106.519,
@@ -4237,8 +4238,8 @@
    "best_time": 106.5256,
    "laps_total": 80,
    "time_status": "reliable",
-   "model_time": 105.42,
-   "prequal_position_now": 78,
+   "model_time": 105.417,
+   "prequal_position_now": 84,
    "expected_prequal": {
     "p10": 106.526,
     "p50": 106.526,
@@ -4267,12 +4268,12 @@
    "best_time": 106.7496,
    "laps_total": 57,
    "time_status": "reliable",
-   "model_time": 104.529,
+   "model_time": 104.528,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 106.02,
+    "p10": 106.033,
     "p50": 106.534,
-    "p90": 107.002
+    "p90": 107.0
    },
    "expected_position": {
     "p10": 113,
@@ -4297,11 +4298,11 @@
    "best_time": 106.8044,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 105.093,
-   "prequal_position_now": 79,
+   "model_time": 105.091,
+   "prequal_position_now": 85,
    "expected_prequal": {
-    "p10": 106.204,
-    "p50": 106.797,
+    "p10": 106.223,
+    "p50": 106.804,
     "p90": 106.804
    },
    "expected_position": {
@@ -4327,11 +4328,11 @@
    "best_time": 106.9116,
    "laps_total": 23,
    "time_status": "reliable",
-   "model_time": 105.274,
-   "prequal_position_now": 81,
+   "model_time": 105.271,
+   "prequal_position_now": 87,
    "expected_prequal": {
-    "p10": 106.348,
-    "p50": 106.955,
+    "p10": 106.343,
+    "p50": 106.94,
     "p90": 107.436
    },
    "expected_position": {
@@ -4357,11 +4358,11 @@
    "best_time": 107.0605,
    "laps_total": 34,
    "time_status": "reliable",
-   "model_time": 106.082,
-   "prequal_position_now": 80,
+   "model_time": 106.078,
+   "prequal_position_now": 86,
    "expected_prequal": {
-    "p10": 106.455,
-    "p50": 107.059,
+    "p10": 106.471,
+    "p50": 107.061,
     "p90": 107.061
    },
    "expected_position": {
@@ -4387,8 +4388,8 @@
    "best_time": 108.8466,
    "laps_total": 22,
    "time_status": "reliable",
-   "model_time": 106.275,
-   "prequal_position_now": 83,
+   "model_time": 106.271,
+   "prequal_position_now": 88,
    "expected_prequal": {
     "p10": 108.847,
     "p50": 108.847,
@@ -4412,7 +4413,7 @@
    "members": 20,
    "measured_n": 13,
    "measured_median": 105.611,
-   "expected_prequal_median": 105.487
+   "expected_prequal_median": 105.49
   },
   {
    "label": "1.500–2.000",
@@ -4430,7 +4431,7 @@
    "members": 17,
    "measured_n": 16,
    "measured_median": 104.005,
-   "expected_prequal_median": 103.945
+   "expected_prequal_median": 103.948
   },
   {
    "label": "2.500–3.000",
@@ -4439,25 +4440,25 @@
    "members": 10,
    "measured_n": 10,
    "measured_median": 103.845,
-   "expected_prequal_median": 103.859
+   "expected_prequal_median": 103.863
   },
   {
    "label": "3.000–4.000",
    "irating_from": 3000,
    "irating_to": 4000,
-   "members": 17,
-   "measured_n": 12,
-   "measured_median": 103.556,
-   "expected_prequal_median": 103.592
+   "members": 18,
+   "measured_n": 13,
+   "measured_median": 103.518,
+   "expected_prequal_median": 103.556
   },
   {
    "label": "4.000–5.000",
    "irating_from": 4000,
    "irating_to": 5000,
-   "members": 12,
-   "measured_n": 8,
-   "measured_median": 103.328,
-   "expected_prequal_median": 103.26
+   "members": 11,
+   "measured_n": 7,
+   "measured_median": 103.362,
+   "expected_prequal_median": 103.362
   },
   {
    "label": "5.000–6.000",
@@ -4466,7 +4467,7 @@
    "members": 7,
    "measured_n": 4,
    "measured_median": 103.059,
-   "expected_prequal_median": 103.103
+   "expected_prequal_median": 103.12
   },
   {
    "label": "6.000–8.000",
@@ -4475,7 +4476,7 @@
    "members": 14,
    "measured_n": 7,
    "measured_median": 102.801,
-   "expected_prequal_median": 102.859
+   "expected_prequal_median": 102.889
   },
   {
    "label": "8.000+",
@@ -4521,12 +4522,12 @@
   {
    "irating_from": 3500,
    "irating_to": 4000,
-   "count": 9
+   "count": 10
   },
   {
    "irating_from": 4000,
    "irating_to": 4500,
-   "count": 9
+   "count": 8
   },
   {
    "irating_from": 4500,
@@ -4696,83 +4697,83 @@
   "expected_count_per_500": [
    1.609,
    2.982,
-   4.343,
-   6.081,
-   8.44,
-   11.238,
-   14.055,
-   16.482,
-   18.26,
-   19.314,
-   19.707,
-   19.575,
-   19.075,
-   18.347,
-   17.499,
-   16.607,
-   15.72,
-   14.868,
-   14.065,
-   13.32,
-   12.637,
-   12.013,
-   11.446,
-   10.932,
-   10.465,
-   10.04,
-   9.651,
-   9.292,
-   8.958,
-   8.644,
-   8.346,
-   8.061,
-   7.787,
-   7.522,
-   7.264,
-   7.013,
-   6.769,
-   6.531,
-   6.3,
-   6.075,
-   5.857,
-   5.646,
-   5.443,
-   5.248,
-   5.06,
-   4.881,
-   4.709,
-   4.545,
-   4.388,
-   4.238,
-   4.095,
-   3.959,
-   3.829,
-   3.705,
-   3.586,
-   3.472,
-   3.362,
-   3.257,
-   3.155,
-   3.057,
-   2.962,
-   2.871,
-   2.781,
-   2.695,
-   2.61,
-   2.528,
-   2.447,
-   2.368,
-   2.292,
-   2.216,
-   2.143,
-   2.07,
-   2.0,
-   1.931,
-   1.863,
-   1.797,
-   1.732,
-   1.669,
-   1.607,
+   4.344,
+   6.082,
+   8.443,
+   11.246,
+   14.071,
+   16.505,
+   18.288,
+   19.342,
+   19.729,
+   19.588,
+   19.078,
+   18.34,
+   17.484,
+   16.587,
+   15.697,
+   14.843,
+   14.042,
+   13.3,
+   12.62,
+   12.001,
+   11.439,
+   10.93,
+   10.467,
+   10.046,
+   9.66,
+   9.304,
+   8.971,
+   8.658,
+   8.36,
+   8.075,
+   7.8,
+   7.533,
+   7.274,
+   7.021,
+   6.775,
+   6.535,
+   6.302,
+   6.076,
+   5.856,
+   5.644,
+   5.44,
+   5.244,
+   5.056,
+   4.875,
+   4.703,
+   4.539,
+   4.382,
+   4.232,
+   4.089,
+   3.953,
+   3.823,
+   3.699,
+   3.58,
+   3.466,
+   3.357,
+   3.252,
+   3.151,
+   3.053,
+   2.959,
+   2.867,
+   2.778,
+   2.692,
+   2.607,
+   2.525,
+   2.445,
+   2.367,
+   2.29,
+   2.215,
+   2.141,
+   2.069,
+   1.999,
+   1.93,
+   1.862,
+   1.796,
+   1.731,
+   1.668,
+   1.606,
    1.546,
    1.487,
    1.43,
@@ -4780,16 +4781,16 @@
    1.32,
    1.267,
    1.215,
-   1.165,
+   1.166,
    1.117,
    1.07,
    1.025,
    0.981,
    0.938,
    0.897,
-   0.857,
+   0.858,
    0.819,
-   0.782,
+   0.783,
    0.747,
    0.713,
    0.68,
