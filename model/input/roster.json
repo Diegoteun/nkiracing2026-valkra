@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-01T08:19:34.591Z",
+ "fetched_at": "2026-11-01T16:37:23.336Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_id": 138636,
@@ -50,9 +50,9 @@
    "cust_id": 203590,
    "name": "Barry Arends",
    "car_number": "268",
-   "irating": 5019,
+   "irating": 5085,
    "license": "A",
-   "safety_rating": 4.52
+   "safety_rating": 4.8
   },
   {
    "cust_id": 937690,
@@ -114,9 +114,9 @@
    "cust_id": 908269,
    "name": "Chico Leentvaar3",
    "car_number": "170",
-   "irating": 3251,
+   "irating": 3195,
    "license": "A",
-   "safety_rating": 2.58
+   "safety_rating": 2.4
   },
   {
    "cust_id": 167281,
@@ -138,9 +138,9 @@
    "cust_id": 566271,
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5079,
+   "irating": 4981,
    "license": "A",
-   "safety_rating": 3.73
+   "safety_rating": 3.35
   },
   {
    "cust_id": 502029,
@@ -202,9 +202,9 @@
    "cust_id": 371410,
    "name": "Didier Brobbel",
    "car_number": "224",
-   "irating": 6448,
+   "irating": 6493,
    "license": "A",
-   "safety_rating": 4.95
+   "safety_rating": 4.99
   },
   {
    "cust_id": 1102231,
@@ -290,7 +290,7 @@
    "cust_id": 1202767,
    "name": "Ian Laurence Brown",
    "car_number": "299",
-   "irating": 7445,
+   "irating": 7480,
    "license": "A",
    "safety_rating": 4.99
   },
@@ -402,9 +402,9 @@
    "cust_id": 912688,
    "name": "Justin De Jong",
    "car_number": "155",
-   "irating": 6898,
+   "irating": 6935,
    "license": "A",
-   "safety_rating": 3.27
+   "safety_rating": 3.13
   },
   {
    "cust_id": 377046,
@@ -434,9 +434,9 @@
    "cust_id": 1557725,
    "name": "Kees Meurs",
    "car_number": "286",
-   "irating": 1537,
+   "irating": 1617,
    "license": "A",
-   "safety_rating": 2.41
+   "safety_rating": 2.34
   },
   {
    "cust_id": 761872,
@@ -506,17 +506,17 @@
    "cust_id": 1034093,
    "name": "Lars Van Geresteijn",
    "car_number": "135",
-   "irating": 1722,
+   "irating": 1747,
    "license": "C",
-   "safety_rating": 3.25
+   "safety_rating": 3.27
   },
   {
    "cust_id": 1237168,
    "name": "Lennon Henriquez",
    "car_number": null,
-   "irating": 7705,
+   "irating": 7715,
    "license": "A",
-   "safety_rating": 3.68
+   "safety_rating": 3.8
   },
   {
    "cust_id": 644286,
@@ -578,9 +578,9 @@
    "cust_id": 634750,
    "name": "Mathijs Wijten",
    "car_number": "275",
-   "irating": 7480,
+   "irating": 7521,
    "license": "A",
-   "safety_rating": 4.55
+   "safety_rating": 4.71
   },
   {
    "cust_id": 1161525,
@@ -602,9 +602,9 @@
    "cust_id": 1569414,
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 654,
+   "irating": 646,
    "license": "D",
-   "safety_rating": 2.27
+   "safety_rating": 2.16
   },
   {
    "cust_id": 1024584,
@@ -626,9 +626,9 @@
    "cust_id": 1091310,
    "name": "Milan Wassenburg",
    "car_number": "159",
-   "irating": 3572,
+   "irating": 3482,
    "license": "A",
-   "safety_rating": 4.19
+   "safety_rating": 3.6
   },
   {
    "cust_id": 1152265,
@@ -770,9 +770,9 @@
    "cust_id": 1538667,
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1499,
+   "irating": 1438,
    "license": "B",
-   "safety_rating": 3.32
+   "safety_rating": 3.2
   },
   {
    "cust_id": 1577874,
@@ -834,9 +834,9 @@
    "cust_id": 1320313,
    "name": "Sylvester Van Den Bos",
    "car_number": "189",
-   "irating": 1559,
+   "irating": 1483,
    "license": "A",
-   "safety_rating": 2.94
+   "safety_rating": 2.2
   },
   {
    "cust_id": 1157491,
@@ -970,9 +970,9 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 8649,
+   "irating": 8708,
    "license": "A",
-   "safety_rating": 4.58
+   "safety_rating": 4.66
   }
  ]
 }
