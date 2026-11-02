@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-02T16:10:55.277Z",
+  "generated_at": "2026-11-02T21:46:41.577Z",
   "league": {
    "id": 15445,
    "name": "SRVN.nl iRacing (Powered by KNAF)"
@@ -28,22 +28,17 @@
    89732182,
    89732181,
    89747400,
-   89755279,
    89755280,
-   89755348,
-   89755349,
+   89755279,
    89771054,
-   89779950,
    89779949,
-   89780031,
-   89780032,
+   89779950,
    89795095,
-   89804278,
-   89804353,
-   89804354
+   89804278
   ],
-  "field_size": 122,
-  "simulations": 20000,
+  "field_size": 119,
+  "simulations": 1,
+  "prequal_closed": true,
   "units": "Alle tijden in seconden (103.25 = 1:43.25). Posities: 1 = snelste. p10/p50/p90 = 10e, 50e en 90e percentiel van de simulaties.",
   "time_status": {
    "reliable": "tijd gezet in 20 of meer ronden",
@@ -52,17 +47,17 @@
   },
   "model": {
    "description": "Tempo per iRating: lap = a + b*ln(iRating), gefit op rijders met 20+ ronden; boven 7.000 iRating vlakker, zodat een rijder van 10.000 in de prequal mediaan 1:42.30 rijdt. Rijders met minder dan 20 ronden of zonder tijd krijgen het modeltempo plus de spreiding van hun iRating-groep, nooit trager dan hun gereden tijd. Iedereen rijdt zijn resterende prequal-sessies (max 2); een poging = beste tijd of modeltempo + afwijking uit het gemeten verschil tussen prequal en training. Geen poging sneller dan de absolute toptijd.",
-   "a": 117.243,
-   "b": -1.6375,
+   "a": 115.7891,
+   "b": -1.4621,
    "knee_irating": 7000,
-   "slope_above_knee": -0.6738,
-   "pace_at_10000": 102.505,
+   "slope_above_knee": -0.826,
+   "pace_at_10000": 102.55,
    "expected_prequal_at_10000": 102.3,
    "absolute_top_time": 102.25,
-   "r2": 0.61,
-   "fit_n": 81,
-   "spread_irating_4000_plus": 0.337,
-   "spread_irating_below_4000": 0.804,
+   "r2": 0.617,
+   "fit_n": 74,
+   "spread_irating_4000_plus": 0.327,
+   "spread_irating_below_4000": 0.691,
    "attempt_mean": -0.109,
    "attempt_sd": 0.391,
    "attempt_sd_irating_4000_plus": 0.317,
@@ -72,26 +67,26 @@
  },
  "forecast": {
   "split1_cutoff": {
-   "p10": 103.068,
-   "p50": 103.134,
-   "p90": 103.143
+   "p10": 103.161,
+   "p50": 103.161,
+   "p90": 103.161
   },
   "split2_cutoff": {
-   "p10": 103.706,
-   "p50": 103.751,
-   "p90": 103.763
+   "p10": 103.869,
+   "p50": 103.869,
+   "p90": 103.869
   },
   "safe_split1": 103.0,
   "absolute_top_time": 102.25,
   "split1_range": {
-   "low": 103.13,
-   "likely": 103.14,
+   "low": 103.16,
+   "likely": 103.16,
    "high": 103.16
   },
   "split2_range": {
-   "low": 103.75,
-   "likely": 103.76,
-   "high": 103.83
+   "low": 103.87,
+   "likely": 103.87,
+   "high": 103.87
   },
   "range_note": "split1_cutoff/split2_cutoff = strengste scenario (alle leden, allemaal twee sessies). split1_range/split2_range = bandbreedte over scenario's: een deel rijdt één sessie, pogingen tot 0,2 s trager, ~100 deelnemers.",
   "fastest_so_far": {
@@ -296,138 +291,138 @@
    3,
    4,
    4,
+   4,
    5,
-   5,
+   6,
    6,
    7,
    8,
-   9,
-   9,
+   8,
+   10,
+   10,
+   10,
+   10,
+   10,
    11,
-   11,
-   11,
-   11,
-   12,
-   13,
-   15,
-   15,
+   14,
+   14,
+   16,
+   16,
    17,
-   17,
+   18,
    19,
    20,
-   21,
+   20,
    22,
-   22,
+   23,
+   23,
    25,
    26,
    26,
    27,
-   28,
-   28,
    30,
    32,
+   32,
    34,
-   35,
-   36,
-   36,
+   34,
+   34,
    37,
+   38,
+   38,
    40,
-   41,
-   41,
+   40,
+   40,
+   42,
    43,
    43,
-   43,
+   44,
+   45,
    45,
    47,
-   47,
-   47,
+   48,
+   48,
+   48,
    49,
    49,
-   51,
+   49,
+   50,
    52,
    52,
    53,
    53,
-   54,
-   54,
    55,
-   57,
-   57,
+   56,
    58,
    58,
    60,
+   60,
    61,
+   61,
+   61,
+   62,
    63,
    63,
-   65,
+   64,
    66,
+   67,
+   67,
+   67,
+   67,
    67,
    67,
    67,
    68,
    69,
    69,
+   70,
+   70,
+   70,
    71,
+   71,
+   71,
+   72,
+   72,
+   72,
    73,
-   74,
-   74,
-   74,
-   74,
-   74,
    75,
    75,
    75,
    76,
-   76,
+   77,
+   77,
+   77,
+   77,
+   77,
    77,
    77,
    77,
    78,
+   78,
+   78,
    79,
    79,
    80,
-   80,
-   80,
-   80,
-   82,
-   82,
    82,
    83,
+   83,
+   83,
    84,
-   85,
-   85,
-   85,
-   85,
-   85,
-   85,
-   85,
+   86,
+   86,
+   86,
    86,
    86,
    86,
    87,
+   87,
+   87,
    88,
-   89,
+   88,
+   90,
    91,
-   92,
-   92,
-   92,
    93,
-   95,
-   95,
-   96,
-   96,
-   96,
-   96,
-   96,
-   96,
-   96,
-   97,
-   97,
-   99,
-   100,
-   102,
-   102,
-   102
+   93,
+   93
   ],
   "p50": [
    1,
@@ -443,14 +438,18 @@
    1,
    1,
    1,
+   1,
+   1,
+   1,
    2,
    2,
    2,
-   3,
-   3,
-   3,
-   3,
-   3,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
    3,
    3,
    4,
@@ -459,103 +458,118 @@
    5,
    6,
    6,
-   6,
    7,
    8,
    8,
-   9,
    10,
    10,
-   13,
-   13,
-   13,
-   13,
+   10,
+   10,
+   10,
+   11,
    14,
-   15,
+   14,
+   16,
+   16,
    17,
-   17,
+   18,
    19,
-   19,
+   20,
    20,
    22,
    23,
-   24,
-   24,
+   23,
+   25,
+   26,
+   26,
    27,
-   28,
-   28,
-   29,
-   30,
    30,
    32,
+   32,
    34,
-   36,
-   36,
+   34,
+   34,
+   37,
    38,
    38,
-   39,
+   40,
+   40,
+   40,
    42,
    43,
    43,
-   45,
+   44,
    45,
    45,
    47,
+   48,
+   48,
+   48,
    49,
    49,
    49,
-   51,
-   51,
+   50,
+   52,
+   52,
    53,
-   54,
-   54,
-   55,
-   55,
+   53,
    55,
    56,
-   57,
    58,
-   59,
+   58,
    60,
    60,
+   61,
+   61,
+   61,
    62,
    63,
-   65,
-   65,
+   63,
+   64,
+   66,
+   67,
+   67,
+   67,
+   67,
+   67,
    67,
    67,
    68,
    69,
    69,
    70,
+   70,
+   70,
+   71,
    71,
    71,
    72,
-   74,
+   72,
+   72,
+   73,
+   75,
+   75,
+   75,
    76,
-   76,
-   76,
-   76,
-   76,
-   76,
-   76,
+   77,
+   77,
+   77,
+   77,
+   77,
+   77,
    77,
    77,
    78,
-   79,
+   78,
+   78,
    79,
    79,
    80,
-   80,
-   80,
-   81,
-   81,
-   81,
    82,
+   83,
+   83,
+   83,
    84,
-   84,
-   84,
-   85,
    86,
    86,
    86,
@@ -564,33 +578,14 @@
    86,
    87,
    87,
+   87,
    88,
    88,
-   88,
-   89,
-   89,
    90,
-   92,
-   94,
-   94,
-   94,
-   95,
-   97,
-   97,
-   97,
-   97,
-   97,
-   97,
-   98,
-   98,
-   98,
-   98,
-   98,
-   100,
-   101,
-   103,
-   103,
-   103
+   91,
+   93,
+   93,
+   93
   ],
   "p90": [
    1,
@@ -606,154 +601,1915 @@
    1,
    1,
    1,
-   3,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
    3,
    3,
    4,
    4,
    4,
-   5,
-   5,
-   5,
-   5,
-   5,
    5,
    6,
    6,
    7,
    8,
    8,
-   8,
+   10,
+   10,
+   10,
    10,
    10,
    11,
-   12,
-   12,
-   15,
-   15,
-   15,
-   15,
+   14,
+   14,
+   16,
    16,
    17,
+   18,
    19,
-   19,
-   21,
-   21,
+   20,
+   20,
    22,
-   24,
+   23,
+   23,
    25,
    26,
+   26,
    27,
-   29,
    30,
-   30,
-   31,
    32,
    32,
    34,
-   36,
+   34,
+   34,
+   37,
    38,
    38,
    40,
    40,
    40,
+   42,
+   43,
+   43,
    44,
    45,
    45,
    47,
-   47,
-   47,
+   48,
+   48,
+   48,
    49,
-   51,
-   51,
-   51,
+   49,
+   49,
+   50,
    52,
+   52,
+   53,
    53,
    55,
    56,
-   56,
-   57,
-   57,
-   57,
    58,
-   59,
+   58,
    60,
    60,
-   62,
+   61,
+   61,
+   61,
    62,
    63,
+   63,
    64,
+   66,
    67,
    67,
+   67,
+   67,
+   67,
+   67,
+   67,
+   68,
    69,
    69,
    70,
    70,
    70,
+   71,
+   71,
+   71,
+   72,
+   72,
    72,
    73,
-   73,
-   74,
+   75,
+   75,
+   75,
    76,
    77,
    77,
-   78,
-   78,
-   78,
+   77,
+   77,
+   77,
+   77,
+   77,
+   77,
    78,
    78,
    78,
    79,
    79,
    80,
-   80,
-   80,
-   81,
-   82,
    82,
    83,
    83,
    83,
-   83,
-   85,
-   85,
-   85,
+   84,
    86,
+   86,
+   86,
+   86,
+   86,
+   86,
+   87,
+   87,
+   87,
    88,
    88,
-   88,
-   88,
-   88,
-   88,
-   88,
-   88,
-   89,
-   89,
    90,
    91,
-   91,
-   92,
-   94,
-   95,
-   95,
-   95,
-   96,
-   98,
-   98,
-   98,
-   99,
-   99,
-   99,
-   99,
-   99,
-   99,
-   99,
-   99,
-   101,
-   102,
-   104,
-   104,
-   104
+   93,
+   93,
+   93
+  ]
+ },
+ "suzuka": {
+  "track": "Suzuka International Racing Course – Grand Prix",
+  "race_date": "2026-11-05",
+  "days": [
+   "2026-10-30",
+   "2026-10-31",
+   "2026-11-01",
+   "2026-11-02"
+  ],
+  "sessions_used": [
+   89755348,
+   89755349,
+   89780032,
+   89780031,
+   89804354,
+   89804353,
+   89827382,
+   89827386
+  ],
+  "drivers_with_time": 59,
+  "laps_total": 1497,
+  "fastest": {
+   "name": "Justin De Jong",
+   "time": 116.7882,
+   "car": "Ferrari 296 GT3",
+   "split": 1
+  },
+  "model": {
+   "description": "Suzuka-tempo = c + k × VIR-prequaltijd + g × ln(ronden): wie meer rondes reed is sneller. De eigen afwijking van een rijder weegt mee naarmate hij meer ronden heeft (50% bij 20 ronden). De verwachte pace is de snelste ronde die een rijder op racedag naar verwachting heeft gereden, met de ronden die hij tot dan nog bij rijdt. Een al gereden ronde kan niet trager worden. De drempel voor een top-3 is de derde snelste verwachte pace binnen de split, uit 20.000 simulaties.",
+   "c": 18.417,
+   "k": 0.972,
+   "g": -0.2886,
+   "residual_sd": 0.678,
+   "r2": 0.788,
+   "fit_n": 58,
+   "expected_extra_laps": 42.0,
+   "test_days_left": 2,
+   "prior_laps": 20,
+   "pace_definition": "snelste ronde (kwalificatie-niveau), geen gemiddelde racepace"
+  },
+  "splits": [
+   {
+    "split": 1,
+    "prequal_from": 1,
+    "prequal_to": 30,
+    "members": 30,
+    "with_time": 15,
+    "now": {
+     "p1": 116.7882,
+     "p3": 116.9825,
+     "p10": 117.4797
+    },
+    "top3_pace": {
+     "p10": 116.105,
+     "p50": 116.376,
+     "p90": 116.618
+    },
+    "winner_pace": {
+     "p10": 115.472,
+     "p50": 115.952,
+     "p90": 116.309
+    },
+    "top10_pace": {
+     "p10": 116.758,
+     "p50": 116.917,
+     "p90": 117.055
+    },
+    "drivers": [
+     {
+      "name": "Bradley Leenards",
+      "car_number": "30",
+      "irating": 10370,
+      "prequal_position": 1,
+      "prequal_best": 102.3042,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 115.911,
+       "p50": 116.776,
+       "p90": 117.656
+      },
+      "expected_rank": {
+       "p10": 1,
+       "p50": 8,
+       "p90": 24
+      },
+      "chance_top3": 30.2,
+      "chance_win": 14.0,
+      "expected_order": 1
+     },
+     {
+      "name": "Justin De Jong",
+      "car_number": "155",
+      "irating": 6934,
+      "prequal_position": 10,
+      "prequal_best": 102.8014,
+      "suzuka_best": 116.7882,
+      "suzuka_laps": 18,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       116.7882
+      ],
+      "suzuka_rank_now": 1,
+      "expected_pace": {
+       "p10": 116.143,
+       "p50": 116.788,
+       "p90": 116.788
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 6,
+       "p90": 10
+      },
+      "chance_top3": 23.7,
+      "chance_win": 7.6,
+      "expected_order": 2
+     },
+     {
+      "name": "Bram Lenten",
+      "car_number": "142",
+      "irating": 7820,
+      "prequal_position": 9,
+      "prequal_best": 102.7114,
+      "suzuka_best": 116.9825,
+      "suzuka_laps": 26,
+      "suzuka_car": "Acura NSX GT3 EVO 22",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       116.9825
+      ],
+      "suzuka_rank_now": 3,
+      "expected_pace": {
+       "p10": 116.219,
+       "p50": 116.845,
+       "p90": 116.983
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 8,
+       "p90": 13
+      },
+      "chance_top3": 19.6,
+      "chance_win": 5.8,
+      "expected_order": 3
+     },
+     {
+      "name": "Mathijs Wijten",
+      "car_number": "275",
+      "irating": 7521,
+      "prequal_position": 12,
+      "prequal_best": 102.8313,
+      "suzuka_best": 116.9611,
+      "suzuka_laps": 33,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       116.9611,
+       null,
+       null
+      ],
+      "suzuka_rank_now": 2,
+      "expected_pace": {
+       "p10": 116.287,
+       "p50": 116.872,
+       "p90": 116.961
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 8,
+       "p90": 13
+      },
+      "chance_top3": 16.5,
+      "chance_win": 4.6,
+      "expected_order": 4
+     },
+     {
+      "name": "Timur Aslan Overman",
+      "car_number": "334",
+      "irating": 8718,
+      "prequal_position": 2,
+      "prequal_best": 102.4964,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.098,
+       "p50": 116.968,
+       "p90": 117.834
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 11,
+       "p90": 26
+      },
+      "chance_top3": 20.9,
+      "chance_win": 8.6,
+      "expected_order": 5
+     },
+     {
+      "name": "Youp De Vos",
+      "car_number": "221",
+      "irating": 8116,
+      "prequal_position": 3,
+      "prequal_best": 102.5362,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.138,
+       "p50": 117.003,
+       "p90": 117.856
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 12,
+       "p90": 26
+      },
+      "chance_top3": 19.2,
+      "chance_win": 7.9,
+      "expected_order": 6
+     },
+     {
+      "name": "Ian Laurence Brown",
+      "car_number": "299",
+      "irating": 7540,
+      "prequal_position": 4,
+      "prequal_best": 102.5976,
+      "suzuka_best": 117.4797,
+      "suzuka_laps": 14,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.4797
+      ],
+      "suzuka_rank_now": 10,
+      "expected_pace": {
+       "p10": 116.336,
+       "p50": 117.032,
+       "p90": 117.48
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 12,
+       "p90": 22
+      },
+      "chance_top3": 13.0,
+      "chance_win": 3.7,
+      "expected_order": 7
+     },
+     {
+      "name": "Jeanpaul Seemann",
+      "car_number": "180",
+      "irating": 6144,
+      "prequal_position": 5,
+      "prequal_best": 102.6026,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.193,
+       "p50": 117.049,
+       "p90": 117.929
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 13,
+       "p90": 27
+      },
+      "chance_top3": 17.3,
+      "chance_win": 6.6,
+      "expected_order": 8
+     },
+     {
+      "name": "Daniel Morpey",
+      "car_number": "283",
+      "irating": 4981,
+      "prequal_position": 7,
+      "prequal_best": 102.6728,
+      "suzuka_best": 117.3485,
+      "suzuka_laps": 32,
+      "suzuka_car": "BMW M4 GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.3485
+      ],
+      "suzuka_rank_now": 6,
+      "expected_pace": {
+       "p10": 116.454,
+       "p50": 117.052,
+       "p90": 117.349
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 13,
+       "p90": 19
+      },
+      "chance_top3": 9.1,
+      "chance_win": 2.1,
+      "expected_order": 9
+     },
+     {
+      "name": "Calvin Leijdekkers",
+      "car_number": null,
+      "irating": 4597,
+      "prequal_position": 17,
+      "prequal_best": 102.937,
+      "suzuka_best": 117.2729,
+      "suzuka_laps": 29,
+      "suzuka_car": "Porsche 911 GT3 R (992)",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       117.2729,
+       null
+      ],
+      "suzuka_rank_now": 4,
+      "expected_pace": {
+       "p10": 116.504,
+       "p50": 117.105,
+       "p90": 117.273
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 13,
+       "p90": 18
+      },
+      "chance_top3": 7.8,
+      "chance_win": 1.8,
+      "expected_order": 10
+     },
+     {
+      "name": "Lennon Henriquez",
+      "car_number": null,
+      "irating": 7747,
+      "prequal_position": 6,
+      "prequal_best": 102.6592,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.244,
+       "p50": 117.12,
+       "p90": 117.998
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 14,
+       "p90": 27
+      },
+      "chance_top3": 15.2,
+      "chance_win": 5.9,
+      "expected_order": 11
+     },
+     {
+      "name": "Milan Schröer2",
+      "car_number": "109",
+      "irating": 6672,
+      "prequal_position": 11,
+      "prequal_best": 102.8259,
+      "suzuka_best": 117.4183,
+      "suzuka_laps": 10,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       117.4183,
+       null,
+       null
+      ],
+      "suzuka_rank_now": 7,
+      "expected_pace": {
+       "p10": 116.403,
+       "p50": 117.131,
+       "p90": 117.418
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 14,
+       "p90": 21
+      },
+      "chance_top3": 10.7,
+      "chance_win": 3.2,
+      "expected_order": 12
+     },
+     {
+      "name": "Rick Postema",
+      "car_number": "238",
+      "irating": 4492,
+      "prequal_position": 29,
+      "prequal_best": 103.1541,
+      "suzuka_best": 117.2893,
+      "suzuka_laps": 30,
+      "suzuka_car": "Chevrolet Corvette Z06 GT3.R",
+      "suzuka_best_per_day": [
+       null,
+       117.2893,
+       117.6734,
+       null
+      ],
+      "suzuka_rank_now": 5,
+      "expected_pace": {
+       "p10": 116.601,
+       "p50": 117.204,
+       "p90": 117.289
+      },
+      "expected_rank": {
+       "p10": 5,
+       "p50": 14,
+       "p90": 19
+      },
+      "chance_top3": 5.2,
+      "chance_win": 1.0,
+      "expected_order": 13
+     },
+     {
+      "name": "Luciano Witvoet",
+      "car_number": null,
+      "irating": 10042,
+      "prequal_position": 8,
+      "prequal_best": 102.7113,
+      "suzuka_best": 118.3124,
+      "suzuka_laps": 6,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       118.3124
+      ],
+      "suzuka_rank_now": 15,
+      "expected_pace": {
+       "p10": 116.49,
+       "p50": 117.271,
+       "p90": 118.038
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 17,
+       "p90": 27
+      },
+      "chance_top3": 8.1,
+      "chance_win": 2.3,
+      "expected_order": 14
+     },
+     {
+      "name": "Ibrahim Özcan",
+      "car_number": null,
+      "irating": 4232,
+      "prequal_position": 13,
+      "prequal_best": 102.8384,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.43,
+       "p50": 117.281,
+       "p90": 118.158
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 17,
+       "p90": 28
+      },
+      "chance_top3": 9.6,
+      "chance_win": 3.4,
+      "expected_order": 15
+     },
+     {
+      "name": "Barry Arends",
+      "car_number": "268",
+      "irating": 5085,
+      "prequal_position": 26,
+      "prequal_best": 103.1336,
+      "suzuka_best": 117.4401,
+      "suzuka_laps": 34,
+      "suzuka_car": "McLaren 720S GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.4401
+      ],
+      "suzuka_rank_now": 8,
+      "expected_pace": {
+       "p10": 116.701,
+       "p50": 117.296,
+       "p90": 117.44
+      },
+      "expected_rank": {
+       "p10": 7,
+       "p50": 17,
+       "p90": 22
+      },
+      "chance_top3": 3.5,
+      "chance_win": 0.7,
+      "expected_order": 16
+     },
+     {
+      "name": "Justin van der Linden",
+      "car_number": "162",
+      "irating": 4939,
+      "prequal_position": 27,
+      "prequal_best": 103.1433,
+      "suzuka_best": 117.4533,
+      "suzuka_laps": 20,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.4533
+      ],
+      "suzuka_rank_now": 9,
+      "expected_pace": {
+       "p10": 116.66,
+       "p50": 117.308,
+       "p90": 117.453
+      },
+      "expected_rank": {
+       "p10": 6,
+       "p50": 17,
+       "p90": 22
+      },
+      "chance_top3": 4.4,
+      "chance_win": 0.9,
+      "expected_order": 17
+     },
+     {
+      "name": "Tom Walstra",
+      "car_number": "270",
+      "irating": 7149,
+      "prequal_position": 14,
+      "prequal_best": 102.8629,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.458,
+       "p50": 117.324,
+       "p90": 118.192
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 18,
+       "p90": 29
+      },
+      "chance_top3": 9.1,
+      "chance_win": 2.9,
+      "expected_order": 18
+     },
+     {
+      "name": "Yurica Kasdorp",
+      "car_number": "171",
+      "irating": 8762,
+      "prequal_position": 15,
+      "prequal_best": 102.8646,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.445,
+       "p50": 117.326,
+       "p90": 118.183
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 18,
+       "p90": 29
+      },
+      "chance_top3": 9.3,
+      "chance_win": 3.3,
+      "expected_order": 19
+     },
+     {
+      "name": "Owen Illsley",
+      "car_number": "321",
+      "irating": 6304,
+      "prequal_position": 20,
+      "prequal_best": 103.0097,
+      "suzuka_best": 117.6988,
+      "suzuka_laps": 17,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.6988
+      ],
+      "suzuka_rank_now": 11,
+      "expected_pace": {
+       "p10": 116.683,
+       "p50": 117.351,
+       "p90": 117.699
+      },
+      "expected_rank": {
+       "p10": 6,
+       "p50": 19,
+       "p90": 25
+      },
+      "chance_top3": 3.9,
+      "chance_win": 0.9,
+      "expected_order": 20
+     },
+     {
+      "name": "Lucas de Vries",
+      "car_number": "331",
+      "irating": 7788,
+      "prequal_position": 16,
+      "prequal_best": 102.916,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.517,
+       "p50": 117.38,
+       "p90": 118.259
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 19,
+       "p90": 29
+      },
+      "chance_top3": 7.7,
+      "chance_win": 2.5,
+      "expected_order": 21
+     },
+     {
+      "name": "Danny Hoogendoorn",
+      "car_number": null,
+      "irating": 5007,
+      "prequal_position": 18,
+      "prequal_best": 102.9564,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.545,
+       "p50": 117.41,
+       "p90": 118.27
+      },
+      "expected_rank": {
+       "p10": 5,
+       "p50": 20,
+       "p90": 29
+      },
+      "chance_top3": 7.0,
+      "chance_win": 2.1,
+      "expected_order": 22
+     },
+     {
+      "name": "Twan van den Beld",
+      "car_number": "266",
+      "irating": 7398,
+      "prequal_position": 19,
+      "prequal_best": 102.9778,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.562,
+       "p50": 117.43,
+       "p90": 118.304
+      },
+      "expected_rank": {
+       "p10": 5,
+       "p50": 20,
+       "p90": 29
+      },
+      "chance_top3": 6.9,
+      "chance_win": 2.1,
+      "expected_order": 23
+     },
+     {
+      "name": "Gian Zoutewelle",
+      "car_number": "335",
+      "irating": 4466,
+      "prequal_position": 22,
+      "prequal_best": 103.0337,
+      "suzuka_best": 118.1812,
+      "suzuka_laps": 9,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       118.1812
+      ],
+      "suzuka_rank_now": 13,
+      "expected_pace": {
+       "p10": 116.776,
+       "p50": 117.514,
+       "p90": 118.181
+      },
+      "expected_rank": {
+       "p10": 8,
+       "p50": 22,
+       "p90": 28
+      },
+      "chance_top3": 3.0,
+      "chance_win": 0.6,
+      "expected_order": 24
+     },
+     {
+      "name": "Rens de Kok",
+      "car_number": "298",
+      "irating": 6238,
+      "prequal_position": 23,
+      "prequal_best": 103.0719,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.662,
+       "p50": 117.532,
+       "p90": 118.399
+      },
+      "expected_rank": {
+       "p10": 6,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 5.0,
+      "chance_win": 1.5,
+      "expected_order": 25
+     },
+     {
+      "name": "Davey Van De Wakker",
+      "car_number": "206",
+      "irating": 5042,
+      "prequal_position": 24,
+      "prequal_best": 103.0782,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.661,
+       "p50": 117.533,
+       "p90": 118.391
+      },
+      "expected_rank": {
+       "p10": 6,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 5.1,
+      "chance_win": 1.5,
+      "expected_order": 26
+     },
+     {
+      "name": "Didier Brobbel",
+      "car_number": "224",
+      "irating": 6398,
+      "prequal_position": 25,
+      "prequal_best": 103.0943,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.683,
+       "p50": 117.541,
+       "p90": 118.409
+      },
+      "expected_rank": {
+       "p10": 6,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 4.9,
+      "chance_win": 1.4,
+      "expected_order": 27
+     },
+     {
+      "name": "Kris Verstijnen",
+      "car_number": "303",
+      "irating": 4867,
+      "prequal_position": 30,
+      "prequal_best": 103.161,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.749,
+       "p50": 117.619,
+       "p90": 118.48
+      },
+      "expected_rank": {
+       "p10": 7,
+       "p50": 23,
+       "p90": 30
+      },
+      "chance_top3": 3.8,
+      "chance_win": 1.1,
+      "expected_order": 28
+     },
+     {
+      "name": "Joep van Tilburg",
+      "car_number": "176",
+      "irating": 3792,
+      "prequal_position": 28,
+      "prequal_best": 103.1475,
+      "suzuka_best": 117.9424,
+      "suzuka_laps": 42,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       117.9712,
+       117.9424
+      ],
+      "suzuka_rank_now": 12,
+      "expected_pace": {
+       "p10": 117.061,
+       "p50": 117.637,
+       "p90": 117.942
+      },
+      "expected_rank": {
+       "p10": 13,
+       "p50": 23,
+       "p90": 28
+      },
+      "chance_top3": 0.5,
+      "chance_win": 0.1,
+      "expected_order": 29
+     },
+     {
+      "name": "Wessel Stevens",
+      "car_number": "317",
+      "irating": 4073,
+      "prequal_position": 21,
+      "prequal_best": 103.0111,
+      "suzuka_best": 118.2849,
+      "suzuka_laps": 56,
+      "suzuka_car": "Porsche 911 GT3 R (992)",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.2954,
+       118.2849
+      ],
+      "suzuka_rank_now": 14,
+      "expected_pace": {
+       "p10": 117.338,
+       "p50": 117.881,
+       "p90": 118.285
+      },
+      "expected_rank": {
+       "p10": 19,
+       "p50": 26,
+       "p90": 29
+      },
+      "chance_top3": 0.1,
+      "chance_win": 0.0,
+      "expected_order": 30
+     }
+    ]
+   },
+   {
+    "split": 2,
+    "prequal_from": 31,
+    "prequal_to": 60,
+    "members": 30,
+    "with_time": 16,
+    "now": {
+     "p1": 117.3917,
+     "p3": 117.603,
+     "p10": 118.4486
+    },
+    "top3_pace": {
+     "p10": 116.762,
+     "p50": 117.037,
+     "p90": 117.275
+    },
+    "winner_pace": {
+     "p10": 116.155,
+     "p50": 116.621,
+     "p90": 116.974
+    },
+    "top10_pace": {
+     "p10": 117.392,
+     "p50": 117.535,
+     "p90": 117.667
+    },
+    "drivers": [
+     {
+      "name": "Mika Van Den Hurk",
+      "car_number": "126",
+      "irating": 3428,
+      "prequal_position": 36,
+      "prequal_best": 103.2781,
+      "suzuka_best": 117.3917,
+      "suzuka_laps": 13,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.3917
+      ],
+      "suzuka_rank_now": 1,
+      "expected_pace": {
+       "p10": 116.685,
+       "p50": 117.379,
+       "p90": 117.392
+      },
+      "expected_rank": {
+       "p10": 1,
+       "p50": 5,
+       "p90": 9
+      },
+      "chance_top3": 30.8,
+      "chance_win": 11.4,
+      "expected_order": 1
+     },
+     {
+      "name": "Diego Teunissen",
+      "car_number": "304",
+      "irating": 2864,
+      "prequal_position": 40,
+      "prequal_best": 103.3964,
+      "suzuka_best": 117.6246,
+      "suzuka_laps": 55,
+      "suzuka_car": "Mercedes-AMG GT3 2020",
+      "suzuka_best_per_day": [
+       118.1139,
+       null,
+       null,
+       117.6246
+      ],
+      "suzuka_rank_now": 4,
+      "expected_pace": {
+       "p10": 116.949,
+       "p50": 117.498,
+       "p90": 117.625
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 9,
+       "p90": 13
+      },
+      "chance_top3": 16.8,
+      "chance_win": 4.1,
+      "expected_order": 2
+     },
+     {
+      "name": "Jorrit Drent",
+      "car_number": "210",
+      "irating": 3270,
+      "prequal_position": 48,
+      "prequal_best": 103.5942,
+      "suzuka_best": 117.53,
+      "suzuka_laps": 9,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.53
+      ],
+      "suzuka_rank_now": 2,
+      "expected_pace": {
+       "p10": 116.963,
+       "p50": 117.53,
+       "p90": 117.53
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 8,
+       "p90": 12
+      },
+      "chance_top3": 14.1,
+      "chance_win": 4.5,
+      "expected_order": 3
+     },
+     {
+      "name": "Sander Jorritsma",
+      "car_number": "229",
+      "irating": 3901,
+      "prequal_position": 41,
+      "prequal_best": 103.3971,
+      "suzuka_best": 117.7308,
+      "suzuka_laps": 28,
+      "suzuka_car": "Audi R8 LMS EVO II GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.7308
+      ],
+      "suzuka_rank_now": 5,
+      "expected_pace": {
+       "p10": 116.939,
+       "p50": 117.554,
+       "p90": 117.731
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 10,
+       "p90": 15
+      },
+      "chance_top3": 16.2,
+      "chance_win": 4.7,
+      "expected_order": 4
+     },
+     {
+      "name": "Quinten Klumpert",
+      "car_number": "80",
+      "irating": 2269,
+      "prequal_position": 53,
+      "prequal_best": 103.7513,
+      "suzuka_best": 117.603,
+      "suzuka_laps": 54,
+      "suzuka_car": "BMW M4 GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.4766,
+       117.603
+      ],
+      "suzuka_rank_now": 3,
+      "expected_pace": {
+       "p10": 117.023,
+       "p50": 117.576,
+       "p90": 117.603
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 9,
+       "p90": 13
+      },
+      "chance_top3": 13.0,
+      "chance_win": 3.1,
+      "expected_order": 5
+     },
+     {
+      "name": "Servais Van Markwijk",
+      "car_number": "124",
+      "irating": 6034,
+      "prequal_position": 31,
+      "prequal_best": 103.1652,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.747,
+       "p50": 117.61,
+       "p90": 118.484
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 11,
+       "p90": 25
+      },
+      "chance_top3": 20.9,
+      "chance_win": 8.8,
+      "expected_order": 6
+     },
+     {
+      "name": "Kelvin Huurman3",
+      "car_number": "106",
+      "irating": 3025,
+      "prequal_position": 32,
+      "prequal_best": 103.2139,
+      "suzuka_best": 117.899,
+      "suzuka_laps": 38,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.899
+      ],
+      "suzuka_rank_now": 6,
+      "expected_pace": {
+       "p10": 117.021,
+       "p50": 117.614,
+       "p90": 117.899
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 11,
+       "p90": 18
+      },
+      "chance_top3": 13.0,
+      "chance_win": 3.1,
+      "expected_order": 7
+     },
+     {
+      "name": "Stijn Handgraaf",
+      "car_number": "129",
+      "irating": 5055,
+      "prequal_position": 33,
+      "prequal_best": 103.2154,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.803,
+       "p50": 117.665,
+       "p90": 118.534
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 13,
+       "p90": 26
+      },
+      "chance_top3": 19.2,
+      "chance_win": 7.9,
+      "expected_order": 8
+     },
+     {
+      "name": "Kevin Versantvoort",
+      "car_number": "207",
+      "irating": 3500,
+      "prequal_position": 34,
+      "prequal_best": 103.2616,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.844,
+       "p50": 117.712,
+       "p90": 118.572
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 13,
+       "p90": 26
+      },
+      "chance_top3": 17.2,
+      "chance_win": 7.0,
+      "expected_order": 9
+     },
+     {
+      "name": "Niek Jacobs",
+      "car_number": "274",
+      "irating": 4142,
+      "prequal_position": 37,
+      "prequal_best": 103.2859,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.864,
+       "p50": 117.728,
+       "p90": 118.6
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 14,
+       "p90": 26
+      },
+      "chance_top3": 16.2,
+      "chance_win": 6.5,
+      "expected_order": 10
+     },
+     {
+      "name": "Wulfert Van Goor",
+      "car_number": "100",
+      "irating": 2662,
+      "prequal_position": 35,
+      "prequal_best": 103.2632,
+      "suzuka_best": 118.557,
+      "suzuka_laps": 7,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.557,
+       null
+      ],
+      "suzuka_rank_now": 11,
+      "expected_pace": {
+       "p10": 117.001,
+       "p50": 117.744,
+       "p90": 118.502
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 14,
+       "p90": 25
+      },
+      "chance_top3": 12.4,
+      "chance_win": 4.1,
+      "expected_order": 11
+     },
+     {
+      "name": "Coen Gerrits",
+      "car_number": "244",
+      "irating": 3501,
+      "prequal_position": 38,
+      "prequal_best": 103.3325,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.894,
+       "p50": 117.767,
+       "p90": 118.639
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 15,
+       "p90": 27
+      },
+      "chance_top3": 15.5,
+      "chance_win": 6.1,
+      "expected_order": 12
+     },
+     {
+      "name": "Max De Rooij",
+      "car_number": null,
+      "irating": 2434,
+      "prequal_position": 45,
+      "prequal_best": 103.501,
+      "suzuka_best": 118.0703,
+      "suzuka_laps": 14,
+      "suzuka_car": "BMW M4 GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.0703,
+       null
+      ],
+      "suzuka_rank_now": 9,
+      "expected_pace": {
+       "p10": 117.09,
+       "p50": 117.787,
+       "p90": 118.07
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 15,
+       "p90": 21
+      },
+      "chance_top3": 9.8,
+      "chance_win": 2.8,
+      "expected_order": 13
+     },
+     {
+      "name": "Thimo Baum",
+      "car_number": "312",
+      "irating": 2992,
+      "prequal_position": 49,
+      "prequal_best": 103.6578,
+      "suzuka_best": 117.9104,
+      "suzuka_laps": 13,
+      "suzuka_car": "BMW M4 GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       117.9104,
+       null
+      ],
+      "suzuka_rank_now": 7,
+      "expected_pace": {
+       "p10": 117.109,
+       "p50": 117.809,
+       "p90": 117.91
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 14,
+       "p90": 19
+      },
+      "chance_top3": 9.1,
+      "chance_win": 2.4,
+      "expected_order": 14
+     },
+     {
+      "name": "Otto Karis",
+      "car_number": "271",
+      "irating": 3447,
+      "prequal_position": 50,
+      "prequal_best": 103.6629,
+      "suzuka_best": 117.9688,
+      "suzuka_laps": 56,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.1725,
+       117.9688
+      ],
+      "suzuka_rank_now": 8,
+      "expected_pace": {
+       "p10": 117.277,
+       "p50": 117.819,
+       "p90": 117.969
+      },
+      "expected_rank": {
+       "p10": 5,
+       "p50": 15,
+       "p90": 20
+      },
+      "chance_top3": 4.4,
+      "chance_win": 0.8,
+      "expected_order": 15
+     },
+     {
+      "name": "Alexander Gorissen",
+      "car_number": "273",
+      "irating": 3951,
+      "prequal_position": 42,
+      "prequal_best": 103.412,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.98,
+       "p50": 117.847,
+       "p90": 118.728
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 16,
+       "p90": 28
+      },
+      "chance_top3": 12.8,
+      "chance_win": 4.7,
+      "expected_order": 16
+     },
+     {
+      "name": "Donny de Waal",
+      "car_number": "40",
+      "irating": 2378,
+      "prequal_position": 43,
+      "prequal_best": 103.4597,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.039,
+       "p50": 117.905,
+       "p90": 118.772
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 17,
+       "p90": 28
+      },
+      "chance_top3": 11.1,
+      "chance_win": 3.9,
+      "expected_order": 17
+     },
+     {
+      "name": "Luuk Feitsma",
+      "car_number": "123",
+      "irating": 2272,
+      "prequal_position": 47,
+      "prequal_best": 103.5204,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       null
+      ],
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.103,
+       "p50": 117.965,
+       "p90": 118.823
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 18,
+       "p90": 28
+      },
+      "chance_top3": 9.2,
+      "chance_win": 3.4,
+      "expected_order": 18
+     },
+     {
+      "name": "Ruud Lopez",
+      "car_number": "48",
+      "irating": 2035,
+      "prequal_position": 46,
+      "prequal_best": 103.518,
+      "suzuka_best": 118.4486,
+      "suzuka_laps": 39,
+      "suzuka_car": "Acura NSX GT3 EVO 22",
+      "suzuka_best_per_day": [
+       null,
+       118.4486,
+       null,
+       118.5602
+      ],
+      "suzuka_rank_now": 10,
+      "expected_pace": {
+       "p10": 117.489,
+       "p50": 118.078,
+       "p90": 118.449
+      },
+      "expected_rank": {
+       "p10": 9,
+       "p50": 20,
+       "p90": 25
+      },
+      "chance_top3": 1.7,
+      "chance_win": 0.2,
+      "expected_order": 19
+     },
+     {
+      "name": "Patrick A Hesterman",
+      "car_number": "105",
+      "irating": 2945,
+      "prequal_position": 51,
+      "prequal_best": 103.6721,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.228,
+       "p50": 118.111,
+       "p90": 118.969
+      },
+      "expected_rank": {
+       "p10": 5,
+       "p50": 21,
+       "p90": 29
+      },
+      "chance_top3": 6.6,
+      "chance_win": 2.1,
+      "expected_order": 20
+     },
+     {
+      "name": "Milan Wassenburg",
+      "car_number": "159",
+      "irating": 3482,
+      "prequal_position": 39,
+      "prequal_best": 103.3361,
+      "suzuka_best": 118.6506,
+      "suzuka_laps": 37,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       119.1952,
+       null,
+       118.6506,
+       null
+      ],
+      "suzuka_rank_now": 12,
+      "expected_pace": {
+       "p10": 117.555,
+       "p50": 118.145,
+       "p90": 118.651
+      },
+      "expected_rank": {
+       "p10": 10,
+       "p50": 21,
+       "p90": 27
+      },
+      "chance_top3": 1.3,
+      "chance_win": 0.2,
+      "expected_order": 21
+     },
+     {
+      "name": "Cas Brinckhuizen",
+      "car_number": "143",
+      "irating": 3560,
+      "prequal_position": 52,
+      "prequal_best": 103.7123,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.282,
+       "p50": 118.146,
+       "p90": 119.012
+      },
+      "expected_rank": {
+       "p10": 6,
+       "p50": 21,
+       "p90": 29
+      },
+      "chance_top3": 5.6,
+      "chance_win": 1.8,
+      "expected_order": 22
+     },
+     {
+      "name": "Pawel Jakubowski",
+      "car_number": "308",
+      "irating": 2703,
+      "prequal_position": 54,
+      "prequal_best": 103.7593,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.343,
+       "p50": 118.199,
+       "p90": 119.074
+      },
+      "expected_rank": {
+       "p10": 7,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 4.5,
+      "chance_win": 1.4,
+      "expected_order": 23
+     },
+     {
+      "name": "Gert Bos",
+      "car_number": "140",
+      "irating": 2509,
+      "prequal_position": 59,
+      "prequal_best": 103.8329,
+      "suzuka_best": 118.7304,
+      "suzuka_laps": 6,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.7304,
+       null
+      ],
+      "suzuka_rank_now": 13,
+      "expected_pace": {
+       "p10": 117.433,
+       "p50": 118.207,
+       "p90": 118.73
+      },
+      "expected_rank": {
+       "p10": 8,
+       "p50": 22,
+       "p90": 28
+      },
+      "chance_top3": 3.3,
+      "chance_win": 0.9,
+      "expected_order": 24
+     },
+     {
+      "name": "Dick Jansen",
+      "car_number": "346",
+      "irating": 3278,
+      "prequal_position": 44,
+      "prequal_best": 103.4615,
+      "suzuka_best": 119.2635,
+      "suzuka_laps": 13,
+      "suzuka_car": "Porsche 911 GT3 R (992)",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       119.2635
+      ],
+      "suzuka_rank_now": 15,
+      "expected_pace": {
+       "p10": 117.533,
+       "p50": 118.227,
+       "p90": 118.925
+      },
+      "expected_rank": {
+       "p10": 10,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 1.8,
+      "chance_win": 0.4,
+      "expected_order": 25
+     },
+     {
+      "name": "Stefan van der Velde",
+      "car_number": "161",
+      "irating": 4176,
+      "prequal_position": 57,
+      "prequal_best": 103.7983,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.366,
+       "p50": 118.234,
+       "p90": 119.096
+      },
+      "expected_rank": {
+       "p10": 7,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 4.4,
+      "chance_win": 1.3,
+      "expected_order": 26
+     },
+     {
+      "name": "Freek Van Santvoord",
+      "car_number": "196",
+      "irating": 2521,
+      "prequal_position": 58,
+      "prequal_best": 103.827,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.388,
+       "p50": 118.256,
+       "p90": 119.135
+      },
+      "expected_rank": {
+       "p10": 7,
+       "p50": 23,
+       "p90": 30
+      },
+      "chance_top3": 4.0,
+      "chance_win": 1.1,
+      "expected_order": 27
+     },
+     {
+      "name": "Kevin Messak",
+      "car_number": "311",
+      "irating": 3007,
+      "prequal_position": 60,
+      "prequal_best": 103.8687,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 117.429,
+       "p50": 118.314,
+       "p90": 119.188
+      },
+      "expected_rank": {
+       "p10": 8,
+       "p50": 23,
+       "p90": 30
+      },
+      "chance_top3": 3.8,
+      "chance_win": 1.1,
+      "expected_order": 28
+     },
+     {
+      "name": "Ron Gravesteijn",
+      "car_number": "190",
+      "irating": 2931,
+      "prequal_position": 56,
+      "prequal_best": 103.7811,
+      "suzuka_best": 118.9846,
+      "suzuka_laps": 18,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       118.9846
+      ],
+      "suzuka_rank_now": 14,
+      "expected_pace": {
+       "p10": 117.698,
+       "p50": 118.361,
+       "p90": 118.985
+      },
+      "expected_rank": {
+       "p10": 13,
+       "p50": 24,
+       "p90": 29
+      },
+      "chance_top3": 0.7,
+      "chance_win": 0.1,
+      "expected_order": 29
+     },
+     {
+      "name": "Patrick Strijdonck",
+      "car_number": "178",
+      "irating": 2442,
+      "prequal_position": 55,
+      "prequal_best": 103.763,
+      "suzuka_best": 119.2837,
+      "suzuka_laps": 16,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       119.2837,
+       null
+      ],
+      "suzuka_rank_now": 16,
+      "expected_pace": {
+       "p10": 117.786,
+       "p50": 118.465,
+       "p90": 119.136
+      },
+      "expected_rank": {
+       "p10": 15,
+       "p50": 25,
+       "p90": 30
+      },
+      "chance_top3": 0.5,
+      "chance_win": 0.1,
+      "expected_order": 30
+     }
+    ]
+   }
   ]
  },
  "drivers": [
@@ -771,21 +2527,21 @@
    "best_time": 102.3042,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.481,
+   "model_time": 102.52,
    "prequal_position_now": 1,
    "expected_prequal": {
-    "p10": 102.304,
-    "p50": 102.304,
-    "p90": 102.304
+    "p10": 102.3042,
+    "p50": 102.3042,
+    "p90": 102.3042
    },
    "expected_position": {
     "p10": 1,
     "p50": 1,
-    "p90": 3
+    "p90": 1
    },
-   "chance_p1": 39.1,
+   "chance_p1": 100.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Timur Aslan Overman",
@@ -801,21 +2557,21 @@
    "best_time": 102.4964,
    "laps_total": 24,
    "time_status": "reliable",
-   "model_time": 102.597,
+   "model_time": 102.663,
    "prequal_position_now": 2,
    "expected_prequal": {
-    "p10": 102.25,
-    "p50": 102.496,
-    "p90": 102.496
+    "p10": 102.4964,
+    "p50": 102.4964,
+    "p90": 102.4964
    },
    "expected_position": {
-    "p10": 1,
+    "p10": 2,
     "p50": 2,
-    "p90": 4
+    "p90": 2
    },
-   "chance_p1": 16.4,
+   "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Youp De Vos",
@@ -831,21 +2587,21 @@
    "best_time": 102.5362,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.646,
+   "model_time": 102.722,
    "prequal_position_now": 3,
    "expected_prequal": {
-    "p10": 102.536,
-    "p50": 102.536,
-    "p90": 102.536
+    "p10": 102.5362,
+    "p50": 102.5362,
+    "p90": 102.5362
    },
    "expected_position": {
     "p10": 3,
     "p50": 3,
-    "p90": 6
+    "p90": 3
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Ian Laurence Brown",
@@ -861,21 +2617,21 @@
    "best_time": 102.5976,
    "laps_total": 25,
    "time_status": "reliable",
-   "model_time": 102.695,
+   "model_time": 102.783,
    "prequal_position_now": 4,
    "expected_prequal": {
-    "p10": 102.25,
-    "p50": 102.598,
-    "p90": 102.598
+    "p10": 102.5976,
+    "p50": 102.5976,
+    "p90": 102.5976
    },
    "expected_position": {
-    "p10": 1,
+    "p10": 4,
     "p50": 4,
-    "p90": 7
+    "p90": 4
    },
-   "chance_p1": 12.1,
+   "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Jeanpaul Seemann",
@@ -891,21 +2647,21 @@
    "best_time": 102.6026,
    "laps_total": 14,
    "time_status": "few_laps",
-   "model_time": 102.959,
+   "model_time": 103.035,
    "prequal_position_now": 5,
    "expected_prequal": {
-    "p10": 102.603,
-    "p50": 102.603,
-    "p90": 102.603
+    "p10": 102.6026,
+    "p50": 102.6026,
+    "p90": 102.6026
    },
    "expected_position": {
     "p10": 5,
     "p50": 5,
-    "p90": 8
+    "p90": 5
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Lennon Henriquez",
@@ -921,21 +2677,21 @@
    "best_time": 102.6592,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.677,
+   "model_time": 102.761,
    "prequal_position_now": 6,
    "expected_prequal": {
-    "p10": 102.659,
-    "p50": 102.659,
-    "p90": 102.659
+    "p10": 102.6592,
+    "p50": 102.6592,
+    "p90": 102.6592
    },
    "expected_position": {
     "p10": 6,
     "p50": 6,
-    "p90": 10
+    "p90": 6
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Daniel Morpey",
@@ -951,21 +2707,21 @@
    "best_time": 102.6728,
    "laps_total": 66,
    "time_status": "reliable",
-   "model_time": 103.303,
+   "model_time": 103.342,
    "prequal_position_now": 7,
    "expected_prequal": {
-    "p10": 102.673,
-    "p50": 102.673,
-    "p90": 102.673
+    "p10": 102.6728,
+    "p50": 102.6728,
+    "p90": 102.6728
    },
    "expected_position": {
     "p10": 7,
     "p50": 7,
-    "p90": 11
+    "p90": 7
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Luciano Witvoet",
@@ -981,21 +2737,21 @@
    "best_time": 102.7113,
    "laps_total": 35,
    "time_status": "reliable",
-   "model_time": 102.502,
+   "model_time": 102.547,
    "prequal_position_now": 8,
    "expected_prequal": {
-    "p10": 102.711,
-    "p50": 102.711,
-    "p90": 102.711
+    "p10": 102.7113,
+    "p50": 102.7113,
+    "p90": 102.7113
    },
    "expected_position": {
     "p10": 8,
     "p50": 8,
-    "p90": 13
+    "p90": 8
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Bram Lenten",
@@ -1011,28 +2767,28 @@
    "best_time": 102.7114,
    "laps_total": 34,
    "time_status": "reliable",
-   "model_time": 102.671,
+   "model_time": 102.753,
    "prequal_position_now": 9,
    "expected_prequal": {
-    "p10": 102.711,
-    "p50": 102.711,
-    "p90": 102.711
+    "p10": 102.7114,
+    "p50": 102.7114,
+    "p90": 102.7114
    },
    "expected_position": {
     "p10": 9,
     "p50": 9,
-    "p90": 14
+    "p90": 9
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Justin De Jong",
    "car_number": "155",
-   "irating": 6960,
+   "irating": 6934,
    "license": "A",
-   "safety_rating": 2.72,
+   "safety_rating": 2,
    "practice_best": 103.0633,
    "practice_laps": 75,
    "prequal_best": 102.8014,
@@ -1041,21 +2797,21 @@
    "best_time": 102.8014,
    "laps_total": 81,
    "time_status": "reliable",
-   "model_time": 102.755,
+   "model_time": 102.858,
    "prequal_position_now": 10,
    "expected_prequal": {
-    "p10": 102.801,
-    "p50": 102.801,
-    "p90": 102.801
+    "p10": 102.8014,
+    "p50": 102.8014,
+    "p90": 102.8014
    },
    "expected_position": {
     "p10": 10,
     "p50": 10,
-    "p90": 16
+    "p90": 10
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Milan Schröer2",
@@ -1064,28 +2820,28 @@
    "license": "A",
    "safety_rating": 2.23,
    "practice_best": 102.9875,
-   "practice_laps": 77,
+   "practice_laps": 67,
    "prequal_best": 102.8259,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 102.8259,
-   "laps_total": 83,
+   "laps_total": 73,
    "time_status": "reliable",
-   "model_time": 102.824,
+   "model_time": 102.915,
    "prequal_position_now": 11,
    "expected_prequal": {
-    "p10": 102.826,
-    "p50": 102.826,
-    "p90": 102.826
+    "p10": 102.8259,
+    "p50": 102.8259,
+    "p90": 102.8259
    },
    "expected_position": {
     "p10": 11,
     "p50": 11,
-    "p90": 17
+    "p90": 11
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Mathijs Wijten",
@@ -1093,29 +2849,29 @@
    "irating": 7521,
    "license": "A",
    "safety_rating": 4.71,
-   "practice_best": 116.9611,
-   "practice_laps": 33,
+   "practice_best": null,
+   "practice_laps": 0,
    "prequal_best": 102.8313,
    "prequal_laps": 3,
    "prequal_sessions_used": 1,
    "best_time": 102.8313,
-   "laps_total": 36,
-   "time_status": "reliable",
-   "model_time": 102.697,
+   "laps_total": 3,
+   "time_status": "few_laps",
+   "model_time": 102.785,
    "prequal_position_now": 12,
    "expected_prequal": {
-    "p10": 102.428,
-    "p50": 102.831,
-    "p90": 102.831
+    "p10": 102.8313,
+    "p50": 102.8313,
+    "p90": 102.8313
    },
    "expected_position": {
-    "p10": 3,
+    "p10": 12,
     "p50": 12,
-    "p90": 17
+    "p90": 12
    },
-   "chance_p1": 3.8,
+   "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Ibrahim Özcan",
@@ -1131,21 +2887,21 @@
    "best_time": 102.8384,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 103.569,
+   "model_time": 103.58,
    "prequal_position_now": 13,
    "expected_prequal": {
-    "p10": 102.436,
-    "p50": 102.838,
-    "p90": 102.838
+    "p10": 102.8384,
+    "p50": 102.8384,
+    "p90": 102.8384
    },
    "expected_position": {
-    "p10": 3,
+    "p10": 13,
     "p50": 13,
-    "p90": 17
+    "p90": 13
    },
-   "chance_p1": 3.3,
+   "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Tom Walstra",
@@ -1161,21 +2917,21 @@
    "best_time": 102.7282,
    "laps_total": 20,
    "time_status": "reliable",
-   "model_time": 102.731,
+   "model_time": 102.827,
    "prequal_position_now": 14,
    "expected_prequal": {
-    "p10": 102.863,
-    "p50": 102.863,
-    "p90": 102.863
+    "p10": 102.8629,
+    "p50": 102.8629,
+    "p90": 102.8629
    },
    "expected_position": {
     "p10": 14,
     "p50": 14,
-    "p90": 19
+    "p90": 14
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Yurica Kasdorp",
@@ -1191,21 +2947,21 @@
    "best_time": 102.8646,
    "laps_total": 2,
    "time_status": "few_laps",
-   "model_time": 102.594,
+   "model_time": 102.659,
    "prequal_position_now": 15,
    "expected_prequal": {
-    "p10": 102.463,
-    "p50": 102.865,
-    "p90": 102.865
+    "p10": 102.8646,
+    "p50": 102.8646,
+    "p90": 102.8646
    },
    "expected_position": {
-    "p10": 4,
+    "p10": 15,
     "p50": 15,
-    "p90": 19
+    "p90": 15
    },
-   "chance_p1": 3.0,
+   "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Lucas de Vries",
@@ -1221,7 +2977,7 @@
    "best_time": 102.916,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.673,
+   "model_time": 102.756,
    "prequal_position_now": 16,
    "expected_prequal": {
     "p10": 102.916,
@@ -1231,11 +2987,11 @@
    "expected_position": {
     "p10": 16,
     "p50": 16,
-    "p90": 21
+    "p90": 16
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Calvin Leijdekkers",
@@ -1243,15 +2999,15 @@
    "irating": 4597,
    "license": "A",
    "safety_rating": 2.13,
-   "practice_best": 117.2729,
-   "practice_laps": 29,
+   "practice_best": null,
+   "practice_laps": 0,
    "prequal_best": 102.937,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 102.937,
-   "laps_total": 35,
-   "time_status": "reliable",
-   "model_time": 103.434,
+   "laps_total": 6,
+   "time_status": "few_laps",
+   "model_time": 103.459,
    "prequal_position_now": 17,
    "expected_prequal": {
     "p10": 102.937,
@@ -1261,41 +3017,11 @@
    "expected_position": {
     "p10": 17,
     "p50": 17,
-    "p90": 23
+    "p90": 17
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
-  },
-  {
-   "name": "Kris Louwers2",
-   "car_number": null,
-   "irating": 5735,
-   "license": "A",
-   "safety_rating": 2.74,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.072,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.38,
-    "p50": 102.943,
-    "p90": 103.481
-   },
-   "expected_position": {
-    "p10": 3,
-    "p50": 18,
-    "p90": 50
-   },
-   "chance_p1": 5.3,
-   "chance_split1": 67.4,
-   "chance_split2": 97.1
+   "chance_split2": 0.0
   },
   {
    "name": "Danny Hoogendoorn",
@@ -1311,51 +3037,21 @@
    "best_time": 102.9564,
    "laps_total": 41,
    "time_status": "reliable",
-   "model_time": 103.294,
+   "model_time": 103.334,
    "prequal_position_now": 18,
    "expected_prequal": {
-    "p10": 102.956,
-    "p50": 102.956,
-    "p90": 102.956
+    "p10": 102.9564,
+    "p50": 102.9564,
+    "p90": 102.9564
    },
    "expected_position": {
-    "p10": 19,
-    "p50": 19,
-    "p90": 24
+    "p10": 18,
+    "p50": 18,
+    "p90": 18
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
-  },
-  {
-   "name": "Rick Postema",
-   "car_number": "238",
-   "irating": 4492,
-   "license": "A",
-   "safety_rating": 2.52,
-   "practice_best": 103.0825,
-   "practice_laps": 159,
-   "prequal_best": 103.1541,
-   "prequal_laps": 2,
-   "prequal_sessions_used": 1,
-   "best_time": 103.0825,
-   "laps_total": 161,
-   "time_status": "reliable",
-   "model_time": 103.472,
-   "prequal_position_now": 29,
-   "expected_prequal": {
-    "p10": 102.572,
-    "p50": 102.977,
-    "p90": 103.154
-   },
-   "expected_position": {
-    "p10": 6,
-    "p50": 20,
-    "p90": 34
-   },
-   "chance_p1": 1.2,
-   "chance_split1": 69.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Twan van den Beld",
@@ -1371,51 +3067,21 @@
    "best_time": 102.9778,
    "laps_total": 4,
    "time_status": "few_laps",
-   "model_time": 102.708,
+   "model_time": 102.799,
    "prequal_position_now": 19,
    "expected_prequal": {
-    "p10": 102.978,
-    "p50": 102.978,
-    "p90": 102.978
+    "p10": 102.9778,
+    "p50": 102.9778,
+    "p90": 102.9778
    },
    "expected_position": {
-    "p10": 21,
-    "p50": 21,
-    "p90": 25
+    "p10": 19,
+    "p50": 19,
+    "p90": 19
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
-  },
-  {
-   "name": "Daan van der Ven",
-   "car_number": null,
-   "irating": 5518,
-   "license": "A",
-   "safety_rating": 3.48,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.135,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.446,
-    "p50": 103.005,
-    "p90": 103.535
-   },
-   "expected_position": {
-    "p10": 4,
-    "p50": 22,
-    "p90": 52
-   },
-   "chance_p1": 4.8,
-   "chance_split1": 61.5,
-   "chance_split2": 96.1
+   "chance_split2": 0.0
   },
   {
    "name": "Owen Illsley",
@@ -1431,21 +3097,21 @@
    "best_time": 103.0097,
    "laps_total": 15,
    "time_status": "few_laps",
-   "model_time": 102.917,
+   "model_time": 102.998,
    "prequal_position_now": 20,
    "expected_prequal": {
-    "p10": 103.01,
-    "p50": 103.01,
-    "p90": 103.01
+    "p10": 103.0097,
+    "p50": 103.0097,
+    "p90": 103.0097
    },
    "expected_position": {
-    "p10": 22,
-    "p50": 23,
-    "p90": 27
+    "p10": 20,
+    "p50": 20,
+    "p90": 20
    },
    "chance_p1": 0.0,
    "chance_split1": 100.0,
-   "chance_split2": 100.0
+   "chance_split2": 0.0
   },
   {
    "name": "Wessel Stevens",
@@ -1454,28 +3120,28 @@
    "license": "A",
    "safety_rating": 2.55,
    "practice_best": 103.2917,
-   "practice_laps": 178,
+   "practice_laps": 157,
    "prequal_best": 103.0111,
    "prequal_laps": 4,
    "prequal_sessions_used": 2,
    "best_time": 103.0111,
-   "laps_total": 182,
+   "laps_total": 161,
    "time_status": "reliable",
-   "model_time": 103.632,
+   "model_time": 103.636,
    "prequal_position_now": 21,
    "expected_prequal": {
-    "p10": 103.011,
-    "p50": 103.011,
-    "p90": 103.011
+    "p10": 103.0111,
+    "p50": 103.0111,
+    "p90": 103.0111
    },
    "expected_position": {
-    "p10": 23,
-    "p50": 24,
-    "p90": 28
+    "p10": 21,
+    "p50": 21,
+    "p90": 21
    },
    "chance_p1": 0.0,
-   "chance_split1": 99.8,
-   "chance_split2": 100.0
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Gian Zoutewelle",
@@ -1491,21 +3157,21 @@
    "best_time": 103.0337,
    "laps_total": 27,
    "time_status": "reliable",
-   "model_time": 103.481,
+   "model_time": 103.502,
    "prequal_position_now": 22,
    "expected_prequal": {
-    "p10": 103.034,
-    "p50": 103.034,
-    "p90": 103.034
+    "p10": 103.0337,
+    "p50": 103.0337,
+    "p90": 103.0337
    },
    "expected_position": {
-    "p10": 25,
-    "p50": 25,
-    "p90": 29
+    "p10": 22,
+    "p50": 22,
+    "p90": 22
    },
    "chance_p1": 0.0,
-   "chance_split1": 98.4,
-   "chance_split2": 100.0
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Rens de Kok",
@@ -1521,21 +3187,21 @@
    "best_time": 103.0719,
    "laps_total": 55,
    "time_status": "reliable",
-   "model_time": 102.934,
+   "model_time": 103.013,
    "prequal_position_now": 23,
    "expected_prequal": {
-    "p10": 102.672,
-    "p50": 103.072,
-    "p90": 103.072
+    "p10": 103.0719,
+    "p50": 103.0719,
+    "p90": 103.0719
    },
    "expected_position": {
-    "p10": 9,
-    "p50": 26,
-    "p90": 29
+    "p10": 23,
+    "p50": 23,
+    "p90": 23
    },
-   "chance_p1": 0.5,
-   "chance_split1": 96.9,
-   "chance_split2": 100.0
+   "chance_p1": 0.0,
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Davey Van De Wakker",
@@ -1551,21 +3217,21 @@
    "best_time": 103.0782,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 103.283,
+   "model_time": 103.324,
    "prequal_position_now": 24,
    "expected_prequal": {
-    "p10": 102.666,
-    "p50": 103.076,
-    "p90": 103.078
+    "p10": 103.0782,
+    "p50": 103.0782,
+    "p90": 103.0782
    },
    "expected_position": {
-    "p10": 9,
-    "p50": 27,
-    "p90": 30
+    "p10": 24,
+    "p50": 24,
+    "p90": 24
    },
-   "chance_p1": 0.5,
-   "chance_split1": 95.0,
-   "chance_split2": 100.0
+   "chance_p1": 0.0,
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Didier Brobbel",
@@ -1581,21 +3247,21 @@
    "best_time": 103.0943,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 102.893,
+   "model_time": 102.976,
    "prequal_position_now": 25,
    "expected_prequal": {
-    "p10": 102.693,
-    "p50": 103.094,
-    "p90": 103.094
+    "p10": 103.0943,
+    "p50": 103.0943,
+    "p90": 103.0943
    },
    "expected_position": {
-    "p10": 11,
-    "p50": 28,
-    "p90": 30
+    "p10": 25,
+    "p50": 25,
+    "p90": 25
    },
-   "chance_p1": 0.5,
-   "chance_split1": 90.3,
-   "chance_split2": 100.0
+   "chance_p1": 0.0,
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Barry Arends",
@@ -1611,21 +3277,21 @@
    "best_time": 103.1336,
    "laps_total": 62,
    "time_status": "reliable",
-   "model_time": 103.269,
+   "model_time": 103.312,
    "prequal_position_now": 26,
    "expected_prequal": {
-    "p10": 103.134,
-    "p50": 103.134,
-    "p90": 103.134
+    "p10": 103.1336,
+    "p50": 103.1336,
+    "p90": 103.1336
    },
    "expected_position": {
-    "p10": 29,
-    "p50": 29,
-    "p90": 32
+    "p10": 26,
+    "p50": 26,
+    "p90": 26
    },
    "chance_p1": 0.0,
-   "chance_split1": 50.7,
-   "chance_split2": 100.0
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Justin van der Linden",
@@ -1641,21 +3307,21 @@
    "best_time": 103.1433,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 103.316,
+   "model_time": 103.354,
    "prequal_position_now": 27,
    "expected_prequal": {
-    "p10": 103.143,
-    "p50": 103.143,
-    "p90": 103.143
+    "p10": 103.1433,
+    "p50": 103.1433,
+    "p90": 103.1433
    },
    "expected_position": {
-    "p10": 30,
-    "p50": 30,
-    "p90": 34
+    "p10": 27,
+    "p50": 27,
+    "p90": 27
    },
    "chance_p1": 0.0,
-   "chance_split1": 24.0,
-   "chance_split2": 100.0
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Joep van Tilburg",
@@ -1664,28 +3330,58 @@
    "license": "A",
    "safety_rating": 3.15,
    "practice_best": 103.5707,
-   "practice_laps": 146,
+   "practice_laps": 121,
    "prequal_best": 103.1475,
    "prequal_laps": 5,
    "prequal_sessions_used": 2,
    "best_time": 103.1475,
-   "laps_total": 151,
+   "laps_total": 126,
    "time_status": "reliable",
-   "model_time": 103.749,
+   "model_time": 103.741,
    "prequal_position_now": 28,
    "expected_prequal": {
-    "p10": 103.147,
-    "p50": 103.147,
-    "p90": 103.147
+    "p10": 103.1475,
+    "p50": 103.1475,
+    "p90": 103.1475
    },
    "expected_position": {
-    "p10": 31,
-    "p50": 31,
-    "p90": 35
+    "p10": 28,
+    "p50": 28,
+    "p90": 28
    },
    "chance_p1": 0.0,
-   "chance_split1": 7.7,
-   "chance_split2": 100.0
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Rick Postema",
+   "car_number": "238",
+   "irating": 4492,
+   "license": "A",
+   "safety_rating": 2.52,
+   "practice_best": 103.0825,
+   "practice_laps": 129,
+   "prequal_best": 103.1541,
+   "prequal_laps": 2,
+   "prequal_sessions_used": 1,
+   "best_time": 103.0825,
+   "laps_total": 131,
+   "time_status": "reliable",
+   "model_time": 103.493,
+   "prequal_position_now": 29,
+   "expected_prequal": {
+    "p10": 103.1541,
+    "p50": 103.1541,
+    "p90": 103.1541
+   },
+   "expected_position": {
+    "p10": 29,
+    "p50": 29,
+    "p90": 29
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Kris Verstijnen",
@@ -1701,7 +3397,7 @@
    "best_time": 103.161,
    "laps_total": 74,
    "time_status": "reliable",
-   "model_time": 103.34,
+   "model_time": 103.376,
    "prequal_position_now": 30,
    "expected_prequal": {
     "p10": 103.161,
@@ -1709,13 +3405,13 @@
     "p90": 103.161
    },
    "expected_position": {
-    "p10": 32,
-    "p50": 32,
-    "p90": 36
+    "p10": 30,
+    "p50": 30,
+    "p90": 30
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.3,
-   "chance_split2": 100.0
+   "chance_split1": 100.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Servais Van Markwijk",
@@ -1731,17 +3427,47 @@
    "best_time": 103.086,
    "laps_total": 57,
    "time_status": "reliable",
-   "model_time": 102.988,
+   "model_time": 103.062,
    "prequal_position_now": 31,
    "expected_prequal": {
-    "p10": 103.165,
-    "p50": 103.165,
-    "p90": 103.165
+    "p10": 103.1652,
+    "p50": 103.1652,
+    "p90": 103.1652
    },
    "expected_position": {
-    "p10": 33,
-    "p50": 33,
-    "p90": 37
+    "p10": 31,
+    "p50": 31,
+    "p90": 31
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 100.0
+  },
+  {
+   "name": "Kelvin Huurman3",
+   "car_number": "106",
+   "irating": 3025,
+   "license": "A",
+   "safety_rating": 4.48,
+   "practice_best": 103.3021,
+   "practice_laps": 203,
+   "prequal_best": 103.2139,
+   "prequal_laps": 6,
+   "prequal_sessions_used": 2,
+   "best_time": 103.2139,
+   "laps_total": 209,
+   "time_status": "reliable",
+   "model_time": 104.071,
+   "prequal_position_now": 32,
+   "expected_prequal": {
+    "p10": 103.2139,
+    "p50": 103.2139,
+    "p90": 103.2139
+   },
+   "expected_position": {
+    "p10": 32,
+    "p50": 32,
+    "p90": 32
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -1761,81 +3487,21 @@
    "best_time": 103.2154,
    "laps_total": 67,
    "time_status": "reliable",
-   "model_time": 103.278,
+   "model_time": 103.321,
    "prequal_position_now": 33,
    "expected_prequal": {
-    "p10": 102.8,
-    "p50": 103.213,
-    "p90": 103.215
+    "p10": 103.2154,
+    "p50": 103.2154,
+    "p90": 103.2154
    },
    "expected_position": {
-    "p10": 14,
-    "p50": 34,
-    "p90": 38
-   },
-   "chance_p1": 0.1,
-   "chance_split1": 38.2,
-   "chance_split2": 100.0
-  },
-  {
-   "name": "Kelvin Huurman3",
-   "car_number": "106",
-   "irating": 3025,
-   "license": "A",
-   "safety_rating": 4.48,
-   "practice_best": 103.3021,
-   "practice_laps": 203,
-   "prequal_best": 103.2139,
-   "prequal_laps": 6,
-   "prequal_sessions_used": 2,
-   "best_time": 103.2139,
-   "laps_total": 209,
-   "time_status": "reliable",
-   "model_time": 104.119,
-   "prequal_position_now": 32,
-   "expected_prequal": {
-    "p10": 103.214,
-    "p50": 103.214,
-    "p90": 103.214
-   },
-   "expected_position": {
-    "p10": 35,
-    "p50": 35,
-    "p90": 39
+    "p10": 33,
+    "p50": 33,
+    "p90": 33
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 100.0
-  },
-  {
-   "name": "Danny Jansen",
-   "car_number": null,
-   "irating": 3880,
-   "license": "A",
-   "safety_rating": 3.67,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.712,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.327,
-    "p50": 103.232,
-    "p90": 104.459
-   },
-   "expected_position": {
-    "p10": 2,
-    "p50": 36,
-    "p90": 83
-   },
-   "chance_p1": 7.4,
-   "chance_split1": 44.0,
-   "chance_split2": 75.7
   },
   {
    "name": "Kevin Versantvoort",
@@ -1851,17 +3517,17 @@
    "best_time": 103.2616,
    "laps_total": 14,
    "time_status": "few_laps",
-   "model_time": 103.88,
+   "model_time": 103.858,
    "prequal_position_now": 34,
    "expected_prequal": {
-    "p10": 103.262,
-    "p50": 103.262,
-    "p90": 103.262
+    "p10": 103.2616,
+    "p50": 103.2616,
+    "p90": 103.2616
    },
    "expected_position": {
-    "p10": 37,
-    "p50": 37,
-    "p90": 40
+    "p10": 34,
+    "p50": 34,
+    "p90": 34
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -1874,65 +3540,35 @@
    "license": "A",
    "safety_rating": 1.73,
    "practice_best": 103.4186,
-   "practice_laps": 79,
+   "practice_laps": 72,
    "prequal_best": 103.2632,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.2632,
-   "laps_total": 85,
+   "laps_total": 78,
    "time_status": "reliable",
-   "model_time": 104.328,
+   "model_time": 104.258,
    "prequal_position_now": 35,
    "expected_prequal": {
-    "p10": 103.263,
-    "p50": 103.263,
-    "p90": 103.263
+    "p10": 103.2632,
+    "p50": 103.2632,
+    "p90": 103.2632
    },
    "expected_position": {
-    "p10": 38,
-    "p50": 38,
-    "p90": 41
+    "p10": 35,
+    "p50": 35,
+    "p90": 35
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 100.0
   },
   {
-   "name": "Jamie Molema",
-   "car_number": null,
-   "irating": 4692,
-   "license": "C",
-   "safety_rating": 2.5,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.4,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.691,
-    "p50": 103.269,
-    "p90": 103.814
-   },
-   "expected_position": {
-    "p10": 10,
-    "p50": 39,
-    "p90": 64
-   },
-   "chance_p1": 1.0,
-   "chance_split1": 35.8,
-   "chance_split2": 87.4
-  },
-  {
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3371,
+   "irating": 3428,
    "license": "A",
-   "safety_rating": 2.6,
+   "safety_rating": 2.71,
    "practice_best": 103.2284,
    "practice_laps": 121,
    "prequal_best": 103.2781,
@@ -1941,17 +3577,17 @@
    "best_time": 103.2284,
    "laps_total": 127,
    "time_status": "reliable",
-   "model_time": 103.942,
+   "model_time": 103.888,
    "prequal_position_now": 36,
    "expected_prequal": {
-    "p10": 103.278,
-    "p50": 103.278,
-    "p90": 103.278
+    "p10": 103.2781,
+    "p50": 103.2781,
+    "p90": 103.2781
    },
    "expected_position": {
-    "p10": 39,
-    "p50": 40,
-    "p90": 43
+    "p10": 36,
+    "p50": 36,
+    "p90": 36
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -1971,50 +3607,20 @@
    "best_time": 103.2859,
    "laps_total": 133,
    "time_status": "reliable",
-   "model_time": 103.605,
+   "model_time": 103.612,
    "prequal_position_now": 37,
    "expected_prequal": {
-    "p10": 103.286,
-    "p50": 103.286,
-    "p90": 103.286
+    "p10": 103.2859,
+    "p50": 103.2859,
+    "p90": 103.2859
    },
    "expected_position": {
-    "p10": 40,
-    "p50": 41,
-    "p90": 44
+    "p10": 37,
+    "p50": 37,
+    "p90": 37
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 100.0
-  },
-  {
-   "name": "Donny de Waal",
-   "car_number": "40",
-   "irating": 2378,
-   "license": "A",
-   "safety_rating": 3.08,
-   "practice_best": 103.4307,
-   "practice_laps": 140,
-   "prequal_best": 103.4597,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 103.4307,
-   "laps_total": 143,
-   "time_status": "reliable",
-   "model_time": 104.513,
-   "prequal_position_now": 43,
-   "expected_prequal": {
-    "p10": 102.812,
-    "p50": 103.321,
-    "p90": 103.46
-   },
-   "expected_position": {
-    "p10": 15,
-    "p50": 42,
-    "p90": 49
-   },
-   "chance_p1": 0.4,
-   "chance_split1": 30.8,
    "chance_split2": 100.0
   },
   {
@@ -2031,20 +3637,20 @@
    "best_time": 103.3325,
    "laps_total": 38,
    "time_status": "reliable",
-   "model_time": 103.88,
+   "model_time": 103.858,
    "prequal_position_now": 38,
    "expected_prequal": {
-    "p10": 102.839,
-    "p50": 103.332,
-    "p90": 103.332
+    "p10": 103.3325,
+    "p50": 103.3325,
+    "p90": 103.3325
    },
    "expected_position": {
-    "p10": 17,
-    "p50": 43,
-    "p90": 44
+    "p10": 38,
+    "p50": 38,
+    "p90": 38
    },
-   "chance_p1": 0.3,
-   "chance_split1": 28.8,
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
    "chance_split2": 100.0
   },
   {
@@ -2054,24 +3660,24 @@
    "license": "A",
    "safety_rating": 3.6,
    "practice_best": 105.3658,
-   "practice_laps": 55,
+   "practice_laps": 18,
    "prequal_best": 103.3361,
    "prequal_laps": 5,
    "prequal_sessions_used": 2,
    "best_time": 103.3361,
-   "laps_total": 60,
+   "laps_total": 23,
    "time_status": "reliable",
-   "model_time": 103.889,
+   "model_time": 103.866,
    "prequal_position_now": 39,
    "expected_prequal": {
-    "p10": 103.336,
-    "p50": 103.336,
-    "p90": 103.336
+    "p10": 103.3361,
+    "p50": 103.3361,
+    "p90": 103.3361
    },
    "expected_position": {
-    "p10": 42,
-    "p50": 44,
-    "p90": 46
+    "p10": 39,
+    "p50": 39,
+    "p90": 39
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2084,24 +3690,24 @@
    "license": "B",
    "safety_rating": 2.18,
    "practice_best": 103.6134,
-   "practice_laps": 101,
+   "practice_laps": 86,
    "prequal_best": 103.3964,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.3964,
-   "laps_total": 107,
+   "laps_total": 92,
    "time_status": "reliable",
-   "model_time": 104.209,
+   "model_time": 104.151,
    "prequal_position_now": 40,
    "expected_prequal": {
-    "p10": 103.396,
-    "p50": 103.396,
-    "p90": 103.396
+    "p10": 103.3964,
+    "p50": 103.3964,
+    "p90": 103.3964
    },
    "expected_position": {
-    "p10": 43,
-    "p50": 45,
-    "p90": 47
+    "p10": 40,
+    "p50": 40,
+    "p90": 40
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2121,17 +3727,17 @@
    "best_time": 103.3971,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 103.703,
+   "model_time": 103.699,
    "prequal_position_now": 41,
    "expected_prequal": {
-    "p10": 103.397,
-    "p50": 103.397,
-    "p90": 103.397
+    "p10": 103.3971,
+    "p50": 103.3971,
+    "p90": 103.3971
    },
    "expected_position": {
-    "p10": 44,
-    "p50": 46,
-    "p90": 48
+    "p10": 41,
+    "p50": 41,
+    "p90": 41
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2151,7 +3757,7 @@
    "best_time": 103.412,
    "laps_total": 153,
    "time_status": "reliable",
-   "model_time": 103.682,
+   "model_time": 103.681,
    "prequal_position_now": 42,
    "expected_prequal": {
     "p10": 103.412,
@@ -2159,9 +3765,39 @@
     "p90": 103.412
    },
    "expected_position": {
-    "p10": 46,
-    "p50": 47,
-    "p90": 49
+    "p10": 42,
+    "p50": 42,
+    "p90": 42
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 100.0
+  },
+  {
+   "name": "Donny de Waal",
+   "car_number": "40",
+   "irating": 2378,
+   "license": "A",
+   "safety_rating": 3.08,
+   "practice_best": 103.4307,
+   "practice_laps": 140,
+   "prequal_best": 103.4597,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 103.4307,
+   "laps_total": 143,
+   "time_status": "reliable",
+   "model_time": 104.423,
+   "prequal_position_now": 43,
+   "expected_prequal": {
+    "p10": 103.4597,
+    "p50": 103.4597,
+    "p90": 103.4597
+   },
+   "expected_position": {
+    "p10": 43,
+    "p50": 43,
+    "p90": 43
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2181,17 +3817,17 @@
    "best_time": 103.4615,
    "laps_total": 50,
    "time_status": "reliable",
-   "model_time": 103.988,
+   "model_time": 103.954,
    "prequal_position_now": 44,
    "expected_prequal": {
-    "p10": 103.462,
-    "p50": 103.462,
-    "p90": 103.462
+    "p10": 103.4615,
+    "p50": 103.4615,
+    "p90": 103.4615
    },
    "expected_position": {
-    "p10": 47,
-    "p50": 48,
-    "p90": 51
+    "p10": 44,
+    "p50": 44,
+    "p90": 44
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2204,14 +3840,14 @@
    "license": "A",
    "safety_rating": 4.99,
    "practice_best": 103.7169,
-   "practice_laps": 73,
+   "practice_laps": 59,
    "prequal_best": 103.501,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.501,
-   "laps_total": 79,
+   "laps_total": 65,
    "time_status": "reliable",
-   "model_time": 104.475,
+   "model_time": 104.389,
    "prequal_position_now": 45,
    "expected_prequal": {
     "p10": 103.501,
@@ -2219,9 +3855,9 @@
     "p90": 103.501
    },
    "expected_position": {
-    "p10": 49,
-    "p50": 49,
-    "p90": 53
+    "p10": 45,
+    "p50": 45,
+    "p90": 45
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2234,14 +3870,14 @@
    "license": "A",
    "safety_rating": 4.64,
    "practice_best": 103.8075,
-   "practice_laps": 269,
+   "practice_laps": 243,
    "prequal_best": 103.518,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.518,
-   "laps_total": 275,
+   "laps_total": 249,
    "time_status": "reliable",
-   "model_time": 104.768,
+   "model_time": 104.651,
    "prequal_position_now": 46,
    "expected_prequal": {
     "p10": 103.518,
@@ -2249,9 +3885,9 @@
     "p90": 103.518
    },
    "expected_position": {
-    "p10": 50,
-    "p50": 50,
-    "p90": 54
+    "p10": 46,
+    "p50": 46,
+    "p90": 46
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2271,81 +3907,21 @@
    "best_time": 103.5204,
    "laps_total": 72,
    "time_status": "reliable",
-   "model_time": 104.588,
+   "model_time": 104.49,
    "prequal_position_now": 47,
    "expected_prequal": {
-    "p10": 103.52,
-    "p50": 103.52,
-    "p90": 103.52
+    "p10": 103.5204,
+    "p50": 103.5204,
+    "p90": 103.5204
    },
    "expected_position": {
-    "p10": 51,
-    "p50": 51,
-    "p90": 55
+    "p10": 47,
+    "p50": 47,
+    "p90": 47
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 100.0
-  },
-  {
-   "name": "Pascal Tigelaar2",
-   "car_number": null,
-   "irating": 4008,
-   "license": "B",
-   "safety_rating": 2.5,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 103.658,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 102.964,
-    "p50": 103.536,
-    "p90": 104.069
-   },
-   "expected_position": {
-    "p10": 23,
-    "p50": 52,
-    "p90": 74
-   },
-   "chance_p1": 0.2,
-   "chance_split1": 16.9,
-   "chance_split2": 70.7
-  },
-  {
-   "name": "Chico Leentvaar3",
-   "car_number": "170",
-   "irating": 3195,
-   "license": "A",
-   "safety_rating": 2.4,
-   "practice_best": 103.9124,
-   "practice_laps": 50,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": 103.9124,
-   "laps_total": 50,
-   "time_status": "reliable",
-   "model_time": 104.03,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.163,
-    "p50": 103.588,
-    "p90": 103.985
-   },
-   "expected_position": {
-    "p10": 34,
-    "p50": 53,
-    "p90": 71
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 7.8,
-   "chance_split2": 69.4
   },
   {
    "name": "Jorrit Drent",
@@ -2361,20 +3937,20 @@
    "best_time": 103.5942,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 103.992,
+   "model_time": 103.957,
    "prequal_position_now": 48,
    "expected_prequal": {
-    "p10": 103.101,
-    "p50": 103.593,
-    "p90": 103.594
+    "p10": 103.5942,
+    "p50": 103.5942,
+    "p90": 103.5942
    },
    "expected_position": {
-    "p10": 30,
-    "p50": 54,
-    "p90": 56
+    "p10": 48,
+    "p50": 48,
+    "p90": 48
    },
    "chance_p1": 0.0,
-   "chance_split1": 10.5,
+   "chance_split1": 0.0,
    "chance_split2": 100.0
   },
   {
@@ -2384,24 +3960,24 @@
    "license": "A",
    "safety_rating": 4.99,
    "practice_best": 104.0717,
-   "practice_laps": 56,
+   "practice_laps": 43,
    "prequal_best": 103.6578,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.6578,
-   "laps_total": 62,
+   "laps_total": 49,
    "time_status": "reliable",
-   "model_time": 104.137,
+   "model_time": 104.087,
    "prequal_position_now": 49,
    "expected_prequal": {
-    "p10": 103.658,
-    "p50": 103.658,
-    "p90": 103.658
+    "p10": 103.6578,
+    "p50": 103.6578,
+    "p90": 103.6578
    },
    "expected_position": {
-    "p10": 54,
-    "p50": 55,
-    "p90": 58
+    "p10": 49,
+    "p50": 49,
+    "p90": 49
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2414,28 +3990,28 @@
    "license": "A",
    "safety_rating": 4.87,
    "practice_best": 104.1205,
-   "practice_laps": 40,
+   "practice_laps": 32,
    "prequal_best": 103.6629,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.6629,
-   "laps_total": 46,
+   "laps_total": 38,
    "time_status": "reliable",
-   "model_time": 103.905,
+   "model_time": 103.88,
    "prequal_position_now": 50,
    "expected_prequal": {
-    "p10": 103.663,
-    "p50": 103.663,
-    "p90": 103.663
+    "p10": 103.6629,
+    "p50": 103.6629,
+    "p90": 103.6629
    },
    "expected_position": {
-    "p10": 55,
-    "p50": 56,
-    "p90": 59
+    "p10": 50,
+    "p50": 50,
+    "p90": 50
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 99.3
+   "chance_split2": 100.0
   },
   {
    "name": "Patrick A Hesterman",
@@ -2451,51 +4027,21 @@
    "best_time": 103.6721,
    "laps_total": 77,
    "time_status": "reliable",
-   "model_time": 104.163,
+   "model_time": 104.11,
    "prequal_position_now": 51,
    "expected_prequal": {
-    "p10": 103.169,
-    "p50": 103.671,
-    "p90": 103.672
+    "p10": 103.6721,
+    "p50": 103.6721,
+    "p90": 103.6721
    },
    "expected_position": {
-    "p10": 35,
-    "p50": 57,
-    "p90": 59
+    "p10": 51,
+    "p50": 51,
+    "p90": 51
    },
    "chance_p1": 0.0,
-   "chance_split1": 7.7,
-   "chance_split2": 99.2
-  },
-  {
-   "name": "Pawel Jakubowski",
-   "car_number": "308",
-   "irating": 2703,
-   "license": "A",
-   "safety_rating": 3.57,
-   "practice_best": 103.7968,
-   "practice_laps": 87,
-   "prequal_best": 103.7593,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 103.7593,
-   "laps_total": 90,
-   "time_status": "reliable",
-   "model_time": 104.303,
-   "prequal_position_now": 54,
-   "expected_prequal": {
-    "p10": 103.188,
-    "p50": 103.679,
-    "p90": 103.759
-   },
-   "expected_position": {
-    "p10": 36,
-    "p50": 58,
-    "p90": 62
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 7.1,
-   "chance_split2": 77.0
+   "chance_split1": 0.0,
+   "chance_split2": 100.0
   },
   {
    "name": "Cas Brinckhuizen",
@@ -2511,21 +4057,21 @@
    "best_time": 103.7123,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 103.852,
+   "model_time": 103.833,
    "prequal_position_now": 52,
    "expected_prequal": {
-    "p10": 103.712,
-    "p50": 103.712,
-    "p90": 103.712
+    "p10": 103.7123,
+    "p50": 103.7123,
+    "p90": 103.7123
    },
    "expected_position": {
-    "p10": 57,
-    "p50": 59,
-    "p90": 61
+    "p10": 52,
+    "p50": 52,
+    "p90": 52
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 89.3
+   "chance_split2": 100.0
   },
   {
    "name": "Quinten Klumpert",
@@ -2534,28 +4080,58 @@
    "license": "A",
    "safety_rating": 4.48,
    "practice_best": 103.6382,
-   "practice_laps": 104,
+   "practice_laps": 84,
    "prequal_best": 103.7513,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.6382,
-   "laps_total": 110,
+   "laps_total": 90,
    "time_status": "reliable",
-   "model_time": 104.59,
+   "model_time": 104.492,
    "prequal_position_now": 53,
    "expected_prequal": {
-    "p10": 103.751,
-    "p50": 103.751,
-    "p90": 103.751
+    "p10": 103.7513,
+    "p50": 103.7513,
+    "p90": 103.7513
    },
    "expected_position": {
-    "p10": 58,
-    "p50": 60,
-    "p90": 62
+    "p10": 53,
+    "p50": 53,
+    "p90": 53
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 61.9
+   "chance_split2": 100.0
+  },
+  {
+   "name": "Pawel Jakubowski",
+   "car_number": "308",
+   "irating": 2703,
+   "license": "A",
+   "safety_rating": 3.57,
+   "practice_best": 103.7968,
+   "practice_laps": 87,
+   "prequal_best": 103.7593,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 103.7593,
+   "laps_total": 90,
+   "time_status": "reliable",
+   "model_time": 104.236,
+   "prequal_position_now": 54,
+   "expected_prequal": {
+    "p10": 103.7593,
+    "p50": 103.7593,
+    "p90": 103.7593
+   },
+   "expected_position": {
+    "p10": 54,
+    "p50": 54,
+    "p90": 54
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 100.0
   },
   {
    "name": "Patrick Strijdonck",
@@ -2564,14 +4140,14 @@
    "license": "A",
    "safety_rating": 3.43,
    "practice_best": 104.5747,
-   "practice_laps": 63,
+   "practice_laps": 47,
    "prequal_best": 103.763,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.763,
-   "laps_total": 69,
+   "laps_total": 53,
    "time_status": "reliable",
-   "model_time": 104.47,
+   "model_time": 104.384,
    "prequal_position_now": 55,
    "expected_prequal": {
     "p10": 103.763,
@@ -2579,43 +4155,13 @@
     "p90": 103.763
    },
    "expected_position": {
-    "p10": 60,
-    "p50": 61,
-    "p90": 63
+    "p10": 55,
+    "p50": 55,
+    "p90": 55
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 20.8
-  },
-  {
-   "name": "Marc Verlinden",
-   "car_number": "242",
-   "irating": 2146,
-   "license": "A",
-   "safety_rating": 3.82,
-   "practice_best": 103.873,
-   "practice_laps": 41,
-   "prequal_best": 104.4137,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 103.873,
-   "laps_total": 44,
-   "time_status": "reliable",
-   "model_time": 104.681,
-   "prequal_position_now": 72,
-   "expected_prequal": {
-    "p10": 103.26,
-    "p50": 103.765,
-    "p90": 104.271
-   },
-   "expected_position": {
-    "p10": 40,
-    "p50": 62,
-    "p90": 78
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 4.8,
-   "chance_split2": 48.2
+   "chance_split2": 100.0
   },
   {
    "name": "Ron Gravesteijn",
@@ -2631,21 +4177,21 @@
    "best_time": 103.7811,
    "laps_total": 183,
    "time_status": "reliable",
-   "model_time": 104.171,
+   "model_time": 104.117,
    "prequal_position_now": 56,
    "expected_prequal": {
-    "p10": 103.781,
-    "p50": 103.781,
-    "p90": 103.781
+    "p10": 103.7811,
+    "p50": 103.7811,
+    "p90": 103.7811
    },
    "expected_position": {
-    "p10": 61,
-    "p50": 63,
-    "p90": 64
+    "p10": 56,
+    "p50": 56,
+    "p90": 56
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 4.6
+   "chance_split2": 100.0
   },
   {
    "name": "Stefan van der Velde",
@@ -2661,21 +4207,21 @@
    "best_time": 103.7983,
    "laps_total": 68,
    "time_status": "reliable",
-   "model_time": 103.591,
+   "model_time": 103.6,
    "prequal_position_now": 57,
    "expected_prequal": {
-    "p10": 103.798,
-    "p50": 103.798,
-    "p90": 103.798
+    "p10": 103.7983,
+    "p50": 103.7983,
+    "p90": 103.7983
    },
    "expected_position": {
-    "p10": 62,
-    "p50": 64,
-    "p90": 66
+    "p10": 57,
+    "p50": 57,
+    "p90": 57
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 0.5
+   "chance_split2": 100.0
   },
   {
    "name": "Freek Van Santvoord",
@@ -2691,7 +4237,7 @@
    "best_time": 103.827,
    "laps_total": 46,
    "time_status": "reliable",
-   "model_time": 104.418,
+   "model_time": 104.338,
    "prequal_position_now": 58,
    "expected_prequal": {
     "p10": 103.827,
@@ -2699,13 +4245,13 @@
     "p90": 103.827
    },
    "expected_position": {
-    "p10": 63,
-    "p50": 65,
-    "p90": 67
+    "p10": 58,
+    "p50": 58,
+    "p90": 58
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 0.0
+   "chance_split2": 100.0
   },
   {
    "name": "Gert Bos",
@@ -2714,28 +4260,28 @@
    "license": "A",
    "safety_rating": 4.06,
    "practice_best": 103.7874,
-   "practice_laps": 52,
+   "practice_laps": 46,
    "prequal_best": 103.8329,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 103.7874,
-   "laps_total": 58,
+   "laps_total": 52,
    "time_status": "reliable",
-   "model_time": 104.425,
+   "model_time": 104.345,
    "prequal_position_now": 59,
    "expected_prequal": {
-    "p10": 103.833,
-    "p50": 103.833,
-    "p90": 103.833
+    "p10": 103.8329,
+    "p50": 103.8329,
+    "p90": 103.8329
    },
    "expected_position": {
-    "p10": 64,
-    "p50": 66,
-    "p90": 68
+    "p10": 59,
+    "p50": 59,
+    "p90": 59
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 0.0
+   "chance_split2": 100.0
   },
   {
    "name": "Kevin Messak",
@@ -2751,21 +4297,21 @@
    "best_time": 103.8687,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.129,
+   "model_time": 104.08,
    "prequal_position_now": 60,
    "expected_prequal": {
-    "p10": 103.869,
-    "p50": 103.869,
-    "p90": 103.869
+    "p10": 103.8687,
+    "p50": 103.8687,
+    "p90": 103.8687
    },
    "expected_position": {
-    "p10": 66,
-    "p50": 67,
-    "p90": 69
+    "p10": 60,
+    "p50": 60,
+    "p90": 60
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
-   "chance_split2": 0.0
+   "chance_split2": 100.0
   },
   {
    "name": "Michel Van Der Ven",
@@ -2781,17 +4327,17 @@
    "best_time": 103.9308,
    "laps_total": 43,
    "time_status": "reliable",
-   "model_time": 103.678,
+   "model_time": 103.677,
    "prequal_position_now": 61,
    "expected_prequal": {
-    "p10": 103.931,
-    "p50": 103.931,
-    "p90": 103.931
+    "p10": 103.9308,
+    "p50": 103.9308,
+    "p90": 103.9308
    },
    "expected_position": {
-    "p10": 67,
-    "p50": 68,
-    "p90": 71
+    "p10": 61,
+    "p50": 61,
+    "p90": 61
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2811,51 +4357,21 @@
    "best_time": 103.9493,
    "laps_total": 59,
    "time_status": "reliable",
-   "model_time": 104.638,
+   "model_time": 104.534,
    "prequal_position_now": 62,
    "expected_prequal": {
-    "p10": 103.949,
-    "p50": 103.949,
-    "p90": 103.949
+    "p10": 103.9493,
+    "p50": 103.9493,
+    "p90": 103.9493
    },
    "expected_position": {
-    "p10": 68,
-    "p50": 69,
-    "p90": 72
+    "p10": 62,
+    "p50": 62,
+    "p90": 62
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 0.0
-  },
-  {
-   "name": "Franklyn Nwanaforo",
-   "car_number": "87",
-   "irating": 2362,
-   "license": "B",
-   "safety_rating": 2.57,
-   "practice_best": 104.0617,
-   "practice_laps": 32,
-   "prequal_best": 104.171,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 104.0617,
-   "laps_total": 35,
-   "time_status": "reliable",
-   "model_time": 104.524,
-   "prequal_position_now": 67,
-   "expected_prequal": {
-    "p10": 103.452,
-    "p50": 103.955,
-    "p90": 104.171
-   },
-   "expected_position": {
-    "p10": 49,
-    "p50": 70,
-    "p90": 77
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 1.7,
-   "chance_split2": 29.6
   },
   {
    "name": "Bart Tonkes",
@@ -2864,58 +4380,28 @@
    "license": "B",
    "safety_rating": 2.76,
    "practice_best": 104.0348,
-   "practice_laps": 255,
+   "practice_laps": 240,
    "prequal_best": 103.9863,
    "prequal_laps": 5,
    "prequal_sessions_used": 3,
    "best_time": 103.9863,
-   "laps_total": 260,
+   "laps_total": 245,
    "time_status": "reliable",
-   "model_time": 105.096,
+   "model_time": 104.943,
    "prequal_position_now": 63,
    "expected_prequal": {
-    "p10": 103.986,
-    "p50": 103.986,
-    "p90": 103.986
+    "p10": 103.9863,
+    "p50": 103.9863,
+    "p90": 103.9863
    },
    "expected_position": {
-    "p10": 69,
-    "p50": 71,
-    "p90": 73
+    "p10": 63,
+    "p50": 63,
+    "p90": 63
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 0.0
-  },
-  {
-   "name": "Ruben Prinsen3",
-   "car_number": "295",
-   "irating": 1341,
-   "license": "R",
-   "safety_rating": 2.56,
-   "practice_best": 104.1219,
-   "practice_laps": 239,
-   "prequal_best": null,
-   "prequal_laps": 5,
-   "prequal_sessions_used": 4,
-   "best_time": 104.1219,
-   "laps_total": 244,
-   "time_status": "reliable",
-   "model_time": 105.451,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.509,
-    "p50": 104.008,
-    "p90": 104.51
-   },
-   "expected_position": {
-    "p10": 52,
-    "p50": 72,
-    "p90": 84
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 1.1,
-   "chance_split2": 25.1
   },
   {
    "name": "Roy Van Veenendaal",
@@ -2931,17 +4417,17 @@
    "best_time": 104.0079,
    "laps_total": 115,
    "time_status": "reliable",
-   "model_time": 105.506,
+   "model_time": 105.309,
    "prequal_position_now": 64,
    "expected_prequal": {
-    "p10": 104.008,
-    "p50": 104.008,
-    "p90": 104.008
+    "p10": 104.0079,
+    "p50": 104.0079,
+    "p90": 104.0079
    },
    "expected_position": {
-    "p10": 71,
-    "p50": 73,
-    "p90": 74
+    "p10": 64,
+    "p50": 64,
+    "p90": 64
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2954,24 +4440,24 @@
    "license": "A",
    "safety_rating": 2.43,
    "practice_best": 103.8911,
-   "practice_laps": 77,
+   "practice_laps": 72,
    "prequal_best": 104.0162,
    "prequal_laps": 5,
    "prequal_sessions_used": 3,
    "best_time": 103.8911,
-   "laps_total": 82,
+   "laps_total": 77,
    "time_status": "reliable",
-   "model_time": 104.011,
+   "model_time": 103.975,
    "prequal_position_now": 65,
    "expected_prequal": {
-    "p10": 104.016,
-    "p50": 104.016,
-    "p90": 104.016
+    "p10": 104.0162,
+    "p50": 104.0162,
+    "p90": 104.0162
    },
    "expected_position": {
-    "p10": 72,
-    "p50": 74,
-    "p90": 75
+    "p10": 65,
+    "p50": 65,
+    "p90": 65
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -2984,24 +4470,54 @@
    "license": "A",
    "safety_rating": 4.99,
    "practice_best": 103.6077,
-   "practice_laps": 63,
+   "practice_laps": 42,
    "prequal_best": 104.0361,
    "prequal_laps": 5,
    "prequal_sessions_used": 2,
    "best_time": 103.6077,
-   "laps_total": 68,
+   "laps_total": 47,
    "time_status": "reliable",
-   "model_time": 103.515,
+   "model_time": 103.531,
    "prequal_position_now": 66,
    "expected_prequal": {
-    "p10": 104.036,
-    "p50": 104.036,
-    "p90": 104.036
+    "p10": 104.0361,
+    "p50": 104.0361,
+    "p90": 104.0361
    },
    "expected_position": {
-    "p10": 73,
-    "p50": 75,
-    "p90": 76
+    "p10": 66,
+    "p50": 66,
+    "p90": 66
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Franklyn Nwanaforo",
+   "car_number": "87",
+   "irating": 2301,
+   "license": "B",
+   "safety_rating": 2.34,
+   "practice_best": 104.0617,
+   "practice_laps": 32,
+   "prequal_best": 104.171,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 104.0617,
+   "laps_total": 35,
+   "time_status": "reliable",
+   "model_time": 104.471,
+   "prequal_position_now": 67,
+   "expected_prequal": {
+    "p10": 104.171,
+    "p50": 104.171,
+    "p90": 104.171
+   },
+   "expected_position": {
+    "p10": 67,
+    "p50": 67,
+    "p90": 67
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3010,9 +4526,9 @@
   {
    "name": "Jelmer Jekel",
    "car_number": "313",
-   "irating": 2288,
+   "irating": 2376,
    "license": "A",
-   "safety_rating": 3.81,
+   "safety_rating": 3.71,
    "practice_best": null,
    "practice_laps": 0,
    "prequal_best": 104.1953,
@@ -3021,21 +4537,21 @@
    "best_time": 104.1953,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 104.576,
+   "model_time": 104.424,
    "prequal_position_now": 68,
    "expected_prequal": {
-    "p10": 103.691,
-    "p50": 104.194,
-    "p90": 104.195
+    "p10": 104.1953,
+    "p50": 104.1953,
+    "p90": 104.1953
    },
    "expected_position": {
-    "p10": 58,
-    "p50": 76,
-    "p90": 77
+    "p10": 68,
+    "p50": 68,
+    "p90": 68
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.2,
-   "chance_split2": 12.5
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Jaimy Peters",
@@ -3051,17 +4567,17 @@
    "best_time": 104.2392,
    "laps_total": 152,
    "time_status": "reliable",
-   "model_time": 105.264,
+   "model_time": 105.094,
    "prequal_position_now": 69,
    "expected_prequal": {
-    "p10": 104.239,
-    "p50": 104.239,
-    "p90": 104.239
+    "p10": 104.2392,
+    "p50": 104.2392,
+    "p90": 104.2392
    },
    "expected_position": {
-    "p10": 76,
-    "p50": 77,
-    "p90": 79
+    "p10": 69,
+    "p50": 69,
+    "p90": 69
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3074,24 +4590,24 @@
    "license": "A",
    "safety_rating": 3.82,
    "practice_best": 104.2288,
-   "practice_laps": 227,
+   "practice_laps": 121,
    "prequal_best": 104.2862,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 104.2288,
-   "laps_total": 233,
+   "laps_total": 127,
    "time_status": "reliable",
-   "model_time": 104.972,
+   "model_time": 104.833,
    "prequal_position_now": 70,
    "expected_prequal": {
-    "p10": 104.286,
-    "p50": 104.286,
-    "p90": 104.286
+    "p10": 104.2862,
+    "p50": 104.2862,
+    "p90": 104.2862
    },
    "expected_position": {
-    "p10": 77,
-    "p50": 78,
-    "p90": 80
+    "p10": 70,
+    "p50": 70,
+    "p90": 70
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3104,24 +4620,54 @@
    "license": "B",
    "safety_rating": 4.32,
    "practice_best": 104.3924,
-   "practice_laps": 157,
+   "practice_laps": 143,
    "prequal_best": 104.3475,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 104.3475,
-   "laps_total": 163,
+   "laps_total": 149,
    "time_status": "reliable",
-   "model_time": 105.338,
+   "model_time": 105.16,
    "prequal_position_now": 71,
    "expected_prequal": {
-    "p10": 104.347,
-    "p50": 104.347,
-    "p90": 104.347
+    "p10": 104.3475,
+    "p50": 104.3475,
+    "p90": 104.3475
    },
    "expected_position": {
-    "p10": 79,
-    "p50": 79,
-    "p90": 82
+    "p10": 71,
+    "p50": 71,
+    "p90": 71
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Marc Verlinden",
+   "car_number": "242",
+   "irating": 2146,
+   "license": "A",
+   "safety_rating": 3.82,
+   "practice_best": 103.873,
+   "practice_laps": 39,
+   "prequal_best": 104.4137,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 103.873,
+   "laps_total": 42,
+   "time_status": "reliable",
+   "model_time": 104.573,
+   "prequal_position_now": 72,
+   "expected_prequal": {
+    "p10": 104.4137,
+    "p50": 104.4137,
+    "p90": 104.4137
+   },
+   "expected_position": {
+    "p10": 72,
+    "p50": 72,
+    "p90": 72
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3141,17 +4687,17 @@
    "best_time": 104.4215,
    "laps_total": 10,
    "time_status": "few_laps",
-   "model_time": 105.168,
+   "model_time": 105.008,
    "prequal_position_now": 73,
    "expected_prequal": {
-    "p10": 104.421,
-    "p50": 104.421,
-    "p90": 104.421
+    "p10": 104.4215,
+    "p50": 104.4215,
+    "p90": 104.4215
    },
    "expected_position": {
-    "p10": 80,
-    "p50": 80,
-    "p90": 83
+    "p10": 73,
+    "p50": 73,
+    "p90": 73
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3171,51 +4717,21 @@
    "best_time": 104.4219,
    "laps_total": 5,
    "time_status": "few_laps",
-   "model_time": 103.712,
+   "model_time": 103.708,
    "prequal_position_now": 74,
    "expected_prequal": {
-    "p10": 104.422,
-    "p50": 104.422,
-    "p90": 104.422
+    "p10": 104.4219,
+    "p50": 104.4219,
+    "p90": 104.4219
    },
    "expected_position": {
-    "p10": 81,
-    "p50": 81,
-    "p90": 84
+    "p10": 74,
+    "p50": 74,
+    "p90": 74
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 0.0
-  },
-  {
-   "name": "Roy Kerkhof",
-   "car_number": "259",
-   "irating": 1813,
-   "license": "A",
-   "safety_rating": 4.99,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 104.957,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.575,
-    "p50": 104.481,
-    "p90": 105.702
-   },
-   "expected_position": {
-    "p10": 54,
-    "p50": 82,
-    "p90": 107
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 1.8,
-   "chance_split2": 15.5
   },
   {
    "name": "Klaas De Boer3",
@@ -3224,58 +4740,28 @@
    "license": "A",
    "safety_rating": 3.36,
    "practice_best": 104.3513,
-   "practice_laps": 37,
+   "practice_laps": 26,
    "prequal_best": 104.4931,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 104.3513,
-   "laps_total": 43,
+   "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 104.596,
+   "model_time": 104.497,
    "prequal_position_now": 75,
    "expected_prequal": {
-    "p10": 104.493,
-    "p50": 104.493,
-    "p90": 104.493
+    "p10": 104.4931,
+    "p50": 104.4931,
+    "p90": 104.4931
    },
    "expected_position": {
-    "p10": 82,
-    "p50": 83,
-    "p90": 85
+    "p10": 75,
+    "p50": 75,
+    "p90": 75
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 0.0
-  },
-  {
-   "name": "Tiemen Scholten",
-   "car_number": "50",
-   "irating": 1800,
-   "license": "A",
-   "safety_rating": 4.99,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 104.969,
-   "prequal_position_now": null,
-   "expected_prequal": {
-    "p10": 103.592,
-    "p50": 104.494,
-    "p90": 105.749
-   },
-   "expected_position": {
-    "p10": 55,
-    "p50": 84,
-    "p90": 108
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 1.7,
-   "chance_split2": 14.9
   },
   {
    "name": "Jesse Nant Schiffelers",
@@ -3291,17 +4777,17 @@
    "best_time": 104.5074,
    "laps_total": 40,
    "time_status": "reliable",
-   "model_time": 105.185,
+   "model_time": 105.023,
    "prequal_position_now": 76,
    "expected_prequal": {
-    "p10": 104.507,
-    "p50": 104.507,
-    "p90": 104.507
+    "p10": 104.5074,
+    "p50": 104.5074,
+    "p90": 104.5074
    },
    "expected_position": {
-    "p10": 83,
-    "p50": 85,
-    "p90": 87
+    "p10": 76,
+    "p50": 76,
+    "p90": 76
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3321,81 +4807,21 @@
    "best_time": 104.6155,
    "laps_total": 92,
    "time_status": "reliable",
-   "model_time": 104.644,
+   "model_time": 104.54,
    "prequal_position_now": 77,
    "expected_prequal": {
-    "p10": 104.675,
-    "p50": 104.675,
-    "p90": 104.675
+    "p10": 104.6747,
+    "p50": 104.6747,
+    "p90": 104.6747
    },
    "expected_position": {
-    "p10": 85,
-    "p50": 86,
-    "p90": 88
+    "p10": 77,
+    "p50": 77,
+    "p90": 77
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 0.0
-  },
-  {
-   "name": "Yoeri Pluim",
-   "car_number": null,
-   "irating": 1496,
-   "license": "B",
-   "safety_rating": 3.61,
-   "practice_best": 104.8016,
-   "practice_laps": 36,
-   "prequal_best": 105.0197,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 104.8016,
-   "laps_total": 39,
-   "time_status": "reliable",
-   "model_time": 105.272,
-   "prequal_position_now": 86,
-   "expected_prequal": {
-    "p10": 104.198,
-    "p50": 104.688,
-    "p90": 105.02
-   },
-   "expected_position": {
-    "p10": 77,
-    "p50": 87,
-    "p90": 97
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 0.0,
-   "chance_split2": 0.8
-  },
-  {
-   "name": "Kaustubh Patil",
-   "car_number": "347",
-   "irating": 2098,
-   "license": "A",
-   "safety_rating": 3.5,
-   "practice_best": 104.8003,
-   "practice_laps": 54,
-   "prequal_best": 105.3167,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 104.8003,
-   "laps_total": 57,
-   "time_status": "reliable",
-   "model_time": 104.718,
-   "prequal_position_now": 94,
-   "expected_prequal": {
-    "p10": 104.183,
-    "p50": 104.69,
-    "p90": 105.198
-   },
-   "expected_position": {
-    "p10": 77,
-    "p50": 88,
-    "p90": 102
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 0.0,
-   "chance_split2": 0.7
   },
   {
    "name": "Roy Van De Geer",
@@ -3411,17 +4837,17 @@
    "best_time": 104.7363,
    "laps_total": 37,
    "time_status": "reliable",
-   "model_time": 104.71,
+   "model_time": 104.599,
    "prequal_position_now": 78,
    "expected_prequal": {
-    "p10": 104.736,
-    "p50": 104.736,
-    "p90": 104.736
+    "p10": 104.7363,
+    "p50": 104.7363,
+    "p90": 104.7363
    },
    "expected_position": {
-    "p10": 86,
-    "p50": 89,
-    "p90": 90
+    "p10": 78,
+    "p50": 78,
+    "p90": 78
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3441,17 +4867,17 @@
    "best_time": 104.7606,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.046,
+   "model_time": 104.898,
    "prequal_position_now": 79,
    "expected_prequal": {
-    "p10": 104.761,
-    "p50": 104.761,
-    "p90": 104.761
+    "p10": 104.7606,
+    "p50": 104.7606,
+    "p90": 104.7606
    },
    "expected_position": {
-    "p10": 88,
-    "p50": 90,
-    "p90": 91
+    "p10": 79,
+    "p50": 79,
+    "p90": 79
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3471,51 +4897,21 @@
    "best_time": 104.7964,
    "laps_total": 30,
    "time_status": "reliable",
-   "model_time": 104.869,
+   "model_time": 104.74,
    "prequal_position_now": 80,
    "expected_prequal": {
-    "p10": 104.796,
-    "p50": 104.796,
-    "p90": 104.796
+    "p10": 104.7964,
+    "p50": 104.7964,
+    "p90": 104.7964
    },
    "expected_position": {
-    "p10": 89,
-    "p50": 91,
-    "p90": 92
+    "p10": 80,
+    "p50": 80,
+    "p90": 80
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 0.0
-  },
-  {
-   "name": "Mitch Hendriks2",
-   "car_number": "209",
-   "irating": 2072,
-   "license": "A",
-   "safety_rating": 3.27,
-   "practice_best": 104.906,
-   "practice_laps": 53,
-   "prequal_best": 105.0623,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 1,
-   "best_time": 104.906,
-   "laps_total": 56,
-   "time_status": "reliable",
-   "model_time": 104.739,
-   "prequal_position_now": 87,
-   "expected_prequal": {
-    "p10": 104.302,
-    "p50": 104.797,
-    "p90": 105.062
-   },
-   "expected_position": {
-    "p10": 79,
-    "p50": 92,
-    "p90": 97
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 0.0,
-   "chance_split2": 0.4
   },
   {
    "name": "Raymon Van Zutphen",
@@ -3531,17 +4927,17 @@
    "best_time": 104.7554,
    "laps_total": 191,
    "time_status": "reliable",
-   "model_time": 105.019,
+   "model_time": 104.875,
    "prequal_position_now": 81,
    "expected_prequal": {
-    "p10": 104.799,
-    "p50": 104.799,
-    "p90": 104.799
+    "p10": 104.7989,
+    "p50": 104.7989,
+    "p90": 104.7989
    },
    "expected_position": {
-    "p10": 90,
-    "p50": 93,
-    "p90": 93
+    "p10": 81,
+    "p50": 81,
+    "p90": 81
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3561,17 +4957,17 @@
    "best_time": 104.613,
    "laps_total": 31,
    "time_status": "reliable",
-   "model_time": 104.305,
+   "model_time": 104.237,
    "prequal_position_now": 82,
    "expected_prequal": {
-    "p10": 104.817,
-    "p50": 104.817,
-    "p90": 104.817
+    "p10": 104.8173,
+    "p50": 104.8173,
+    "p90": 104.8173
    },
    "expected_position": {
-    "p10": 91,
-    "p50": 94,
-    "p90": 94
+    "p10": 82,
+    "p50": 82,
+    "p90": 82
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3591,17 +4987,17 @@
    "best_time": 104.5142,
    "laps_total": 57,
    "time_status": "reliable",
-   "model_time": 104.519,
+   "model_time": 104.428,
    "prequal_position_now": 83,
    "expected_prequal": {
-    "p10": 104.873,
-    "p50": 104.873,
-    "p90": 104.873
+    "p10": 104.8734,
+    "p50": 104.8734,
+    "p90": 104.8734
    },
    "expected_position": {
-    "p10": 92,
-    "p50": 95,
-    "p90": 95
+    "p10": 83,
+    "p50": 83,
+    "p90": 83
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3621,17 +5017,17 @@
    "best_time": 104.8904,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.578,
+   "model_time": 105.374,
    "prequal_position_now": 84,
    "expected_prequal": {
-    "p10": 104.89,
-    "p50": 104.89,
-    "p90": 104.89
+    "p10": 104.8904,
+    "p50": 104.8904,
+    "p90": 104.8904
    },
    "expected_position": {
-    "p10": 93,
-    "p50": 96,
-    "p90": 96
+    "p10": 84,
+    "p50": 84,
+    "p90": 84
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3643,59 +5039,89 @@
    "irating": 1657,
    "license": "A",
    "safety_rating": 4.8,
-   "practice_best": 120.3466,
-   "practice_laps": 5,
+   "practice_best": null,
+   "practice_laps": 0,
    "prequal_best": 104.8975,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 104.8975,
-   "laps_total": 11,
+   "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.105,
+   "model_time": 104.951,
    "prequal_position_now": 85,
    "expected_prequal": {
-    "p10": 104.897,
-    "p50": 104.897,
-    "p90": 104.897
+    "p10": 104.8975,
+    "p50": 104.8975,
+    "p90": 104.8975
    },
    "expected_position": {
-    "p10": 94,
-    "p50": 97,
-    "p90": 97
+    "p10": 85,
+    "p50": 85,
+    "p90": 85
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
    "chance_split2": 0.0
   },
   {
-   "name": "Dannick Eljon2",
+   "name": "Yoeri Pluim",
    "car_number": null,
-   "irating": 1344,
-   "license": "R",
-   "safety_rating": 2.8,
-   "practice_best": null,
-   "practice_laps": 0,
-   "prequal_best": null,
-   "prequal_laps": 0,
-   "prequal_sessions_used": 0,
-   "best_time": null,
-   "laps_total": 0,
-   "time_status": "no_time",
-   "model_time": 105.448,
-   "prequal_position_now": null,
+   "irating": 1496,
+   "license": "B",
+   "safety_rating": 3.61,
+   "practice_best": 104.8016,
+   "practice_laps": 36,
+   "prequal_best": 105.0197,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 104.8016,
+   "laps_total": 39,
+   "time_status": "reliable",
+   "model_time": 105.101,
+   "prequal_position_now": 86,
    "expected_prequal": {
-    "p10": 104.073,
-    "p50": 104.967,
-    "p90": 106.202
+    "p10": 105.0197,
+    "p50": 105.0197,
+    "p90": 105.0197
    },
    "expected_position": {
-    "p10": 75,
-    "p50": 98,
-    "p90": 115
+    "p10": 86,
+    "p50": 86,
+    "p90": 86
    },
    "chance_p1": 0.0,
-   "chance_split1": 0.1,
-   "chance_split2": 3.2
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Mitch Hendriks2",
+   "car_number": "209",
+   "irating": 2072,
+   "license": "A",
+   "safety_rating": 3.27,
+   "practice_best": 104.906,
+   "practice_laps": 53,
+   "prequal_best": 105.0623,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 104.906,
+   "laps_total": 56,
+   "time_status": "reliable",
+   "model_time": 104.624,
+   "prequal_position_now": 87,
+   "expected_prequal": {
+    "p10": 105.0623,
+    "p50": 105.0623,
+    "p90": 105.0623
+   },
+   "expected_position": {
+    "p10": 87,
+    "p50": 87,
+    "p90": 87
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
   },
   {
    "name": "Marc Van Den Broecke",
@@ -3711,17 +5137,17 @@
    "best_time": 105.1136,
    "laps_total": 10,
    "time_status": "few_laps",
-   "model_time": 105.34,
+   "model_time": 105.162,
    "prequal_position_now": 88,
    "expected_prequal": {
-    "p10": 105.114,
-    "p50": 105.114,
-    "p90": 105.114
+    "p10": 105.1136,
+    "p50": 105.1136,
+    "p90": 105.1136
    },
    "expected_position": {
-    "p10": 97,
-    "p50": 99,
-    "p90": 99
+    "p10": 88,
+    "p50": 88,
+    "p90": 88
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3741,17 +5167,17 @@
    "best_time": 105.1192,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.039,
+   "model_time": 104.892,
    "prequal_position_now": 89,
    "expected_prequal": {
-    "p10": 105.119,
-    "p50": 105.119,
-    "p90": 105.119
+    "p10": 105.1192,
+    "p50": 105.1192,
+    "p90": 105.1192
    },
    "expected_position": {
-    "p10": 98,
-    "p50": 100,
-    "p90": 100
+    "p10": 89,
+    "p50": 89,
+    "p90": 89
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3764,24 +5190,24 @@
    "license": "A",
    "safety_rating": 4.33,
    "practice_best": 104.6692,
-   "practice_laps": 29,
+   "practice_laps": 18,
    "prequal_best": 105.1262,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 104.6692,
-   "laps_total": 35,
+   "laps_total": 24,
    "time_status": "reliable",
-   "model_time": 104.351,
+   "model_time": 104.278,
    "prequal_position_now": 90,
    "expected_prequal": {
-    "p10": 105.126,
-    "p50": 105.126,
-    "p90": 105.126
+    "p10": 105.1262,
+    "p50": 105.1262,
+    "p90": 105.1262
    },
    "expected_position": {
-    "p10": 99,
-    "p50": 101,
-    "p90": 101
+    "p10": 90,
+    "p50": 90,
+    "p90": 90
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3794,24 +5220,24 @@
    "license": "B",
    "safety_rating": 3.66,
    "practice_best": 105.0543,
-   "practice_laps": 89,
+   "practice_laps": 84,
    "prequal_best": 105.1437,
    "prequal_laps": 16,
    "prequal_sessions_used": 6,
    "best_time": 105.0543,
-   "laps_total": 105,
+   "laps_total": 100,
    "time_status": "reliable",
-   "model_time": 105.815,
+   "model_time": 105.585,
    "prequal_position_now": 91,
    "expected_prequal": {
-    "p10": 105.144,
-    "p50": 105.144,
-    "p90": 105.144
+    "p10": 105.1437,
+    "p50": 105.1437,
+    "p90": 105.1437
    },
    "expected_position": {
-    "p10": 100,
-    "p50": 102,
-    "p90": 102
+    "p10": 91,
+    "p50": 91,
+    "p90": 91
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3823,25 +5249,25 @@
    "irating": 1491,
    "license": "A",
    "safety_rating": 2.74,
-   "practice_best": 119.9082,
-   "practice_laps": 12,
+   "practice_best": null,
+   "practice_laps": 0,
    "prequal_best": 105.1565,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 105.1565,
-   "laps_total": 18,
+   "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.278,
+   "model_time": 105.106,
    "prequal_position_now": 92,
    "expected_prequal": {
-    "p10": 105.156,
-    "p50": 105.156,
-    "p90": 105.156
+    "p10": 105.1565,
+    "p50": 105.1565,
+    "p90": 105.1565
    },
    "expected_position": {
-    "p10": 101,
-    "p50": 103,
-    "p90": 103
+    "p10": 92,
+    "p50": 92,
+    "p90": 92
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3861,17 +5287,47 @@
    "best_time": 105.2116,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.018,
+   "model_time": 104.874,
    "prequal_position_now": 93,
    "expected_prequal": {
-    "p10": 105.212,
-    "p50": 105.212,
-    "p90": 105.212
+    "p10": 105.2116,
+    "p50": 105.2116,
+    "p90": 105.2116
    },
    "expected_position": {
-    "p10": 102,
-    "p50": 104,
-    "p90": 104
+    "p10": 93,
+    "p50": 93,
+    "p90": 93
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Kaustubh Patil",
+   "car_number": "347",
+   "irating": 2174,
+   "license": "A",
+   "safety_rating": 3.69,
+   "practice_best": 104.8003,
+   "practice_laps": 37,
+   "prequal_best": 105.3167,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 1,
+   "best_time": 104.8003,
+   "laps_total": 40,
+   "time_status": "reliable",
+   "model_time": 104.554,
+   "prequal_position_now": 94,
+   "expected_prequal": {
+    "p10": 105.3167,
+    "p50": 105.3167,
+    "p90": 105.3167
+   },
+   "expected_position": {
+    "p10": 94,
+    "p50": 94,
+    "p90": 94
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3880,9 +5336,9 @@
   {
    "name": "Kees Meurs",
    "car_number": "286",
-   "irating": 1678,
+   "irating": 1629,
    "license": "A",
-   "safety_rating": 2.87,
+   "safety_rating": 2.56,
    "practice_best": 105.0852,
    "practice_laps": 101,
    "prequal_best": 105.4026,
@@ -3891,17 +5347,17 @@
    "best_time": 105.0852,
    "laps_total": 107,
    "time_status": "reliable",
-   "model_time": 105.084,
+   "model_time": 104.976,
    "prequal_position_now": 95,
    "expected_prequal": {
-    "p10": 105.403,
-    "p50": 105.403,
-    "p90": 105.403
+    "p10": 105.4026,
+    "p50": 105.4026,
+    "p90": 105.4026
    },
    "expected_position": {
-    "p10": 104,
-    "p50": 105,
-    "p90": 106
+    "p10": 95,
+    "p50": 95,
+    "p90": 95
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3914,24 +5370,24 @@
    "license": "A",
    "safety_rating": 3.02,
    "practice_best": 106.5764,
-   "practice_laps": 33,
+   "practice_laps": 15,
    "prequal_best": 105.5941,
    "prequal_laps": 5,
    "prequal_sessions_used": 2,
    "best_time": 105.5941,
-   "laps_total": 38,
+   "laps_total": 20,
    "time_status": "reliable",
-   "model_time": 105.339,
+   "model_time": 105.161,
    "prequal_position_now": 96,
    "expected_prequal": {
-    "p10": 105.594,
-    "p50": 105.594,
-    "p90": 105.594
+    "p10": 105.5941,
+    "p50": 105.5941,
+    "p90": 105.5941
    },
    "expected_position": {
-    "p10": 105,
-    "p50": 106,
-    "p90": 107
+    "p10": 96,
+    "p50": 96,
+    "p90": 96
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3944,24 +5400,24 @@
    "license": "A",
    "safety_rating": 2.59,
    "practice_best": 106.0338,
-   "practice_laps": 25,
+   "practice_laps": 15,
    "prequal_best": 105.6111,
    "prequal_laps": 6,
    "prequal_sessions_used": 3,
    "best_time": 105.6111,
-   "laps_total": 31,
+   "laps_total": 21,
    "time_status": "reliable",
-   "model_time": 105.701,
+   "model_time": 105.484,
    "prequal_position_now": 97,
    "expected_prequal": {
-    "p10": 105.611,
-    "p50": 105.611,
-    "p90": 105.611
+    "p10": 105.6111,
+    "p50": 105.6111,
+    "p90": 105.6111
    },
    "expected_position": {
-    "p10": 106,
-    "p50": 107,
-    "p90": 108
+    "p10": 97,
+    "p50": 97,
+    "p90": 97
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -3981,17 +5437,17 @@
    "best_time": 105.7977,
    "laps_total": 60,
    "time_status": "reliable",
-   "model_time": 104.603,
+   "model_time": 104.503,
    "prequal_position_now": 98,
    "expected_prequal": {
-    "p10": 105.292,
-    "p50": 105.798,
-    "p90": 105.798
+    "p10": 105.7977,
+    "p50": 105.7977,
+    "p90": 105.7977
    },
    "expected_position": {
-    "p10": 104,
-    "p50": 108,
-    "p90": 109
+    "p10": 98,
+    "p50": 98,
+    "p90": 98
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4004,24 +5460,24 @@
    "license": "A",
    "safety_rating": 3.44,
    "practice_best": 105.3425,
-   "practice_laps": 146,
+   "practice_laps": 117,
    "prequal_best": 105.8281,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 105.3425,
-   "laps_total": 152,
+   "laps_total": 123,
    "time_status": "reliable",
-   "model_time": 105.385,
+   "model_time": 105.202,
    "prequal_position_now": 99,
    "expected_prequal": {
-    "p10": 105.828,
-    "p50": 105.828,
-    "p90": 105.828
+    "p10": 105.8281,
+    "p50": 105.8281,
+    "p90": 105.8281
    },
    "expected_position": {
-    "p10": 108,
-    "p50": 109,
-    "p90": 111
+    "p10": 99,
+    "p50": 99,
+    "p90": 99
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4041,17 +5497,17 @@
    "best_time": 105.5078,
    "laps_total": 7,
    "time_status": "few_laps",
-   "model_time": 105.507,
+   "model_time": 105.311,
    "prequal_position_now": 100,
    "expected_prequal": {
-    "p10": 105.376,
-    "p50": 105.875,
-    "p90": 105.879
+    "p10": 105.8789,
+    "p50": 105.8789,
+    "p90": 105.8789
    },
    "expected_position": {
-    "p10": 105,
-    "p50": 110,
-    "p90": 111
+    "p10": 100,
+    "p50": 100,
+    "p90": 100
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4071,17 +5527,47 @@
    "best_time": 105.9104,
    "laps_total": 26,
    "time_status": "reliable",
-   "model_time": 105.51,
+   "model_time": 105.313,
    "prequal_position_now": 101,
    "expected_prequal": {
-    "p10": 105.91,
-    "p50": 105.91,
-    "p90": 105.91
+    "p10": 105.9104,
+    "p50": 105.9104,
+    "p90": 105.9104
    },
    "expected_position": {
-    "p10": 110,
-    "p50": 111,
-    "p90": 112
+    "p10": 101,
+    "p50": 101,
+    "p90": 101
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Dick Liefting",
+   "car_number": "163",
+   "irating": 1069,
+   "license": "B",
+   "safety_rating": 2.41,
+   "practice_best": 106.1194,
+   "practice_laps": 47,
+   "prequal_best": 105.9748,
+   "prequal_laps": 3,
+   "prequal_sessions_used": 2,
+   "best_time": 105.9748,
+   "laps_total": 50,
+   "time_status": "reliable",
+   "model_time": 105.592,
+   "prequal_position_now": 102,
+   "expected_prequal": {
+    "p10": 105.9748,
+    "p50": 105.9748,
+    "p90": 105.9748
+   },
+   "expected_position": {
+    "p10": 102,
+    "p50": 102,
+    "p90": 102
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4101,47 +5587,17 @@
    "best_time": 105.9777,
    "laps_total": 16,
    "time_status": "few_laps",
-   "model_time": 105.236,
+   "model_time": 105.069,
    "prequal_position_now": 103,
    "expected_prequal": {
-    "p10": 105.476,
-    "p50": 105.975,
-    "p90": 105.978
+    "p10": 105.9777,
+    "p50": 105.9777,
+    "p90": 105.9777
    },
    "expected_position": {
-    "p10": 106,
-    "p50": 112,
-    "p90": 113
-   },
-   "chance_p1": 0.0,
-   "chance_split1": 0.0,
-   "chance_split2": 0.0
-  },
-  {
-   "name": "Dick Liefting",
-   "car_number": "163",
-   "irating": 1069,
-   "license": "B",
-   "safety_rating": 2.41,
-   "practice_best": 106.1194,
-   "practice_laps": 60,
-   "prequal_best": 105.9748,
-   "prequal_laps": 3,
-   "prequal_sessions_used": 2,
-   "best_time": 105.9748,
-   "laps_total": 63,
-   "time_status": "reliable",
-   "model_time": 105.822,
-   "prequal_position_now": 102,
-   "expected_prequal": {
-    "p10": 105.975,
-    "p50": 105.975,
-    "p90": 105.975
-   },
-   "expected_position": {
-    "p10": 111,
-    "p50": 113,
-    "p90": 113
+    "p10": 103,
+    "p50": 103,
+    "p90": 103
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4154,24 +5610,24 @@
    "license": "A",
    "safety_rating": 3.47,
    "practice_best": 105.1552,
-   "practice_laps": 67,
+   "practice_laps": 43,
    "prequal_best": 105.9888,
    "prequal_laps": 4,
    "prequal_sessions_used": 2,
    "best_time": 105.1552,
-   "laps_total": 71,
+   "laps_total": 47,
    "time_status": "reliable",
-   "model_time": 105.132,
+   "model_time": 104.975,
    "prequal_position_now": 104,
    "expected_prequal": {
-    "p10": 105.989,
-    "p50": 105.989,
-    "p90": 105.989
+    "p10": 105.9888,
+    "p50": 105.9888,
+    "p90": 105.9888
    },
    "expected_position": {
-    "p10": 113,
-    "p50": 114,
-    "p90": 114
+    "p10": 104,
+    "p50": 104,
+    "p90": 104
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4183,25 +5639,25 @@
    "irating": 939,
    "license": "A",
    "safety_rating": 2.73,
-   "practice_best": 121.7348,
-   "practice_laps": 21,
+   "practice_best": null,
+   "practice_laps": 0,
    "prequal_best": 106.1112,
    "prequal_laps": 5,
    "prequal_sessions_used": 2,
    "best_time": 106.1112,
-   "laps_total": 26,
-   "time_status": "reliable",
-   "model_time": 106.035,
+   "laps_total": 5,
+   "time_status": "few_laps",
+   "model_time": 105.782,
    "prequal_position_now": 105,
    "expected_prequal": {
-    "p10": 106.111,
-    "p50": 106.111,
-    "p90": 106.111
+    "p10": 106.1112,
+    "p50": 106.1112,
+    "p90": 106.1112
    },
    "expected_position": {
-    "p10": 114,
-    "p50": 115,
-    "p90": 115
+    "p10": 105,
+    "p50": 105,
+    "p90": 105
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4221,17 +5677,17 @@
    "best_time": 106.2787,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.308,
+   "model_time": 105.132,
    "prequal_position_now": 106,
    "expected_prequal": {
-    "p10": 106.279,
-    "p50": 106.279,
-    "p90": 106.279
+    "p10": 106.2787,
+    "p50": 106.2787,
+    "p90": 106.2787
    },
    "expected_position": {
-    "p10": 115,
-    "p50": 116,
-    "p90": 116
+    "p10": 106,
+    "p50": 106,
+    "p90": 106
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4244,24 +5700,24 @@
    "license": "B",
    "safety_rating": 3.36,
    "practice_best": 106.0041,
-   "practice_laps": 33,
+   "practice_laps": 29,
    "prequal_best": 106.4573,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 106.0041,
-   "laps_total": 39,
+   "laps_total": 35,
    "time_status": "reliable",
-   "model_time": 105.151,
+   "model_time": 104.992,
    "prequal_position_now": 107,
    "expected_prequal": {
-    "p10": 106.457,
-    "p50": 106.457,
-    "p90": 106.457
+    "p10": 106.4573,
+    "p50": 106.4573,
+    "p90": 106.4573
    },
    "expected_position": {
-    "p10": 116,
-    "p50": 117,
-    "p90": 117
+    "p10": 107,
+    "p50": 107,
+    "p90": 107
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4274,24 +5730,24 @@
    "license": "A",
    "safety_rating": 2.93,
    "practice_best": 106.071,
-   "practice_laps": 99,
+   "practice_laps": 48,
    "prequal_best": 106.5195,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 106.071,
-   "laps_total": 105,
+   "laps_total": 54,
    "time_status": "reliable",
-   "model_time": 105.498,
+   "model_time": 105.303,
    "prequal_position_now": 108,
    "expected_prequal": {
-    "p10": 106.519,
-    "p50": 106.519,
-    "p90": 106.519
+    "p10": 106.5195,
+    "p50": 106.5195,
+    "p90": 106.5195
    },
    "expected_position": {
-    "p10": 117,
-    "p50": 118,
-    "p90": 118
+    "p10": 108,
+    "p50": 108,
+    "p90": 108
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4311,17 +5767,17 @@
    "best_time": 106.5256,
    "laps_total": 80,
    "time_status": "reliable",
-   "model_time": 105.677,
+   "model_time": 105.463,
    "prequal_position_now": 109,
    "expected_prequal": {
-    "p10": 106.526,
-    "p50": 106.526,
-    "p90": 106.526
+    "p10": 106.5256,
+    "p50": 106.5256,
+    "p90": 106.5256
    },
    "expected_position": {
-    "p10": 118,
-    "p50": 119,
-    "p90": 119
+    "p10": 109,
+    "p50": 109,
+    "p90": 109
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4341,17 +5797,17 @@
    "best_time": 106.5312,
    "laps_total": 9,
    "time_status": "few_laps",
-   "model_time": 105.104,
+   "model_time": 104.95,
    "prequal_position_now": 110,
    "expected_prequal": {
-    "p10": 106.531,
-    "p50": 106.531,
-    "p90": 106.531
+    "p10": 106.5312,
+    "p50": 106.5312,
+    "p90": 106.5312
    },
    "expected_position": {
-    "p10": 119,
-    "p50": 120,
-    "p90": 120
+    "p10": 110,
+    "p50": 110,
+    "p90": 110
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4364,24 +5820,24 @@
    "license": "A",
    "safety_rating": 3.29,
    "practice_best": 107.5832,
-   "practice_laps": 41,
+   "practice_laps": 31,
    "prequal_best": 107.0605,
    "prequal_laps": 6,
    "prequal_sessions_used": 2,
    "best_time": 107.0605,
-   "laps_total": 47,
+   "laps_total": 37,
    "time_status": "reliable",
-   "model_time": 106.438,
+   "model_time": 106.142,
    "prequal_position_now": 111,
    "expected_prequal": {
-    "p10": 107.061,
-    "p50": 107.061,
-    "p90": 107.061
+    "p10": 107.0605,
+    "p50": 107.0605,
+    "p90": 107.0605
    },
    "expected_position": {
-    "p10": 121,
-    "p50": 121,
-    "p90": 121
+    "p10": 111,
+    "p50": 111,
+    "p90": 111
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4390,28 +5846,238 @@
   {
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 668,
+   "irating": 683,
    "license": "D",
-   "safety_rating": 2.24,
+   "safety_rating": 2.43,
    "practice_best": 109.4139,
-   "practice_laps": 27,
+   "practice_laps": 10,
    "prequal_best": 108.4686,
    "prequal_laps": 18,
    "prequal_sessions_used": 6,
    "best_time": 108.4686,
-   "laps_total": 45,
+   "laps_total": 28,
    "time_status": "reliable",
-   "model_time": 106.592,
+   "model_time": 106.247,
    "prequal_position_now": 112,
    "expected_prequal": {
-    "p10": 108.469,
-    "p50": 108.469,
-    "p90": 108.469
+    "p10": 108.4686,
+    "p50": 108.4686,
+    "p90": 108.4686
    },
    "expected_position": {
-    "p10": 122,
-    "p50": 122,
-    "p90": 122
+    "p10": 112,
+    "p50": 112,
+    "p90": 112
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Laurens Stade",
+   "car_number": null,
+   "irating": 6211,
+   "license": "A",
+   "safety_rating": 4.99,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.019,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.019,
+    "p50": 103.019,
+    "p90": 103.019
+   },
+   "expected_position": {
+    "p10": 113,
+    "p50": 113,
+    "p90": 113
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Kris Louwers2",
+   "car_number": null,
+   "irating": 5735,
+   "license": "A",
+   "safety_rating": 2.74,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.136,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.136,
+    "p50": 103.136,
+    "p90": 103.136
+   },
+   "expected_position": {
+    "p10": 114,
+    "p50": 114,
+    "p90": 114
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Daan van der Ven",
+   "car_number": null,
+   "irating": 5518,
+   "license": "A",
+   "safety_rating": 3.48,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.192,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.192,
+    "p50": 103.192,
+    "p90": 103.192
+   },
+   "expected_position": {
+    "p10": 115,
+    "p50": 115,
+    "p90": 115
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Jamie Molema",
+   "car_number": null,
+   "irating": 4692,
+   "license": "C",
+   "safety_rating": 2.5,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.429,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.429,
+    "p50": 103.429,
+    "p90": 103.429
+   },
+   "expected_position": {
+    "p10": 116,
+    "p50": 116,
+    "p90": 116
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Pascal Tigelaar2",
+   "car_number": null,
+   "irating": 4008,
+   "license": "B",
+   "safety_rating": 2.5,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.66,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.66,
+    "p50": 103.66,
+    "p90": 103.66
+   },
+   "expected_position": {
+    "p10": 117,
+    "p50": 117,
+    "p90": 117
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Danny Jansen",
+   "car_number": null,
+   "irating": 3880,
+   "license": "A",
+   "safety_rating": 3.67,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 103.707,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 103.707,
+    "p50": 103.707,
+    "p90": 103.707
+   },
+   "expected_position": {
+    "p10": 118,
+    "p50": 118,
+    "p90": 118
+   },
+   "chance_p1": 0.0,
+   "chance_split1": 0.0,
+   "chance_split2": 0.0
+  },
+  {
+   "name": "Dannick Eljon2",
+   "car_number": null,
+   "irating": 1344,
+   "license": "R",
+   "safety_rating": 2.8,
+   "practice_best": null,
+   "practice_laps": 0,
+   "prequal_best": null,
+   "prequal_laps": 0,
+   "prequal_sessions_used": 0,
+   "best_time": null,
+   "laps_total": 0,
+   "time_status": "no_time",
+   "model_time": 105.257,
+   "prequal_position_now": null,
+   "expected_prequal": {
+    "p10": 105.257,
+    "p50": 105.257,
+    "p90": 105.257
+   },
+   "expected_position": {
+    "p10": 119,
+    "p50": 119,
+    "p90": 119
    },
    "chance_p1": 0.0,
    "chance_split1": 0.0,
@@ -4423,19 +6089,19 @@
    "label": "< 1.500",
    "irating_from": 0,
    "irating_to": 1500,
-   "members": 21,
-   "measured_n": 15,
+   "members": 20,
+   "measured_n": 13,
    "measured_median": 105.611,
-   "expected_prequal_median": 105.611
+   "expected_prequal_median": 105.72
   },
   {
    "label": "1.500–2.000",
    "irating_from": 1500,
    "irating_to": 2000,
-   "members": 18,
+   "members": 16,
    "measured_n": 9,
    "measured_median": 104.755,
-   "expected_prequal_median": 104.798
+   "expected_prequal_median": 104.848
   },
   {
    "label": "2.000–2.500",
@@ -4444,7 +6110,7 @@
    "members": 17,
    "measured_n": 16,
    "measured_median": 104.005,
-   "expected_prequal_median": 103.955
+   "expected_prequal_median": 104.195
   },
   {
    "label": "2.500–3.000",
@@ -4453,25 +6119,25 @@
    "members": 10,
    "measured_n": 10,
    "measured_median": 103.77,
-   "expected_prequal_median": 103.73
+   "expected_prequal_median": 103.77
   },
   {
    "label": "3.000–4.000",
    "irating_from": 3000,
    "irating_to": 4000,
-   "members": 18,
-   "measured_n": 13,
-   "measured_median": 103.462,
-   "expected_prequal_median": 103.437
+   "members": 17,
+   "measured_n": 12,
+   "measured_median": 103.437,
+   "expected_prequal_median": 103.462
   },
   {
    "label": "4.000–5.000",
    "irating_from": 4000,
    "irating_to": 5000,
    "members": 13,
-   "measured_n": 9,
-   "measured_median": 103.082,
-   "expected_prequal_median": 103.143
+   "measured_n": 8,
+   "measured_median": 103.122,
+   "expected_prequal_median": 103.154
   },
   {
    "label": "5.000–6.000",
@@ -4480,16 +6146,16 @@
    "members": 6,
    "measured_n": 3,
    "measured_median": 103.134,
-   "expected_prequal_median": 103.04
+   "expected_prequal_median": 103.135
   },
   {
    "label": "6.000–8.000",
    "irating_from": 6000,
    "irating_to": 8000,
-   "members": 14,
-   "measured_n": 8,
-   "measured_median": 102.814,
-   "expected_prequal_median": 102.847
+   "members": 15,
+   "measured_n": 7,
+   "measured_median": 102.801,
+   "expected_prequal_median": 102.863
   },
   {
    "label": "8.000+",
@@ -4510,12 +6176,12 @@
   {
    "irating_from": 1000,
    "irating_to": 1500,
-   "count": 18
+   "count": 17
   },
   {
    "irating_from": 1500,
    "irating_to": 2000,
-   "count": 18
+   "count": 16
   },
   {
    "irating_from": 2000,
@@ -4530,7 +6196,7 @@
   {
    "irating_from": 3000,
    "irating_to": 3500,
-   "count": 9
+   "count": 8
   },
   {
    "irating_from": 3500,
@@ -4560,7 +6226,7 @@
   {
    "irating_from": 6000,
    "irating_to": 6500,
-   "count": 5
+   "count": 6
   },
   {
    "irating_from": 6500,
@@ -4708,113 +6374,113 @@
    10500
   ],
   "expected_count_per_500": [
-   1.422,
-   2.808,
-   4.192,
-   5.934,
-   8.325,
-   11.178,
-   14.031,
-   16.439,
-   18.143,
-   19.089,
-   19.369,
-   19.145,
-   18.587,
-   17.841,
-   17.011,
-   16.165,
-   15.344,
-   14.567,
-   13.844,
-   13.176,
-   12.563,
-   12.001,
-   11.487,
-   11.017,
-   10.584,
-   10.186,
-   9.816,
-   9.471,
-   9.145,
-   8.836,
-   8.54,
-   8.255,
-   7.979,
-   7.71,
-   7.448,
-   7.191,
-   6.941,
-   6.696,
-   6.457,
-   6.225,
-   5.999,
-   5.78,
-   5.569,
-   5.365,
-   5.17,
-   4.982,
-   4.802,
-   4.63,
-   4.465,
-   4.309,
-   4.159,
-   4.016,
-   3.88,
-   3.751,
-   3.627,
-   3.508,
-   3.394,
-   3.285,
-   3.181,
-   3.08,
-   2.983,
-   2.889,
-   2.798,
-   2.71,
-   2.624,
-   2.541,
-   2.46,
-   2.381,
-   2.304,
-   2.228,
-   2.154,
-   2.082,
-   2.012,
-   1.943,
-   1.876,
-   1.81,
-   1.745,
-   1.682,
-   1.62,
-   1.56,
-   1.502,
-   1.444,
-   1.389,
-   1.334,
-   1.282,
-   1.23,
-   1.18,
-   1.132,
-   1.085,
-   1.039,
-   0.995,
-   0.953,
-   0.911,
-   0.871,
-   0.833,
-   0.796,
-   0.76,
-   0.726,
-   0.692,
-   0.66,
-   0.63
+   1.362,
+   2.771,
+   4.206,
+   5.929,
+   8.183,
+   10.802,
+   13.376,
+   15.512,
+   16.992,
+   17.783,
+   17.986,
+   17.757,
+   17.254,
+   16.604,
+   15.895,
+   15.18,
+   14.486,
+   13.825,
+   13.203,
+   12.619,
+   12.074,
+   11.566,
+   11.095,
+   10.658,
+   10.254,
+   9.879,
+   9.531,
+   9.207,
+   8.902,
+   8.614,
+   8.339,
+   8.076,
+   7.822,
+   7.575,
+   7.335,
+   7.101,
+   6.872,
+   6.648,
+   6.429,
+   6.216,
+   6.009,
+   5.807,
+   5.611,
+   5.422,
+   5.239,
+   5.063,
+   4.893,
+   4.73,
+   4.573,
+   4.422,
+   4.278,
+   4.139,
+   4.006,
+   3.877,
+   3.754,
+   3.635,
+   3.521,
+   3.41,
+   3.304,
+   3.2,
+   3.1,
+   3.002,
+   2.908,
+   2.816,
+   2.726,
+   2.638,
+   2.553,
+   2.469,
+   2.388,
+   2.308,
+   2.23,
+   2.153,
+   2.079,
+   2.006,
+   1.935,
+   1.865,
+   1.797,
+   1.731,
+   1.666,
+   1.603,
+   1.542,
+   1.482,
+   1.424,
+   1.367,
+   1.312,
+   1.259,
+   1.207,
+   1.157,
+   1.108,
+   1.061,
+   1.016,
+   0.972,
+   0.93,
+   0.889,
+   0.849,
+   0.811,
+   0.774,
+   0.739,
+   0.705,
+   0.673,
+   0.641
   ]
  },
  "irating_summary": {
-  "median": 2701.5,
-  "mean": 3430,
-  "min": 668,
+  "median": 2864,
+  "mean": 3501,
+  "min": 683,
   "max": 10370
  }
 }

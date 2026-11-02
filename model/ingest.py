@@ -26,6 +26,14 @@ if round(sum((x[1] or 0) + (x[3] or 0) for x in l) * 1e4) != c["time_sum"]:
     problems.append("som tijden klopt niet")
 if len({x[0] for x in m}) != len(m):
     problems.append("dubbele leden")
+s = src.get("s", [])
+if s:
+    if len(s) != c.get("s_drivers"):
+        problems.append(f"Suzuka-rijders {len(s)} ≠ {c.get('s_drivers')}")
+    if sum(x[2] for x in s) != c.get("s_laps"):
+        problems.append("som Suzuka-ronden klopt niet")
+    if round(sum((x[1] or 0) for x in s) * 1e4) != c.get("s_time_sum"):
+        problems.append("som Suzuka-tijden klopt niet")
 if problems:
     sys.exit("Invoer afgekeurd: " + "; ".join(problems))
 
@@ -35,7 +43,10 @@ roster = dict(fetched_at=src["fetched_at"], league_id=src["league_id"], league_n
 laps = dict(fetched_at=src["fetched_at"], track=src["track"], sessions_used=src["sessions"],
             drivers=[dict(cust_id=x[0], practice_best=x[1], practice_laps=x[2], prequal_best=x[3], prequal_laps=x[4],
                           prequal_sessions_used=x[5]) for x in l])
+suzuka = dict(fetched_at=src["fetched_at"], sessions_used=src.get("suzuka_sessions", []), days=src.get("suzuka_days", []),
+              drivers=[dict(cust_id=x[0], best=x[1], laps=x[2], best_per_day=x[3], car=x[4]) for x in s])
 INPUT.mkdir(parents=True, exist_ok=True)
+(INPUT / "suzuka.json").write_text(json.dumps(suzuka, ensure_ascii=False, indent=1))
 (INPUT / "roster.json").write_text(json.dumps(roster, ensure_ascii=False, indent=1))
 (INPUT / "laps.json").write_text(json.dumps(laps, ensure_ascii=False, indent=1))
-print(f"OK: {len(m)} leden, {len(l)} rijders met resultaten, {len(src['sessions'])} sessies, stand {src['fetched_at']}")
+print(f"OK: {len(m)} leden, {len(l)} rijders met VIR-resultaten, {len(src['sessions'])} VIR-sessies, {len(s)} rijders op Suzuka ({len(src.get('suzuka_sessions', []))} sessies), stand {src['fetched_at']}")

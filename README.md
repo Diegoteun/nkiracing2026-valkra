@@ -74,3 +74,11 @@ Daarna: `https://<project>.vercel.app/upload` → wachtwoord → kies `valkra-nk
 - 20.000 simulaties. De bandbreedte van de grenzen komt uit extra scenario's: een deel rijdt één sessie, pogingen tot 0,2 s trager, ongeveer 100 deelnemers.
 
 Bron: iRacing Data API. Ledenlijst en Sports Car-licenties van league 15445 en de resultaten van de league-sessies op VIR.
+
+## Suzuka-testsessies
+
+De league heeft dagelijks testsessies op Suzuka (180 minuten, geen kwalificatie). `fetch_iracing.js` scheidt de sessies per circuit:
+VIR telt voor de prequal, Suzuka wordt apart bewaard (`model/input/suzuka.json`). `build.py` voegt een blok `suzuka` toe aan de JSON:
+per split (prequal-plek 1–30 en 31–60) de verwachte pace voor een top-3 op racedag, met bandbreedte, plus per rijder de beste tijd,
+ronden, auto en de kans op een top-3. Pace is de snelste ronde (kwalificatie-niveau), geen gemiddelde racepace.
+Na het einde van de prequal (1 november) staan de splits vast en worden er geen prequal-pogingen meer gesimuleerd.

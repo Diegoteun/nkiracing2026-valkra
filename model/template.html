@@ -179,6 +179,39 @@ table { border-collapse: collapse; width: 100%; }
 .none { color: var(--muted); opacity: 0.6; }
 .empty { padding: 24px 12px; color: var(--muted); text-align: center !important; }
 
+/* Suzuka */
+.row2.single { grid-template-columns: minmax(0, 1fr); }
+.suz-head { display: grid; gap: 4px; }
+.suz-head h2 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.015em; }
+.suz-head .cap { margin: 0; font-size: 13px; color: var(--ink-2); max-width: 82ch; }
+.suzcard { padding-bottom: 14px; gap: 10px; }
+.suzcard .ttl { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.suzcard h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.suzcard .rng { font-size: 12.5px; color: var(--muted); }
+.pace3 { background: var(--ink); color: #FFFFFF; border-radius: 10px; padding: 14px 16px; display: grid; gap: 2px; }
+.pace3.s2 { background: var(--yellow); color: var(--ink); }
+.pace3 .lbl { font-size: 12.5px; opacity: 0.78; }
+.pace3 .val { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.pace3:not(.s2) .val { color: var(--yellow); }
+.pace3 .sub { font-size: 12.5px; opacity: 0.85; }
+.mini3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mini3 > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 1px; }
+.mini3 .lbl { font-size: 11.5px; color: var(--muted); }
+.mini3 .v { font: 600 14.5px var(--mono); }
+.mini3 .s { font-size: 11.5px; color: var(--muted); }
+.stbl { min-width: 0; }
+.stbl small.car { display: block; font: 400 11.5px var(--sans); color: var(--muted); }
+.stbl th { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; padding: 8px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.stbl td { padding: 6px 8px; text-align: right; font-family: var(--mono); font-size: 12.5px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+.stbl th.l, .stbl td.l { text-align: left; }
+.stbl td.nm { font-family: var(--sans); font-weight: 500; white-space: normal; line-height: 1.25; }
+.stbl td.car { font-family: var(--sans); font-size: 12px; color: var(--ink-2); }
+.stbl tr.top3 td { background: var(--yellow-wash); }
+.stbl tr:last-child td { border-bottom: 0; }
+.stbl small { color: var(--muted); font-size: 11px; }
+.showall { font: 500 13px var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; cursor: pointer; justify-self: start; }
+.showall:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.list.closed th:nth-child(2), .list.closed td:nth-child(2) { display: none; }
 .foot { font-size: 12px; color: var(--muted); display: grid; gap: 6px; max-width: 90ch; }
 .foot p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -195,15 +228,25 @@ table { border-collapse: collapse; width: 100%; }
 
   <header class="hero">
     <div class="eyebrow">Valkra Performance · Data · NK iRacing 2026</div>
-    <h1>Prequal VIR: wat is nodig voor split 1?</h1>
-    <p>Alle leden van de SRVN.nl NK-league, met hun iRating, hun tijden op Virginia International Raceway en een voorspelling van de prequal. Wie nog niet of weinig reed, is ingeschat op zijn iRating; de verwachting gaat ervan uit dat alle leden een tijd zetten.</p>
+    <h1 id="hero-h1">Prequal VIR: wat is nodig voor split 1?</h1>
+    <p id="hero-p">Alle leden van de SRVN.nl NK-league, met hun iRating, hun tijden op Virginia International Raceway en een voorspelling van de prequal. Wie nog niet of weinig reed, is ingeschat op zijn iRating; de verwachting gaat ervan uit dat alle leden een tijd zetten.</p>
     <span class="stamp" id="stamp">Data laden…</span>
   </header>
 
   <section class="tiles" id="tiles" aria-label="Kerncijfers"></section>
 
-  <section class="row2">
-    <div class="card">
+  <section id="suz" class="suz" hidden aria-labelledby="suz-title">
+    <div class="suz-head">
+      <div class="eyebrow" style="color:var(--muted)">Suzuka · testsessies</div>
+      <h2 id="suz-title">Pace voor een top-3 per split</h2>
+      <p class="cap" id="suz-cap"></p>
+    </div>
+    <div class="row2" id="suz-cards"></div>
+    <p class="cap" id="suz-note"></p>
+  </section>
+
+  <section class="row2" id="row-pos">
+    <div class="card" id="card-pos">
       <h2>Welke plek levert je tijd op?</h2>
       <p class="cap">Verwachte positie bij deze prequal-tijd. De lijn is de middelste uitkomst, de band is waar 80% van de simulaties uitkomt. Hoger is beter.</p>
       <div class="host" id="ch-pos"></div>
@@ -238,7 +281,7 @@ table { border-collapse: collapse; width: 100%; }
     <div class="list-head">
       <div>
         <h2 id="list-title">Alle rijders</h2>
-        <p class="cap">Verw. eindplek: verwachting na de laatste prequal-sessie, als alle leden een tijd zetten. Nu: huidige prequal-stand.</p>
+        <p class="cap" id="list-cap">Verw. eindplek: verwachting na de laatste prequal-sessie, als alle leden een tijd zetten. Nu: huidige prequal-stand.</p>
       </div>
       <div class="controls">
         <div class="seg" role="group" aria-label="Welke rijders">
@@ -249,17 +292,17 @@ table { border-collapse: collapse; width: 100%; }
       </div>
     </div>
     <div class="tbox">
-      <table class="list">
+      <table class="list" id="listtbl">
         <thead>
           <tr>
-            <th><button type="button" data-key="pos">Verw. eindplek</button></th>
+            <th><button type="button" data-key="pos" id="h-pos">Verw. eindplek</button></th>
             <th><button type="button" data-key="now">Nu</button></th>
             <th class="l"><button type="button" data-key="name">Rijder</button></th>
             <th><button type="button" data-key="ir">iRating</button></th>
             <th class="static l">Licentie</th>
             <th><button type="button" data-key="best">Beste tijd</button></th>
             <th><button type="button" data-key="laps">Ronden</button></th>
-            <th><button type="button" data-key="exp">Verwacht prequal</button></th>
+            <th><button type="button" data-key="exp" id="h-exp">Verwacht prequal</button></th>
             <th class="static l">Split</th>
           </tr>
         </thead>
@@ -333,10 +376,57 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     `<line x1="${X(v)}" x2="${X(v)}" y1="${m.t + ih}" y2="${m.t + ih + 4}" class="g-base"/><text x="${X(v)}" y="${m.t + ih + 18}" text-anchor="middle" class="g-axis">${fmt(v)}</text>`).join("") +
     `<line x1="${m.l}" x2="${m.l + iw}" y1="${m.t + ih}" y2="${m.t + ih}" class="g-base"/>`;
 
+  /* Suzuka: pace needed for a top-3 per split */
+  const carShort = c => c ? String(c).replace(/ GT3.*$/, "").replace(/ EVO( II)?$/, "") : "–";
+  const suzOpen = {};
+  function renderSuzuka(Z) {
+    const sec = $("suz");
+    if (!Z || !Z.splits || !Z.splits.length) { sec.hidden = true; return; }
+    sec.hidden = false;
+    const days = (Z.days || []).length;
+    $("suz-cap").textContent = `Splits volgens de prequal-eindstand. Pace is de snelste ronde (kwalificatie-niveau) op ${Z.track.split(" – ")[0].replace(" International Racing Course", "")}, geen gemiddelde racepace. Racedag ${new Date(Z.race_date).toLocaleDateString("nl-NL", { day: "numeric", month: "long", timeZone: "UTC" })}. Gebaseerd op ${nl(Z.laps_total)} testronden van ${Z.drivers_with_time} rijders in ${days} dagen.`;
+    $("suz-cards").innerHTML = Z.splits.map(S => {
+      const rows = S.drivers, open = !!suzOpen[S.split], shown = open ? rows : rows.slice(0, 10);
+      const T = S.top3_pace, W = S.winner_pace, X = S.top10_pace;
+      return `<div class="card suzcard" data-split="${S.split}">
+        <div class="ttl"><h3>Split ${S.split}</h3><span class="rng">prequal P${S.prequal_from}–P${S.prequal_to}</span></div>
+        <div class="pace3 ${S.split === 2 ? "s2" : "s1"}">
+          <span class="lbl">Pace voor een top-3 op racedag</span>
+          <span class="val">${lap(T.p50)}</span>
+          <span class="sub">80% zeker tussen ${lap(T.p10)} en ${lap(T.p90)}${S.now.p3 ? `. Nu staat P3 op ${lap(S.now.p3)}` : ""}</span>
+        </div>
+        <div class="mini3">
+          <div><span class="lbl">Winnaar-pace</span><span class="v">${lap(W.p50)}</span><span class="s">${lap(W.p10)}–${lap(W.p90)}</span></div>
+          <div><span class="lbl">Top-10 pace</span><span class="v">${lap(X.p50)}</span><span class="s">${lap(X.p10)}–${lap(X.p90)}</span></div>
+          <div><span class="lbl">Al op Suzuka gereden</span><span class="v">${S.with_time} van ${S.members}</span><span class="s">${S.now.p1 ? "snelste nu " + lap(S.now.p1) : "nog geen tijden"}</span></div>
+        </div>
+        <div class="tbox"><table class="stbl">
+          <thead><tr><th class="l">#</th><th class="l">Rijder</th><th>Beste nu</th><th>Verwacht</th><th>Top 3</th></tr></thead>
+          <tbody>${shown.map(d => `<tr class="${d.expected_order <= 3 ? "top3" : ""}">
+            <td class="l">${d.expected_order}</td>
+            <td class="l nm">${esc(d.name)}<small class="car">${d.suzuka_car ? esc(carShort(d.suzuka_car)) + " · " : ""}prequal P${d.prequal_position}</small></td>
+            <td>${d.suzuka_best ? `${lap(d.suzuka_best)} <small>${d.suzuka_laps}r</small>` : '<span class="none">–</span>'}</td>
+            <td>${lap(d.expected_pace.p50)}</td>
+            <td>${Math.round(d.chance_top3)}%</td></tr>`).join("")}</tbody>
+        </table></div>
+        <button type="button" class="showall" data-split="${S.split}" aria-expanded="${open}">${open ? "Toon alleen de top 10" : `Toon alle ${rows.length}`}</button>
+      </div>`;
+    }).join("");
+    const M = Z.model;
+    $("suz-note").textContent = `Rijders die nog niet op Suzuka reden, zijn ingeschat op hun prequal-tijd. Verwacht = snelste ronde op racedag, met naar schatting nog ${Math.round(M.expected_extra_laps)} extra ronden per rijder (${M.test_days_left} testdagen en de kwalificatie). De drempel voor een top-3 ligt sneller dan de verwachte tijd van de nummer 3, omdat in een veld van 30 altijd enkele rijders boven verwachting presteren. Ronden: r achter de tijd. Gele rijen zijn de drie snelste verwachte tijden.`;
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest && e.target.closest(".showall");
+    if (!b) return;
+    suzOpen[b.dataset.split] = !suzOpen[b.dataset.split];
+    if (window.__lastD) renderSuzuka(window.__lastD.suzuka);
+  });
+
   /* Driver list state survives re-renders */
   const list = { drivers: [], sortKey: "pos", sortDir: "asc", filter: "all", query: "" };
 
   function renderAll(D) {
+    window.__lastD = D;
     observers.forEach(o => o.disconnect()); observers = [];
     const PC = D.position_curve, F = D.forecast, M = D.meta.model;
     const step = +(PC.times[1] - PC.times[0]).toFixed(3);
@@ -357,12 +447,35 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
          : { cls: "", lbl: "Grens split 2 (P60)", val: "≈" + lap2(F.split2_cutoff.p50), sub: `80% zeker tussen ${lap2(F.split2_cutoff.p10)} en ${lap2(F.split2_cutoff.p90)}` }
     ];
     if (fast) tiles.push({ cls: "accent", lbl: "Snelste tijd tot nu", val: lap(fast.time), sub: `${esc(fast.name)}${fast.session === "prequal" ? ", P1 in de prequal-stand" : ", in de training"}` + (F.absolute_top_time ? `. Verwachte toptijd ${lap1(F.absolute_top_time + 0.05)}` : "") });
+    const Z = D.suzuka, closed = !!D.meta.prequal_closed;
+    if (closed) {
+      const pq = D.drivers.filter(d => d.prequal_best != null).sort((a, b) => a.prequal_best - b.prequal_best)[0];
+      tiles.length = 0;
+      tiles.push({ cls: "goal", lbl: "Grens split 1 (P30)", val: lap(F.split1_cutoff.p50), sub: "prequal VIR afgerond, definitief" },
+                 { cls: "", lbl: "Grens split 2 (P60)", val: lap(F.split2_cutoff.p50), sub: "prequal VIR afgerond, definitief" });
+      if (pq) tiles.push({ cls: "", lbl: "Snelste prequal-tijd", val: lap(pq.prequal_best), sub: `${esc(pq.name)}, iRating ${pq.irating}` });
+      if (Z && Z.fastest) tiles.push({ cls: "accent", lbl: "Snelste Suzuka-ronde (test)", val: lap(Z.fastest.time), sub: `${esc(Z.fastest.name)}${Z.fastest.split ? ", split " + Z.fastest.split : ""}` });
+    }
     $("tiles").innerHTML = tiles.map(t => `<div class="tile ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
+
+    /* Hero, chart cards and list texts follow the phase of the event */
+    $("hero-h1").textContent = closed ? "NK iRacing: splits en Suzuka-pace" : "Prequal VIR: wat is nodig voor split 1?";
+    $("hero-p").textContent = closed
+      ? "De prequal op Virginia International Raceway is afgerond: de splits liggen vast. Op Suzuka rijden de leden testsessies. Hier staan de snelste tijden per split en de pace die nodig is voor een top-3 op racedag."
+      : "Alle leden van de SRVN.nl NK-league, met hun iRating, hun tijden op Virginia International Raceway en een voorspelling van de prequal. Wie nog niet of weinig reed, is ingeschat op zijn iRating; de verwachting gaat ervan uit dat alle leden een tijd zetten.";
+    $("card-pos").hidden = closed; $("row-pos").classList.toggle("single", closed);
+    $("listtbl").classList.toggle("closed", closed);
+    $("h-pos").textContent = closed ? "Prequal-plek" : "Verw. eindplek";
+    $("h-exp").textContent = closed ? "Prequal-tijd" : "Verwacht prequal";
+    $("list-cap").textContent = closed ? "Eindstand van de prequal op VIR. Split 1 is P1–30, split 2 is P31–60. Rijders zonder prequal-tijd staan onderaan." : "Verw. eindplek: verwachting na de laatste prequal-sessie, als alle leden een tijd zetten. Nu: huidige prequal-stand.";
+    $("list-title").textContent = closed ? "Prequal-eindstand" : "Alle rijders";
+    list.closed = closed;
+    renderSuzuka(Z);
 
     const g = new Date(D.meta.generated_at);
     $("stamp").textContent = "Stand " + g.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Amsterdam" }) + ", " + g.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
-    $("source").textContent = `Bron: iRacing Data API. Ledenlijst en licenties van ${D.meta.league ? D.meta.league.name : "de league"} en ${D.meta.sessions_used ? D.meta.sessions_used.length : "de"} league-sessies op ${D.meta.track || "VIR"}. iRating en licentie zijn Sports Car.`;
-    $("method").textContent = `Methode: verwacht tempo per iRating op basis van ${M.fit_n} rijders met 20+ ronden` +
+    $("source").textContent = `Bron: iRacing Data API. Ledenlijst en licenties van ${D.meta.league ? D.meta.league.name : "de league"}, ${D.meta.sessions_used ? D.meta.sessions_used.length : "de"} league-sessies op ${D.meta.track || "VIR"}` + (Z ? ` en ${(Z.sessions_used || []).length} testsessies op Suzuka` : "") + `. iRating en licentie zijn Sports Car.`;
+    $("method").textContent = (Z && Z.model ? `Suzuka: ${Z.model.description} Spreiding rond de lijn ${dec(Z.model.residual_sd, 2)} s, R² ${dec(Z.model.r2, 2)} op ${Z.model.fit_n} rijders. ` : "") + `Prequal${closed ? " (tijden definitief)" : ""}. Methode: verwacht tempo per iRating op basis van ${M.fit_n} rijders met 20+ ronden` +
       (M.expected_prequal_at_10000 ? `; een rijder van 10.000 iRating rijdt in de prequal naar verwachting ${lap1(M.expected_prequal_at_10000)}` : "") +
       `. Rijders met minder ronden of zonder tijd krijgen dat tempo plus de spreiding van hun iRating-groep, nooit trager dan wat ze al reden. Iedereen rijdt zijn resterende prequal-sessies (maximaal twee). ${nl(D.meta.simulations || 0)} simulaties.` +
       (r1 ? " De grenzen in de tegels houden rekening met rijders die maar één sessie rijden of in de prequal iets trager zijn dan in de training." : "");
@@ -495,7 +608,8 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     renderList();
   }
 
-  const val = { pos: d => d.expected_position.p50 + d.expected_prequal.p50 / 1000, now: d => d.prequal_position_now, name: d => d.name, ir: d => d.irating, best: d => d.best_time, laps: d => d.laps_total, exp: d => d.expected_prequal.p50 };
+  const epos = d => d.expected_position ? d.expected_position.p50 : 1e6;
+  const val = { pos: d => d.expected_position ? d.expected_position.p50 + d.expected_prequal.p50 / 1000 : null, now: d => d.prequal_position_now, name: d => d.name, ir: d => d.irating, best: d => d.best_time, laps: d => d.laps_total, exp: d => d.expected_prequal ? d.expected_prequal.p50 : null };
   const defDir = { pos: "asc", now: "asc", name: "asc", ir: "desc", best: "asc", laps: "desc", exp: "asc" };
   const splitOf = p => p <= 30 ? ["s1", "Split 1"] : p <= 60 ? ["s2", "Split 2"] : ["s3", "Split 3"];
   function renderList() {
@@ -505,7 +619,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const mult = list.sortDir === "asc" ? 1 : -1;
     rows = [...rows].sort((a, b) => {
       const x = val[list.sortKey](a), y = val[list.sortKey](b);
-      if (x == null && y == null) return a.expected_position.p50 - b.expected_position.p50;
+      if (x == null && y == null) return epos(a) - epos(b);
       if (x == null) return 1;
       if (y == null) return -1;
       return (typeof x === "string" ? x.localeCompare(y, "nl") : x - y) * mult;
@@ -513,18 +627,20 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     if (!rows.length) { $("rows").innerHTML = `<tr><td colspan="9" class="empty">Geen rijder gevonden met "${esc(list.query)}".</td></tr>`; return; }
     const maxIr = Math.max(...list.drivers.map(d => d.irating));
     $("rows").innerHTML = rows.map(d => {
-      const [sc, sl] = splitOf(d.expected_position.p50);
-      const locked = d.prequal_sessions_used >= 2;
+      const noQ = list.closed && d.prequal_best == null;
+      const ep = noQ ? null : d.expected_position, xp = noQ ? null : d.expected_prequal;
+      const [sc, sl] = ep ? splitOf(ep.p50) : ["s3", "Geen prequal-tijd"];
+      const locked = list.closed || d.prequal_sessions_used >= 2;
       return `<tr>
-        <td class="pos">P${d.expected_position.p50}<small>${d.expected_position.p10}–${d.expected_position.p90}</small></td>
+        <td class="pos">${ep ? "P" + ep.p50 + (ep.p10 !== ep.p90 ? `<small>${ep.p10}–${ep.p90}</small>` : "") : '<span class="none">–</span>'}</td>
         <td class="num">${d.prequal_position_now ? "P" + d.prequal_position_now : '<span class="none">–</span>'}</td>
         <td class="l name">${esc(d.name)}</td>
         <td><span class="irwrap"><span class="irbar"><span style="width:${(d.irating / maxIr * 100).toFixed(1)}%"></span></span><span class="num">${d.irating}</span></span></td>
         <td class="l"><span class="chip ${esc(d.license)}">${esc(d.license)}</span><span class="sr">${Number(d.safety_rating).toFixed(2)}</span></td>
         <td class="num">${d.best_time != null ? `<i class="st ${d.time_status}" title="${d.time_status === "reliable" ? "20+ ronden" : "minder dan 20 ronden"}"></i>${lap(d.best_time)}` : '<span class="none">–</span>'}</td>
         <td class="num">${d.laps_total || '<span class="none">0</span>'}</td>
-        <td class="num">${lap(d.expected_prequal.p50)}${locked ? '<span class="lock">vast</span>' : ""}</td>
-        <td class="l"><span class="split ${sc}" title="Kans split 1: ${Math.round(d.chance_split1)}%">${sl}</span></td>
+        <td class="num">${xp ? lap(xp.p50) + (locked ? '<span class="lock">vast</span>' : "") : '<span class="none">–</span>'}</td>
+        <td class="l"><span class="split ${sc}" title="${list.closed ? "Definitieve split" : "Kans split 1: " + Math.round(d.chance_split1) + "%"}">${sl}</span></td>
       </tr>`;
     }).join("");
   }
