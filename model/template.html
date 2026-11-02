@@ -402,18 +402,19 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         </div>
         <div class="tbox"><table class="stbl">
           <thead><tr><th class="l">#</th><th class="l">Rijder</th><th>Beste nu</th><th>Verwacht</th><th>Top 3</th></tr></thead>
-          <tbody>${shown.map(d => `<tr class="${d.expected_order <= 3 ? "top3" : ""}">
-            <td class="l">${d.expected_order}</td>
+          <tbody>${shown.map(d => `<tr class="${d.suzuka_rank_now && d.suzuka_rank_now <= 3 ? "top3" : ""}">
+            <td class="l">${d.suzuka_rank_now || '<span class="none">–</span>'}</td>
             <td class="l nm">${esc(d.name)}<small class="car">${d.suzuka_car ? esc(carShort(d.suzuka_car)) + " · " : ""}prequal P${d.prequal_position}</small></td>
             <td>${d.suzuka_best ? `${lap(d.suzuka_best)} <small>${d.suzuka_laps}r</small>` : '<span class="none">–</span>'}</td>
-            <td>${lap(d.expected_pace.p50)}</td>
+            <td>${lap(d.expected_pace.mean != null ? d.expected_pace.mean : d.expected_pace.p50)}</td>
             <td>${Math.round(d.chance_top3)}%</td></tr>`).join("")}</tbody>
         </table></div>
+        ${(() => { const f = rows.filter(d => !d.suzuka_best && d.chance_top3 >= 10).sort((a, b) => b.chance_top3 - a.chance_top3).slice(0, 4); return f.length ? `<p class="cap" style="margin:0">Nog niet gereden, wel kanshebber: ${f.map(d => `${esc(d.name)} (${Math.round(d.chance_top3)}%)`).join(", ")}.</p>` : ""; })()}
         <button type="button" class="showall" data-split="${S.split}" aria-expanded="${open}">${open ? "Toon alleen de top 10" : `Toon alle ${rows.length}`}</button>
       </div>`;
     }).join("");
     const M = Z.model;
-    $("suz-note").textContent = `Rijders die nog niet op Suzuka reden, zijn ingeschat op hun prequal-tijd. Verwacht = snelste ronde op racedag, met naar schatting nog ${Math.round(M.expected_extra_laps)} extra ronden per rijder (${M.test_days_left} testdagen en de kwalificatie). De drempel voor een top-3 ligt sneller dan de verwachte tijd van de nummer 3, omdat in een veld van 30 altijd enkele rijders boven verwachting presteren. Ronden: r achter de tijd. Gele rijen zijn de drie snelste verwachte tijden.`;
+    $("suz-note").textContent = `Rijders die nog niet op Suzuka reden, zijn ingeschat op hun prequal-tijd. Verwacht = gemiddelde van de verwachte snelste ronde op racedag, met naar schatting nog ${Math.round(M.expected_extra_laps)} extra ronden per rijder (${M.test_days_left} testdagen en de kwalificatie). De drempel voor een top-3 ligt sneller dan de verwachte tijd van de nummer 3, omdat in een veld van 30 altijd enkele rijders boven verwachting presteren. Volgorde = beste tijd die al is gereden; rijders zonder Suzuka-tijd staan daaronder. Ronden: r achter de tijd. Gele rijen zijn de huidige top 3.`;
   }
   document.addEventListener("click", e => {
     const b = e.target.closest && e.target.closest(".showall");

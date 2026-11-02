@@ -820,31 +820,6 @@
     },
     "drivers": [
      {
-      "name": "Bradley Leenards",
-      "car_number": "30",
-      "irating": 10370,
-      "prequal_position": 1,
-      "prequal_best": 102.3042,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 115.911,
-       "p50": 116.776,
-       "p90": 117.656
-      },
-      "expected_rank": {
-       "p10": 1,
-       "p50": 8,
-       "p90": 24
-      },
-      "chance_top3": 30.2,
-      "chance_win": 14.0,
-      "expected_order": 1
-     },
-     {
       "name": "Justin De Jong",
       "car_number": "155",
       "irating": 6934,
@@ -863,7 +838,8 @@
       "expected_pace": {
        "p10": 116.143,
        "p50": 116.788,
-       "p90": 116.788
+       "p90": 116.788,
+       "mean": 116.594
       },
       "expected_rank": {
        "p10": 2,
@@ -872,37 +848,7 @@
       },
       "chance_top3": 23.7,
       "chance_win": 7.6,
-      "expected_order": 2
-     },
-     {
-      "name": "Bram Lenten",
-      "car_number": "142",
-      "irating": 7820,
-      "prequal_position": 9,
-      "prequal_best": 102.7114,
-      "suzuka_best": 116.9825,
-      "suzuka_laps": 26,
-      "suzuka_car": "Acura NSX GT3 EVO 22",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       null,
-       116.9825
-      ],
-      "suzuka_rank_now": 3,
-      "expected_pace": {
-       "p10": 116.219,
-       "p50": 116.845,
-       "p90": 116.983
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 8,
-       "p90": 13
-      },
-      "chance_top3": 19.6,
-      "chance_win": 5.8,
-      "expected_order": 3
+      "expected_order": 1
      },
      {
       "name": "Mathijs Wijten",
@@ -923,7 +869,8 @@
       "expected_pace": {
        "p10": 116.287,
        "p50": 116.872,
-       "p90": 116.961
+       "p90": 116.961,
+       "mean": 116.728
       },
       "expected_rank": {
        "p10": 2,
@@ -932,142 +879,38 @@
       },
       "chance_top3": 16.5,
       "chance_win": 4.6,
-      "expected_order": 4
+      "expected_order": 3
      },
      {
-      "name": "Timur Aslan Overman",
-      "car_number": "334",
-      "irating": 8718,
-      "prequal_position": 2,
-      "prequal_best": 102.4964,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.098,
-       "p50": 116.968,
-       "p90": 117.834
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 11,
-       "p90": 26
-      },
-      "chance_top3": 20.9,
-      "chance_win": 8.6,
-      "expected_order": 5
-     },
-     {
-      "name": "Youp De Vos",
-      "car_number": "221",
-      "irating": 8116,
-      "prequal_position": 3,
-      "prequal_best": 102.5362,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.138,
-       "p50": 117.003,
-       "p90": 117.856
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 12,
-       "p90": 26
-      },
-      "chance_top3": 19.2,
-      "chance_win": 7.9,
-      "expected_order": 6
-     },
-     {
-      "name": "Ian Laurence Brown",
-      "car_number": "299",
-      "irating": 7540,
-      "prequal_position": 4,
-      "prequal_best": 102.5976,
-      "suzuka_best": 117.4797,
-      "suzuka_laps": 14,
-      "suzuka_car": "Ferrari 296 GT3",
+      "name": "Bram Lenten",
+      "car_number": "142",
+      "irating": 7820,
+      "prequal_position": 9,
+      "prequal_best": 102.7114,
+      "suzuka_best": 116.9825,
+      "suzuka_laps": 26,
+      "suzuka_car": "Acura NSX GT3 EVO 22",
       "suzuka_best_per_day": [
        null,
        null,
        null,
-       117.4797
+       116.9825
       ],
-      "suzuka_rank_now": 10,
+      "suzuka_rank_now": 3,
       "expected_pace": {
-       "p10": 116.336,
-       "p50": 117.032,
-       "p90": 117.48
-      },
-      "expected_rank": {
-       "p10": 3,
-       "p50": 12,
-       "p90": 22
-      },
-      "chance_top3": 13.0,
-      "chance_win": 3.7,
-      "expected_order": 7
-     },
-     {
-      "name": "Jeanpaul Seemann",
-      "car_number": "180",
-      "irating": 6144,
-      "prequal_position": 5,
-      "prequal_best": 102.6026,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.193,
-       "p50": 117.049,
-       "p90": 117.929
+       "p10": 116.219,
+       "p50": 116.845,
+       "p90": 116.983,
+       "mean": 116.711
       },
       "expected_rank": {
        "p10": 2,
-       "p50": 13,
-       "p90": 27
+       "p50": 8,
+       "p90": 13
       },
-      "chance_top3": 17.3,
-      "chance_win": 6.6,
-      "expected_order": 8
-     },
-     {
-      "name": "Daniel Morpey",
-      "car_number": "283",
-      "irating": 4981,
-      "prequal_position": 7,
-      "prequal_best": 102.6728,
-      "suzuka_best": 117.3485,
-      "suzuka_laps": 32,
-      "suzuka_car": "BMW M4 GT3 EVO",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       null,
-       117.3485
-      ],
-      "suzuka_rank_now": 6,
-      "expected_pace": {
-       "p10": 116.454,
-       "p50": 117.052,
-       "p90": 117.349
-      },
-      "expected_rank": {
-       "p10": 4,
-       "p50": 13,
-       "p90": 19
-      },
-      "chance_top3": 9.1,
-      "chance_win": 2.1,
-      "expected_order": 9
+      "chance_top3": 19.6,
+      "chance_win": 5.8,
+      "expected_order": 2
      },
      {
       "name": "Calvin Leijdekkers",
@@ -1088,7 +931,8 @@
       "expected_pace": {
        "p10": 116.504,
        "p50": 117.105,
-       "p90": 117.273
+       "p90": 117.273,
+       "mean": 116.989
       },
       "expected_rank": {
        "p10": 4,
@@ -1097,62 +941,7 @@
       },
       "chance_top3": 7.8,
       "chance_win": 1.8,
-      "expected_order": 10
-     },
-     {
-      "name": "Lennon Henriquez",
-      "car_number": null,
-      "irating": 7747,
-      "prequal_position": 6,
-      "prequal_best": 102.6592,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.244,
-       "p50": 117.12,
-       "p90": 117.998
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 14,
-       "p90": 27
-      },
-      "chance_top3": 15.2,
-      "chance_win": 5.9,
-      "expected_order": 11
-     },
-     {
-      "name": "Milan Schröer2",
-      "car_number": "109",
-      "irating": 6672,
-      "prequal_position": 11,
-      "prequal_best": 102.8259,
-      "suzuka_best": 117.4183,
-      "suzuka_laps": 10,
-      "suzuka_car": "Ferrari 296 GT3",
-      "suzuka_best_per_day": [
-       null,
-       117.4183,
-       null,
-       null
-      ],
-      "suzuka_rank_now": 7,
-      "expected_pace": {
-       "p10": 116.403,
-       "p50": 117.131,
-       "p90": 117.418
-      },
-      "expected_rank": {
-       "p10": 3,
-       "p50": 14,
-       "p90": 21
-      },
-      "chance_top3": 10.7,
-      "chance_win": 3.2,
-      "expected_order": 12
+      "expected_order": 8
      },
      {
       "name": "Rick Postema",
@@ -1173,7 +962,8 @@
       "expected_pace": {
        "p10": 116.601,
        "p50": 117.204,
-       "p90": 117.289
+       "p90": 117.289,
+       "mean": 117.055
       },
       "expected_rank": {
        "p10": 5,
@@ -1182,62 +972,69 @@
       },
       "chance_top3": 5.2,
       "chance_win": 1.0,
-      "expected_order": 13
+      "expected_order": 11
      },
      {
-      "name": "Luciano Witvoet",
-      "car_number": null,
-      "irating": 10042,
-      "prequal_position": 8,
-      "prequal_best": 102.7113,
-      "suzuka_best": 118.3124,
-      "suzuka_laps": 6,
-      "suzuka_car": "Ferrari 296 GT3",
+      "name": "Daniel Morpey",
+      "car_number": "283",
+      "irating": 4981,
+      "prequal_position": 7,
+      "prequal_best": 102.6728,
+      "suzuka_best": 117.3485,
+      "suzuka_laps": 32,
+      "suzuka_car": "BMW M4 GT3 EVO",
       "suzuka_best_per_day": [
        null,
        null,
        null,
-       118.3124
+       117.3485
       ],
-      "suzuka_rank_now": 15,
+      "suzuka_rank_now": 6,
       "expected_pace": {
-       "p10": 116.49,
-       "p50": 117.271,
-       "p90": 118.038
+       "p10": 116.454,
+       "p50": 117.052,
+       "p90": 117.349,
+       "mean": 116.978
       },
       "expected_rank": {
        "p10": 4,
-       "p50": 17,
-       "p90": 27
+       "p50": 13,
+       "p90": 19
       },
-      "chance_top3": 8.1,
-      "chance_win": 2.3,
-      "expected_order": 14
+      "chance_top3": 9.1,
+      "chance_win": 2.1,
+      "expected_order": 7
      },
      {
-      "name": "Ibrahim Özcan",
-      "car_number": null,
-      "irating": 4232,
-      "prequal_position": 13,
-      "prequal_best": 102.8384,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
+      "name": "Milan Schröer2",
+      "car_number": "109",
+      "irating": 6672,
+      "prequal_position": 11,
+      "prequal_best": 102.8259,
+      "suzuka_best": 117.4183,
+      "suzuka_laps": 10,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       117.4183,
+       null,
+       null
+      ],
+      "suzuka_rank_now": 7,
       "expected_pace": {
-       "p10": 116.43,
-       "p50": 117.281,
-       "p90": 118.158
+       "p10": 116.403,
+       "p50": 117.131,
+       "p90": 117.418,
+       "mean": 117.021
       },
       "expected_rank": {
-       "p10": 4,
-       "p50": 17,
-       "p90": 28
+       "p10": 3,
+       "p50": 14,
+       "p90": 21
       },
-      "chance_top3": 9.6,
-      "chance_win": 3.4,
-      "expected_order": 15
+      "chance_top3": 10.7,
+      "chance_win": 3.2,
+      "expected_order": 10
      },
      {
       "name": "Barry Arends",
@@ -1258,7 +1055,8 @@
       "expected_pace": {
        "p10": 116.701,
        "p50": 117.296,
-       "p90": 117.44
+       "p90": 117.44,
+       "mean": 117.174
       },
       "expected_rank": {
        "p10": 7,
@@ -1267,7 +1065,7 @@
       },
       "chance_top3": 3.5,
       "chance_win": 0.7,
-      "expected_order": 16
+      "expected_order": 15
      },
      {
       "name": "Justin van der Linden",
@@ -1288,7 +1086,8 @@
       "expected_pace": {
        "p10": 116.66,
        "p50": 117.308,
-       "p90": 117.453
+       "p90": 117.453,
+       "mean": 117.171
       },
       "expected_rank": {
        "p10": 6,
@@ -1297,57 +1096,38 @@
       },
       "chance_top3": 4.4,
       "chance_win": 0.9,
-      "expected_order": 17
+      "expected_order": 14
      },
      {
-      "name": "Tom Walstra",
-      "car_number": "270",
-      "irating": 7149,
-      "prequal_position": 14,
-      "prequal_best": 102.8629,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
+      "name": "Ian Laurence Brown",
+      "car_number": "299",
+      "irating": 7540,
+      "prequal_position": 4,
+      "prequal_best": 102.5976,
+      "suzuka_best": 117.4797,
+      "suzuka_laps": 14,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       117.4797
+      ],
+      "suzuka_rank_now": 10,
       "expected_pace": {
-       "p10": 116.458,
-       "p50": 117.324,
-       "p90": 118.192
+       "p10": 116.336,
+       "p50": 117.032,
+       "p90": 117.48,
+       "mean": 116.969
       },
       "expected_rank": {
-       "p10": 4,
-       "p50": 18,
-       "p90": 29
+       "p10": 3,
+       "p50": 12,
+       "p90": 22
       },
-      "chance_top3": 9.1,
-      "chance_win": 2.9,
-      "expected_order": 18
-     },
-     {
-      "name": "Yurica Kasdorp",
-      "car_number": "171",
-      "irating": 8762,
-      "prequal_position": 15,
-      "prequal_best": 102.8646,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.445,
-       "p50": 117.326,
-       "p90": 118.183
-      },
-      "expected_rank": {
-       "p10": 4,
-       "p50": 18,
-       "p90": 29
-      },
-      "chance_top3": 9.3,
-      "chance_win": 3.3,
-      "expected_order": 19
+      "chance_top3": 13.0,
+      "chance_win": 3.7,
+      "expected_order": 5
      },
      {
       "name": "Owen Illsley",
@@ -1368,7 +1148,8 @@
       "expected_pace": {
        "p10": 116.683,
        "p50": 117.351,
-       "p90": 117.699
+       "p90": 117.699,
+       "mean": 117.273
       },
       "expected_rank": {
        "p10": 6,
@@ -1377,6 +1158,338 @@
       },
       "chance_top3": 3.9,
       "chance_win": 0.9,
+      "expected_order": 17
+     },
+     {
+      "name": "Joep van Tilburg",
+      "car_number": "176",
+      "irating": 3792,
+      "prequal_position": 28,
+      "prequal_best": 103.1475,
+      "suzuka_best": 117.9424,
+      "suzuka_laps": 42,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       117.9712,
+       117.9424
+      ],
+      "suzuka_rank_now": 12,
+      "expected_pace": {
+       "p10": 117.061,
+       "p50": 117.637,
+       "p90": 117.942,
+       "mean": 117.57
+      },
+      "expected_rank": {
+       "p10": 13,
+       "p50": 23,
+       "p90": 28
+      },
+      "chance_top3": 0.5,
+      "chance_win": 0.1,
+      "expected_order": 28
+     },
+     {
+      "name": "Gian Zoutewelle",
+      "car_number": "335",
+      "irating": 4466,
+      "prequal_position": 22,
+      "prequal_best": 103.0337,
+      "suzuka_best": 118.1812,
+      "suzuka_laps": 9,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       118.1812
+      ],
+      "suzuka_rank_now": 13,
+      "expected_pace": {
+       "p10": 116.776,
+       "p50": 117.514,
+       "p90": 118.181,
+       "mean": 117.475
+      },
+      "expected_rank": {
+       "p10": 8,
+       "p50": 22,
+       "p90": 28
+      },
+      "chance_top3": 3.0,
+      "chance_win": 0.6,
+      "expected_order": 24
+     },
+     {
+      "name": "Wessel Stevens",
+      "car_number": "317",
+      "irating": 4073,
+      "prequal_position": 21,
+      "prequal_best": 103.0111,
+      "suzuka_best": 118.2849,
+      "suzuka_laps": 56,
+      "suzuka_car": "Porsche 911 GT3 R (992)",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.2954,
+       118.2849
+      ],
+      "suzuka_rank_now": 14,
+      "expected_pace": {
+       "p10": 117.338,
+       "p50": 117.881,
+       "p90": 118.285,
+       "mean": 117.846
+      },
+      "expected_rank": {
+       "p10": 19,
+       "p50": 26,
+       "p90": 29
+      },
+      "chance_top3": 0.1,
+      "chance_win": 0.0,
+      "expected_order": 30
+     },
+     {
+      "name": "Luciano Witvoet",
+      "car_number": null,
+      "irating": 10042,
+      "prequal_position": 8,
+      "prequal_best": 102.7113,
+      "suzuka_best": 118.3124,
+      "suzuka_laps": 6,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       118.3124
+      ],
+      "suzuka_rank_now": 15,
+      "expected_pace": {
+       "p10": 116.49,
+       "p50": 117.271,
+       "p90": 118.038,
+       "mean": 117.257
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 17,
+       "p90": 27
+      },
+      "chance_top3": 8.1,
+      "chance_win": 2.3,
+      "expected_order": 16
+     },
+     {
+      "name": "Bradley Leenards",
+      "car_number": "30",
+      "irating": 10370,
+      "prequal_position": 1,
+      "prequal_best": 102.3042,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 115.911,
+       "p50": 116.776,
+       "p90": 117.656,
+       "mean": 116.781
+      },
+      "expected_rank": {
+       "p10": 1,
+       "p50": 8,
+       "p90": 24
+      },
+      "chance_top3": 30.2,
+      "chance_win": 14.0,
+      "expected_order": 4
+     },
+     {
+      "name": "Timur Aslan Overman",
+      "car_number": "334",
+      "irating": 8718,
+      "prequal_position": 2,
+      "prequal_best": 102.4964,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.098,
+       "p50": 116.968,
+       "p90": 117.834,
+       "mean": 116.969
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 11,
+       "p90": 26
+      },
+      "chance_top3": 20.9,
+      "chance_win": 8.6,
+      "expected_order": 6
+     },
+     {
+      "name": "Youp De Vos",
+      "car_number": "221",
+      "irating": 8116,
+      "prequal_position": 3,
+      "prequal_best": 102.5362,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.138,
+       "p50": 117.003,
+       "p90": 117.856,
+       "mean": 117.0
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 12,
+       "p90": 26
+      },
+      "chance_top3": 19.2,
+      "chance_win": 7.9,
+      "expected_order": 9
+     },
+     {
+      "name": "Jeanpaul Seemann",
+      "car_number": "180",
+      "irating": 6144,
+      "prequal_position": 5,
+      "prequal_best": 102.6026,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.193,
+       "p50": 117.049,
+       "p90": 117.929,
+       "mean": 117.059
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 13,
+       "p90": 27
+      },
+      "chance_top3": 17.3,
+      "chance_win": 6.6,
+      "expected_order": 12
+     },
+     {
+      "name": "Lennon Henriquez",
+      "car_number": null,
+      "irating": 7747,
+      "prequal_position": 6,
+      "prequal_best": 102.6592,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.244,
+       "p50": 117.12,
+       "p90": 117.998,
+       "mean": 117.124
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 14,
+       "p90": 27
+      },
+      "chance_top3": 15.2,
+      "chance_win": 5.9,
+      "expected_order": 13
+     },
+     {
+      "name": "Ibrahim Özcan",
+      "car_number": null,
+      "irating": 4232,
+      "prequal_position": 13,
+      "prequal_best": 102.8384,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.43,
+       "p50": 117.281,
+       "p90": 118.158,
+       "mean": 117.289
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 17,
+       "p90": 28
+      },
+      "chance_top3": 9.6,
+      "chance_win": 3.4,
+      "expected_order": 18
+     },
+     {
+      "name": "Yurica Kasdorp",
+      "car_number": "171",
+      "irating": 8762,
+      "prequal_position": 15,
+      "prequal_best": 102.8646,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.445,
+       "p50": 117.326,
+       "p90": 118.183,
+       "mean": 117.321
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 18,
+       "p90": 29
+      },
+      "chance_top3": 9.3,
+      "chance_win": 3.3,
+      "expected_order": 19
+     },
+     {
+      "name": "Tom Walstra",
+      "car_number": "270",
+      "irating": 7149,
+      "prequal_position": 14,
+      "prequal_best": 102.8629,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.458,
+       "p50": 117.324,
+       "p90": 118.192,
+       "mean": 117.322
+      },
+      "expected_rank": {
+       "p10": 4,
+       "p50": 18,
+       "p90": 29
+      },
+      "chance_top3": 9.1,
+      "chance_win": 2.9,
       "expected_order": 20
      },
      {
@@ -1393,7 +1506,8 @@
       "expected_pace": {
        "p10": 116.517,
        "p50": 117.38,
-       "p90": 118.259
+       "p90": 118.259,
+       "mean": 117.382
       },
       "expected_rank": {
        "p10": 4,
@@ -1418,7 +1532,8 @@
       "expected_pace": {
        "p10": 116.545,
        "p50": 117.41,
-       "p90": 118.27
+       "p90": 118.27,
+       "mean": 117.412
       },
       "expected_rank": {
        "p10": 5,
@@ -1443,7 +1558,8 @@
       "expected_pace": {
        "p10": 116.562,
        "p50": 117.43,
-       "p90": 118.304
+       "p90": 118.304,
+       "mean": 117.428
       },
       "expected_rank": {
        "p10": 5,
@@ -1453,61 +1569,6 @@
       "chance_top3": 6.9,
       "chance_win": 2.1,
       "expected_order": 23
-     },
-     {
-      "name": "Gian Zoutewelle",
-      "car_number": "335",
-      "irating": 4466,
-      "prequal_position": 22,
-      "prequal_best": 103.0337,
-      "suzuka_best": 118.1812,
-      "suzuka_laps": 9,
-      "suzuka_car": "Ferrari 296 GT3",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       null,
-       118.1812
-      ],
-      "suzuka_rank_now": 13,
-      "expected_pace": {
-       "p10": 116.776,
-       "p50": 117.514,
-       "p90": 118.181
-      },
-      "expected_rank": {
-       "p10": 8,
-       "p50": 22,
-       "p90": 28
-      },
-      "chance_top3": 3.0,
-      "chance_win": 0.6,
-      "expected_order": 24
-     },
-     {
-      "name": "Rens de Kok",
-      "car_number": "298",
-      "irating": 6238,
-      "prequal_position": 23,
-      "prequal_best": 103.0719,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.662,
-       "p50": 117.532,
-       "p90": 118.399
-      },
-      "expected_rank": {
-       "p10": 6,
-       "p50": 22,
-       "p90": 29
-      },
-      "chance_top3": 5.0,
-      "chance_win": 1.5,
-      "expected_order": 25
      },
      {
       "name": "Davey Van De Wakker",
@@ -1523,7 +1584,8 @@
       "expected_pace": {
        "p10": 116.661,
        "p50": 117.533,
-       "p90": 118.391
+       "p90": 118.391,
+       "mean": 117.529
       },
       "expected_rank": {
        "p10": 6,
@@ -1531,6 +1593,32 @@
        "p90": 29
       },
       "chance_top3": 5.1,
+      "chance_win": 1.5,
+      "expected_order": 25
+     },
+     {
+      "name": "Rens de Kok",
+      "car_number": "298",
+      "irating": 6238,
+      "prequal_position": 23,
+      "prequal_best": 103.0719,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.662,
+       "p50": 117.532,
+       "p90": 118.399,
+       "mean": 117.533
+      },
+      "expected_rank": {
+       "p10": 6,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 5.0,
       "chance_win": 1.5,
       "expected_order": 26
      },
@@ -1548,7 +1636,8 @@
       "expected_pace": {
        "p10": 116.683,
        "p50": 117.541,
-       "p90": 118.409
+       "p90": 118.409,
+       "mean": 117.543
       },
       "expected_rank": {
        "p10": 6,
@@ -1573,7 +1662,8 @@
       "expected_pace": {
        "p10": 116.749,
        "p50": 117.619,
-       "p90": 118.48
+       "p90": 118.48,
+       "mean": 117.616
       },
       "expected_rank": {
        "p10": 7,
@@ -1582,67 +1672,7 @@
       },
       "chance_top3": 3.8,
       "chance_win": 1.1,
-      "expected_order": 28
-     },
-     {
-      "name": "Joep van Tilburg",
-      "car_number": "176",
-      "irating": 3792,
-      "prequal_position": 28,
-      "prequal_best": 103.1475,
-      "suzuka_best": 117.9424,
-      "suzuka_laps": 42,
-      "suzuka_car": "Ferrari 296 GT3",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       117.9712,
-       117.9424
-      ],
-      "suzuka_rank_now": 12,
-      "expected_pace": {
-       "p10": 117.061,
-       "p50": 117.637,
-       "p90": 117.942
-      },
-      "expected_rank": {
-       "p10": 13,
-       "p50": 23,
-       "p90": 28
-      },
-      "chance_top3": 0.5,
-      "chance_win": 0.1,
       "expected_order": 29
-     },
-     {
-      "name": "Wessel Stevens",
-      "car_number": "317",
-      "irating": 4073,
-      "prequal_position": 21,
-      "prequal_best": 103.0111,
-      "suzuka_best": 118.2849,
-      "suzuka_laps": 56,
-      "suzuka_car": "Porsche 911 GT3 R (992)",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       118.2954,
-       118.2849
-      ],
-      "suzuka_rank_now": 14,
-      "expected_pace": {
-       "p10": 117.338,
-       "p50": 117.881,
-       "p90": 118.285
-      },
-      "expected_rank": {
-       "p10": 19,
-       "p50": 26,
-       "p90": 29
-      },
-      "chance_top3": 0.1,
-      "chance_win": 0.0,
-      "expected_order": 30
      }
     ]
    },
@@ -1692,7 +1722,8 @@
       "expected_pace": {
        "p10": 116.685,
        "p50": 117.379,
-       "p90": 117.392
+       "p90": 117.392,
+       "mean": 117.169
       },
       "expected_rank": {
        "p10": 1,
@@ -1702,36 +1733,6 @@
       "chance_top3": 30.8,
       "chance_win": 11.4,
       "expected_order": 1
-     },
-     {
-      "name": "Diego Teunissen",
-      "car_number": "304",
-      "irating": 2864,
-      "prequal_position": 40,
-      "prequal_best": 103.3964,
-      "suzuka_best": 117.6246,
-      "suzuka_laps": 55,
-      "suzuka_car": "Mercedes-AMG GT3 2020",
-      "suzuka_best_per_day": [
-       118.1139,
-       null,
-       null,
-       117.6246
-      ],
-      "suzuka_rank_now": 4,
-      "expected_pace": {
-       "p10": 116.949,
-       "p50": 117.498,
-       "p90": 117.625
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 9,
-       "p90": 13
-      },
-      "chance_top3": 16.8,
-      "chance_win": 4.1,
-      "expected_order": 2
      },
      {
       "name": "Jorrit Drent",
@@ -1752,7 +1753,8 @@
       "expected_pace": {
        "p10": 116.963,
        "p50": 117.53,
-       "p90": 117.53
+       "p90": 117.53,
+       "mean": 117.374
       },
       "expected_rank": {
        "p10": 3,
@@ -1761,6 +1763,68 @@
       },
       "chance_top3": 14.1,
       "chance_win": 4.5,
+      "expected_order": 2
+     },
+     {
+      "name": "Quinten Klumpert",
+      "car_number": "80",
+      "irating": 2269,
+      "prequal_position": 53,
+      "prequal_best": 103.7513,
+      "suzuka_best": 117.603,
+      "suzuka_laps": 54,
+      "suzuka_car": "BMW M4 GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.4766,
+       117.603
+      ],
+      "suzuka_rank_now": 3,
+      "expected_pace": {
+       "p10": 117.023,
+       "p50": 117.576,
+       "p90": 117.603,
+       "mean": 117.417
+      },
+      "expected_rank": {
+       "p10": 3,
+       "p50": 9,
+       "p90": 13
+      },
+      "chance_top3": 13.0,
+      "chance_win": 3.1,
+      "expected_order": 4
+     },
+     {
+      "name": "Diego Teunissen",
+      "car_number": "304",
+      "irating": 2864,
+      "prequal_position": 40,
+      "prequal_best": 103.3964,
+      "suzuka_best": 117.6246,
+      "suzuka_laps": 55,
+      "suzuka_car": "Mercedes-AMG GT3 2020",
+      "suzuka_best_per_day": [
+       118.1139,
+       null,
+       null,
+       117.6246
+      ],
+      "suzuka_rank_now": 4,
+      "expected_pace": {
+       "p10": 116.949,
+       "p50": 117.498,
+       "p90": 117.625,
+       "mean": 117.383
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 9,
+       "p90": 13
+      },
+      "chance_top3": 16.8,
+      "chance_win": 4.1,
       "expected_order": 3
      },
      {
@@ -1782,7 +1846,8 @@
       "expected_pace": {
        "p10": 116.939,
        "p50": 117.554,
-       "p90": 117.731
+       "p90": 117.731,
+       "mean": 117.439
       },
       "expected_rank": {
        "p10": 2,
@@ -1791,62 +1856,7 @@
       },
       "chance_top3": 16.2,
       "chance_win": 4.7,
-      "expected_order": 4
-     },
-     {
-      "name": "Quinten Klumpert",
-      "car_number": "80",
-      "irating": 2269,
-      "prequal_position": 53,
-      "prequal_best": 103.7513,
-      "suzuka_best": 117.603,
-      "suzuka_laps": 54,
-      "suzuka_car": "BMW M4 GT3 EVO",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       118.4766,
-       117.603
-      ],
-      "suzuka_rank_now": 3,
-      "expected_pace": {
-       "p10": 117.023,
-       "p50": 117.576,
-       "p90": 117.603
-      },
-      "expected_rank": {
-       "p10": 3,
-       "p50": 9,
-       "p90": 13
-      },
-      "chance_top3": 13.0,
-      "chance_win": 3.1,
       "expected_order": 5
-     },
-     {
-      "name": "Servais Van Markwijk",
-      "car_number": "124",
-      "irating": 6034,
-      "prequal_position": 31,
-      "prequal_best": 103.1652,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.747,
-       "p50": 117.61,
-       "p90": 118.484
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 11,
-       "p90": 25
-      },
-      "chance_top3": 20.9,
-      "chance_win": 8.8,
-      "expected_order": 6
      },
      {
       "name": "Kelvin Huurman3",
@@ -1867,7 +1877,8 @@
       "expected_pace": {
        "p10": 117.021,
        "p50": 117.614,
-       "p90": 117.899
+       "p90": 117.899,
+       "mean": 117.537
       },
       "expected_rank": {
        "p10": 3,
@@ -1876,136 +1887,68 @@
       },
       "chance_top3": 13.0,
       "chance_win": 3.1,
-      "expected_order": 7
+      "expected_order": 6
      },
      {
-      "name": "Stijn Handgraaf",
-      "car_number": "129",
-      "irating": 5055,
-      "prequal_position": 33,
-      "prequal_best": 103.2154,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
+      "name": "Thimo Baum",
+      "car_number": "312",
+      "irating": 2992,
+      "prequal_position": 49,
+      "prequal_best": 103.6578,
+      "suzuka_best": 117.9104,
+      "suzuka_laps": 13,
+      "suzuka_car": "BMW M4 GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       117.9104,
+       null
+      ],
+      "suzuka_rank_now": 7,
       "expected_pace": {
-       "p10": 116.803,
-       "p50": 117.665,
-       "p90": 118.534
+       "p10": 117.109,
+       "p50": 117.809,
+       "p90": 117.91,
+       "mean": 117.639
       },
       "expected_rank": {
-       "p10": 2,
-       "p50": 13,
-       "p90": 26
+       "p10": 4,
+       "p50": 14,
+       "p90": 19
       },
-      "chance_top3": 19.2,
-      "chance_win": 7.9,
+      "chance_top3": 9.1,
+      "chance_win": 2.4,
       "expected_order": 8
      },
      {
-      "name": "Kevin Versantvoort",
-      "car_number": "207",
-      "irating": 3500,
-      "prequal_position": 34,
-      "prequal_best": 103.2616,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.844,
-       "p50": 117.712,
-       "p90": 118.572
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 13,
-       "p90": 26
-      },
-      "chance_top3": 17.2,
-      "chance_win": 7.0,
-      "expected_order": 9
-     },
-     {
-      "name": "Niek Jacobs",
-      "car_number": "274",
-      "irating": 4142,
-      "prequal_position": 37,
-      "prequal_best": 103.2859,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.864,
-       "p50": 117.728,
-       "p90": 118.6
-      },
-      "expected_rank": {
-       "p10": 2,
-       "p50": 14,
-       "p90": 26
-      },
-      "chance_top3": 16.2,
-      "chance_win": 6.5,
-      "expected_order": 10
-     },
-     {
-      "name": "Wulfert Van Goor",
-      "car_number": "100",
-      "irating": 2662,
-      "prequal_position": 35,
-      "prequal_best": 103.2632,
-      "suzuka_best": 118.557,
-      "suzuka_laps": 7,
+      "name": "Otto Karis",
+      "car_number": "271",
+      "irating": 3447,
+      "prequal_position": 50,
+      "prequal_best": 103.6629,
+      "suzuka_best": 117.9688,
+      "suzuka_laps": 56,
       "suzuka_car": "Lamborghini Huracán GT3 EVO",
       "suzuka_best_per_day": [
        null,
        null,
-       118.557,
-       null
+       118.1725,
+       117.9688
       ],
-      "suzuka_rank_now": 11,
+      "suzuka_rank_now": 8,
       "expected_pace": {
-       "p10": 117.001,
-       "p50": 117.744,
-       "p90": 118.502
+       "p10": 117.277,
+       "p50": 117.819,
+       "p90": 117.969,
+       "mean": 117.714
       },
       "expected_rank": {
-       "p10": 3,
-       "p50": 14,
-       "p90": 25
-      },
-      "chance_top3": 12.4,
-      "chance_win": 4.1,
-      "expected_order": 11
-     },
-     {
-      "name": "Coen Gerrits",
-      "car_number": "244",
-      "irating": 3501,
-      "prequal_position": 38,
-      "prequal_best": 103.3325,
-      "suzuka_best": null,
-      "suzuka_laps": 0,
-      "suzuka_car": null,
-      "suzuka_best_per_day": null,
-      "suzuka_rank_now": null,
-      "expected_pace": {
-       "p10": 116.894,
-       "p50": 117.767,
-       "p90": 118.639
-      },
-      "expected_rank": {
-       "p10": 2,
+       "p10": 5,
        "p50": 15,
-       "p90": 27
+       "p90": 20
       },
-      "chance_top3": 15.5,
-      "chance_win": 6.1,
+      "chance_top3": 4.4,
+      "chance_win": 0.8,
       "expected_order": 12
      },
      {
@@ -2027,7 +1970,8 @@
       "expected_pace": {
        "p10": 117.09,
        "p50": 117.787,
-       "p90": 118.07
+       "p90": 118.07,
+       "mean": 117.683
       },
       "expected_rank": {
        "p10": 4,
@@ -2036,66 +1980,353 @@
       },
       "chance_top3": 9.8,
       "chance_win": 2.8,
-      "expected_order": 13
+      "expected_order": 10
      },
      {
-      "name": "Thimo Baum",
-      "car_number": "312",
-      "irating": 2992,
-      "prequal_position": 49,
-      "prequal_best": 103.6578,
-      "suzuka_best": 117.9104,
-      "suzuka_laps": 13,
-      "suzuka_car": "BMW M4 GT3 EVO",
+      "name": "Ruud Lopez",
+      "car_number": "48",
+      "irating": 2035,
+      "prequal_position": 46,
+      "prequal_best": 103.518,
+      "suzuka_best": 118.4486,
+      "suzuka_laps": 39,
+      "suzuka_car": "Acura NSX GT3 EVO 22",
       "suzuka_best_per_day": [
        null,
+       118.4486,
        null,
-       117.9104,
-       null
+       118.5602
       ],
-      "suzuka_rank_now": 7,
+      "suzuka_rank_now": 10,
       "expected_pace": {
-       "p10": 117.109,
-       "p50": 117.809,
-       "p90": 117.91
+       "p10": 117.489,
+       "p50": 118.078,
+       "p90": 118.449,
+       "mean": 118.024
       },
       "expected_rank": {
-       "p10": 4,
-       "p50": 14,
-       "p90": 19
+       "p10": 9,
+       "p50": 20,
+       "p90": 25
       },
-      "chance_top3": 9.1,
-      "chance_win": 2.4,
-      "expected_order": 14
+      "chance_top3": 1.7,
+      "chance_win": 0.2,
+      "expected_order": 19
      },
      {
-      "name": "Otto Karis",
-      "car_number": "271",
-      "irating": 3447,
-      "prequal_position": 50,
-      "prequal_best": 103.6629,
-      "suzuka_best": 117.9688,
-      "suzuka_laps": 56,
+      "name": "Wulfert Van Goor",
+      "car_number": "100",
+      "irating": 2662,
+      "prequal_position": 35,
+      "prequal_best": 103.2632,
+      "suzuka_best": 118.557,
+      "suzuka_laps": 7,
       "suzuka_car": "Lamborghini Huracán GT3 EVO",
       "suzuka_best_per_day": [
        null,
        null,
-       118.1725,
-       117.9688
+       118.557,
+       null
       ],
-      "suzuka_rank_now": 8,
+      "suzuka_rank_now": 11,
       "expected_pace": {
-       "p10": 117.277,
-       "p50": 117.819,
-       "p90": 117.969
+       "p10": 117.001,
+       "p50": 117.744,
+       "p90": 118.502,
+       "mean": 117.725
       },
       "expected_rank": {
-       "p10": 5,
-       "p50": 15,
-       "p90": 20
+       "p10": 3,
+       "p50": 14,
+       "p90": 25
       },
-      "chance_top3": 4.4,
-      "chance_win": 0.8,
+      "chance_top3": 12.4,
+      "chance_win": 4.1,
+      "expected_order": 13
+     },
+     {
+      "name": "Milan Wassenburg",
+      "car_number": "159",
+      "irating": 3482,
+      "prequal_position": 39,
+      "prequal_best": 103.3361,
+      "suzuka_best": 118.6506,
+      "suzuka_laps": 37,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       119.1952,
+       null,
+       118.6506,
+       null
+      ],
+      "suzuka_rank_now": 12,
+      "expected_pace": {
+       "p10": 117.555,
+       "p50": 118.145,
+       "p90": 118.651,
+       "mean": 118.11
+      },
+      "expected_rank": {
+       "p10": 10,
+       "p50": 21,
+       "p90": 27
+      },
+      "chance_top3": 1.3,
+      "chance_win": 0.2,
+      "expected_order": 21
+     },
+     {
+      "name": "Gert Bos",
+      "car_number": "140",
+      "irating": 2509,
+      "prequal_position": 59,
+      "prequal_best": 103.8329,
+      "suzuka_best": 118.7304,
+      "suzuka_laps": 6,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       118.7304,
+       null
+      ],
+      "suzuka_rank_now": 13,
+      "expected_pace": {
+       "p10": 117.433,
+       "p50": 118.207,
+       "p90": 118.73,
+       "mean": 118.138
+      },
+      "expected_rank": {
+       "p10": 8,
+       "p50": 22,
+       "p90": 28
+      },
+      "chance_top3": 3.3,
+      "chance_win": 0.9,
+      "expected_order": 22
+     },
+     {
+      "name": "Ron Gravesteijn",
+      "car_number": "190",
+      "irating": 2931,
+      "prequal_position": 56,
+      "prequal_best": 103.7811,
+      "suzuka_best": 118.9846,
+      "suzuka_laps": 18,
+      "suzuka_car": "Lamborghini Huracán GT3 EVO",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       118.9846
+      ],
+      "suzuka_rank_now": 14,
+      "expected_pace": {
+       "p10": 117.698,
+       "p50": 118.361,
+       "p90": 118.985,
+       "mean": 118.334
+      },
+      "expected_rank": {
+       "p10": 13,
+       "p50": 24,
+       "p90": 29
+      },
+      "chance_top3": 0.7,
+      "chance_win": 0.1,
+      "expected_order": 29
+     },
+     {
+      "name": "Dick Jansen",
+      "car_number": "346",
+      "irating": 3278,
+      "prequal_position": 44,
+      "prequal_best": 103.4615,
+      "suzuka_best": 119.2635,
+      "suzuka_laps": 13,
+      "suzuka_car": "Porsche 911 GT3 R (992)",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       null,
+       119.2635
+      ],
+      "suzuka_rank_now": 15,
+      "expected_pace": {
+       "p10": 117.533,
+       "p50": 118.227,
+       "p90": 118.925,
+       "mean": 118.222
+      },
+      "expected_rank": {
+       "p10": 10,
+       "p50": 22,
+       "p90": 29
+      },
+      "chance_top3": 1.8,
+      "chance_win": 0.4,
+      "expected_order": 25
+     },
+     {
+      "name": "Patrick Strijdonck",
+      "car_number": "178",
+      "irating": 2442,
+      "prequal_position": 55,
+      "prequal_best": 103.763,
+      "suzuka_best": 119.2837,
+      "suzuka_laps": 16,
+      "suzuka_car": "Ferrari 296 GT3",
+      "suzuka_best_per_day": [
+       null,
+       null,
+       119.2837,
+       null
+      ],
+      "suzuka_rank_now": 16,
+      "expected_pace": {
+       "p10": 117.786,
+       "p50": 118.465,
+       "p90": 119.136,
+       "mean": 118.449
+      },
+      "expected_rank": {
+       "p10": 15,
+       "p50": 25,
+       "p90": 30
+      },
+      "chance_top3": 0.5,
+      "chance_win": 0.1,
+      "expected_order": 30
+     },
+     {
+      "name": "Servais Van Markwijk",
+      "car_number": "124",
+      "irating": 6034,
+      "prequal_position": 31,
+      "prequal_best": 103.1652,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.747,
+       "p50": 117.61,
+       "p90": 118.484,
+       "mean": 117.616
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 11,
+       "p90": 25
+      },
+      "chance_top3": 20.9,
+      "chance_win": 8.8,
+      "expected_order": 7
+     },
+     {
+      "name": "Stijn Handgraaf",
+      "car_number": "129",
+      "irating": 5055,
+      "prequal_position": 33,
+      "prequal_best": 103.2154,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.803,
+       "p50": 117.665,
+       "p90": 118.534,
+       "mean": 117.665
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 13,
+       "p90": 26
+      },
+      "chance_top3": 19.2,
+      "chance_win": 7.9,
+      "expected_order": 9
+     },
+     {
+      "name": "Kevin Versantvoort",
+      "car_number": "207",
+      "irating": 3500,
+      "prequal_position": 34,
+      "prequal_best": 103.2616,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.844,
+       "p50": 117.712,
+       "p90": 118.572,
+       "mean": 117.709
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 13,
+       "p90": 26
+      },
+      "chance_top3": 17.2,
+      "chance_win": 7.0,
+      "expected_order": 11
+     },
+     {
+      "name": "Niek Jacobs",
+      "car_number": "274",
+      "irating": 4142,
+      "prequal_position": 37,
+      "prequal_best": 103.2859,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.864,
+       "p50": 117.728,
+       "p90": 118.6,
+       "mean": 117.731
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 14,
+       "p90": 26
+      },
+      "chance_top3": 16.2,
+      "chance_win": 6.5,
+      "expected_order": 14
+     },
+     {
+      "name": "Coen Gerrits",
+      "car_number": "244",
+      "irating": 3501,
+      "prequal_position": 38,
+      "prequal_best": 103.3325,
+      "suzuka_best": null,
+      "suzuka_laps": 0,
+      "suzuka_car": null,
+      "suzuka_best_per_day": null,
+      "suzuka_rank_now": null,
+      "expected_pace": {
+       "p10": 116.894,
+       "p50": 117.767,
+       "p90": 118.639,
+       "mean": 117.77
+      },
+      "expected_rank": {
+       "p10": 2,
+       "p50": 15,
+       "p90": 27
+      },
+      "chance_top3": 15.5,
+      "chance_win": 6.1,
       "expected_order": 15
      },
      {
@@ -2112,7 +2343,8 @@
       "expected_pace": {
        "p10": 116.98,
        "p50": 117.847,
-       "p90": 118.728
+       "p90": 118.728,
+       "mean": 117.849
       },
       "expected_rank": {
        "p10": 3,
@@ -2137,7 +2369,8 @@
       "expected_pace": {
        "p10": 117.039,
        "p50": 117.905,
-       "p90": 118.772
+       "p90": 118.772,
+       "mean": 117.904
       },
       "expected_rank": {
        "p10": 3,
@@ -2167,7 +2400,8 @@
       "expected_pace": {
        "p10": 117.103,
        "p50": 117.965,
-       "p90": 118.823
+       "p90": 118.823,
+       "mean": 117.961
       },
       "expected_rank": {
        "p10": 4,
@@ -2177,36 +2411,6 @@
       "chance_top3": 9.2,
       "chance_win": 3.4,
       "expected_order": 18
-     },
-     {
-      "name": "Ruud Lopez",
-      "car_number": "48",
-      "irating": 2035,
-      "prequal_position": 46,
-      "prequal_best": 103.518,
-      "suzuka_best": 118.4486,
-      "suzuka_laps": 39,
-      "suzuka_car": "Acura NSX GT3 EVO 22",
-      "suzuka_best_per_day": [
-       null,
-       118.4486,
-       null,
-       118.5602
-      ],
-      "suzuka_rank_now": 10,
-      "expected_pace": {
-       "p10": 117.489,
-       "p50": 118.078,
-       "p90": 118.449
-      },
-      "expected_rank": {
-       "p10": 9,
-       "p50": 20,
-       "p90": 25
-      },
-      "chance_top3": 1.7,
-      "chance_win": 0.2,
-      "expected_order": 19
      },
      {
       "name": "Patrick A Hesterman",
@@ -2222,7 +2426,8 @@
       "expected_pace": {
        "p10": 117.228,
        "p50": 118.111,
-       "p90": 118.969
+       "p90": 118.969,
+       "mean": 118.107
       },
       "expected_rank": {
        "p10": 5,
@@ -2232,36 +2437,6 @@
       "chance_top3": 6.6,
       "chance_win": 2.1,
       "expected_order": 20
-     },
-     {
-      "name": "Milan Wassenburg",
-      "car_number": "159",
-      "irating": 3482,
-      "prequal_position": 39,
-      "prequal_best": 103.3361,
-      "suzuka_best": 118.6506,
-      "suzuka_laps": 37,
-      "suzuka_car": "Ferrari 296 GT3",
-      "suzuka_best_per_day": [
-       119.1952,
-       null,
-       118.6506,
-       null
-      ],
-      "suzuka_rank_now": 12,
-      "expected_pace": {
-       "p10": 117.555,
-       "p50": 118.145,
-       "p90": 118.651
-      },
-      "expected_rank": {
-       "p10": 10,
-       "p50": 21,
-       "p90": 27
-      },
-      "chance_top3": 1.3,
-      "chance_win": 0.2,
-      "expected_order": 21
      },
      {
       "name": "Cas Brinckhuizen",
@@ -2277,7 +2452,8 @@
       "expected_pace": {
        "p10": 117.282,
        "p50": 118.146,
-       "p90": 119.012
+       "p90": 119.012,
+       "mean": 118.149
       },
       "expected_rank": {
        "p10": 6,
@@ -2286,7 +2462,7 @@
       },
       "chance_top3": 5.6,
       "chance_win": 1.8,
-      "expected_order": 22
+      "expected_order": 23
      },
      {
       "name": "Pawel Jakubowski",
@@ -2302,7 +2478,8 @@
       "expected_pace": {
        "p10": 117.343,
        "p50": 118.199,
-       "p90": 119.074
+       "p90": 119.074,
+       "mean": 118.203
       },
       "expected_rank": {
        "p10": 7,
@@ -2311,67 +2488,7 @@
       },
       "chance_top3": 4.5,
       "chance_win": 1.4,
-      "expected_order": 23
-     },
-     {
-      "name": "Gert Bos",
-      "car_number": "140",
-      "irating": 2509,
-      "prequal_position": 59,
-      "prequal_best": 103.8329,
-      "suzuka_best": 118.7304,
-      "suzuka_laps": 6,
-      "suzuka_car": "Lamborghini Huracán GT3 EVO",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       118.7304,
-       null
-      ],
-      "suzuka_rank_now": 13,
-      "expected_pace": {
-       "p10": 117.433,
-       "p50": 118.207,
-       "p90": 118.73
-      },
-      "expected_rank": {
-       "p10": 8,
-       "p50": 22,
-       "p90": 28
-      },
-      "chance_top3": 3.3,
-      "chance_win": 0.9,
       "expected_order": 24
-     },
-     {
-      "name": "Dick Jansen",
-      "car_number": "346",
-      "irating": 3278,
-      "prequal_position": 44,
-      "prequal_best": 103.4615,
-      "suzuka_best": 119.2635,
-      "suzuka_laps": 13,
-      "suzuka_car": "Porsche 911 GT3 R (992)",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       null,
-       119.2635
-      ],
-      "suzuka_rank_now": 15,
-      "expected_pace": {
-       "p10": 117.533,
-       "p50": 118.227,
-       "p90": 118.925
-      },
-      "expected_rank": {
-       "p10": 10,
-       "p50": 22,
-       "p90": 29
-      },
-      "chance_top3": 1.8,
-      "chance_win": 0.4,
-      "expected_order": 25
      },
      {
       "name": "Stefan van der Velde",
@@ -2387,7 +2504,8 @@
       "expected_pace": {
        "p10": 117.366,
        "p50": 118.234,
-       "p90": 119.096
+       "p90": 119.096,
+       "mean": 118.234
       },
       "expected_rank": {
        "p10": 7,
@@ -2412,7 +2530,8 @@
       "expected_pace": {
        "p10": 117.388,
        "p50": 118.256,
-       "p90": 119.135
+       "p90": 119.135,
+       "mean": 118.26
       },
       "expected_rank": {
        "p10": 7,
@@ -2437,7 +2556,8 @@
       "expected_pace": {
        "p10": 117.429,
        "p50": 118.314,
-       "p90": 119.188
+       "p90": 119.188,
+       "mean": 118.31
       },
       "expected_rank": {
        "p10": 8,
@@ -2447,66 +2567,6 @@
       "chance_top3": 3.8,
       "chance_win": 1.1,
       "expected_order": 28
-     },
-     {
-      "name": "Ron Gravesteijn",
-      "car_number": "190",
-      "irating": 2931,
-      "prequal_position": 56,
-      "prequal_best": 103.7811,
-      "suzuka_best": 118.9846,
-      "suzuka_laps": 18,
-      "suzuka_car": "Lamborghini Huracán GT3 EVO",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       null,
-       118.9846
-      ],
-      "suzuka_rank_now": 14,
-      "expected_pace": {
-       "p10": 117.698,
-       "p50": 118.361,
-       "p90": 118.985
-      },
-      "expected_rank": {
-       "p10": 13,
-       "p50": 24,
-       "p90": 29
-      },
-      "chance_top3": 0.7,
-      "chance_win": 0.1,
-      "expected_order": 29
-     },
-     {
-      "name": "Patrick Strijdonck",
-      "car_number": "178",
-      "irating": 2442,
-      "prequal_position": 55,
-      "prequal_best": 103.763,
-      "suzuka_best": 119.2837,
-      "suzuka_laps": 16,
-      "suzuka_car": "Ferrari 296 GT3",
-      "suzuka_best_per_day": [
-       null,
-       null,
-       119.2837,
-       null
-      ],
-      "suzuka_rank_now": 16,
-      "expected_pace": {
-       "p10": 117.786,
-       "p50": 118.465,
-       "p90": 119.136
-      },
-      "expected_rank": {
-       "p10": 15,
-       "p50": 25,
-       "p90": 30
-      },
-      "chance_top3": 0.5,
-      "chance_win": 0.1,
-      "expected_order": 30
      }
     ]
    }

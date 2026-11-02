@@ -283,12 +283,13 @@ def build_suzuka():
                 name=r["name"], car_number=r["num"], irating=r["ir"], prequal_position=r["now"], prequal_best=r["qBest"],
                 suzuka_best=m["best"], suzuka_laps=m["laps"], suzuka_car=m["car"], suzuka_best_per_day=m["days"],
                 suzuka_rank_now=now_rank,
-                expected_pace=dict(p10=round(qs(draw[:, j], .1), 3), p50=round(qs(draw[:, j], .5), 3), p90=round(qs(draw[:, j], .9), 3)),
+                expected_pace=dict(p10=round(qs(draw[:, j], .1), 3), p50=round(qs(draw[:, j], .5), 3), p90=round(qs(draw[:, j], .9), 3), mean=round(float(draw[:, j].mean()), 3)),
                 expected_rank=dict(p10=int(qs(rankpos[:, j], .1)), p50=int(round(qs(rankpos[:, j], .5))), p90=int(qs(rankpos[:, j], .9))),
                 chance_top3=round(float((rankpos[:, j] <= 3).mean() * 100), 1),
                 chance_win=round(float((rankpos[:, j] == 1).mean() * 100), 1)))
-        drivers_s.sort(key=lambda d: (d["expected_pace"]["p50"], d["expected_rank"]["p50"]))
-        for i_, d_ in enumerate(drivers_s, 1):
+        # table order = what has actually been driven (best time first), then riders without a Suzuka time by expected pace
+        drivers_s.sort(key=lambda d: (d["suzuka_best"] is None, d["suzuka_best"] or 0, d["expected_pace"]["mean"]))
+        for i_, d_ in enumerate(sorted(drivers_s, key=lambda d: d["expected_pace"]["mean"]), 1):
             d_["expected_order"] = i_
         p3 = srt[:, 2]; p1 = srt[:, 0]; p10 = srt[:, 9]
         now_p = lambda k: timed_now[k - 1]["best"] if len(timed_now) >= k else None
