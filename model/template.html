@@ -1,25 +1,21 @@
-<title>NK iRacing rijdersveld</title>
+<title>NK iRacing racepace</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <!--
-  Valkra Performance · NK iRacing prequal-dashboard
+  Valkra Performance · NK iRacing 2026 · pace voor de komende race
 
   Deployment
   - De pagina haalt bij het openen de laatste JSON op uit GitHub (data/valkra-nk-prequal.json in Diegoteun/nkiracing2026-valkra).
-    Elke update in de repo is daardoor zonder nieuwe deploy zichtbaar (GitHub cachet raw-bestanden tot ~5 minuten).
+    De bestandsnaam is gelijk gebleven zodat de upload (/upload) blijft werken; de racedata staat onder de sleutel "race".
   - Instellingen (optioneel), vóór dit bestand of bovenaan de pagina:
       <script>window.VALKRA_PREQUAL_CONFIG = { dataUrl: "/data/valkra-nk-prequal.json", uploadUrl: "/admin/prequal-data" };</script>
-    dataUrl   waar de pagina de JSON ophaalt (standaard: de raw-URL in GitHub)
-    uploadUrl optioneel endpoint dat een nieuwe JSON opslaat (POST multipart, veld "file"; stuurt X-CSRF-TOKEN mee
-              uit <meta name="csrf-token"> als die er is). Zonder uploadUrl werkt importeren alleen als voorbeeld in de eigen browser.
   - Beheer: open de pagina met #beheer achter de URL om de knop "JSON importeren" te tonen.
-  - Bevat ook een ingebouwde kopie van de data als terugval, zodat het bestand los ook werkt.
+  - Bevat een ingebouwde kopie van de data als terugval, zodat het bestand los ook werkt.
 -->
 <style>
-/* Layout: Valkra team-site section. Dark hero card, KPI row, two rows of two analysis cards, then the full sortable entry list.
-   Single light theme on purpose: it sits inside the light Valkra Performance site. */
+/* Layout: dark hero, four KPI tiles, the team card, then one card per split. Single light theme: it sits inside the light Valkra site. */
 :root {
   color-scheme: light;
   --bg: #F8FAFC;
@@ -32,19 +28,13 @@
   --axis: #CBD0D6;
   --yellow: #FEEA27;
   --yellow-wash: rgba(254, 234, 39, 0.32);
-  --measured: #2a63a8;
-  --uncertain: #a67c00;
-  --range: rgba(17, 24, 39, 0.12);
-  --zone1: rgba(17, 24, 39, 0.06);
-  --zone2: rgba(17, 24, 39, 0.025);
   --ok: #067647;
   --err: #B42318;
-  --lic-r: #D2241C; --lic-d: #E07400; --lic-c: #E3B200; --lic-b: #2A9A3B; --lic-a: #1F5FD0;
   --sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.55; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; }
 .wrap {
   max-width: 1120px; margin: 0 auto; padding-block: 24px 48px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
@@ -76,7 +66,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 @media (max-width: 820px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; min-width: 0; }
 .tile .lbl { font-size: 12.5px; color: var(--muted); }
-.tile .val { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.tile .val { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .tile .sub { font-size: 12.5px; color: var(--ink-2); }
 .tile.goal { background: var(--ink); border-color: var(--ink); color: #FFFFFF; }
 .tile.goal .lbl, .tile.goal .sub { color: rgba(255, 255, 255, 0.72); }
@@ -87,131 +77,52 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 /* Cards */
 .row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
 @media (max-width: 920px) { .row2 { grid-template-columns: minmax(0, 1fr); } }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 16px 10px; display: grid; gap: 4px; align-content: start; min-width: 0; }
-.card h2, .list-head h2 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
-.card .cap { margin: 0 0 6px; font-size: 12.5px; color: var(--muted); max-width: 70ch; }
-.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12.5px; color: var(--ink-2); margin-bottom: 4px; }
-.legend > span { display: inline-flex; align-items: center; gap: 6px; }
-.sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
-.sw.m { background: var(--measured); }
-.sw.u { background: var(--uncertain); }
-.sw.r { background: var(--surface); border: 2px solid var(--uncertain); }
-.sw.l { width: 16px; height: 2px; border-radius: 1px; background: var(--ink); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card[hidden] { display: none; }
+.card h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.card h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.cap { margin: 0; font-size: 12.5px; color: var(--muted); max-width: 80ch; }
+.ttl { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.ttl .rng { font-size: 12.5px; color: var(--muted); }
 
-/* Charts */
-.host { position: relative; min-width: 0; }
-.plot { width: 100%; min-height: 240px; }
-.plot svg { display: block; touch-action: pan-y; }
-.g-grid { stroke: var(--grid); stroke-width: 1; }
-.g-base { stroke: var(--axis); stroke-width: 1; }
-.g-axis { fill: var(--muted); font-family: var(--sans); font-size: 11px; font-variant-numeric: tabular-nums; }
-.g-zone { fill: var(--muted); font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-.g-note { fill: var(--ink); font-family: var(--sans); font-size: 11.5px; font-weight: 500; }
-.g-mark { stroke: var(--ink); stroke-width: 1; opacity: 0.5; }
-.g-marklabel { fill: var(--ink); font-family: var(--sans); font-size: 11px; font-weight: 600; }
-.g-range { fill: var(--range); }
-.g-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-.g-model { fill: none; stroke: var(--ink); stroke-width: 1.5; opacity: 0.7; }
-.g-m { fill: var(--measured); stroke: var(--surface); stroke-width: 1.5; }
-.g-u { fill: var(--uncertain); stroke: var(--surface); stroke-width: 1.5; }
-.g-r { fill: var(--surface); stroke: var(--uncertain); stroke-width: 2; }
-.g-hl { fill: none; stroke: var(--ink); stroke-width: 1.5; }
-.g-cross { stroke: var(--muted); stroke-width: 1; }
-.g-dot { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
-.g-bar { fill: var(--measured); }
-.g-kde { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; opacity: 0.75; }
-.tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 6px 18px rgba(17, 24, 39, 0.12); padding: 8px 10px; font-size: 12.5px; display: grid; gap: 2px; z-index: 3; min-width: 170px; }
-.tip[hidden] { display: none; }
-.tip .t { font-weight: 600; }
-.tip .s { color: var(--muted); font-size: 12px; }
-.tip b { font-family: var(--mono); font-weight: 600; }
+/* Target block per split */
+.pace3 { background: var(--ink); color: #FFFFFF; border-radius: 10px; padding: 14px 16px; display: grid; gap: 2px; }
+.pace3.s2 { background: var(--yellow); color: var(--ink); }
+.pace3 .lbl { font-size: 12.5px; opacity: 0.78; }
+.pace3 .val { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.pace3:not(.s2) .val { color: var(--yellow); }
+.pace3 .sub { font-size: 12.5px; opacity: 0.85; }
+.mini3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mini3 > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 1px; min-width: 0; }
+.mini3 .lbl { font-size: 11.5px; color: var(--muted); }
+.mini3 .v { font: 600 14.5px var(--mono); }
+.mini3 .s { font-size: 11.5px; color: var(--muted); }
 
 /* Tables */
 .tbox { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; }
-.bandtbl { min-width: 400px; }
-.bandtbl th, .list th { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.bandtbl td { padding: 7px 10px; text-align: right; font-family: var(--mono); font-size: 12.5px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
-.bandtbl th:first-child, .bandtbl td:first-child { text-align: left; }
-.bandtbl tr:last-child td { border-bottom: 0; }
-.dim { color: var(--muted); }
-
-/* Driver list */
-.list-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; display: grid; min-width: 0; }
-.list-head { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; padding: 16px 16px 12px; }
-.list-head .cap { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
-.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-.seg button { font: 500 13px var(--sans); color: var(--ink-2); background: var(--surface); border: 0; padding: 7px 12px; cursor: pointer; }
-.seg button + button { border-left: 1px solid var(--line); }
-.seg button[aria-pressed="true"] { background: var(--ink); color: #FFFFFF; }
-#q { font: 13px var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; width: min(220px, 100%); }
-.seg button:focus-visible, #q:focus-visible, .list th button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.list { min-width: 880px; }
-.list thead th { position: sticky; top: 0; background: var(--surface); padding: 0; }
-.list th button { all: unset; display: block; padding: 8px 10px; cursor: pointer; }
-.list th.l, .list th.l button { text-align: left; }
-.list th button[aria-sort="ascending"], .list th button[aria-sort="descending"] { color: var(--ink); }
-.list th button[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
-.list th button[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
-.list th.static { padding: 8px 10px; }
-.list td { padding: 7px 10px; border-bottom: 1px solid var(--grid); white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
-.list td.l { text-align: left; }
-.list tr:last-child td { border-bottom: 0; }
-.list td.pos { font-family: var(--mono); font-weight: 600; }
-.list td.pos small { display: block; font-weight: 400; font-size: 11px; color: var(--muted); }
-.list td.name { font-weight: 500; }
-.list td.num { font-family: var(--mono); font-size: 12.5px; }
-.irwrap { display: inline-grid; grid-template-columns: 56px 44px; gap: 8px; align-items: center; }
-.irbar { height: 4px; background: var(--grid); border-radius: 2px; overflow: hidden; }
-.irbar span { display: block; height: 100%; background: var(--measured); }
-.chip { display: inline-block; min-width: 18px; padding: 1px 6px; border-radius: 4px; font: 600 11.5px var(--mono); text-align: center; color: #FFFFFF; margin-right: 5px; }
-.chip.R { background: var(--lic-r); } .chip.D { background: var(--lic-d); } .chip.C { background: var(--lic-c); color: #1A1A1A; } .chip.B { background: var(--lic-b); } .chip.A { background: var(--lic-a); }
-.sr { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-.st { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-.st.reliable { background: var(--measured); }
-.st.few_laps { background: var(--uncertain); }
-.lock { font-size: 10.5px; color: var(--muted); margin-left: 4px; font-family: var(--sans); }
-.split { display: inline-block; font: 600 11px var(--sans); letter-spacing: 0.04em; padding: 2px 8px; border-radius: 6px; }
-.split.s1 { background: var(--ink); color: var(--yellow); }
-.split.s2 { background: var(--line); color: var(--ink); }
-.split.s3 { background: var(--surface); color: var(--ink-2); border: 1px solid var(--line); }
-.none { color: var(--muted); opacity: 0.6; }
-.empty { padding: 24px 12px; color: var(--muted); text-align: center !important; }
-
-/* Suzuka */
-.row2.single { grid-template-columns: minmax(0, 1fr); }
-.suz-head { display: grid; gap: 4px; }
-.suz-head h2 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.015em; }
-.suz-head .cap { margin: 0; font-size: 13px; color: var(--ink-2); max-width: 82ch; }
-.suzcard { padding-bottom: 14px; gap: 10px; }
-.suzcard .ttl { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
-.suzcard h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
-.suzcard .rng { font-size: 12.5px; color: var(--muted); }
-.pace3 { background: var(--ink); color: #FFFFFF; border-radius: 10px; padding: 14px 16px; display: grid; gap: 2px; }
-.pace3.s2 { background: var(--yellow); color: var(--ink); }
-.pace3 .lbl { font-size: 12.5px; opacity: 0.78; }
-.pace3 .val { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
-.pace3:not(.s2) .val { color: var(--yellow); }
-.pace3 .sub { font-size: 12.5px; opacity: 0.85; }
-.mini3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.mini3 > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 1px; }
-.mini3 .lbl { font-size: 11.5px; color: var(--muted); }
-.mini3 .v { font: 600 14.5px var(--mono); }
-.mini3 .s { font-size: 11.5px; color: var(--muted); }
-.stbl { min-width: 0; }
-.stbl small.car { display: block; font: 400 11.5px var(--sans); color: var(--muted); }
-.stbl th { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; padding: 8px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.stbl td { padding: 6px 8px; text-align: right; font-family: var(--mono); font-size: 12.5px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+.stbl th { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; padding: 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.stbl td { padding: 6px 8px; text-align: right; font-family: var(--mono); font-size: 12.5px; border-bottom: 1px solid var(--grid); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .stbl th.l, .stbl td.l { text-align: left; }
-.stbl td.nm { font-family: var(--sans); font-weight: 500; white-space: normal; line-height: 1.25; }
-.stbl td.car { font-family: var(--sans); font-size: 12px; color: var(--ink-2); }
+.stbl td.nm { font-family: var(--sans); font-weight: 500; white-space: normal; line-height: 1.25; min-width: 140px; }
+.stbl td.nm small { display: block; font: 400 11.5px var(--sans); color: var(--muted); }
 .stbl tr.top3 td { background: var(--yellow-wash); }
+.stbl tr.team td.nm { font-weight: 700; }
+.stbl tr.team td:first-child { box-shadow: inset 3px 0 0 var(--ink); }
 .stbl tr:last-child td { border-bottom: 0; }
-.stbl small { color: var(--muted); font-size: 11px; }
+.stbl small.r { color: var(--muted); font-size: 11px; }
+.tag { display: inline-block; font: 600 10.5px var(--sans); letter-spacing: 0.04em; padding: 1px 6px; border-radius: 5px; background: var(--ink); color: var(--yellow); margin-left: 6px; vertical-align: 1px; }
+.est { font: 400 10.5px var(--sans); color: var(--muted); margin-left: 4px; }
+.gap { font-weight: 600; }
+.gap.in { color: var(--ok); }
+.gap.out { color: var(--ink); }
+.split { display: inline-block; font: 600 11px var(--sans); letter-spacing: 0.04em; padding: 2px 8px; border-radius: 6px; background: var(--line); color: var(--ink); }
+.split.s1 { background: var(--ink); color: var(--yellow); }
+.none { color: var(--muted); opacity: 0.6; }
 .showall { font: 500 13px var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; cursor: pointer; justify-self: start; }
 .showall:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.list.closed th:nth-child(2), .list.closed td:nth-child(2) { display: none; }
+.teamcard { border-color: var(--ink); }
+
 .foot { font-size: 12px; color: var(--muted); display: grid; gap: 6px; max-width: 90ch; }
 .foot p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -228,92 +139,25 @@ table { border-collapse: collapse; width: 100%; }
 
   <header class="hero">
     <div class="eyebrow">Valkra Performance · Data · NK iRacing 2026</div>
-    <h1 id="hero-h1">Prequal VIR: wat is nodig voor split 1?</h1>
-    <p id="hero-p">Alle leden van de SRVN.nl NK-league, met hun iRating, hun tijden op Virginia International Raceway en een voorspelling van de prequal. Wie nog niet of weinig reed, is ingeschat op zijn iRating; de verwachting gaat ervan uit dat alle leden een tijd zetten.</p>
+    <h1 id="hero-h1">Pace voor de komende race</h1>
+    <p id="hero-p">Per split wie welke tijd reed, wat we op racedag verwachten en de target voor een top 3.</p>
     <span class="stamp" id="stamp">Data laden…</span>
   </header>
 
   <section class="tiles" id="tiles" aria-label="Kerncijfers"></section>
 
-  <section id="suz" class="suz" hidden aria-labelledby="suz-title">
-    <div class="suz-head">
-      <div class="eyebrow" style="color:var(--muted)">Suzuka · testsessies</div>
-      <h2 id="suz-title">Pace voor een top-3 per split</h2>
-      <p class="cap" id="suz-cap"></p>
-    </div>
-    <div class="row2" id="suz-cards"></div>
-    <p class="cap" id="suz-note"></p>
+  <section class="card teamcard" id="team" aria-labelledby="team-title">
+    <div class="ttl"><h2 id="team-title">Valkra Performance</h2><span class="rng" id="team-sub"></span></div>
+    <p class="cap" id="team-cap"></p>
+    <div class="tbox"><table class="stbl" id="teamtbl"></table></div>
   </section>
 
-  <section class="row2" id="row-pos">
-    <div class="card" id="card-pos">
-      <h2>Welke plek levert je tijd op?</h2>
-      <p class="cap">Verwachte positie bij deze prequal-tijd. De lijn is de middelste uitkomst, de band is waar 80% van de simulaties uitkomt. Hoger is beter.</p>
-      <div class="host" id="ch-pos"></div>
-    </div>
-    <div class="card">
-      <h2>Tempo per iRating</h2>
-      <p class="cap">Elke stip is een rijder, sneller staat hoger. De lijn is het verwachte tempo per iRating.</p>
-      <div class="legend">
-        <span><i class="sw m"></i>Gemeten, 20+ ronden</span>
-        <span><i class="sw u"></i>Gemeten, minder dan 20 ronden</span>
-        <span><i class="sw r"></i>Nog geen tijd: modeltempo</span>
-        <span><i class="sw l"></i>Model</span>
-      </div>
-      <div class="host" id="ch-ir"></div>
-    </div>
-  </section>
-
-  <section class="row2">
-    <div class="card">
-      <h2>Verwachte tijd per iRating-band</h2>
-      <p class="cap">Gemeten: mediaan van rijders met 20+ ronden (aantal tussen haakjes). Verwacht: mediaan van de voorspelde prequal-tijd van alle leden in de band.</p>
-      <div class="tbox"><table class="bandtbl" id="bands"></table></div>
-    </div>
-    <div class="card">
-      <h2>iRating-verdeling van de league</h2>
-      <p class="cap">Aantal leden per 500 iRating, met de vloeiende verdeling eroverheen.</p>
-      <div class="host" id="ch-dist"></div>
-    </div>
-  </section>
-
-  <section class="list-card" aria-labelledby="list-title">
-    <div class="list-head">
-      <div>
-        <h2 id="list-title">Alle rijders</h2>
-        <p class="cap" id="list-cap">Verw. eindplek: verwachting na de laatste prequal-sessie, als alle leden een tijd zetten. Nu: huidige prequal-stand.</p>
-      </div>
-      <div class="controls">
-        <div class="seg" role="group" aria-label="Welke rijders">
-          <button type="button" id="f-all" aria-pressed="true">Alle</button>
-          <button type="button" id="f-time" aria-pressed="false">Met tijd</button>
-        </div>
-        <input id="q" type="search" placeholder="Zoek rijder" aria-label="Zoek rijder" autocomplete="off">
-      </div>
-    </div>
-    <div class="tbox">
-      <table class="list" id="listtbl">
-        <thead>
-          <tr>
-            <th><button type="button" data-key="pos" id="h-pos">Verw. eindplek</button></th>
-            <th><button type="button" data-key="now">Nu</button></th>
-            <th class="l"><button type="button" data-key="name">Rijder</button></th>
-            <th><button type="button" data-key="ir">iRating</button></th>
-            <th class="static l">Licentie</th>
-            <th><button type="button" data-key="best">Beste tijd</button></th>
-            <th><button type="button" data-key="laps">Ronden</button></th>
-            <th><button type="button" data-key="exp" id="h-exp">Verwacht prequal</button></th>
-            <th class="static l">Split</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-    </div>
-  </section>
+  <section class="row2" id="splits" aria-label="Splits"></section>
 
   <footer class="foot">
-    <p id="source"></p>
+    <p id="note"></p>
     <p id="method"></p>
+    <p id="source"></p>
   </footer>
 </div>
 
@@ -325,349 +169,115 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
 
   /* Formatting */
   const fmtT = (t, d) => { const r = Math.round(t * 10 ** d) / 10 ** d; const m = Math.floor(r / 60); return m + ":" + (r - m * 60).toFixed(d).padStart(d + 3, "0"); };
-  const lap = t => fmtT(t, 3), lap2 = t => fmtT(t, 2), lap1 = t => fmtT(t, 1);
+  const lap = t => fmtT(t, 3);
   const nl = n => n.toLocaleString("nl-NL");
-  const dec = (n, d) => n.toFixed(d).replace(".", ",");
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
+  const sgn = v => (v > 0 ? "+" : v < 0 ? "−" : "±") + Math.abs(v).toFixed(3).replace(".", ",");
+  const carShort = c => c ? String(c).replace(/ GT3.*$/, "").replace(/ EVO( II)?$/, "") : "";
+  const trackShort = t => String(t || "").split(" – ")[0].replace(" International Racing Course", "").replace(" International Raceway", "");
+  const dateNl = s => new Date(s).toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Amsterdam" });
+  const timeNl = s => new Date(s).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
+  const gapHtml = v => v == null ? '<span class="none">–</span>' : `<span class="gap ${v <= 0 ? "in" : "out"}">${sgn(v)}</span>`;
 
   /* Validation of an imported or fetched data file */
   function problems(D) {
     const p = [];
     if (!D || typeof D !== "object") return ["geen JSON-object"];
     if (!D.meta || !D.meta.generated_at) p.push("meta.generated_at");
-    if (!D.meta || !D.meta.model) p.push("meta.model");
-    if (!D.forecast || !D.forecast.split1_cutoff || !D.forecast.split2_cutoff) p.push("forecast");
-    if (!D.position_curve || !Array.isArray(D.position_curve.times) || D.position_curve.times.length < 2) p.push("position_curve");
-    if (!Array.isArray(D.drivers) || !D.drivers.length) p.push("drivers");
-    if (!Array.isArray(D.irating_bands)) p.push("irating_bands");
-    if (!Array.isArray(D.irating_histogram)) p.push("irating_histogram");
-    if (!D.irating_density || !Array.isArray(D.irating_density.irating)) p.push("irating_density");
-    if (!D.irating_summary) p.push("irating_summary");
+    if (!D.race || !Array.isArray(D.race.splits) || !D.race.splits.length) p.push("race.splits");
     return p;
   }
 
-  /* Chart plumbing: sized to the container, redrawn on resize, one tooltip per chart */
-  let observers = [];
-  function frame(host, render) {
-    host.innerHTML = "";
-    const box = document.createElement("div"); box.className = "plot"; host.appendChild(box);
-    const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; host.appendChild(tip);
-    const showTip = (html, x, y, svg) => {
-      const r = svg.getBoundingClientRect(), hr = host.getBoundingClientRect();
-      tip.innerHTML = html; tip.hidden = false;
-      const base = r.left - hr.left;
-      let left = base + x + 14;
-      if (left + tip.offsetWidth > host.clientWidth) left = base + x - tip.offsetWidth - 14;
-      tip.style.left = Math.max(0, left) + "px";
-      tip.style.top = Math.max(0, r.top - hr.top + y - tip.offsetHeight / 2) + "px";
-    };
-    const hideTip = () => { tip.hidden = true; };
-    const draw = () => { const W = Math.max(280, box.clientWidth); render(box, W, W < 440, showTip, hideTip); };
-    draw();
-    let lastW = box.clientWidth;
-    if (window.ResizeObserver) {
-      const ro = new ResizeObserver(() => { if (Math.abs(box.clientWidth - lastW) > 2) { lastW = box.clientWidth; draw(); } });
-      ro.observe(box); observers.push(ro);
-    }
-  }
-  const yGrid = (m, iw, ticks, Y, fmt) => ticks.map(v =>
-    `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(v)}" y2="${Y(v)}" class="g-grid"/><text x="${m.l - 8}" y="${Y(v) + 4}" text-anchor="end" class="g-axis">${fmt(v)}</text>`).join("");
-  const xAxis = (m, iw, ih, ticks, X, fmt) => ticks.map(v =>
-    `<line x1="${X(v)}" x2="${X(v)}" y1="${m.t + ih}" y2="${m.t + ih + 4}" class="g-base"/><text x="${X(v)}" y="${m.t + ih + 18}" text-anchor="middle" class="g-axis">${fmt(v)}</text>`).join("") +
-    `<line x1="${m.l}" x2="${m.l + iw}" y1="${m.t + ih}" y2="${m.t + ih}" class="g-base"/>`;
+  const open = {};
+  let current = null;
 
-  /* Suzuka: pace needed for a top-3 per split */
-  const carShort = c => c ? String(c).replace(/ GT3.*$/, "").replace(/ EVO( II)?$/, "") : "–";
-  const suzOpen = {};
-  function renderSuzuka(Z) {
-    const sec = $("suz");
-    if (!Z || !Z.splits || !Z.splits.length) { sec.hidden = true; return; }
-    sec.hidden = false;
-    const days = (Z.days || []).length;
-    $("suz-cap").textContent = `Splits volgens de prequal-eindstand. Pace is de snelste ronde (kwalificatie-niveau) op ${Z.track.split(" – ")[0].replace(" International Racing Course", "")}, geen gemiddelde racepace. Racedag ${new Date(Z.race_date).toLocaleDateString("nl-NL", { day: "numeric", month: "long", timeZone: "UTC" })}. Gebaseerd op ${nl(Z.laps_total)} testronden van ${Z.drivers_with_time} rijders in ${days} dagen.`;
-    $("suz-cards").innerHTML = Z.splits.map(S => {
-      const rows = S.drivers, open = !!suzOpen[S.split], shown = open ? rows : rows.slice(0, 10);
-      const T = S.top3_pace, W = S.winner_pace, X = S.top10_pace;
-      return `<div class="card suzcard" data-split="${S.split}">
+  function render(D) {
+    current = D;
+    const R = D.race, M = R.model;
+    const shown = R.splits.filter(S => S.shown);
+
+    /* Hero */
+    $("hero-h1").textContent = `Ronde ${R.round}: ${trackShort(R.track)}`;
+    $("hero-p").textContent = `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Wie welke tijd reed in de testsessies, wat we op racedag verwachten en de target voor een top 3.`;
+    const g = new Date(D.meta.generated_at);
+    $("stamp").textContent = "Stand " + g.toLocaleDateString("nl-NL", { day: "numeric", month: "long", timeZone: "Europe/Amsterdam" }) + ", " + g.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
+
+    /* Tiles */
+    const tiles = shown.slice(0, 2).map((S, i) => ({ cls: i === 0 ? "goal" : "accent", lbl: `Target top 3 · split ${S.split}`, val: lap(S.target.p50), sub: `80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}` }));
+    if (R.fastest) tiles.push({ cls: "", lbl: "Snelste testronde", val: lap(R.fastest.time), sub: `${esc(R.fastest.name)}${R.fastest.split ? ", split " + R.fastest.split : ""}${R.fastest.car ? ", " + esc(carShort(R.fastest.car)) : ""}` });
+    tiles.push({ cls: "", lbl: "Testdata", val: nl(R.test_laps), sub: `ronden van ${R.test_drivers} rijders in ${R.test_sessions} sessies` });
+    $("tiles").innerHTML = tiles.map(t => `<div class="tile ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
+
+    /* Team */
+    const T = R.team_drivers || [];
+    $("team").hidden = !T.length;
+    $("team-title").textContent = R.team || "Team";
+    $("team-sub").textContent = `${T.length} rijders`;
+    $("team-cap").textContent = "Target = verwachte derde snelste tijd in de eigen split. Gat = tijd min target; groen = al binnen de target. Verwacht = gemiddelde snelste ronde op racedag.";
+    $("teamtbl").innerHTML = `<thead><tr><th class="l">Rijder</th><th class="l">Split</th><th>Beste nu</th><th>Gat nu</th><th>Verwacht</th><th>Gat verwacht</th><th>Target</th><th>Top 3</th></tr></thead><tbody>` +
+      T.map(d => `<tr>
+        <td class="l nm">${esc(d.name)}<small>${esc(carShort(d.car))}${d.prequal_position ? " · prequal P" + d.prequal_position : ""}</small></td>
+        <td class="l"><span class="split ${d.split === 1 ? "s1" : ""}">Split ${d.split}</span></td>
+        <td>${d.best ? `${lap(d.best)} <small class="r">${d.laps}r</small>` : '<span class="none">nog niet gereden</span>'}</td>
+        <td>${gapHtml(d.gap_to_target_now)}</td>
+        <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
+        <td>${gapHtml(d.gap_to_target_expected)}</td>
+        <td>${lap(d.target)}</td>
+        <td>${Math.round(d.chance_top3)}%</td></tr>`).join("") + `</tbody>`;
+
+    /* Split cards */
+    $("splits").innerHTML = shown.map(S => {
+      const rows = S.drivers, isOpen = !!open[S.split];
+      const list = isOpen ? rows : rows.filter((d, i) => i < 10 || d.is_team);
+      const contenders = rows.filter(d => !d.best && d.chance_top3 >= 10).sort((a, b) => b.chance_top3 - a.chance_top3).slice(0, 4);
+      return `<div class="card" data-split="${S.split}">
         <div class="ttl"><h3>Split ${S.split}</h3><span class="rng">prequal P${S.prequal_from}–P${S.prequal_to}</span></div>
-        <div class="pace3 ${S.split === 2 ? "s2" : "s1"}">
-          <span class="lbl">Pace voor een top-3 op racedag</span>
-          <span class="val">${lap(T.p50)}</span>
-          <span class="sub">80% zeker tussen ${lap(T.p10)} en ${lap(T.p90)}${S.now.p3 ? `. Nu staat P3 op ${lap(S.now.p3)}` : ""}</span>
+        <div class="pace3 ${S.split === 2 ? "s2" : ""}">
+          <span class="lbl">Target voor een top 3 op racedag</span>
+          <span class="val">${lap(S.target.p50)}</span>
+          <span class="sub">80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}${S.now.p3 ? `. Nu staat P3 op ${lap(S.now.p3)}` : ""}</span>
         </div>
         <div class="mini3">
-          <div><span class="lbl">Winnaar-pace</span><span class="v">${lap(W.p50)}</span><span class="s">${lap(W.p10)}–${lap(W.p90)}</span></div>
-          <div><span class="lbl">Top-10 pace</span><span class="v">${lap(X.p50)}</span><span class="s">${lap(X.p10)}–${lap(X.p90)}</span></div>
-          <div><span class="lbl">Al op Suzuka gereden</span><span class="v">${S.with_time} van ${S.members}</span><span class="s">${S.now.p1 ? "snelste nu " + lap(S.now.p1) : "nog geen tijden"}</span></div>
+          <div><span class="lbl">Winnaar-pace</span><span class="v">${lap(S.winner_pace.p50)}</span><span class="s">${lap(S.winner_pace.p10)}–${lap(S.winner_pace.p90)}</span></div>
+          <div><span class="lbl">Top-10 pace</span><span class="v">${lap(S.top10_pace.p50)}</span><span class="s">${lap(S.top10_pace.p10)}–${lap(S.top10_pace.p90)}</span></div>
+          <div><span class="lbl">Al gereden</span><span class="v">${S.with_time} van ${S.members}</span><span class="s">${S.now.p1 ? "snelste nu " + lap(S.now.p1) : "nog geen tijden"}</span></div>
         </div>
         <div class="tbox"><table class="stbl">
           <thead><tr><th class="l">#</th><th class="l">Rijder</th><th>Beste nu</th><th>Verwacht</th><th>Top 3</th></tr></thead>
-          <tbody>${shown.map(d => `<tr class="${d.suzuka_rank_now && d.suzuka_rank_now <= 3 ? "top3" : ""}">
-            <td class="l">${d.suzuka_rank_now || '<span class="none">–</span>'}</td>
-            <td class="l nm">${esc(d.name)}<small class="car">${d.suzuka_car ? esc(carShort(d.suzuka_car)) + " · " : ""}prequal P${d.prequal_position}</small></td>
-            <td>${d.suzuka_best ? `${lap(d.suzuka_best)} <small>${d.suzuka_laps}r</small>` : '<span class="none">–</span>'}</td>
-            <td>${lap(d.expected_pace.mean != null ? d.expected_pace.mean : d.expected_pace.p50)}</td>
+          <tbody>${list.map(d => `<tr class="${d.rank_now && d.rank_now <= 3 ? "top3" : ""} ${d.is_team ? "team" : ""}">
+            <td class="l">${d.rank_now || '<span class="none">–</span>'}</td>
+            <td class="l nm">${esc(d.name)}${d.is_team ? '<span class="tag">Valkra</span>' : ""}<small>${[d.team && !d.is_team ? esc(d.team) : "", esc(carShort(d.car)), d.prequal_position ? "prequal P" + d.prequal_position : ""].filter(Boolean).join(" · ")}</small></td>
+            <td>${d.best ? `${lap(d.best)} <small class="r">${d.laps}r</small>` : '<span class="none">–</span>'}</td>
+            <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
             <td>${Math.round(d.chance_top3)}%</td></tr>`).join("")}</tbody>
         </table></div>
-        ${(() => { const f = rows.filter(d => !d.suzuka_best && d.chance_top3 >= 10).sort((a, b) => b.chance_top3 - a.chance_top3).slice(0, 4); return f.length ? `<p class="cap" style="margin:0">Nog niet gereden, wel kanshebber: ${f.map(d => `${esc(d.name)} (${Math.round(d.chance_top3)}%)`).join(", ")}.</p>` : ""; })()}
-        <button type="button" class="showall" data-split="${S.split}" aria-expanded="${open}">${open ? "Toon alleen de top 10" : `Toon alle ${rows.length}`}</button>
+        ${contenders.length ? `<p class="cap">Nog niet gereden, wel kanshebber: ${contenders.map(d => `${esc(d.name)} (${Math.round(d.chance_top3)}%)`).join(", ")}.</p>` : ""}
+        <button type="button" class="showall" data-split="${S.split}" aria-expanded="${isOpen}">${isOpen ? "Toon minder" : `Toon alle ${rows.length}`}</button>
       </div>`;
     }).join("");
-    const M = Z.model;
-    $("suz-note").textContent = `Rijders die nog niet op Suzuka reden, zijn ingeschat op hun prequal-tijd. Verwacht = gemiddelde van de verwachte snelste ronde op racedag, met naar schatting nog ${Math.round(M.expected_extra_laps)} extra ronden per rijder (${M.test_days_left} testdagen en de kwalificatie). De drempel voor een top-3 ligt sneller dan de verwachte tijd van de nummer 3, omdat in een veld van 30 altijd enkele rijders boven verwachting presteren. Volgorde = beste tijd die al is gereden; rijders zonder Suzuka-tijd staan daaronder. Ronden: r achter de tijd. Gele rijen zijn de huidige top 3.`;
+
+    /* Footer */
+    const hist = (R.history || []).map(h => h.kind === "prequal" ? "prequal VIR" : `${trackShort(h.track)} (${h.date})`).join(", ");
+    $("note").textContent = `Volgorde = beste tijd die al op ${trackShort(R.track)} is gereden; rijders zonder tijd staan daaronder met een schatting. Gele rijen zijn de huidige top 3, Valkra-rijders staan altijd in de lijst. Verwacht = gemiddelde snelste ronde op racedag, met naar schatting nog ${Math.round(M.expected_extra_laps)} ronden per rijder (${M.test_days_left} testavond${M.test_days_left === 1 ? "" : "en"} en de kwalificatie). De target ligt sneller dan de verwachte tijd van de nummer 3, omdat in een veld van 30 altijd een paar rijders boven verwachting presteren. Pace is de snelste ronde, geen gemiddelde racepace.`;
+    $("method").textContent = `Methode: ${M.description} Spreiding rond de lijn ${M.residual_sd.toFixed(2).replace(".", ",")} s${M.r2 != null ? ", R² " + M.r2.toFixed(2).replace(".", ",") : ""}, op ${M.fit_n} rijders. Geschiedenis in het model: ${hist}.`;
+    $("source").textContent = `Bron: iRacing Data API, ${D.meta.league ? D.meta.league.name : "SRVN.nl NK-league"}. Splits volgens de prequal-eindstand en, zodra er gereden is, de officiële raceuitslag. Teams volgens de inschrijflijst.`;
   }
+
   document.addEventListener("click", e => {
     const b = e.target.closest && e.target.closest(".showall");
-    if (!b) return;
-    suzOpen[b.dataset.split] = !suzOpen[b.dataset.split];
-    if (window.__lastD) renderSuzuka(window.__lastD.suzuka);
+    if (!b || !current) return;
+    open[b.dataset.split] = !open[b.dataset.split];
+    render(current);
   });
-
-  /* Driver list state survives re-renders */
-  const list = { drivers: [], sortKey: "pos", sortDir: "asc", filter: "all", query: "" };
-
-  function renderAll(D) {
-    window.__lastD = D;
-    observers.forEach(o => o.disconnect()); observers = [];
-    const PC = D.position_curve, F = D.forecast, M = D.meta.model;
-    const step = +(PC.times[1] - PC.times[0]).toFixed(3);
-    const idx = t => Math.max(0, Math.min(PC.times.length - 1, Math.round((t - PC.times[0]) / step)));
-    const at = (arr, t) => arr[idx(t)];
-    const GOAL = F.safe_split1 || 103.0;
-    const paceAt = ir => (M.knee_irating && ir > M.knee_irating)
-      ? M.a + M.b * Math.log(M.knee_irating) + M.slope_above_knee * (Math.log(ir) - Math.log(M.knee_irating))
-      : M.a + M.b * Math.log(ir);
-
-    /* Tiles */
-    const r1 = F.split1_range, r2 = F.split2_range, fast = F.fastest_so_far;
-    const tiles = [
-      { cls: "goal", lbl: "Veilig in split 1", val: lap1(GOAL), sub: `verwacht P${at(PC.p50, GOAL)}, slechtste geval P${at(PC.p90, GOAL)}` },
-      r1 ? { cls: "", lbl: "Grens split 1 (P30)", val: "≈" + lap2(r1.likely), sub: `verwacht tussen ${lap2(r1.low)} en ${lap2(r1.high)}` }
-         : { cls: "", lbl: "Grens split 1 (P30)", val: "≈" + lap2(F.split1_cutoff.p50), sub: `80% zeker tussen ${lap2(F.split1_cutoff.p10)} en ${lap2(F.split1_cutoff.p90)}` },
-      r2 ? { cls: "", lbl: "Grens split 2 (P60)", val: "≈" + lap2(r2.likely), sub: `verwacht tussen ${lap2(r2.low)} en ${lap2(r2.high)}` }
-         : { cls: "", lbl: "Grens split 2 (P60)", val: "≈" + lap2(F.split2_cutoff.p50), sub: `80% zeker tussen ${lap2(F.split2_cutoff.p10)} en ${lap2(F.split2_cutoff.p90)}` }
-    ];
-    if (fast) tiles.push({ cls: "accent", lbl: "Snelste tijd tot nu", val: lap(fast.time), sub: `${esc(fast.name)}${fast.session === "prequal" ? ", P1 in de prequal-stand" : ", in de training"}` + (F.absolute_top_time ? `. Verwachte toptijd ${lap1(F.absolute_top_time + 0.05)}` : "") });
-    const Z = D.suzuka, closed = !!D.meta.prequal_closed;
-    if (closed) {
-      const pq = D.drivers.filter(d => d.prequal_best != null).sort((a, b) => a.prequal_best - b.prequal_best)[0];
-      tiles.length = 0;
-      tiles.push({ cls: "goal", lbl: "Grens split 1 (P30)", val: lap(F.split1_cutoff.p50), sub: "prequal VIR afgerond, definitief" },
-                 { cls: "", lbl: "Grens split 2 (P60)", val: lap(F.split2_cutoff.p50), sub: "prequal VIR afgerond, definitief" });
-      if (pq) tiles.push({ cls: "", lbl: "Snelste prequal-tijd", val: lap(pq.prequal_best), sub: `${esc(pq.name)}, iRating ${pq.irating}` });
-      if (Z && Z.fastest) tiles.push({ cls: "accent", lbl: "Snelste Suzuka-ronde (test)", val: lap(Z.fastest.time), sub: `${esc(Z.fastest.name)}${Z.fastest.split ? ", split " + Z.fastest.split : ""}` });
-    }
-    $("tiles").innerHTML = tiles.map(t => `<div class="tile ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
-
-    /* Hero, chart cards and list texts follow the phase of the event */
-    $("hero-h1").textContent = closed ? "NK iRacing: splits en Suzuka-pace" : "Prequal VIR: wat is nodig voor split 1?";
-    $("hero-p").textContent = closed
-      ? "De prequal op Virginia International Raceway is afgerond: de splits liggen vast. Op Suzuka rijden de leden testsessies. Hier staan de snelste tijden per split en de pace die nodig is voor een top-3 op racedag."
-      : "Alle leden van de SRVN.nl NK-league, met hun iRating, hun tijden op Virginia International Raceway en een voorspelling van de prequal. Wie nog niet of weinig reed, is ingeschat op zijn iRating; de verwachting gaat ervan uit dat alle leden een tijd zetten.";
-    $("card-pos").hidden = closed; $("row-pos").classList.toggle("single", closed);
-    $("listtbl").classList.toggle("closed", closed);
-    $("h-pos").textContent = closed ? "Prequal-plek" : "Verw. eindplek";
-    $("h-exp").textContent = closed ? "Prequal-tijd" : "Verwacht prequal";
-    $("list-cap").textContent = closed ? "Eindstand van de prequal op VIR. Split 1 is P1–30, split 2 is P31–60. Rijders zonder prequal-tijd staan onderaan." : "Verw. eindplek: verwachting na de laatste prequal-sessie, als alle leden een tijd zetten. Nu: huidige prequal-stand.";
-    $("list-title").textContent = closed ? "Prequal-eindstand" : "Alle rijders";
-    list.closed = closed;
-    renderSuzuka(Z);
-
-    const g = new Date(D.meta.generated_at);
-    $("stamp").textContent = "Stand " + g.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Amsterdam" }) + ", " + g.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
-    $("source").textContent = `Bron: iRacing Data API. Ledenlijst en licenties van ${D.meta.league ? D.meta.league.name : "de league"}, ${D.meta.sessions_used ? D.meta.sessions_used.length : "de"} league-sessies op ${D.meta.track || "VIR"}` + (Z ? ` en ${(Z.sessions_used || []).length} testsessies op Suzuka` : "") + `. iRating en licentie zijn Sports Car.`;
-    $("method").textContent = (Z && Z.model ? `Suzuka: ${Z.model.description} Spreiding rond de lijn ${dec(Z.model.residual_sd, 2)} s, R² ${dec(Z.model.r2, 2)} op ${Z.model.fit_n} rijders. ` : "") + `Prequal${closed ? " (tijden definitief)" : ""}. Methode: verwacht tempo per iRating op basis van ${M.fit_n} rijders met 20+ ronden` +
-      (M.expected_prequal_at_10000 ? `; een rijder van 10.000 iRating rijdt in de prequal naar verwachting ${lap1(M.expected_prequal_at_10000)}` : "") +
-      `. Rijders met minder ronden of zonder tijd krijgen dat tempo plus de spreiding van hun iRating-groep, nooit trager dan wat ze al reden. Iedereen rijdt zijn resterende prequal-sessies (maximaal twee). ${nl(D.meta.simulations || 0)} simulaties.` +
-      (r1 ? " De grenzen in de tegels houden rekening met rijders die maar één sessie rijden of in de prequal iets trager zijn dan in de training." : "");
-
-    /* Band table, fastest band on top */
-    $("bands").innerHTML =
-      `<thead><tr><th>iRating</th><th>Leden</th><th>Gemeten</th><th>Verwacht prequal</th></tr></thead><tbody>` +
-      D.irating_bands.slice().reverse().map(b => `<tr><td>${esc(b.label)}</td><td>${b.members}</td><td>${b.measured_median ? lap2(b.measured_median) : "–"} <span class="dim">(${b.measured_n})</span></td><td>${lap2(b.expected_prequal_median)}</td></tr>`).join("") +
-      `</tbody>`;
-
-    /* Chart 1: position per prequal time */
-    frame($("ch-pos"), (box, W, narrow, showTip, hideTip) => {
-      const H = narrow ? 260 : 300, m = { l: 40, r: 26, t: 24, b: 30 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
-      const xmin = PC.times[0], xmax = PC.times[PC.times.length - 1], ymin = 1, ymax = 80;
-      const X = v => m.l + (v - xmin) / (xmax - xmin) * iw;
-      const Y = v => m.t + (Math.min(v, ymax) - ymin) / (ymax - ymin) * ih;
-      let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Verwachte prequal-positie per rondetijd">`;
-      [[1, 30.5, "var(--zone1)", "Split 1"], [30.5, 60.5, "var(--zone2)", "Split 2"]].forEach(([a, b, fill, label]) => {
-        s += `<rect x="${m.l}" y="${Y(a)}" width="${iw}" height="${Y(b) - Y(a)}" style="fill:${fill}"/><text x="${m.l + iw - 8}" y="${Y(b) - 8}" text-anchor="end" class="g-zone">${label}</text>`;
-      });
-      const b0 = GOAL, b1 = +(GOAL + 0.5).toFixed(2), dense = at(PC.p50, b1) - at(PC.p50, b0);
-      s += `<rect x="${X(b0)}" y="${m.t}" width="${X(b1) - X(b0)}" height="${ih}" style="fill:var(--yellow-wash)"/>`;
-      s += `<text x="${(X(b0) + X(b1)) / 2}" y="${m.t - 8}" text-anchor="middle" class="g-note">${dense} rijders${narrow ? "" : " binnen 0,5 s"}</text>`;
-      s += yGrid(m, iw, [1, 10, 20, 30, 40, 50, 60, 70, 80], Y, v => "P" + v);
-      const stp = narrow ? 0.8 : 0.4, xt = [];
-      for (let k = Math.ceil(xmin / stp - 1e-9); k * stp <= xmax + 1e-9; k++) xt.push(+(k * stp).toFixed(2));
-      s += xAxis(m, iw, ih, xt, X, lap1);
-      const I = PC.times.map((_, i) => i);
-      const upper = I.map(i => `${X(PC.times[i]).toFixed(1)},${Y(PC.p10[i]).toFixed(1)}`);
-      const lower = I.slice().reverse().map(i => `${X(PC.times[i]).toFixed(1)},${Y(PC.p90[i]).toFixed(1)}`);
-      s += `<polygon points="${upper.concat(lower).join(" ")}" class="g-range"/>`;
-      s += `<polyline points="${I.map(i => `${X(PC.times[i]).toFixed(1)},${Y(PC.p50[i]).toFixed(1)}`).join(" ")}" class="g-line"/>`;
-      s += `<line x1="${X(GOAL)}" x2="${X(GOAL)}" y1="${m.t}" y2="${m.t + ih}" class="g-mark"/>`;
-      s += `<text x="${X(GOAL) - 5}" y="${m.t + ih - 8}" text-anchor="end" class="g-marklabel">Veilig: ${lap1(GOAL)}</text>`;
-      s += `<line class="g-cross" x1="0" x2="0" y1="${m.t}" y2="${m.t + ih}" visibility="hidden"/><circle class="dot g-dot" r="4.5" visibility="hidden"/>`;
-      s += `<rect class="hit" x="${m.l}" y="${m.t}" width="${iw}" height="${ih}" fill="transparent"/></svg>`;
-      box.innerHTML = s;
-      const svg = box.querySelector("svg"), cross = svg.querySelector(".g-cross"), dot = svg.querySelector(".dot"), hit = svg.querySelector(".hit");
-      const move = ev => {
-        const r = svg.getBoundingClientRect();
-        const i = idx(xmin + (ev.clientX - r.left - m.l) / iw * (xmax - xmin));
-        const x = X(PC.times[i]), y = Y(PC.p50[i]);
-        cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.setAttribute("visibility", "visible");
-        dot.setAttribute("cx", x); dot.setAttribute("cy", y); dot.setAttribute("visibility", "visible");
-        showTip(`<div class="t">${lap(PC.times[i])}</div><div>Verwacht <b>P${PC.p50[i]}</b></div><div class="s">80% van de simulaties: P${PC.p10[i]}–P${PC.p90[i]}</div>`, x, y, svg);
-      };
-      hit.addEventListener("pointermove", move);
-      hit.addEventListener("pointerdown", move);
-      hit.addEventListener("pointerleave", () => { cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); hideTip(); });
-    });
-
-    /* Chart 2: pace per iRating */
-    frame($("ch-ir"), (box, W, narrow, showTip, hideTip) => {
-      const H = narrow ? 280 : 300, m = { l: 48, r: 14, t: 12, b: 30 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
-      const xmin = 600, xmax = 11000, ymin = 101.8, ymax = 107.6, Ln = Math.log;
-      const X = v => m.l + (Ln(Math.max(xmin, Math.min(xmax, v))) - Ln(xmin)) / (Ln(xmax) - Ln(xmin)) * iw;
-      const Y = v => m.t + (Math.max(ymin, Math.min(v, ymax)) - ymin) / (ymax - ymin) * ih;
-      let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Rondetijd tegen iRating per rijder">`;
-      s += yGrid(m, iw, [102, 103, 104, 105, 106, 107], Y, lap1);
-      s += xAxis(m, iw, ih, narrow ? [1000, 2000, 4000, 10000] : [1000, 1500, 2000, 3000, 5000, 8000, 10000], X, v => String(v / 1000).replace(".", ",") + "k");
-      const curve = [];
-      for (let ir = xmin; ir <= xmax; ir *= 1.05) curve.push(`${X(ir).toFixed(1)},${Y(paceAt(ir)).toFixed(1)}`);
-      s += `<polyline points="${curve.join(" ")}" class="g-model"/>`;
-      const pts = D.drivers.map(d => {
-        const t = d.time_status === "no_time" ? d.model_time : d.best_time;
-        return { d, t, x: X(d.irating), y: Y(t), cls: d.time_status === "reliable" ? "g-m" : d.time_status === "few_laps" ? "g-u" : "g-r" };
-      });
-      ["g-r", "g-u", "g-m"].forEach(c => pts.filter(p => p.cls === c).forEach(p => { s += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" class="${c}"/>`; }));
-      s += `<circle class="hl g-hl" r="8" visibility="hidden"/>`;
-      s += `<rect class="hit" x="${m.l}" y="${m.t}" width="${iw}" height="${ih}" fill="transparent"/></svg>`;
-      box.innerHTML = s;
-      const svg = box.querySelector("svg"), hl = svg.querySelector(".hl"), hit = svg.querySelector(".hit");
-      const label = { reliable: "Beste tijd", few_laps: "Beste tijd", no_time: "Modeltempo" };
-      const move = ev => {
-        const r = svg.getBoundingClientRect(), px = ev.clientX - r.left, py = ev.clientY - r.top;
-        let best = null, bd = 400;
-        pts.forEach(p => { const dd = (p.x - px) ** 2 + (p.y - py) ** 2; if (dd < bd) { bd = dd; best = p; } });
-        if (!best) { hl.setAttribute("visibility", "hidden"); hideTip(); return; }
-        hl.setAttribute("cx", best.x); hl.setAttribute("cy", best.y); hl.setAttribute("visibility", "visible");
-        const d = best.d;
-        showTip(`<div class="t">${esc(d.name)}</div><div>iRating <b>${d.irating}</b></div><div>${label[d.time_status] || "Tijd"} <b>${lap(best.t)}</b></div><div class="s">${d.time_status === "no_time" ? "nog geen tijd" : d.laps_total + " ronden"} · model ${lap(d.model_time)}</div>`, best.x, best.y, svg);
-      };
-      hit.addEventListener("pointermove", move);
-      hit.addEventListener("pointerdown", move);
-      hit.addEventListener("pointerleave", () => { hl.setAttribute("visibility", "hidden"); hideTip(); });
-    });
-
-    /* Chart 3: iRating distribution */
-    frame($("ch-dist"), (box, W, narrow, showTip, hideTip) => {
-      const H = narrow ? 240 : 270, m = { l: 34, r: 14, t: 26, b: 30 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
-      const xmin = 500, xmax = 10500;
-      const ymax = Math.max(20, Math.ceil(Math.max(...D.irating_histogram.map(h => h.count)) / 5) * 5);
-      const X = v => m.l + (v - xmin) / (xmax - xmin) * iw;
-      const Y = v => m.t + (1 - v / ymax) * ih;
-      let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Verdeling van iRating in de league">`;
-      const yt = []; for (let v = 0; v <= ymax; v += 5) yt.push(v);
-      s += yGrid(m, iw, yt, Y, v => v);
-      s += xAxis(m, iw, ih, W < 700 ? [2000, 4000, 6000, 8000, 10000] : [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000], X, nl);
-      const bw = Math.max(4, Math.min(24, X(1000) - X(500) - 2));
-      D.irating_histogram.forEach(h => {
-        if (!h.count) return;
-        const x = (X(h.irating_from) + X(h.irating_to)) / 2 - bw / 2, y = Y(h.count), base = Y(0), r = Math.min(4, base - y);
-        s += `<path d="M${x},${base} V${y + r} Q${x},${y} ${x + r},${y} H${x + bw - r} Q${x + bw},${y} ${x + bw},${y + r} V${base} Z" class="g-bar"/>`;
-      });
-      const K = D.irating_density;
-      s += `<polyline points="${K.irating.map((x, i) => `${X(x).toFixed(1)},${Y(K.expected_count_per_500[i]).toFixed(1)}`).join(" ")}" class="g-kde"/>`;
-      const md = D.irating_summary.median, mx = X(md);
-      s += `<line x1="${mx}" x2="${mx}" y1="${m.t}" y2="${m.t + ih}" class="g-mark"/>`;
-      s += `<text x="${mx + 6}" y="${Y(ymax * 0.93)}" class="g-marklabel">Mediaan: ${nl(md)}</text>`;
-      s += `<text x="${mx + 6}" y="${Y(ymax * 0.93) + 15}" class="g-axis">gemiddelde ${nl(D.irating_summary.mean)}</text>`;
-      D.irating_histogram.forEach((h, k) => { s += `<rect class="bin" data-k="${k}" x="${X(h.irating_from)}" y="${m.t}" width="${X(h.irating_to) - X(h.irating_from)}" height="${ih}" fill="transparent"/>`; });
-      s += `</svg>`;
-      box.innerHTML = s;
-      const svg = box.querySelector("svg");
-      svg.querySelectorAll(".bin").forEach(el => {
-        const show = () => {
-          const h = D.irating_histogram[+el.dataset.k];
-          showTip(`<div class="t">${nl(h.irating_from)}–${nl(h.irating_to)}</div><div><b>${h.count}</b> ${h.count === 1 ? "lid" : "leden"}</div>`, (X(h.irating_from) + X(h.irating_to)) / 2, Y(h.count), svg);
-        };
-        el.addEventListener("pointerenter", show);
-        el.addEventListener("pointerdown", show);
-        el.addEventListener("pointerleave", hideTip);
-      });
-    });
-
-    /* Driver list */
-    list.drivers = D.drivers;
-    $("f-all").textContent = `Alle (${D.drivers.length})`;
-    $("f-time").textContent = `Met tijd (${D.drivers.filter(d => d.best_time != null).length})`;
-    renderList();
-  }
-
-  const epos = d => d.expected_position ? d.expected_position.p50 : 1e6;
-  const val = { pos: d => d.expected_position ? d.expected_position.p50 + d.expected_prequal.p50 / 1000 : null, now: d => d.prequal_position_now, name: d => d.name, ir: d => d.irating, best: d => d.best_time, laps: d => d.laps_total, exp: d => d.expected_prequal ? d.expected_prequal.p50 : null };
-  const defDir = { pos: "asc", now: "asc", name: "asc", ir: "desc", best: "asc", laps: "desc", exp: "asc" };
-  const splitOf = p => p <= 30 ? ["s1", "Split 1"] : p <= 60 ? ["s2", "Split 2"] : ["s3", "Split 3"];
-  function renderList() {
-    let rows = list.drivers;
-    if (list.filter === "time") rows = rows.filter(d => d.best_time != null);
-    if (list.query) rows = rows.filter(d => d.name.toLowerCase().includes(list.query));
-    const mult = list.sortDir === "asc" ? 1 : -1;
-    rows = [...rows].sort((a, b) => {
-      const x = val[list.sortKey](a), y = val[list.sortKey](b);
-      if (x == null && y == null) return epos(a) - epos(b);
-      if (x == null) return 1;
-      if (y == null) return -1;
-      return (typeof x === "string" ? x.localeCompare(y, "nl") : x - y) * mult;
-    });
-    if (!rows.length) { $("rows").innerHTML = `<tr><td colspan="9" class="empty">Geen rijder gevonden met "${esc(list.query)}".</td></tr>`; return; }
-    const maxIr = Math.max(...list.drivers.map(d => d.irating));
-    $("rows").innerHTML = rows.map(d => {
-      const noQ = list.closed && d.prequal_best == null;
-      const ep = noQ ? null : d.expected_position, xp = noQ ? null : d.expected_prequal;
-      const [sc, sl] = ep ? splitOf(ep.p50) : ["s3", "Geen prequal-tijd"];
-      const locked = list.closed || d.prequal_sessions_used >= 2;
-      return `<tr>
-        <td class="pos">${ep ? "P" + ep.p50 + (ep.p10 !== ep.p90 ? `<small>${ep.p10}–${ep.p90}</small>` : "") : '<span class="none">–</span>'}</td>
-        <td class="num">${d.prequal_position_now ? "P" + d.prequal_position_now : '<span class="none">–</span>'}</td>
-        <td class="l name">${esc(d.name)}</td>
-        <td><span class="irwrap"><span class="irbar"><span style="width:${(d.irating / maxIr * 100).toFixed(1)}%"></span></span><span class="num">${d.irating}</span></span></td>
-        <td class="l"><span class="chip ${esc(d.license)}">${esc(d.license)}</span><span class="sr">${Number(d.safety_rating).toFixed(2)}</span></td>
-        <td class="num">${d.best_time != null ? `<i class="st ${d.time_status}" title="${d.time_status === "reliable" ? "20+ ronden" : "minder dan 20 ronden"}"></i>${lap(d.best_time)}` : '<span class="none">–</span>'}</td>
-        <td class="num">${d.laps_total || '<span class="none">0</span>'}</td>
-        <td class="num">${xp ? lap(xp.p50) + (locked ? '<span class="lock">vast</span>' : "") : '<span class="none">–</span>'}</td>
-        <td class="l"><span class="split ${sc}" title="${list.closed ? "Definitieve split" : "Kans split 1: " + Math.round(d.chance_split1) + "%"}">${sl}</span></td>
-      </tr>`;
-    }).join("");
-  }
-  function syncHeaders() {
-    document.querySelectorAll(".list th button[data-key]").forEach(b => b.setAttribute("aria-sort", b.dataset.key === list.sortKey ? (list.sortDir === "asc" ? "ascending" : "descending") : "none"));
-  }
-  document.querySelectorAll(".list th button[data-key]").forEach(b => b.addEventListener("click", () => {
-    const k = b.dataset.key;
-    if (k === list.sortKey) list.sortDir = list.sortDir === "asc" ? "desc" : "asc"; else { list.sortKey = k; list.sortDir = defDir[k]; }
-    syncHeaders(); renderList();
-  }));
-  const setFilter = f => { list.filter = f; $("f-all").setAttribute("aria-pressed", f === "all"); $("f-time").setAttribute("aria-pressed", f === "time"); renderList(); };
-  $("f-all").addEventListener("click", () => setFilter("all"));
-  $("f-time").addEventListener("click", () => setFilter("time"));
-  $("q").addEventListener("input", e => { list.query = e.target.value.trim().toLowerCase(); renderList(); });
-  syncHeaders();
 
   /* Data loading: show the built-in copy at once, then the published JSON if it is reachable */
   let published = null;
   const msg = (text, kind) => { const el = $("admin-msg"); el.textContent = text; el.className = "msg" + (kind ? " " + kind : ""); };
-  function show(D) { renderAll(D); }
-  if (VALKRA_EMBEDDED_DATA && !problems(VALKRA_EMBEDDED_DATA).length) { published = VALKRA_EMBEDDED_DATA; show(published); }
+  if (VALKRA_EMBEDDED_DATA && !problems(VALKRA_EMBEDDED_DATA).length) { published = VALKRA_EMBEDDED_DATA; render(published); }
   if (CONFIG.dataUrl) {
     fetch(CONFIG.dataUrl, { cache: "no-store" })
       .then(r => r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status)))
-      .then(D => { if (!problems(D).length) { published = D; show(D); } })
+      .then(D => { if (!problems(D).length) { published = D; render(D); } })
       .catch(() => { if (!published) $("stamp").textContent = "Data kon niet worden geladen"; });
   }
 
@@ -683,7 +293,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     try { D = JSON.parse(await file.text()); } catch (err) { msg(`${file.name} is geen geldige JSON.`, "err"); return; }
     const p = problems(D);
     if (p.length) { msg(`${file.name} mist: ${p.join(", ")}. Gebruik een export in hetzelfde formaat.`, "err"); return; }
-    show(D);
+    render(D);
     const when = new Date(D.meta.generated_at).toLocaleString("nl-NL", { timeZone: "Europe/Amsterdam" });
     if (!CONFIG.uploadUrl) { msg(`Ingeladen: stand ${when}. Alleen zichtbaar in deze browser. Zet het bestand als valkra-nk-prequal.json op de server om het voor iedereen te tonen.`, "ok"); return; }
     msg("Ingeladen. Opslaan op de site…");
@@ -698,8 +308,6 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       msg(`Ingeladen in deze browser, maar opslaan op de site lukte niet (${err.message}). Controleer of je ingelogd bent.`, "err");
     }
   });
-  $("reset").addEventListener("click", () => {
-    if (published) { show(published); msg("Terug naar de gepubliceerde data."); }
-  });
+  $("reset").addEventListener("click", () => { if (published) { render(published); msg("Terug naar de gepubliceerde data."); } });
 })();
 </script>

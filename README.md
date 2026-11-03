@@ -75,10 +75,21 @@ Daarna: `https://<project>.vercel.app/upload` → wachtwoord → kies `valkra-nk
 
 Bron: iRacing Data API. Ledenlijst en Sports Car-licenties van league 15445 en de resultaten van de league-sessies op VIR.
 
-## Suzuka-testsessies
+## Per race (vanaf ronde 1, Suzuka)
 
-De league heeft dagelijks testsessies op Suzuka (180 minuten, geen kwalificatie). `fetch_iracing.js` scheidt de sessies per circuit:
-VIR telt voor de prequal, Suzuka wordt apart bewaard (`model/input/suzuka.json`). `build.py` voegt een blok `suzuka` toe aan de JSON:
-per split (prequal-plek 1–30 en 31–60) de verwachte pace voor een top-3 op racedag, met bandbreedte, plus per rijder de beste tijd,
-ronden, auto en de kans op een top-3. Pace is de snelste ronde (kwalificatie-niveau), geen gemiddelde racepace.
-Na het einde van de prequal (1 november) staan de splits vast en worden er geen prequal-pogingen meer gesimuleerd.
+De pagina gaat over de komende race: per split (1 en 2) wie welke tijd reed in de testsessies, de verwachte pace op racedag
+en de target voor een top 3, plus een blok met de Valkra-rijders en hun gat tot de target.
+
+1. `model/fetch_iracing.js` (versie 3) in een ingelogd iRacing-tabblad: ledenlijst, testsessies per baan, raceresultaten uit de
+   split-seizoenen (NK Split 1–4) en het raceschema.
+2. `python3 model/ingest.py <bestand>` controleert de getallen en schrijft `model/input/{roster,tests,races,schedule}.json`.
+3. `python3 model/build.py` bouwt JSON en pagina. Het racedeel staat in `model/race_model.py`.
+
+- **Komende race**: de eerstvolgende race in het schema. Een nieuwe baan verschijnt vanzelf zodra de league hem inplant.
+- **Pace-index**: per rijder procent sneller of trager dan de mediaan van het veld, uit de VIR-prequal en elke verreden race.
+  Wordt na elke race nauwkeuriger; zo is ook een schatting mogelijk voor wie niet test.
+- **Geschiedenis**: `data/history/` bevat per race testtijden en raceresultaten, plus `prequal-vir.json`.
+- **Teams**: `model/teams.csv` (inschrijflijst), gekoppeld op startnummer en anders op naam.
+- **Splits**: vast voor het seizoen, volgens de prequal-eindstand; na de eerste race volgens de officiële uitslag.
+- De JSON heet nog steeds `data/valkra-nk-prequal.json` zodat de upload blijft werken. Het nieuwe deel staat onder `race`;
+  de prequal-velden blijven staan als archief.

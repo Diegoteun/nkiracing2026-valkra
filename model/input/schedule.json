@@ -1,0 +1,36 @@
+{
+ "fetched_at": "2026-11-03T10:15:53.659Z",
+ "league_id": 15445,
+ "league_name": "SRVN.nl iRacing (Powered by KNAF)",
+ "season_name": "NK iRacing 2026",
+ "races": [
+  {
+   "split": 1,
+   "start": "2026-11-05T18:30:00Z",
+   "track": "Suzuka International Racing Course – Grand Prix",
+   "subsession_id": null,
+   "has_results": false
+  },
+  {
+   "split": 2,
+   "start": "2026-11-05T18:30:00Z",
+   "track": "Suzuka International Racing Course – Grand Prix",
+   "subsession_id": null,
+   "has_results": false
+  },
+  {
+   "split": 3,
+   "start": "2026-11-05T18:30:00Z",
+   "track": "Suzuka International Racing Course – Grand Prix",
+   "subsession_id": null,
+   "has_results": false
+  },
+  {
+   "split": 4,
+   "start": "2026-11-05T18:30:00Z",
+   "track": "Suzuka International Racing Course – Grand Prix",
+   "subsession_id": null,
+   "has_results": false
+  }
+ ]
+}

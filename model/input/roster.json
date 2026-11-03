@@ -1,8 +1,7 @@
 {
- "fetched_at": "2026-11-02T21:46:41.577Z",
+ "fetched_at": "2026-11-03T10:15:53.659Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
- "season_id": 138636,
  "season_name": "NK iRacing 2026",
  "category": "sports_car",
  "members": [
@@ -402,9 +401,9 @@
    "cust_id": 912688,
    "name": "Justin De Jong",
    "car_number": "155",
-   "irating": 6934,
+   "irating": 6991,
    "license": "A",
-   "safety_rating": 2
+   "safety_rating": 1.7
   },
   {
    "cust_id": 377046,
@@ -727,6 +726,14 @@
    "safety_rating": 4.59
   },
   {
+   "cust_id": 65954,
+   "name": "René Hoogterp",
+   "car_number": null,
+   "irating": 1737,
+   "license": "C",
+   "safety_rating": 3.48
+  },
+  {
    "cust_id": 1325894,
    "name": "Richard De Ruiter",
    "car_number": "215",
@@ -954,7 +961,7 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 8762,
+   "irating": 8828,
    "license": "A",
    "safety_rating": 4.57
   }

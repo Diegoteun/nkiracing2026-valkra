@@ -34,9 +34,6 @@ SAFE_SPLIT1 = 103.0
 N_BASE, N_SCENARIO = 20000, 5000
 SEED = 2026
 PREQUAL_END = "2026-11-01"    # last prequal day; after this the VIR times are final and the splits are fixed
-N_SUZUKA = 20000              # simulations for the Suzuka top-3 pace
-SUZUKA_RACE = "2026-11-05"
-SUZ_PRIOR_LAPS = 20           # a Suzuka best from this many laps counts for half in the driver-specific offset
 
 
 def load_rows():
@@ -213,112 +210,8 @@ lx = np.log(irs); h = 1.06 * np.std(lx) * len(lx) ** (-1 / 5); xs = list(range(5
 dens = [round(float(np.exp(-0.5 * ((math.log(v) - lx) / h) ** 2).sum() / (len(lx) * h * math.sqrt(2 * math.pi)) / v * len(irs) * 500), 3) for v in xs]
 fastest = min((r for r in rows if r["best"] is not None), key=lambda r: r["best"])
 
-# ---------------------------------------------------------------------------------------------
-# Suzuka test sessions: expected pace for a top-3 place in split 1 and split 2
-# Split = final VIR prequal rank (P1-30 split 1, P31-60 split 2). Pace = fastest lap (qualifying-level).
-# Model: Suzuka best = c + k * VIR prequal best + g * ln(laps)  (more laps -> faster), fitted on drivers with both.
-# A driver's own offset from that line counts partly (weight n / (n + SUZ_PRIOR_LAPS)); the pace on race day is
-# projected at the laps a driver is expected to have by then. 20.000 simulations give the top-3 threshold per split.
-def build_suzuka():
-    sp = INPUT / "suzuka.json"
-    if not sp.exists():
-        return None
-    sz = json.load(open(sp))
-    S = {d["cust_id"]: d for d in sz["drivers"]}
-    cars = {}
-    byrow = {r["id"]: r for r in rows}
-    fit = [(r["qBest"], S[r["id"]]["best"], S[r["id"]]["laps"]) for r in rows
-           if r["qBest"] is not None and r["id"] in S and S[r["id"]]["best"] and S[r["id"]]["laps"] >= 3]
-    xq = np.array([f[0] for f in fit]); ys = np.array([f[1] for f in fit]); ln_ = np.log([f[2] for f in fit])
-    A = np.vstack([np.ones_like(xq), xq, ln_]).T
-    (c0, k1, g1), *_ = np.linalg.lstsq(A, ys, rcond=None)
-    resid = ys - A @ np.array([c0, k1, g1])
-    sd = float(resid.std(ddof=3))
-    r2s = float(1 - (resid ** 2).sum() / ((ys - ys.mean()) ** 2).sum())
-    # laps a driver is expected to add before the race: two more test days + the race qualifying
-    day_laps = []
-    for d in sz["drivers"]:
-        pass
-    n_days = len(sz.get("days", [])) or 1
-    active = sum(1 for d in sz["drivers"] if d["laps"])
-    per_day = max(8.0, sum(d["laps"] for d in sz["drivers"]) / max(1, sum(1 for d in sz["drivers"] for v in d["best_per_day"] if v is not None)))
-    test_days_left = max(0, (datetime.fromisoformat(SUZUKA_RACE) - datetime.fromisoformat((laps_in.get("fetched_at") or "")[:10])).days - 1)
-    extra = test_days_left * per_day + 5
-    ranked = sorted((r for r in rows if r.get("now")), key=lambda r: r["now"])
-    members = []
-    for r in ranked:
-        if r["now"] > 60:
-            break
-        s = S.get(r["id"], {})
-        best, n = s.get("best"), s.get("laps", 0) or 0
-        base_now = c0 + k1 * r["qBest"] + g1 * math.log(max(n, 1))
-        n_ref = max(n, 0) + extra
-        mu0 = c0 + k1 * r["qBest"] + g1 * math.log(max(n_ref, 1))
-        w = n / (n + SUZ_PRIOR_LAPS) if best else 0.0
-        delta = (best - base_now) if best else 0.0
-        mu = mu0 + w * delta
-        sig = sd * (1 - 0.5 * w)
-        members.append(dict(r=r, split=1 if r["now"] <= 30 else 2, best=best, laps=n, mu=mu, sig=sig, car=s.get("car"),
-                            days=s.get("best_per_day")))
-    rnd = np.random.default_rng(SEED)
-    out_s = {}
-    for sp_no in (1, 2):
-        ms = [m for m in members if m["split"] == sp_no]
-        mu = np.array([m["mu"] for m in ms]); sg = np.array([m["sig"] for m in ms])
-        draw = rnd.normal(mu, sg, size=(N_SUZUKA, len(ms)))
-        for j, m in enumerate(ms):
-            if m["best"]:
-                draw[:, j] = np.minimum(draw[:, j], m["best"])        # a lap already set cannot be undone
-        srt = np.sort(draw, axis=1)
-        order = np.argsort(draw, axis=1)
-        rankpos = np.empty_like(order); rows_i = np.arange(order.shape[0])[:, None]
-        rankpos[rows_i, order] = np.arange(1, len(ms) + 1)[None, :]
-        qs = lambda a, p: float(np.quantile(a, p))
-        timed_now = sorted((m for m in ms if m["best"]), key=lambda m: m["best"])
-        drivers_s = []
-        for j, m in enumerate(ms):
-            r = m["r"]
-            now_rank = (timed_now.index(m) + 1) if m["best"] else None
-            drivers_s.append(dict(
-                name=r["name"], car_number=r["num"], irating=r["ir"], prequal_position=r["now"], prequal_best=r["qBest"],
-                suzuka_best=m["best"], suzuka_laps=m["laps"], suzuka_car=m["car"], suzuka_best_per_day=m["days"],
-                suzuka_rank_now=now_rank,
-                expected_pace=dict(p10=round(qs(draw[:, j], .1), 3), p50=round(qs(draw[:, j], .5), 3), p90=round(qs(draw[:, j], .9), 3), mean=round(float(draw[:, j].mean()), 3)),
-                expected_rank=dict(p10=int(qs(rankpos[:, j], .1)), p50=int(round(qs(rankpos[:, j], .5))), p90=int(qs(rankpos[:, j], .9))),
-                chance_top3=round(float((rankpos[:, j] <= 3).mean() * 100), 1),
-                chance_win=round(float((rankpos[:, j] == 1).mean() * 100), 1)))
-        # table order = what has actually been driven (best time first), then riders without a Suzuka time by expected pace
-        drivers_s.sort(key=lambda d: (d["suzuka_best"] is None, d["suzuka_best"] or 0, d["expected_pace"]["mean"]))
-        for i_, d_ in enumerate(sorted(drivers_s, key=lambda d: d["expected_pace"]["mean"]), 1):
-            d_["expected_order"] = i_
-        p3 = srt[:, 2]; p1 = srt[:, 0]; p10 = srt[:, 9]
-        now_p = lambda k: timed_now[k - 1]["best"] if len(timed_now) >= k else None
-        out_s[sp_no] = dict(
-            split=sp_no, prequal_from=1 if sp_no == 1 else 31, prequal_to=30 if sp_no == 1 else 60, members=len(ms),
-            with_time=len(timed_now),
-            now=dict(p1=now_p(1), p3=now_p(3), p10=now_p(10)),
-            top3_pace=dict(p10=round(qs(p3, .1), 3), p50=round(qs(p3, .5), 3), p90=round(qs(p3, .9), 3)),
-            winner_pace=dict(p10=round(qs(p1, .1), 3), p50=round(qs(p1, .5), 3), p90=round(qs(p1, .9), 3)),
-            top10_pace=dict(p10=round(qs(p10, .1), 3), p50=round(qs(p10, .5), 3), p90=round(qs(p10, .9), 3)),
-            drivers=drivers_s)
-    fast = [(d["best"], r_["name"]) for r_ in rows for d in [S.get(r_["id"])] if d and d["best"]]
-    fast.sort()
-    all_fastest = None
-    if fast:
-        fr = next(r_ for r_ in rows if S.get(r_["id"]) and S[r_["id"]]["best"] == fast[0][0])
-        all_fastest = dict(name=fr["name"], time=fast[0][0], car=S[fr["id"]]["car"], split=(1 if (fr.get("now") or 99) <= 30 else 2 if (fr.get("now") or 99) <= 60 else None))
-    return dict(
-        track="Suzuka International Racing Course – Grand Prix", race_date=SUZUKA_RACE, days=sz.get("days", []),
-        sessions_used=sz.get("sessions_used", []), drivers_with_time=sum(1 for d in sz["drivers"] if d["best"]),
-        laps_total=sum(d["laps"] for d in sz["drivers"]), fastest=all_fastest,
-        model=dict(
-            description="Suzuka-tempo = c + k × VIR-prequaltijd + g × ln(ronden): wie meer rondes reed is sneller. De eigen afwijking van een rijder weegt mee naarmate hij meer ronden heeft (50% bij " + str(SUZ_PRIOR_LAPS) + " ronden). De verwachte pace is de snelste ronde die een rijder op racedag naar verwachting heeft gereden, met de ronden die hij tot dan nog bij rijdt. Een al gereden ronde kan niet trager worden. De drempel voor een top-3 is de derde snelste verwachte pace binnen de split, uit " + f"{N_SUZUKA:,}".replace(",", ".") + " simulaties.",
-            c=round(float(c0), 3), k=round(float(k1), 4), g=round(float(g1), 4), residual_sd=round(sd, 3), r2=round(r2s, 3), fit_n=len(fit),
-            expected_extra_laps=round(extra, 1), test_days_left=test_days_left, prior_laps=SUZ_PRIOR_LAPS,
-            pace_definition="snelste ronde (kwalificatie-niveau), geen gemiddelde racepace"),
-        splits=[out_s[1], out_s[2]])
-
-SUZUKA = build_suzuka()
+from race_model import build_race  # noqa: E402
+RACE = build_race(rows, INPUT, ROOT, seed=SEED)
 
 drivers = [dict(name=r["name"], car_number=r["num"], irating=r["ir"], license=r["lic"], safety_rating=r["sr"],
                 practice_best=r["pBest"], practice_laps=r["pLaps"], prequal_best=r["qBest"], prequal_laps=r["qLaps"],
@@ -328,7 +221,9 @@ drivers = [dict(name=r["name"], car_number=r["num"], irating=r["ir"], license=r[
                 chance_p1=r["p1"], chance_split1=r["s1"], chance_split2=r["s2"])
            for r in sorted(rows, key=lambda r: (r["pos"]["p50"] if r["pos"] else 10 ** 6, -r["ir"]))]
 
-generated = laps_in.get("fetched_at") or datetime.now(timezone.utc).isoformat(timespec="seconds")
+_tp = INPUT / "tests.json"
+generated = ((json.load(open(_tp)).get("fetched_at") if _tp.exists() else None) or laps_in.get("fetched_at")
+             or datetime.now(timezone.utc).isoformat(timespec="seconds"))
 out = dict(
     meta=dict(
         generated_at=generated,
@@ -354,7 +249,7 @@ out = dict(
                             session=("prequal" if fastest["best"] == fastest["qBest"] else "training"))),
     position_curve=dict(description="Verwachte prequal-positie bij deze tijd, tegen het hele veld", times=R["grid"],
                         p10=[q(L, .1) for L in R["posg"]], p50=[q(L, .5) for L in R["posg"]], p90=[q(L, .9) for L in R["posg"]]),
-    suzuka=SUZUKA,
+    race=RACE,
     drivers=drivers, irating_bands=bands, irating_histogram=hist,
     irating_density=dict(irating=xs, expected_count_per_500=dens),
     irating_summary=dict(median=st.median(irs), mean=round(st.mean(irs)), min=irs[0], max=irs[-1]))
