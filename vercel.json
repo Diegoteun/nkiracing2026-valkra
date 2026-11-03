@@ -1,5 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/upload", "destination": "/upload.html" }
-  ]
-}

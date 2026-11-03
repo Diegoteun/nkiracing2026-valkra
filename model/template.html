@@ -1,135 +1,608 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NK iRacing racepace</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,800;1,900&display=swap">
 <!--
-  Valkra Performance · NK iRacing 2026 · pace voor de komende race
-
-  Deployment
-  - De pagina haalt bij het openen de laatste JSON op uit GitHub (data/valkra-nk-prequal.json in Diegoteun/nkiracing2026-valkra).
-    De bestandsnaam is gelijk gebleven zodat de upload (/upload) blijft werken; de racedata staat onder de sleutel "race".
-  - Instellingen (optioneel), vóór dit bestand of bovenaan de pagina:
-      <script>window.VALKRA_PREQUAL_CONFIG = { dataUrl: "/data/valkra-nk-prequal.json", uploadUrl: "/admin/prequal-data" };</script>
-  - Beheer: open de pagina met #beheer achter de URL om de knop "JSON importeren" te tonen.
-  - Bevat een ingebouwde kopie van de data als terugval, zodat het bestand los ook werkt.
+  Valkra Performance - NK iRacing 2026 - pace voor de komende race
+  Light-only Apple-style glass UI. Design tokens: design/tokens.json
 -->
 <style>
-/* Layout: dark hero, four KPI tiles, the team card, then one card per split. Single light theme: it sits inside the light Valkra site. */
 :root {
   color-scheme: light;
-  --bg: #F8FAFC;
-  --surface: #FFFFFF;
-  --ink: #111827;
-  --ink-2: #4B5563;
-  --muted: #6B7280;
-  --line: #E5E7EB;
-  --grid: #EEF0F3;
-  --axis: #CBD0D6;
-  --yellow: #FEEA27;
-  --yellow-wash: rgba(254, 234, 39, 0.32);
+  --brand: #feea27;
+  --on-brand: #000000;
+  --ink: #1a1a1a;
+  --ink-soft: #555555;
+  --ink-muted: #666666;
   --ok: #067647;
-  --err: #B42318;
-  --sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --err: #b42318;
+  --glass: rgba(255, 255, 255, 0.58);
+  --glass-strong: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --hairline: rgba(0, 0, 0, 0.06);
+  --control: rgba(0, 0, 0, 0.45);
+  --focus: #1a1a1a;
+  --sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --r-control: 8px;
+  --r-card: 16px;
+  --r-pill: 999px;
+  --content: 1134px;
+  --blur: saturate(180%) blur(28px);
 }
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.55; margin: 0; }
-.wrap {
-  max-width: 1120px; margin: 0 auto; padding-block: 24px 48px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  display: grid; gap: 20px;
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1000px 520px at 8% -8%, rgba(254, 234, 39, 0.28), transparent 55%),
+    radial-gradient(900px 480px at 100% 0%, rgba(254, 234, 39, 0.16), transparent 50%),
+    radial-gradient(700px 420px at 50% 110%, rgba(254, 234, 39, 0.08), transparent 55%),
+    #f5f5f2;
 }
-.eyebrow { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+.wrap {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding-block: 28px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 20px;
+}
+.glass {
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 10px 40px rgba(0, 0, 0, 0.05);
+  border-radius: var(--r-card);
+}
+.eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: rgba(26, 26, 26, 0.45);
+  margin: 0;
+  text-transform: none;
+}
 
-/* Admin bar, only with #beheer */
-.admin { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; background: var(--surface); border: 1px dashed var(--axis); border-radius: 10px; padding: 12px 14px; }
+.admin {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: center;
+  padding: 16px 20px;
+}
 .admin[hidden] { display: none; }
-.admin strong { font-weight: 600; }
-.btn { font: 500 13px var(--sans); background: var(--yellow); color: var(--ink); border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
-.btn.ghost { background: var(--surface); border: 1px solid var(--line); }
-.btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.admin .msg { font-size: 12.5px; color: var(--ink-2); flex-basis: 100%; }
+.admin strong { font-weight: 600; font-size: 14px; }
+.admin .msg { font-size: 13px; color: var(--ink-soft); flex-basis: 100%; }
 .admin .msg.ok { color: var(--ok); }
 .admin .msg.err { color: var(--err); }
-.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
 
-/* Hero */
-.hero { background: var(--ink); color: #FFFFFF; border-radius: 12px; padding: 28px clamp(18px, 4vw, 36px); display: grid; gap: 10px; }
-.hero .eyebrow { color: rgba(255, 255, 255, 0.7); }
-.hero h1 { margin: 0; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
-.hero p { margin: 0; max-width: 68ch; color: rgba(255, 255, 255, 0.78); font-weight: 300; font-size: 15px; }
-.hero .stamp { justify-self: start; background: var(--yellow); color: var(--ink); font-weight: 500; font-size: 13px; padding: 6px 12px; border-radius: 8px; }
+.btn {
+  font: 500 14px/1.2 var(--sans);
+  background: var(--brand);
+  color: var(--on-brand);
+  border: 0;
+  border-radius: var(--r-control);
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--ink);
+  border: 1px solid var(--hairline);
+}
+.btn:focus-visible,
+.seg button:focus-visible,
+.help summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
 
-/* Tiles */
-.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 820px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; min-width: 0; }
-.tile .lbl { font-size: 12.5px; color: var(--muted); }
-.tile .val { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.tile .sub { font-size: 12.5px; color: var(--ink-2); }
-.tile.goal { background: var(--ink); border-color: var(--ink); color: #FFFFFF; }
-.tile.goal .lbl, .tile.goal .sub { color: rgba(255, 255, 255, 0.72); }
-.tile.goal .val { color: var(--yellow); }
-.tile.accent { background: var(--yellow); border-color: var(--yellow); }
-.tile.accent .lbl, .tile.accent .sub { color: var(--ink); opacity: 0.8; }
+.shell {
+  padding: 0;
+  overflow: hidden;
+  display: grid;
+  animation: fade-up 500ms var(--ease-out) both;
+}
+.hero {
+  padding: 28px clamp(20px, 4vw, 36px) 22px;
+  display: grid;
+  gap: 14px;
+  color: var(--ink);
+}
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  color: var(--ink);
+}
+.hero-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 18ch;
+}
+.hero-lede {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.stand {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
 
-/* Cards */
-.row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
-@media (max-width: 920px) { .row2 { grid-template-columns: minmax(0, 1fr); } }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.help {
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+.help summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px clamp(20px, 4vw, 36px);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: color 150ms var(--ease-out), background 150ms var(--ease-out);
+}
+.help summary:hover { color: var(--ink); background: rgba(255, 255, 255, 0.25); }
+.help summary::-webkit-details-marker { display: none; }
+.help summary::after {
+  content: "+";
+  font-size: 16px;
+  color: var(--ink-muted);
+  transition: transform 200ms var(--ease-out);
+}
+.help[open] summary::after {
+  content: "-";
+  transform: rotate(180deg);
+}
+.help .help-body {
+  padding: 0 clamp(20px, 4vw, 36px) 18px;
+}
+.help[open] .help-body {
+  animation: fade-up 320ms var(--ease-out) both;
+}
+.help dl {
+  margin: 12px 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.help dt { font-weight: 600; color: var(--ink); }
+.help dd { margin: 0; }
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 820px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.tile {
+  padding: 18px 20px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-width: 0;
+}
+.tile .lbl { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
+.tile .val {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.tile .sub { font-size: 13px; color: var(--ink-soft); line-height: 1.45; }
+.tile.goal .val { letter-spacing: -0.03em; }
+
+.card {
+  padding: 28px;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  min-width: 0;
+}
 .card[hidden] { display: none; }
-.card h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
-.card h3 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
-.cap { margin: 0; font-size: 12.5px; color: var(--muted); max-width: 80ch; }
-.ttl { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
-.ttl .rng { font-size: 12.5px; color: var(--muted); }
+.card h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.cap {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-muted);
+  max-width: 80ch;
+  line-height: 1.55;
+}
+.ttl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+}
+.ttl .rng { font-size: 13px; color: var(--ink-muted); font-weight: 500; }
 
-/* Target block per split */
-.pace3 { background: var(--ink); color: #FFFFFF; border-radius: 10px; padding: 14px 16px; display: grid; gap: 2px; }
-.pace3.s2 { background: var(--yellow); color: var(--ink); }
-.pace3 .lbl { font-size: 12.5px; opacity: 0.78; }
-.pace3 .val { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.pace3:not(.s2) .val { color: var(--yellow); }
-.pace3 .sub { font-size: 12.5px; opacity: 0.85; }
-.mini3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.mini3 > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 1px; min-width: 0; }
-.mini3 .lbl { font-size: 11.5px; color: var(--muted); }
-.mini3 .v { font: 600 14.5px var(--mono); }
-.mini3 .s { font-size: 11.5px; color: var(--muted); }
+.rtabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  padding: 12px clamp(20px, 4vw, 36px);
+  background: transparent;
+  border: 0;
+  border-block: 1px solid var(--hairline);
+  border-radius: 0;
+  box-shadow: none;
+}
+.rtabs button {
+  flex: 1 1 auto;
+  min-width: 0;
+  font: 500 13px/1.2 var(--sans);
+  color: var(--ink-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  transition: color 150ms var(--ease-out), background 200ms var(--ease-out), transform 150ms var(--ease-out);
+}
+.rtabs button[aria-selected="true"] {
+  color: var(--ink);
+  font-weight: 600;
+  background: rgba(254, 234, 39, 0.35);
+}
+.rtabs button:hover:not([aria-selected="true"]) {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.45);
+}
+.rtabs button:active { transform: scale(0.98); }
+.rtabs button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+@media (max-width: 720px) {
+  .rtabs button { flex: 1 1 30%; font-size: 12px; padding: 10px 8px; }
+}
 
-/* Tables */
-.tbox { overflow-x: auto; }
+.seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 4px;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-control);
+}
+.seg button {
+  font: 500 13px/1.2 var(--sans);
+  color: var(--ink-soft);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.seg button[aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.seg button:hover:not([aria-selected="true"]) { color: var(--ink); }
+.seg button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.view { display: grid; gap: 20px; }
+.view[hidden] { display: none !important; }
+.view:not([hidden]) > * {
+  animation: fade-up 420ms var(--ease-out) both;
+}
+.view:not([hidden]) > *:nth-child(2) { animation-delay: 50ms; }
+.view:not([hidden]) > *:nth-child(3) { animation-delay: 100ms; }
+.view:not([hidden]) > *:nth-child(4) { animation-delay: 150ms; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.tile, .card, .empty {
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.tile:hover, .card:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 14px 40px rgba(0, 0, 0, 0.07);
+}
+
+.empty {
+  padding: 48px 28px;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  text-align: left;
+}
+.empty h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.empty p {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.pace-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .pace-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .pace-row { grid-template-columns: 1fr; }
+}
+.pace3 {
+  padding: 18px 20px;
+  display: grid;
+  gap: 4px;
+}
+.pace3 .lbl { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
+.pace3 .val {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.pace3 .sub { font-size: 13px; color: var(--ink-soft); line-height: 1.45; }
+.mini {
+  padding: 14px 16px;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.mini .lbl { font-size: 12px; font-weight: 500; color: var(--ink-muted); }
+.mini .v {
+  font-size: 18px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.mini .s { font-size: 12px; color: var(--ink-muted); }
+
+.tbox {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.tbox::-webkit-scrollbar { display: none; width: 0; height: 0; }
 table { border-collapse: collapse; width: 100%; }
-.stbl th { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; padding: 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.stbl td { padding: 6px 8px; text-align: right; font-family: var(--mono); font-size: 12.5px; border-bottom: 1px solid var(--grid); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stbl thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-align: right;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hairline);
+  white-space: nowrap;
+}
+.stbl td {
+  padding: 12px;
+  text-align: right;
+  font-size: 14px;
+  border-bottom: 1px solid var(--hairline);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  vertical-align: middle;
+}
 .stbl th.l, .stbl td.l { text-align: left; }
-.stbl td.nm { font-family: var(--sans); font-weight: 500; white-space: normal; line-height: 1.25; min-width: 140px; }
-.stbl td.nm small { display: block; font: 400 11.5px var(--sans); color: var(--muted); }
-.stbl tr.top3 td { background: var(--yellow-wash); }
-.stbl tr.team td.nm { font-weight: 700; }
-.stbl tr.team td:first-child { box-shadow: inset 3px 0 0 var(--ink); }
+.stbl th.c, .stbl td.c { text-align: center; }
+.stbl td.pos {
+  font-weight: 600;
+  color: var(--ink-muted);
+  width: 2.5rem;
+}
+.stbl tr.team td.pos { box-shadow: inset 3px 0 0 var(--brand); color: var(--ink); }
+.stbl tr.team .driver-name { font-weight: 700; }
 .stbl tr:last-child td { border-bottom: 0; }
-.stbl small.r { color: var(--muted); font-size: 11px; }
-.tag { display: inline-block; font: 600 10.5px var(--sans); letter-spacing: 0.04em; padding: 1px 6px; border-radius: 5px; background: var(--ink); color: var(--yellow); margin-left: 6px; vertical-align: 1px; }
-.est { font: 400 10.5px var(--sans); color: var(--muted); margin-left: 4px; }
+.stbl tr:hover td { background: rgba(255, 255, 255, 0.35); }
+
+.driver {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.driver-text { min-width: 0; }
+.driver-name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.25;
+}
+.driver-meta {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+.car-ico {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.car-ico img {
+  max-width: 40px;
+  max-height: 22px;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+.car-ico-empty {
+  width: 40px;
+  height: 22px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.04);
+}
+.est {
+  display: inline-block;
+  font: 400 11px var(--sans);
+  color: var(--ink-muted);
+  margin-left: 6px;
+}
 .gap { font-weight: 600; }
 .gap.in { color: var(--ok); }
 .gap.out { color: var(--ink); }
-.split { display: inline-block; font: 600 11px var(--sans); letter-spacing: 0.04em; padding: 2px 8px; border-radius: 6px; background: var(--line); color: var(--ink); }
-.split.s1 { background: var(--ink); color: var(--yellow); }
-.none { color: var(--muted); opacity: 0.6; }
-.showall { font: 500 13px var(--sans); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; cursor: pointer; justify-self: start; }
-.showall:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.teamcard { border-color: var(--ink); }
+.none { color: var(--ink-muted); opacity: 0.7; }
+.laps {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-muted);
+  margin-left: 4px;
+}
 
-.foot { font-size: 12px; color: var(--muted); display: grid; gap: 6px; max-width: 90ch; }
-.foot p { margin: 0; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.chance {
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  min-width: 4.5rem;
+}
+.chance b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.chance-bar {
+  width: 56px;
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+.chance-bar > i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  border-radius: inherit;
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+.foot {
+  padding: 24px clamp(20px, 4vw, 32px);
+  display: grid;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.foot p { margin: 0; max-width: 90ch; }
+.foot-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 2px; color: var(--ink); }
+.foot-logo { height: 18px; width: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass { background: rgba(255, 255, 255, 0.92); }
+}
 </style>
+</head>
+<body>
 
 <div class="wrap">
-  <section class="admin" id="admin" hidden aria-label="Data bijwerken">
+  <section class="admin glass" id="admin" hidden aria-label="Data bijwerken">
     <strong>Data bijwerken</strong>
     <label class="btn" for="file">JSON importeren</label>
     <input class="visually-hidden" type="file" id="file" accept="application/json,.json">
@@ -137,26 +610,77 @@ table { border-collapse: collapse; width: 100%; }
     <span class="msg" id="admin-msg" role="status">Kies een nieuw valkra-nk-prequal.json.</span>
   </section>
 
-  <header class="hero">
-    <div class="eyebrow">Valkra Performance · Data · NK iRacing 2026</div>
-    <h1 id="hero-h1">Pace voor de komende race</h1>
-    <p id="hero-p">Per split wie welke tijd reed, wat we op racedag verwachten en de target voor een top 3.</p>
-    <span class="stamp" id="stamp">Data laden…</span>
-  </header>
+  <section class="shell glass">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="hero-brand">
+          <img class="hero-logo" src="assets/valkra-logo.png" width="160" height="35" alt="Valkra Performance">
+          <p class="eyebrow">NK iRacing 2026</p>
+        </div>
+        <p class="stand" id="stamp">Data laden…</p>
+      </div>
+      <h1 id="hero-h1">Pace voor de komende race</h1>
+      <p class="hero-lede" id="hero-p">Per split wie welke tijd reed, wat we op racedag verwachten en de target voor een top 3.</p>
+    </header>
 
-  <section class="tiles" id="tiles" aria-label="Kerncijfers"></section>
+    <nav class="rtabs" id="round-tabs" role="tablist" aria-label="Rondes"></nav>
 
-  <section class="card teamcard" id="team" aria-labelledby="team-title">
-    <div class="ttl"><h2 id="team-title">Valkra Performance</h2><span class="rng" id="team-sub"></span></div>
-    <p class="cap" id="team-cap"></p>
-    <div class="tbox"><table class="stbl" id="teamtbl"></table></div>
+    <details class="help" id="help">
+      <summary>Wat betekenen deze cijfers?</summary>
+      <div class="help-body">
+        <dl id="help-dl"></dl>
+      </div>
+    </details>
   </section>
 
-  <section class="row2" id="splits" aria-label="Splits"></section>
+  <div class="view" id="view-race">
+    <section class="tiles" id="tiles" aria-label="Kerncijfers"></section>
 
-  <footer class="foot">
+    <section class="card glass" id="team" aria-labelledby="team-title">
+      <div class="ttl">
+        <h2 id="team-title">Valkra Performance</h2>
+        <span class="rng" id="team-sub"></span>
+      </div>
+      <p class="cap" id="team-cap">Onze rijders. Gele streep links markeert Valkra.</p>
+      <div class="tbox"><table class="stbl" id="teamtbl"></table></div>
+    </section>
+
+    <section class="card glass" id="field" aria-labelledby="field-title">
+      <div class="ttl">
+        <h2 id="field-title">Veld</h2>
+        <div class="seg" id="split-switch" role="tablist" aria-label="Kies split"></div>
+      </div>
+      <p class="cap" id="field-cap"></p>
+      <div class="pace-row" id="pace-row"></div>
+      <div class="tbox"><table class="stbl" id="fieldtbl"></table></div>
+      <p class="hint" id="field-hint"></p>
+    </section>
+  </div>
+
+  <div class="view" id="view-prequal" hidden>
+    <section class="tiles" id="pq-tiles" aria-label="Prequal kerncijfers"></section>
+    <section class="card glass" aria-labelledby="pq-title">
+      <div class="ttl">
+        <h2 id="pq-title">Prequal-eindstand</h2>
+        <span class="rng" id="pq-sub"></span>
+      </div>
+      <p class="cap" id="pq-cap">VIR Full Course. Splits volgen uit deze stand (P1 tot P30 = split 1, P31 tot P60 = split 2).</p>
+      <div class="tbox"><table class="stbl" id="pq-tbl"></table></div>
+    </section>
+  </div>
+
+  <div class="view" id="view-soon" hidden>
+    <section class="empty glass" id="soon-card">
+      <h2 id="soon-title">Ronde 2</h2>
+      <p id="soon-text">Baan nog niet bekend. Zodra de league deze ronde plant en er testdata is, verschijnt die hier.</p>
+    </section>
+  </div>
+
+  <footer class="foot glass">
+    <div class="foot-brand">
+      <img class="foot-logo" src="assets/valkra-logo.png" width="120" height="26" alt="">
+    </div>
     <p id="note"></p>
-    <p id="method"></p>
     <p id="source"></p>
   </footer>
 </div>
@@ -164,22 +688,104 @@ table { border-collapse: collapse; width: 100%; }
 <script>
 const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
 (() => {
-  const CONFIG = Object.assign({ dataUrl: /*__DATA_URL__*/, uploadUrl: null }, window.VALKRA_PREQUAL_CONFIG || {});
+  const CONFIG = Object.assign({ dataUrl: /*__DATA_URL__*/ }, window.VALKRA_PREQUAL_CONFIG || {});
   const $ = id => document.getElementById(id);
 
-  /* Formatting */
-  const fmtT = (t, d) => { const r = Math.round(t * 10 ** d) / 10 ** d; const m = Math.floor(r / 60); return m + ":" + (r - m * 60).toFixed(d).padStart(d + 3, "0"); };
+  const SPLIT_KEY = "valkra-split";
+  /* Ronde-tabs volgen de kalender (Amsterdam). Handmatige keuze blijft alleen in deze sessie. */
+  const ROUND_SWITCH = [
+    { from: "2026-11-20", id: "round-4" },
+    { from: "2026-11-13", id: "round-3" },
+    { from: "2026-11-06", id: "round-2" },
+  ];
+  const amsterdamDay = (d = new Date()) =>
+    new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
+  const defaultViewId = () => {
+    const day = amsterdamDay();
+    for (const row of ROUND_SWITCH) if (day >= row.from) return row.id;
+    return "round-1";
+  };
+
+  const HELP = {
+    race: [
+      ["Target", "Tijd die je ongeveer nodig hebt voor een top 3 in die split op racedag."],
+      ["Beste", "Snelste ronde die de rijder al in de testsessies reed."],
+      ["Verwacht", "Wat het model denkt dat de snelste ronde op racedag wordt."],
+      ["Gat", "Verwacht minus target. Negatief of groen: al binnen de target."],
+      ["Top 3", "Kans op een podiumplek in die split (simulatie)."],
+    ],
+    prequal: [
+      ["Beste", "Snelste prequal-ronde op VIR."],
+      ["Eind", "Prequal-eindpositie (1 = snelste)."],
+      ["Split 1", "Kans om in split 1 te eindigen (P1 tot P30)."],
+      ["Split 2", "Kans om in split 2 te eindigen (P31 tot P60)."],
+    ],
+    soon: [
+      ["Later", "Deze ronde heeft nog geen baan of testdata. De tab blijft klaarstaan."],
+    ],
+  };
+
+  const fmtT = (t, d) => {
+    const r = Math.round(t * 10 ** d) / 10 ** d;
+    const m = Math.floor(r / 60);
+    return m + ":" + (r - m * 60).toFixed(d).padStart(d + 3, "0");
+  };
   const lap = t => fmtT(t, 3);
   const nl = n => n.toLocaleString("nl-NL");
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
-  const sgn = v => (v > 0 ? "+" : v < 0 ? "−" : "±") + Math.abs(v).toFixed(3).replace(".", ",");
-  const carShort = c => c ? String(c).replace(/ GT3.*$/, "").replace(/ EVO( II)?$/, "") : "";
-  const trackShort = t => String(t || "").split(" – ")[0].replace(" International Racing Course", "").replace(" International Raceway", "");
+  const sgn = v => (v > 0 ? "+" : v < 0 ? "-" : "+/-") + Math.abs(v).toFixed(3).replace(".", ",");
+  const carShort = c => c ? String(c).replace(/ GT3.*$/i, "").replace(/ EVO( II)?$/i, "").replace(/ \(992\)$/i, "") : "";
+  const trackShort = t => String(t || "").split(/\s*[\u2013\u2014\u2212\-]\s*/)[0]
+    .replace(" International Racing Course", "")
+    .replace(" International Raceway", "");
   const dateNl = s => new Date(s).toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Amsterdam" });
   const timeNl = s => new Date(s).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
-  const gapHtml = v => v == null ? '<span class="none">–</span>' : `<span class="gap ${v <= 0 ? "in" : "out"}">${sgn(v)}</span>`;
+  const gapHtml = v => v == null ? '<span class="none">-</span>' : `<span class="gap ${v <= 0 ? "in" : "out"}">${sgn(v)}</span>`;
 
-  /* Validation of an imported or fetched data file */
+  /* Merklogo's lokaal in assets/brands. Match op merk + model-aliassen zodat nieuwe GT3-namen van bekende merken blijven werken. */
+  const CAR_BRANDS = [
+    { re: /ferrari|\b296\b/i, key: "ferrari", file: "ferrari-logo.svg", label: "Ferrari" },
+    { re: /porsche|\b911\b|\b992\b/i, key: "porsche", file: "porsche-logo.svg", label: "Porsche" },
+    { re: /mercedes|\bamg\b/i, key: "mercedes", file: "mercedes-benz-logo.svg", label: "Mercedes" },
+    { re: /\bbmw\b|\bm4\b/i, key: "bmw", file: "bmw-logo.svg", label: "BMW" },
+    { re: /mclaren|\b720s\b/i, key: "mclaren", file: "mclaren-logo.svg", label: "McLaren" },
+    { re: /lamborghini|hurac[aá]n/i, key: "lamborghini", file: "lamborghini-logo.png", label: "Lamborghini" },
+    { re: /acura|\bnsx\b/i, key: "acura", file: "acura-logo.svg", label: "Acura" },
+    { re: /honda/i, key: "honda", file: "honda-logo.png", label: "Honda" },
+    { re: /corvette|chevrolet|chevy|\bz06\b/i, key: "chevrolet", file: "chevrolet-logo.png", label: "Chevrolet" },
+    { re: /audi|\br8\b/i, key: "audi", file: "audi-logo.svg", label: "Audi" },
+    { re: /aston|vantage/i, key: "aston", file: "aston-martin-logo.svg", label: "Aston Martin" },
+    { re: /lexus|\brc\s*f\b/i, key: "lexus", file: "lexus-logo.png", label: "Lexus" },
+    { re: /ford|mustang/i, key: "ford", file: "ford-logo.png", label: "Ford" },
+  ];
+  const brandSrc = file => {
+    try { return new URL("assets/brands/" + file, document.baseURI).href; }
+    catch (_) { return "assets/brands/" + file; }
+  };
+  const carBrand = name => {
+    const s = name || "";
+    for (const b of CAR_BRANDS) if (b.re.test(s)) return b;
+    return null;
+  };
+  const carIcon = name => {
+    const b = carBrand(name);
+    const title = esc(name || (b && b.label) || "Auto");
+    if (!b) return `<span class="car-ico car-ico-empty" title="${title}" aria-hidden="true"></span>`;
+    return `<span class="car-ico" data-car="${b.key}" title="${title}"><img src="${esc(brandSrc(b.file))}" alt="${esc(b.label)}" loading="lazy" decoding="async"></span>`;
+  };
+  const chanceHtml = pct => {
+    const p = Math.max(0, Math.min(100, Math.round(pct || 0)));
+    return `<div class="chance"><b>${p}%</b><span class="chance-bar" aria-hidden="true"><i style="width:${p}%"></i></span></div>`;
+  };
+  const driverCell = (d, { showTeam = true } = {}) => {
+    const meta = [
+      showTeam && d.team && !d.is_team ? d.team : "",
+      carShort(d.car),
+      d.prequal_position ? "prequal P" + d.prequal_position : "",
+    ].filter(Boolean).map(esc).join(" / ");
+    return `<div class="driver">${carIcon(d.car)}<div class="driver-text"><span class="driver-name">${esc(d.name)}</span>${meta ? `<span class="driver-meta">${meta}</span>` : ""}</div></div>`;
+  };
+
   function problems(D) {
     const p = [];
     if (!D || typeof D !== "object") return ["geen JSON-object"];
@@ -188,89 +794,213 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     return p;
   }
 
-  const open = {};
   let current = null;
+  let activeSplit = Number(localStorage.getItem(SPLIT_KEY)) || 1;
+  let activeView = defaultViewId();
 
-  function render(D) {
-    current = D;
+  function shownSplits(R) {
+    const list = (R.splits || []).filter(S => S.shown);
+    return list.length ? list : (R.splits || []).slice(0, 2);
+  }
+
+  function pickSplit(R) {
+    const shown = shownSplits(R);
+    let S = shown.find(x => x.split === activeSplit);
+    if (!S) {
+      S = shown[0];
+      activeSplit = S ? S.split : 1;
+    }
+    return S;
+  }
+
+  function buildTabs(D) {
+    const R = D.race || {};
+    const currentRound = Number(R.round) || 1;
+    const currentTrack = trackShort(R.track);
+    const tabs = [{ id: "prequal", label: "Prequali", kind: "prequal" }];
+    for (let n = 1; n <= 4; n++) {
+      if (n === currentRound && R.track) {
+        tabs.push({ id: "round-" + n, label: `Ronde ${n}: ${currentTrack}`, kind: "race", round: n });
+      } else {
+        tabs.push({ id: "round-" + n, label: `Ronde ${n}`, kind: "soon", round: n });
+      }
+    }
+    const known = new Set(tabs.map(t => t.id));
+    if (!known.has(activeView)) activeView = "round-" + currentRound;
+    return tabs;
+  }
+
+  function setHelp(kind) {
+    const rows = HELP[kind] || HELP.race;
+    $("help-dl").innerHTML = rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+  }
+
+  function showView(kind) {
+    $("view-race").hidden = kind !== "race";
+    $("view-prequal").hidden = kind !== "prequal";
+    $("view-soon").hidden = kind !== "soon";
+    setHelp(kind);
+  }
+
+  function renderPrequal(D) {
+    const F = D.forecast || {};
+    const drivers = (D.drivers || []).slice().sort((a, b) => (a.prequal_position_now || 999) - (b.prequal_position_now || 999));
+    const teamNames = new Set((D.race.team_drivers || []).map(d => (d.name || "").toLowerCase()));
+    const fastest = F.fastest_so_far;
+
+    $("hero-h1").textContent = "Prequali";
+    $("hero-p").textContent = `Eindstand op ${trackShort(D.meta.track || "Virginia International Raceway")}. Deze stand bepaalt de splits voor het seizoen.`;
+
+    const tiles = [
+      { lbl: "Grens split 1", val: lap(F.split1_range?.likely || F.split1_cutoff?.p50), sub: "P30-tijd (eindstand)" },
+      { lbl: "Grens split 2", val: lap(F.split2_range?.likely || F.split2_cutoff?.p50), sub: "P60-tijd (eindstand)" },
+      { lbl: "Snelste", val: fastest ? lap(fastest.time) : "-", sub: fastest ? esc(fastest.name) : "" },
+      { lbl: "Veld", val: nl(D.meta.field_size || drivers.length), sub: "rijders in de prequal" },
+    ];
+    $("pq-tiles").innerHTML = tiles.map(t => `<div class="tile glass"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
+
+    $("pq-sub").textContent = `${drivers.length} rijders`;
+    $("pq-tbl").innerHTML = `<thead><tr>
+        <th class="l">#</th><th class="l">Rijder</th><th>Beste</th><th>iRating</th><th>Split 1</th><th>Split 2</th>
+      </tr></thead><tbody>` + drivers.map(d => {
+      const isTeam = teamNames.has((d.name || "").toLowerCase());
+      const pos = d.prequal_position_now || "-";
+      return `<tr class="${isTeam ? "team" : ""}">
+        <td class="l pos">${pos}</td>
+        <td class="l"><div class="driver"><div class="driver-text"><span class="driver-name">${esc(d.name)}</span><span class="driver-meta">${[d.car_number ? "#" + d.car_number : "", d.license || ""].filter(Boolean).map(esc).join(" / ")}</span></div></div></td>
+        <td>${d.best_time != null ? `${lap(d.best_time)}<span class="laps">${d.laps_total || 0}r</span>` : '<span class="none">-</span>'}</td>
+        <td>${nl(d.irating || 0)}</td>
+        <td>${Math.round(d.chance_split1 || 0)}%</td>
+        <td>${Math.round(d.chance_split2 || 0)}%</td>
+      </tr>`;
+    }).join("") + `</tbody>`;
+
+    $("note").textContent = D.meta.prequal_closed
+      ? "Prequal is afgerond. Splits liggen vast volgens deze eindstand."
+      : "Prequal loopt nog. Stand en kansen kunnen nog schuiven.";
+    $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}).`;
+  }
+
+  function renderRace(D) {
     const R = D.race, M = R.model;
-    const shown = R.splits.filter(S => S.shown);
+    const shown = shownSplits(R);
+    const S = pickSplit(R);
 
-    /* Hero */
     $("hero-h1").textContent = `Ronde ${R.round}: ${trackShort(R.track)}`;
-    $("hero-p").textContent = `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Wie welke tijd reed in de testsessies, wat we op racedag verwachten en de target voor een top 3.`;
-    const g = new Date(D.meta.generated_at);
-    $("stamp").textContent = "Stand " + g.toLocaleDateString("nl-NL", { day: "numeric", month: "long", timeZone: "Europe/Amsterdam" }) + ", " + g.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
+    $("hero-p").textContent = `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Kies split 1 of 2 voor targets, verwachte tijden en het veld.`;
 
-    /* Tiles */
-    const tiles = shown.slice(0, 2).map((S, i) => ({ cls: i === 0 ? "goal" : "accent", lbl: `Target top 3 · split ${S.split}`, val: lap(S.target.p50), sub: `80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}` }));
+    const tiles = [];
+    if (S) {
+      tiles.push({ cls: "goal", lbl: `Target top 3, split ${S.split}`, val: lap(S.target.p50), sub: `80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}` });
+      tiles.push({ cls: "", lbl: "Winnaar-pace", val: lap(S.winner_pace.p50), sub: `${lap(S.winner_pace.p10)} tot ${lap(S.winner_pace.p90)}` });
+    }
     if (R.fastest) tiles.push({ cls: "", lbl: "Snelste testronde", val: lap(R.fastest.time), sub: `${esc(R.fastest.name)}${R.fastest.split ? ", split " + R.fastest.split : ""}${R.fastest.car ? ", " + esc(carShort(R.fastest.car)) : ""}` });
-    tiles.push({ cls: "", lbl: "Testdata", val: nl(R.test_laps), sub: `ronden van ${R.test_drivers} rijders in ${R.test_sessions} sessies` });
-    $("tiles").innerHTML = tiles.map(t => `<div class="tile ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
+    tiles.push({ cls: "", lbl: "Testdata", val: nl(R.test_laps), sub: `${R.test_drivers} rijders, ${R.test_sessions} sessies` });
+    $("tiles").innerHTML = tiles.slice(0, 4).map(t => `<div class="tile glass ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
 
-    /* Team */
     const T = R.team_drivers || [];
     $("team").hidden = !T.length;
     $("team-title").textContent = R.team || "Team";
     $("team-sub").textContent = `${T.length} rijders`;
-    $("team-cap").textContent = "Target = verwachte derde snelste tijd in de eigen split. Gat = tijd min target; groen = al binnen de target. Verwacht = gemiddelde snelste ronde op racedag.";
-    $("teamtbl").innerHTML = `<thead><tr><th class="l">Rijder</th><th class="l">Split</th><th>Beste nu</th><th>Gat nu</th><th>Verwacht</th><th>Gat verwacht</th><th>Target</th><th>Top 3</th></tr></thead><tbody>` +
-      T.map(d => `<tr>
-        <td class="l nm">${esc(d.name)}<small>${esc(carShort(d.car))}${d.prequal_position ? " · prequal P" + d.prequal_position : ""}</small></td>
-        <td class="l"><span class="split ${d.split === 1 ? "s1" : ""}">Split ${d.split}</span></td>
-        <td>${d.best ? `${lap(d.best)} <small class="r">${d.laps}r</small>` : '<span class="none">nog niet gereden</span>'}</td>
-        <td>${gapHtml(d.gap_to_target_now)}</td>
+    $("team-cap").textContent = "Onze rijders. Gele streep links markeert Valkra.";
+    $("teamtbl").innerHTML = `<thead><tr>
+        <th class="l">Rijder</th><th class="c">Split</th><th>Beste</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
+      </tr></thead><tbody>` + T.map(d => `<tr class="team">
+        <td class="l">${driverCell(d, { showTeam: false })}</td>
+        <td class="c">${d.split}</td>
+        <td>${d.best ? `${lap(d.best)}<span class="laps">${d.laps}r</span>` : '<span class="none">-</span>'}</td>
         <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
         <td>${gapHtml(d.gap_to_target_expected)}</td>
-        <td>${lap(d.target)}</td>
-        <td>${Math.round(d.chance_top3)}%</td></tr>`).join("") + `</tbody>`;
+        <td>${chanceHtml(d.chance_top3)}</td>
+      </tr>`).join("") + `</tbody>`;
 
-    /* Split cards */
-    $("splits").innerHTML = shown.map(S => {
-      const rows = S.drivers, isOpen = !!open[S.split];
-      const list = isOpen ? rows : rows.filter((d, i) => i < 10 || d.is_team);
-      const contenders = rows.filter(d => !d.best && d.chance_top3 >= 10).sort((a, b) => b.chance_top3 - a.chance_top3).slice(0, 4);
-      return `<div class="card" data-split="${S.split}">
-        <div class="ttl"><h3>Split ${S.split}</h3><span class="rng">prequal P${S.prequal_from}–P${S.prequal_to}</span></div>
-        <div class="pace3 ${S.split === 2 ? "s2" : ""}">
-          <span class="lbl">Target voor een top 3 op racedag</span>
+    $("split-switch").innerHTML = shown.map(x =>
+      `<button type="button" role="tab" data-split="${x.split}" aria-selected="${x.split === activeSplit}">Split ${x.split}</button>`
+    ).join("");
+
+    if (!S) {
+      $("field-title").textContent = "Veld";
+      $("field-cap").textContent = "Nog geen split-data.";
+      $("pace-row").innerHTML = "";
+      $("fieldtbl").innerHTML = "";
+      $("field-hint").textContent = "";
+    } else {
+      $("field-title").textContent = `Split ${S.split}`;
+      $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. ${S.with_time} van ${S.members} hebben al een tijd.`;
+      $("pace-row").innerHTML = `
+        <div class="pace3 glass">
+          <span class="lbl">Target voor een top 3</span>
           <span class="val">${lap(S.target.p50)}</span>
-          <span class="sub">80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}${S.now.p3 ? `. Nu staat P3 op ${lap(S.now.p3)}` : ""}</span>
+          <span class="sub">80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}${S.now && S.now.p3 ? `. Nu P3 op ${lap(S.now.p3)}` : ""}</span>
         </div>
-        <div class="mini3">
-          <div><span class="lbl">Winnaar-pace</span><span class="v">${lap(S.winner_pace.p50)}</span><span class="s">${lap(S.winner_pace.p10)}–${lap(S.winner_pace.p90)}</span></div>
-          <div><span class="lbl">Top-10 pace</span><span class="v">${lap(S.top10_pace.p50)}</span><span class="s">${lap(S.top10_pace.p10)}–${lap(S.top10_pace.p90)}</span></div>
-          <div><span class="lbl">Al gereden</span><span class="v">${S.with_time} van ${S.members}</span><span class="s">${S.now.p1 ? "snelste nu " + lap(S.now.p1) : "nog geen tijden"}</span></div>
-        </div>
-        <div class="tbox"><table class="stbl">
-          <thead><tr><th class="l">#</th><th class="l">Rijder</th><th>Beste nu</th><th>Verwacht</th><th>Top 3</th></tr></thead>
-          <tbody>${list.map(d => `<tr class="${d.rank_now && d.rank_now <= 3 ? "top3" : ""} ${d.is_team ? "team" : ""}">
-            <td class="l">${d.rank_now || '<span class="none">–</span>'}</td>
-            <td class="l nm">${esc(d.name)}${d.is_team ? '<span class="tag">Valkra</span>' : ""}<small>${[d.team && !d.is_team ? esc(d.team) : "", esc(carShort(d.car)), d.prequal_position ? "prequal P" + d.prequal_position : ""].filter(Boolean).join(" · ")}</small></td>
-            <td>${d.best ? `${lap(d.best)} <small class="r">${d.laps}r</small>` : '<span class="none">–</span>'}</td>
-            <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
-            <td>${Math.round(d.chance_top3)}%</td></tr>`).join("")}</tbody>
-        </table></div>
-        ${contenders.length ? `<p class="cap">Nog niet gereden, wel kanshebber: ${contenders.map(d => `${esc(d.name)} (${Math.round(d.chance_top3)}%)`).join(", ")}.</p>` : ""}
-        <button type="button" class="showall" data-split="${S.split}" aria-expanded="${isOpen}">${isOpen ? "Toon minder" : `Toon alle ${rows.length}`}</button>
-      </div>`;
-    }).join("");
+        <div class="mini glass"><span class="lbl">Winnaar-pace</span><span class="v">${lap(S.winner_pace.p50)}</span><span class="s">${lap(S.winner_pace.p10)} tot ${lap(S.winner_pace.p90)}</span></div>
+        <div class="mini glass"><span class="lbl">Top-10 pace</span><span class="v">${lap(S.top10_pace.p50)}</span><span class="s">${lap(S.top10_pace.p10)} tot ${lap(S.top10_pace.p90)}</span></div>
+        <div class="mini glass"><span class="lbl">Al gereden</span><span class="v">${S.with_time}/${S.members}</span><span class="s">${S.now && S.now.p1 ? "snelste " + lap(S.now.p1) : "nog geen tijden"}</span></div>`;
 
-    /* Footer */
-    const hist = (R.history || []).map(h => h.kind === "prequal" ? "prequal VIR" : `${trackShort(h.track)} (${h.date})`).join(", ");
-    $("note").textContent = `Volgorde = beste tijd die al op ${trackShort(R.track)} is gereden; rijders zonder tijd staan daaronder met een schatting. Gele rijen zijn de huidige top 3, Valkra-rijders staan altijd in de lijst. Verwacht = gemiddelde snelste ronde op racedag, met naar schatting nog ${Math.round(M.expected_extra_laps)} ronden per rijder (${M.test_days_left} testavond${M.test_days_left === 1 ? "" : "en"} en de kwalificatie). De target ligt sneller dan de verwachte tijd van de nummer 3, omdat in een veld van 30 altijd een paar rijders boven verwachting presteren. Pace is de snelste ronde, geen gemiddelde racepace.`;
-    $("method").textContent = `Methode: ${M.description} Spreiding rond de lijn ${M.residual_sd.toFixed(2).replace(".", ",")} s${M.r2 != null ? ", R² " + M.r2.toFixed(2).replace(".", ",") : ""}, op ${M.fit_n} rijders. Geschiedenis in het model: ${hist}.`;
-    $("source").textContent = `Bron: iRacing Data API, ${D.meta.league ? D.meta.league.name : "SRVN.nl NK-league"}. Splits volgens de prequal-eindstand en, zodra er gereden is, de officiële raceuitslag. Teams volgens de inschrijflijst.`;
+      const rows = S.drivers || [];
+      const contenders = rows.filter(d => !d.best && d.chance_top3 >= 10).sort((a, b) => b.chance_top3 - a.chance_top3).slice(0, 4);
+      $("fieldtbl").innerHTML = `<thead><tr>
+          <th class="l">#</th><th class="l">Rijder</th><th>Beste</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
+        </tr></thead><tbody>` + rows.map(d => `<tr class="${d.is_team ? "team" : ""}">
+          <td class="l pos">${d.rank_now || '<span class="none">-</span>'}</td>
+          <td class="l">${driverCell(d)}</td>
+          <td>${d.best ? `${lap(d.best)}<span class="laps">${d.laps}r</span>` : '<span class="none">-</span>'}</td>
+          <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
+          <td>${gapHtml(d.gap_to_target_expected)}</td>
+          <td>${chanceHtml(d.chance_top3)}</td>
+        </tr>`).join("") + `</tbody>`;
+      $("field-hint").textContent = contenders.length
+        ? `Nog niet gereden, wel kanshebber: ${contenders.map(d => `${d.name} (${Math.round(d.chance_top3)}%)`).join(", ")}.`
+        : `Volgorde op beste testtijd. Rijders zonder tijd staan onderaan met een schatting.`;
+    }
+
+    $("note").textContent = `Model rekent met nog ongeveer ${Math.round(M.expected_extra_laps)} ronden per rijder (${M.test_days_left} testavond${M.test_days_left === 1 ? "" : "en"} + kwalificatie). Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.`;
+    $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
   }
 
-  document.addEventListener("click", e => {
-    const b = e.target.closest && e.target.closest(".showall");
+  function renderSoon(tab) {
+    $("hero-h1").textContent = `Ronde ${tab.round}`;
+    $("hero-p").textContent = "Baan nog niet bekend. Data komt later.";
+    $("soon-title").textContent = `Ronde ${tab.round}`;
+    $("soon-text").textContent = "Baan nog niet bekend. Zodra de league deze ronde plant en er testdata is, verschijnt die hier. Eerdere rondes blijven beschikbaar in hun eigen tab.";
+    $("note").textContent = "Seizoen heeft 4 rondes. Elke ronde krijgt een eigen tab zodra er data is.";
+    $("source").textContent = "Bron: iRacing Data API.";
+  }
+
+  function render(D) {
+    current = D;
+    const tabs = buildTabs(D);
+    const tab = tabs.find(t => t.id === activeView) || tabs[1];
+    activeView = tab.id;
+
+    $("round-tabs").innerHTML = tabs.map(t =>
+      `<button type="button" role="tab" data-view="${t.id}" aria-selected="${t.id === activeView}">${esc(t.label)}</button>`
+    ).join("");
+
+    const g = new Date(D.meta.generated_at);
+    $("stamp").textContent = "Stand " + g.toLocaleDateString("nl-NL", { day: "numeric", month: "long", timeZone: "Europe/Amsterdam" }) + ", " + g.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
+
+    showView(tab.kind);
+    if (tab.kind === "prequal") renderPrequal(D);
+    else if (tab.kind === "race") renderRace(D);
+    else renderSoon(tab);
+  }
+
+  $("round-tabs").addEventListener("click", e => {
+    const b = e.target.closest("button[data-view]");
     if (!b || !current) return;
-    open[b.dataset.split] = !open[b.dataset.split];
+    activeView = b.dataset.view;
     render(current);
   });
 
-  /* Data loading: show the built-in copy at once, then the published JSON if it is reachable */
+  $("split-switch").addEventListener("click", e => {
+    const b = e.target.closest("button[data-split]");
+    if (!b || !current) return;
+    activeSplit = Number(b.dataset.split);
+    localStorage.setItem(SPLIT_KEY, String(activeSplit));
+    render(current);
+  });
+
   let published = null;
   const msg = (text, kind) => { const el = $("admin-msg"); el.textContent = text; el.className = "msg" + (kind ? " " + kind : ""); };
   if (VALKRA_EMBEDDED_DATA && !problems(VALKRA_EMBEDDED_DATA).length) { published = VALKRA_EMBEDDED_DATA; render(published); }
@@ -281,7 +1011,6 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       .catch(() => { if (!published) $("stamp").textContent = "Data kon niet worden geladen"; });
   }
 
-  /* Admin: #beheer shows the import controls */
   const syncAdmin = () => { $("admin").hidden = location.hash !== "#beheer"; };
   window.addEventListener("hashchange", syncAdmin);
   syncAdmin();
@@ -295,19 +1024,10 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     if (p.length) { msg(`${file.name} mist: ${p.join(", ")}. Gebruik een export in hetzelfde formaat.`, "err"); return; }
     render(D);
     const when = new Date(D.meta.generated_at).toLocaleString("nl-NL", { timeZone: "Europe/Amsterdam" });
-    if (!CONFIG.uploadUrl) { msg(`Ingeladen: stand ${when}. Alleen zichtbaar in deze browser. Zet het bestand als valkra-nk-prequal.json op de server om het voor iedereen te tonen.`, "ok"); return; }
-    msg("Ingeladen. Opslaan op de site…");
-    try {
-      const fd = new FormData(); fd.append("file", file, "valkra-nk-prequal.json");
-      const token = document.querySelector('meta[name="csrf-token"]');
-      const res = await fetch(CONFIG.uploadUrl, { method: "POST", body: fd, credentials: "same-origin", headers: token ? { "X-CSRF-TOKEN": token.content } : {} });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      published = D;
-      msg(`Opgeslagen: stand ${when}. Bezoekers zien deze data bij hun volgende bezoek.`, "ok");
-    } catch (err) {
-      msg(`Ingeladen in deze browser, maar opslaan op de site lukte niet (${err.message}). Controleer of je ingelogd bent.`, "err");
-    }
+    msg(`Ingeladen: stand ${when}. Alleen zichtbaar in deze browser. Zet het bestand als valkra-nk-prequal.json op de server om het voor iedereen te tonen.`, "ok");
   });
   $("reset").addEventListener("click", () => { if (published) { render(published); msg("Terug naar de gepubliceerde data."); } });
 })();
 </script>
+</body>
+</html>

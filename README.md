@@ -8,8 +8,6 @@ Prequal-data en voorspelling voor het NK iRacing 2026 (SRVN.nl, powered by KNAF)
 | :--- | :--- |
 | `site/valkra-nk-prequal.html` | Het dashboard. Eén bestand, zonder build-stap. |
 | `public/index.html` | Zelfde dashboard voor Vercel (`/`). |
-| `public/upload.html` | Wachtwoord-pagina om JSON te vervangen (`/upload`). |
-| `api/upload.js` | Vercel-functie: controleert wachtwoord en commit naar GitHub. |
 | `data/valkra-nk-prequal.json` | Alle data. Dit bestand wordt bijgewerkt. |
 | `data/valkra-nk-prequal-rijders.csv` | Dezelfde rijderslijst als spreadsheet. |
 
@@ -27,7 +25,7 @@ Ergens anders vandaan laden kan met een regel vóór de pagina:
 <script>window.VALKRA_PREQUAL_CONFIG = { dataUrl: "/pad/naar/valkra-nk-prequal.json" };</script>
 ```
 
-Met `#beheer` achter de URL verschijnt de knop **JSON importeren**. Die laat een ander JSON-bestand zien in de eigen browser. Met `uploadUrl` in de config stuurt de knop het bestand ook naar een endpoint (POST multipart, veld `file`, met `X-CSRF-TOKEN` uit `<meta name="csrf-token">` als die er is).
+Met `#beheer` achter de URL verschijnt de knop **JSON importeren**. Die laat een ander JSON-bestand zien in de eigen browser.
 
 ### Belangrijkste velden in de JSON
 
@@ -47,23 +45,7 @@ Alle tijden zijn seconden: `103.25` is 1:43.25.
 3. Draai `python3 model/build.py` (Python 3.9+ met numpy). Dat schrijft `data/`, `site/` en `public/index.html` opnieuw.
 4. Commit en push naar `main`.
 
-Of upload alleen de JSON via de Vercel-pagina `/upload` (zie hieronder).
-
 Tijdens de prequal-week gebeurt dit elke ochtend om 10:00 automatisch.
-
-## Upload op Vercel
-
-Deploy deze repo op Vercel. Zet deze environment variables in het project (niet in git):
-
-| Variable | Waarde |
-| :--- | :--- |
-| `UPLOAD_PASSWORD` | Gedeeld wachtwoord voor `/upload` |
-| `GITHUB_TOKEN` | Fine-grained PAT met Contents read/write op deze repo |
-| `GITHUB_REPO` | optioneel, default `Diegoteun/nkiracing2026-valkra` |
-| `GITHUB_BRANCH` | optioneel, default `main` |
-| `GITHUB_PATH` | optioneel, default `data/valkra-nk-prequal.json` |
-
-Daarna: `https://<project>.vercel.app/upload` → wachtwoord → kies `valkra-nk-prequal.json`. De API commit het bestand op `main`; het dashboard blijft de GitHub raw-URL laden.
 
 ## Model in het kort
 
@@ -91,5 +73,5 @@ en de target voor een top 3, plus een blok met de Valkra-rijders en hun gat tot 
 - **Geschiedenis**: `data/history/` bevat per race testtijden en raceresultaten, plus `prequal-vir.json`.
 - **Teams**: `model/teams.csv` (inschrijflijst), gekoppeld op startnummer en anders op naam.
 - **Splits**: vast voor het seizoen, volgens de prequal-eindstand; na de eerste race volgens de officiële uitslag.
-- De JSON heet nog steeds `data/valkra-nk-prequal.json` zodat de upload blijft werken. Het nieuwe deel staat onder `race`;
+- De JSON heet nog steeds `data/valkra-nk-prequal.json`. Het nieuwe deel staat onder `race`;
   de prequal-velden blijven staan als archief.

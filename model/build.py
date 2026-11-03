@@ -15,6 +15,7 @@ import csv
 import json
 import math
 import random
+import shutil
 import statistics as st
 from datetime import datetime, timezone
 from pathlib import Path
@@ -276,6 +277,27 @@ page = (template.replace("/*__DATA__*/null", json.dumps(out, ensure_ascii=False,
 open(ROOT / "site" / "valkra-nk-prequal.html", "w").write(page)
 (ROOT / "public").mkdir(exist_ok=True)
 open(ROOT / "public" / "index.html", "w").write(page)
+# Keep logo + brand marks next to both HTML outputs (relative assets/… paths).
+pub_assets = ROOT / "public" / "assets"
+for dest_dir in (ROOT / "site" / "assets", pub_assets):
+    dest_dir.mkdir(parents=True, exist_ok=True)
+site_assets = ROOT / "site" / "assets"
+site_assets.mkdir(parents=True, exist_ok=True)
+for name in ("valkra-logo.png", "valkra-logo-white.png", "valkra-mark.svg"):
+    src = pub_assets / name
+    if src.exists():
+        shutil.copy2(src, site_assets / name)
+# Brand logos must ship with every build so new JSON/car names keep working in site/ and public/.
+brands_src = pub_assets / "brands"
+brands_dest = site_assets / "brands"
+if not brands_src.is_dir():
+    raise SystemExit(f"Missing brand logos directory: {brands_src}")
+brands_dest.mkdir(parents=True, exist_ok=True)
+brand_files = [f for f in brands_src.iterdir() if f.is_file()]
+if not brand_files:
+    raise SystemExit(f"No brand logo files in {brands_src}")
+for f in brand_files:
+    shutil.copy2(f, brands_dest / f.name)
 
 print(f"Stand {generated}: grens split 1 ≈{out['forecast']['split1_range']['likely']} "
       f"({out['forecast']['split1_range']['low']}–{out['forecast']['split1_range']['high']}), "
