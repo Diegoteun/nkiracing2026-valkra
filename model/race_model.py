@@ -180,6 +180,31 @@ def build_race(rows, INPUT, ROOT, seed=2026):
             if len(rr) >= 5:
                 race_off[sp] = round(float(st.median(x["race_avg"] - x["race_best"] for x in rr)), 2)
 
+    # Results of finished races (shown in the round tab after the race)
+    rows_by_id = {r["id"]: r for r in rows}
+    results = []
+    for i_, (s_, tr_) in enumerate(rounds, 1):
+        rr_ = [x for x in race_rows if x["track"] == tr_ and x["cust_id"] in rows_by_id]
+        ran = {x["cust_id"] for x in rr_ if (x["race_laps"] or 0) > 0}
+        rr_ = [x for x in rr_ if (x["race_laps"] or 0) > 0 or x["cust_id"] not in ran]   # drop DNS ghosts in a second split
+        if not rr_ or (s_, tr_) == (cur_start, cur_track):
+            continue
+        sps = []
+        for sp in sorted({x["split"] for x in rr_}):
+            ds = []
+            for x in sorted((x for x in rr_ if x["split"] == sp), key=lambda x: x["finish"] or 99):
+                r = rows_by_id[x["cust_id"]]
+                team, entry_car = team_of(r)
+                ds.append(dict(name=r["name"], car_number=r["num"], irating=r["ir"], team=team, is_team=team == TEAM,
+                               car=x.get("car") or entry_car, finish=x["finish"], quali_best=x["quali_best"], race_best=x["race_best"],
+                               race_avg=x["race_avg"], laps=x["race_laps"], incidents=x["incidents"]))
+            sps.append(dict(split=sp, shown=sp in SHOW_SPLITS, drivers=ds,
+                            podium_best=[d["race_best"] for d in ds[:3]], podium_avg=[d["race_avg"] for d in ds[:3]],
+                            p3_best=ds[2]["race_best"] if len(ds) >= 3 else None, p3_avg=ds[2]["race_avg"] if len(ds) >= 3 else None,
+                            winner=ds[0]["name"] if ds else None))
+        results.append(dict(round=i_, track=tr_, race_start=s_, splits=sps,
+                            team_drivers=[dict(d, split=sp["split"]) for sp in sps for d in sp["drivers"] if d["is_team"]]))
+
     if pending:
         return dict(
             round=round_no, track=cur_track, race_start=cur_start, team=TEAM, pending_tests=True,
@@ -187,7 +212,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
             model=dict(description="Nog geen testtijden voor deze baan. Zodra er genoeg rijders getest hebben, verschijnen targets en verwachte tijden.",
                        c=None, k=None, h=None, g=0.0, residual_sd=None, r2=None, fit_n=len(fit_rows), test_days_left=days_left,
                        expected_extra_laps=0, prior_laps=PRIOR_LAPS, pace_definition="snelste ronde (kwalificatie-niveau)"),
-            history=history_events, splits=[], team_drivers=[])
+            history=history_events, splits=[], team_drivers=[], results=results)
 
     # 4. Splits: official split from race results, else the prequal rank
     official = {}
@@ -268,4 +293,4 @@ def build_race(rows, INPUT, ROOT, seed=2026):
             fit_n=len(fit_rows), test_days_left=days_left, expected_extra_laps=0, prior_laps=PRIOR_LAPS,
             race_pace_offsets=race_off,
             pace_definition="snelste ronde op racedag (kwalificatie of race)"),
-        history=history_events, splits=splits, team_drivers=team_rows)
+        history=history_events, splits=splits, team_drivers=team_rows, results=results)

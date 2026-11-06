@@ -718,6 +718,13 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       ["Gat", "Verwacht minus target. Negatief of groen: al binnen de target."],
       ["Top 3", "Kans op een podiumplek in die split (simulatie)."],
     ],
+    results: [
+      ["Pos", "Eindpositie in de race van die split."],
+      ["Kwali", "Snelste ronde in de kwalificatie."],
+      ["Race", "Snelste raceronde."],
+      ["Gem.", "Gemiddelde rondetijd in de race, inclusief start en incidenten."],
+      ["Inc.", "Aantal incidents."],
+    ],
     prequal: [
       ["Beste", "Snelste prequal-ronde op VIR."],
       ["Eind", "Prequal-eindpositie (1 = snelste)."],
@@ -826,6 +833,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       const knownTrack = ROUND_TRACKS[n];
       if (n === currentRound && R.track) {
         tabs.push({ id: "round-" + n, label: `Ronde ${n}: ${currentTrack}`, kind: "race", round: n, track: currentTrack });
+      } else if ((R.results || []).some(x => x.round === n)) {
+        const res = R.results.find(x => x.round === n);
+        tabs.push({ id: "round-" + n, label: `Ronde ${n}: ${trackShort(res.track)}`, kind: "results", round: n });
       } else if (knownTrack) {
         tabs.push({ id: "round-" + n, label: `Ronde ${n}: ${knownTrack}`, kind: "soon", round: n, track: knownTrack });
       } else {
@@ -843,7 +853,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   }
 
   function showView(kind) {
-    $("view-race").hidden = kind !== "race";
+    $("view-race").hidden = kind !== "race" && kind !== "results";
     $("view-prequal").hidden = kind !== "prequal";
     $("view-soon").hidden = kind !== "soon";
     setHelp(kind);
@@ -969,6 +979,53 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
   }
 
+  function renderResults(D, tab) {
+    const X = D.race.results.find(x => x.round === tab.round);
+    const shown = (X.splits || []).filter(x => x.shown);
+    const list = shown.length ? shown : (X.splits || []).slice(0, 2);
+    let S = list.find(x => x.split === activeSplit) || list[0];
+    activeSplit = S ? S.split : 1;
+
+    $("hero-h1").textContent = `Ronde ${X.round}: ${trackShort(X.track)}`;
+    $("hero-p").textContent = `Uitslag van de race van ${dateNl(X.race_start)}. Kwalificatie, racepace en incidents per split.`;
+
+    const tiles = [];
+    if (S) {
+      tiles.push({ cls: "goal", lbl: `P3 racepace, split ${S.split}`, val: lap(S.p3_best), sub: `Snelste ronde van de nummer 3. Gemiddeld ${lap(S.p3_avg)}` });
+      tiles.push({ cls: "", lbl: "Winnaar", val: esc((S.winner || "-").replace(/\d+$/, "")), sub: S.podium_best[0] ? `Snelste ronde ${lap(S.podium_best[0])}` : "" });
+    }
+    $("tiles").innerHTML = tiles.map(t => `<div class="tile glass ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
+
+    const T = (X.team_drivers || []).filter(d => d.split === 1 || d.split === 2 || true);
+    $("team").hidden = !T.length;
+    $("team-title").textContent = D.race.team || "Team";
+    $("team-sub").textContent = `${T.length} rijders`;
+    $("team-cap").textContent = "Onze rijders. Gele streep links markeert Valkra.";
+    const row = (d, withSplit) => `<tr class="${d.is_team ? "team" : ""}">
+        <td class="l pos">${d.finish || '<span class="none">-</span>'}</td>
+        <td class="l">${driverCell(d, { showTeam: false })}</td>${withSplit ? `<td class="c">${d.split}</td>` : ""}
+        <td>${d.quali_best ? lap(d.quali_best) : '<span class="none">-</span>'}</td>
+        <td>${d.race_best ? lap(d.race_best) : '<span class="none">-</span>'}</td>
+        <td>${d.race_avg && d.laps >= 25 ? lap(d.race_avg) : '<span class="none">-</span>'}</td>
+        <td>${d.incidents == null ? "-" : d.incidents}</td>
+      </tr>`;
+    const head = withSplit => `<thead><tr><th class="l">Pos</th><th class="l">Rijder</th>${withSplit ? '<th class="c">Split</th>' : ""}<th>Kwali</th><th>Race</th><th>Gem.</th><th>Inc.</th></tr></thead>`;
+    $("teamtbl").innerHTML = head(true) + "<tbody>" + T.map(d => row(d, true)).join("") + "</tbody>";
+
+    $("split-switch").innerHTML = list.map(x =>
+      `<button type="button" role="tab" data-split="${x.split}" aria-selected="${x.split === activeSplit}">Split ${x.split}</button>`
+    ).join("");
+    if (S) {
+      $("field-title").textContent = `Split ${S.split}`;
+      $("field-cap").textContent = `${S.drivers.length} rijders in de uitslag.`;
+      $("pace-row").innerHTML = "";
+      $("fieldtbl").innerHTML = head(false) + "<tbody>" + S.drivers.map(d => row(d, false)).join("") + "</tbody>";
+      $("field-hint").textContent = "Gemiddelde rondetijd alleen getoond bij minstens 25 ronden.";
+    }
+    $("note").textContent = "Deze tijden voeden het model voor de volgende baan.";
+    $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
+  }
+
   function renderSoon(tab) {
     const track = tab.track || ROUND_TRACKS[tab.round];
     $("hero-h1").textContent = track ? `Ronde ${tab.round}: ${track}` : `Ronde ${tab.round}`;
@@ -999,6 +1056,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     showView(tab.kind);
     if (tab.kind === "prequal") renderPrequal(D);
     else if (tab.kind === "race") renderRace(D);
+    else if (tab.kind === "results") renderResults(D, tab);
     else renderSoon(tab);
   }
 
