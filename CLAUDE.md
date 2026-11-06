@@ -147,7 +147,8 @@ Tabs: Prequali | Ronde 1…4. Prequali is archief, **niet** de starttab. Handmat
 Huidige schema-voorbeeld (kan wijzigen na fetch):
 
 - Ronde 1: Suzuka GP — race start ~`2026-11-05T18:30:00Z` (alle 4 splits)
-- Ronden 2–4: placeholder tot league ze plant (`kind: "soon"` in UI)
+- Ronde 2: **Zandvoort** (alvast in UI via `ROUND_TRACKS`; racepace volgt zodra schema/tests binnen zijn)
+- Ronden 3–4: placeholder tot league ze plant (`kind: "soon"` in UI)
 
 ---
 

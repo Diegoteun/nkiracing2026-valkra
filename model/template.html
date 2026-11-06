@@ -698,6 +698,10 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     { from: "2026-11-13", id: "round-3" },
     { from: "2026-11-06", id: "round-2" },
   ];
+  /* Bekende banen vóór schema/testdata binnen is (kort label voor tabs + soon-view). */
+  const ROUND_TRACKS = {
+    2: "Zandvoort",
+  };
   const amsterdamDay = (d = new Date()) =>
     new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
   const defaultViewId = () => {
@@ -819,8 +823,11 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const currentTrack = trackShort(R.track);
     const tabs = [{ id: "prequal", label: "Prequali", kind: "prequal" }];
     for (let n = 1; n <= 4; n++) {
+      const knownTrack = ROUND_TRACKS[n];
       if (n === currentRound && R.track) {
-        tabs.push({ id: "round-" + n, label: `Ronde ${n}: ${currentTrack}`, kind: "race", round: n });
+        tabs.push({ id: "round-" + n, label: `Ronde ${n}: ${currentTrack}`, kind: "race", round: n, track: currentTrack });
+      } else if (knownTrack) {
+        tabs.push({ id: "round-" + n, label: `Ronde ${n}: ${knownTrack}`, kind: "soon", round: n, track: knownTrack });
       } else {
         tabs.push({ id: "round-" + n, label: `Ronde ${n}`, kind: "soon", round: n });
       }
@@ -959,10 +966,15 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   }
 
   function renderSoon(tab) {
-    $("hero-h1").textContent = `Ronde ${tab.round}`;
-    $("hero-p").textContent = "Baan nog niet bekend. Data komt later.";
-    $("soon-title").textContent = `Ronde ${tab.round}`;
-    $("soon-text").textContent = "Baan nog niet bekend. Zodra de league deze ronde plant en er testdata is, verschijnt die hier. Eerdere rondes blijven beschikbaar in hun eigen tab.";
+    const track = tab.track || ROUND_TRACKS[tab.round];
+    $("hero-h1").textContent = track ? `Ronde ${tab.round}: ${track}` : `Ronde ${tab.round}`;
+    $("hero-p").textContent = track
+      ? `Baan is ${track}. Testdata en racepace verschijnen hier zodra die binnen zijn.`
+      : "Baan nog niet bekend. Data komt later.";
+    $("soon-title").textContent = track ? `Ronde ${tab.round}: ${track}` : `Ronde ${tab.round}`;
+    $("soon-text").textContent = track
+      ? `${track} staat gepland als ronde ${tab.round}. Zodra de league testsessies of uitslagen levert, verschijnt de racepace hier. Eerdere rondes blijven beschikbaar in hun eigen tab.`
+      : "Baan nog niet bekend. Zodra de league deze ronde plant en er testdata is, verschijnt die hier. Eerdere rondes blijven beschikbaar in hun eigen tab.";
     $("note").textContent = "Seizoen heeft 4 rondes. Elke ronde krijgt een eigen tab zodra er data is.";
     $("source").textContent = "Bron: iRacing Data API.";
   }
