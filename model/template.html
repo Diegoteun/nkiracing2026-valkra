@@ -794,7 +794,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const p = [];
     if (!D || typeof D !== "object") return ["geen JSON-object"];
     if (!D.meta || !D.meta.generated_at) p.push("meta.generated_at");
-    if (!D.race || !Array.isArray(D.race.splits) || !D.race.splits.length) p.push("race.splits");
+    if (!D.race || (!D.race.pending_tests && (!Array.isArray(D.race.splits) || !D.race.splits.length))) p.push("race.splits");
     return p;
   }
 
@@ -894,7 +894,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const S = pickSplit(R);
 
     $("hero-h1").textContent = `Ronde ${R.round}: ${trackShort(R.track)}`;
-    $("hero-p").textContent = `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Kies split 1 of 2 voor targets, verwachte tijden en het veld.`;
+    $("hero-p").textContent = R.pending_tests
+      ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden voor deze baan, targets en verwachte tijden volgen zodra rijders getest hebben.`
+      : `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Kies split 1 of 2 voor targets, verwachte tijden en het veld.`;
 
     const tiles = [];
     if (S) {
@@ -961,7 +963,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         : `Volgorde op beste testtijd. Rijders zonder tijd staan onderaan met een schatting.`;
     }
 
-    $("note").textContent = `Model rekent met nog ongeveer ${Math.round(M.expected_extra_laps)} ronden per rijder (${M.test_days_left} testavond${M.test_days_left === 1 ? "" : "en"} + kwalificatie). Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.`;
+    $("note").textContent = R.pending_tests
+      ? "Zodra er testtijden zijn, rekent het model targets uit iRating, eerdere races en die tijden."
+      : "Verwachting uit iRating, eerdere races en testtijden. Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.";
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
   }
 

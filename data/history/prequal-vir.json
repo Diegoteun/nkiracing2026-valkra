@@ -2,7 +2,7 @@
  "id": "prequal-vir",
  "kind": "prequal",
  "track": "Virginia International Raceway – Full Course",
- "reference": 103.7897,
+ "reference": 103.7811,
  "drivers": [
   {
    "cust_id": 864043,
@@ -10,7 +10,7 @@
    "prequal_best": 102.3042,
    "position": 1,
    "split": 1,
-   "pace_index": -1.431
+   "pace_index": -1.423
   },
   {
    "cust_id": 1361199,
@@ -18,7 +18,7 @@
    "prequal_best": 102.4964,
    "position": 2,
    "split": 1,
-   "pace_index": -1.246
+   "pace_index": -1.238
   },
   {
    "cust_id": 1046505,
@@ -26,7 +26,7 @@
    "prequal_best": 102.5362,
    "position": 3,
    "split": 1,
-   "pace_index": -1.208
+   "pace_index": -1.2
   },
   {
    "cust_id": 1202767,
@@ -34,7 +34,7 @@
    "prequal_best": 102.5976,
    "position": 4,
    "split": 1,
-   "pace_index": -1.149
+   "pace_index": -1.14
   },
   {
    "cust_id": 613747,
@@ -42,7 +42,7 @@
    "prequal_best": 102.6026,
    "position": 5,
    "split": 1,
-   "pace_index": -1.144
+   "pace_index": -1.136
   },
   {
    "cust_id": 1237168,
@@ -50,7 +50,7 @@
    "prequal_best": 102.6592,
    "position": 6,
    "split": 1,
-   "pace_index": -1.089
+   "pace_index": -1.081
   },
   {
    "cust_id": 566271,
@@ -58,7 +58,7 @@
    "prequal_best": 102.6728,
    "position": 7,
    "split": 1,
-   "pace_index": -1.076
+   "pace_index": -1.068
   },
   {
    "cust_id": 529650,
@@ -66,7 +66,7 @@
    "prequal_best": 102.7113,
    "position": 8,
    "split": 1,
-   "pace_index": -1.039
+   "pace_index": -1.031
   },
   {
    "cust_id": 955204,
@@ -74,7 +74,7 @@
    "prequal_best": 102.7114,
    "position": 9,
    "split": 1,
-   "pace_index": -1.039
+   "pace_index": -1.031
   },
   {
    "cust_id": 912688,
@@ -82,7 +82,7 @@
    "prequal_best": 102.8014,
    "position": 10,
    "split": 1,
-   "pace_index": -0.952
+   "pace_index": -0.944
   },
   {
    "cust_id": 1176867,
@@ -90,7 +90,7 @@
    "prequal_best": 102.8259,
    "position": 11,
    "split": 1,
-   "pace_index": -0.929
+   "pace_index": -0.92
   },
   {
    "cust_id": 634750,
@@ -98,7 +98,7 @@
    "prequal_best": 102.8313,
    "position": 12,
    "split": 1,
-   "pace_index": -0.923
+   "pace_index": -0.915
   },
   {
    "cust_id": 730321,
@@ -106,7 +106,7 @@
    "prequal_best": 102.8384,
    "position": 13,
    "split": 1,
-   "pace_index": -0.917
+   "pace_index": -0.908
   },
   {
    "cust_id": 355420,
@@ -114,7 +114,7 @@
    "prequal_best": 102.8629,
    "position": 14,
    "split": 1,
-   "pace_index": -0.893
+   "pace_index": -0.885
   },
   {
    "cust_id": 602559,
@@ -122,7 +122,7 @@
    "prequal_best": 102.8646,
    "position": 15,
    "split": 1,
-   "pace_index": -0.891
+   "pace_index": -0.883
   },
   {
    "cust_id": 382864,
@@ -130,7 +130,7 @@
    "prequal_best": 102.916,
    "position": 16,
    "split": 1,
-   "pace_index": -0.842
+   "pace_index": -0.834
   },
   {
    "cust_id": 764408,
@@ -138,7 +138,7 @@
    "prequal_best": 102.937,
    "position": 17,
    "split": 1,
-   "pace_index": -0.822
+   "pace_index": -0.813
   },
   {
    "cust_id": 502029,
@@ -146,7 +146,7 @@
    "prequal_best": 102.9564,
    "position": 18,
    "split": 1,
-   "pace_index": -0.803
+   "pace_index": -0.795
   },
   {
    "cust_id": 365100,
@@ -154,7 +154,7 @@
    "prequal_best": 102.9778,
    "position": 19,
    "split": 1,
-   "pace_index": -0.782
+   "pace_index": -0.774
   },
   {
    "cust_id": 963670,
@@ -162,7 +162,7 @@
    "prequal_best": 103.0097,
    "position": 20,
    "split": 1,
-   "pace_index": -0.752
+   "pace_index": -0.743
   },
   {
    "cust_id": 1070721,
@@ -170,7 +170,7 @@
    "prequal_best": 103.0111,
    "position": 21,
    "split": 1,
-   "pace_index": -0.75
+   "pace_index": -0.742
   },
   {
    "cust_id": 906989,
@@ -178,7 +178,7 @@
    "prequal_best": 103.0337,
    "position": 22,
    "split": 1,
-   "pace_index": -0.728
+   "pace_index": -0.72
   },
   {
    "cust_id": 239267,
@@ -186,7 +186,7 @@
    "prequal_best": 103.0719,
    "position": 23,
    "split": 1,
-   "pace_index": -0.692
+   "pace_index": -0.683
   },
   {
    "cust_id": 918469,
@@ -194,7 +194,7 @@
    "prequal_best": 103.0782,
    "position": 24,
    "split": 1,
-   "pace_index": -0.686
+   "pace_index": -0.677
   },
   {
    "cust_id": 371410,
@@ -202,7 +202,7 @@
    "prequal_best": 103.0943,
    "position": 25,
    "split": 1,
-   "pace_index": -0.67
+   "pace_index": -0.662
   },
   {
    "cust_id": 203590,
@@ -210,7 +210,7 @@
    "prequal_best": 103.1336,
    "position": 26,
    "split": 1,
-   "pace_index": -0.632
+   "pace_index": -0.624
   },
   {
    "cust_id": 377046,
@@ -218,7 +218,7 @@
    "prequal_best": 103.1433,
    "position": 27,
    "split": 1,
-   "pace_index": -0.623
+   "pace_index": -0.615
   },
   {
    "cust_id": 1043603,
@@ -226,7 +226,7 @@
    "prequal_best": 103.1475,
    "position": 28,
    "split": 1,
-   "pace_index": -0.619
+   "pace_index": -0.611
   },
   {
    "cust_id": 705452,
@@ -234,7 +234,7 @@
    "prequal_best": 103.1541,
    "position": 29,
    "split": 1,
-   "pace_index": -0.612
+   "pace_index": -0.604
   },
   {
    "cust_id": 460018,
@@ -242,7 +242,7 @@
    "prequal_best": 103.161,
    "position": 30,
    "split": 1,
-   "pace_index": -0.606
+   "pace_index": -0.598
   },
   {
    "cust_id": 1176588,
@@ -250,7 +250,7 @@
    "prequal_best": 103.1652,
    "position": 31,
    "split": 2,
-   "pace_index": -0.602
+   "pace_index": -0.593
   },
   {
    "cust_id": 761872,
@@ -258,7 +258,7 @@
    "prequal_best": 103.2139,
    "position": 32,
    "split": 2,
-   "pace_index": -0.555
+   "pace_index": -0.547
   },
   {
    "cust_id": 394041,
@@ -266,7 +266,7 @@
    "prequal_best": 103.2154,
    "position": 33,
    "split": 2,
-   "pace_index": -0.553
+   "pace_index": -0.545
   },
   {
    "cust_id": 1019076,
@@ -274,7 +274,7 @@
    "prequal_best": 103.2616,
    "position": 34,
    "split": 2,
-   "pace_index": -0.509
+   "pace_index": -0.501
   },
   {
    "cust_id": 621119,
@@ -282,7 +282,7 @@
    "prequal_best": 103.2632,
    "position": 35,
    "split": 2,
-   "pace_index": -0.507
+   "pace_index": -0.499
   },
   {
    "cust_id": 1024584,
@@ -290,7 +290,7 @@
    "prequal_best": 103.2781,
    "position": 36,
    "split": 2,
-   "pace_index": -0.493
+   "pace_index": -0.485
   },
   {
    "cust_id": 332024,
@@ -298,7 +298,7 @@
    "prequal_best": 103.2859,
    "position": 37,
    "split": 2,
-   "pace_index": -0.485
+   "pace_index": -0.477
   },
   {
    "cust_id": 167281,
@@ -306,7 +306,7 @@
    "prequal_best": 103.3325,
    "position": 38,
    "split": 2,
-   "pace_index": -0.441
+   "pace_index": -0.432
   },
   {
    "cust_id": 1091310,
@@ -314,7 +314,7 @@
    "prequal_best": 103.3361,
    "position": 39,
    "split": 2,
-   "pace_index": -0.437
+   "pace_index": -0.429
   },
   {
    "cust_id": 1102231,
@@ -322,7 +322,7 @@
    "prequal_best": 103.3964,
    "position": 40,
    "split": 2,
-   "pace_index": -0.379
+   "pace_index": -0.371
   },
   {
    "cust_id": 1364568,
@@ -330,7 +330,7 @@
    "prequal_best": 103.3971,
    "position": 41,
    "split": 2,
-   "pace_index": -0.378
+   "pace_index": -0.37
   },
   {
    "cust_id": 602622,
@@ -338,7 +338,7 @@
    "prequal_best": 103.412,
    "position": 42,
    "split": 2,
-   "pace_index": -0.364
+   "pace_index": -0.356
   },
   {
    "cust_id": 379980,
@@ -346,7 +346,7 @@
    "prequal_best": 103.4597,
    "position": 43,
    "split": 2,
-   "pace_index": -0.318
+   "pace_index": -0.31
   },
   {
    "cust_id": 737386,
@@ -354,7 +354,7 @@
    "prequal_best": 103.4615,
    "position": 44,
    "split": 2,
-   "pace_index": -0.316
+   "pace_index": -0.308
   },
   {
    "cust_id": 1161525,
@@ -362,7 +362,7 @@
    "prequal_best": 103.501,
    "position": 45,
    "split": 2,
-   "pace_index": -0.278
+   "pace_index": -0.27
   },
   {
    "cust_id": 1062772,
@@ -370,7 +370,7 @@
    "prequal_best": 103.518,
    "position": 46,
    "split": 2,
-   "pace_index": -0.262
+   "pace_index": -0.254
   },
   {
    "cust_id": 1098342,
@@ -378,7 +378,7 @@
    "prequal_best": 103.5204,
    "position": 47,
    "split": 2,
-   "pace_index": -0.259
+   "pace_index": -0.251
   },
   {
    "cust_id": 1228010,
@@ -386,7 +386,7 @@
    "prequal_best": 103.5942,
    "position": 48,
    "split": 2,
-   "pace_index": -0.188
+   "pace_index": -0.18
   },
   {
    "cust_id": 886666,
@@ -394,7 +394,7 @@
    "prequal_best": 103.6578,
    "position": 49,
    "split": 2,
-   "pace_index": -0.127
+   "pace_index": -0.119
   },
   {
    "cust_id": 1107000,
@@ -402,7 +402,7 @@
    "prequal_best": 103.6629,
    "position": 50,
    "split": 2,
-   "pace_index": -0.122
+   "pace_index": -0.114
   },
   {
    "cust_id": 1028127,
@@ -410,7 +410,7 @@
    "prequal_best": 103.6721,
    "position": 51,
    "split": 2,
-   "pace_index": -0.113
+   "pace_index": -0.105
   },
   {
    "cust_id": 392585,
@@ -418,7 +418,7 @@
    "prequal_best": 103.7123,
    "position": 52,
    "split": 2,
-   "pace_index": -0.075
+   "pace_index": -0.066
   },
   {
    "cust_id": 1051890,
@@ -426,7 +426,7 @@
    "prequal_best": 103.7513,
    "position": 53,
    "split": 2,
-   "pace_index": -0.037
+   "pace_index": -0.029
   },
   {
    "cust_id": 296640,
@@ -434,7 +434,7 @@
    "prequal_best": 103.7593,
    "position": 54,
    "split": 2,
-   "pace_index": -0.029
+   "pace_index": -0.021
   },
   {
    "cust_id": 1073252,
@@ -442,7 +442,7 @@
    "prequal_best": 103.763,
    "position": 55,
    "split": 2,
-   "pace_index": -0.026
+   "pace_index": -0.017
   },
   {
    "cust_id": 1131203,
@@ -450,7 +450,7 @@
    "prequal_best": 103.7811,
    "position": 56,
    "split": 2,
-   "pace_index": -0.008
+   "pace_index": 0.0
   },
   {
    "cust_id": 401432,
@@ -458,7 +458,7 @@
    "prequal_best": 103.7983,
    "position": 57,
    "split": 2,
-   "pace_index": 0.008
+   "pace_index": 0.017
   },
   {
    "cust_id": 1158266,
@@ -466,7 +466,7 @@
    "prequal_best": 103.827,
    "position": 58,
    "split": 2,
-   "pace_index": 0.036
+   "pace_index": 0.044
   },
   {
    "cust_id": 619495,
@@ -474,7 +474,7 @@
    "prequal_best": 103.8329,
    "position": 59,
    "split": 2,
-   "pace_index": 0.042
+   "pace_index": 0.05
   },
   {
    "cust_id": 641149,
@@ -482,7 +482,7 @@
    "prequal_best": 103.8687,
    "position": 60,
    "split": 2,
-   "pace_index": 0.076
+   "pace_index": 0.084
   },
   {
    "cust_id": 975083,
@@ -490,7 +490,7 @@
    "prequal_best": 103.9308,
    "position": 61,
    "split": 3,
-   "pace_index": 0.136
+   "pace_index": 0.144
   },
   {
    "cust_id": 500148,
@@ -498,7 +498,7 @@
    "prequal_best": 103.9493,
    "position": 62,
    "split": 3,
-   "pace_index": 0.154
+   "pace_index": 0.162
   },
   {
    "cust_id": 937690,
@@ -506,7 +506,7 @@
    "prequal_best": 103.9863,
    "position": 63,
    "split": 3,
-   "pace_index": 0.189
+   "pace_index": 0.198
   },
   {
    "cust_id": 1538667,
@@ -514,7 +514,7 @@
    "prequal_best": 104.0079,
    "position": 64,
    "split": 3,
-   "pace_index": 0.21
+   "pace_index": 0.219
   },
   {
    "cust_id": 1190039,
@@ -522,7 +522,7 @@
    "prequal_best": 104.0162,
    "position": 65,
    "split": 3,
-   "pace_index": 0.218
+   "pace_index": 0.227
   },
   {
    "cust_id": 20477,
@@ -530,7 +530,7 @@
    "prequal_best": 104.0361,
    "position": 66,
    "split": 3,
-   "pace_index": 0.237
+   "pace_index": 0.246
   },
   {
    "cust_id": 960839,
@@ -538,7 +538,7 @@
    "prequal_best": 104.171,
    "position": 67,
    "split": 3,
-   "pace_index": 0.367
+   "pace_index": 0.376
   },
   {
    "cust_id": 874012,
@@ -546,7 +546,7 @@
    "prequal_best": 104.1953,
    "position": 68,
    "split": 3,
-   "pace_index": 0.391
+   "pace_index": 0.399
   },
   {
    "cust_id": 1398811,
@@ -554,7 +554,7 @@
    "prequal_best": 104.2392,
    "position": 69,
    "split": 3,
-   "pace_index": 0.433
+   "pace_index": 0.441
   },
   {
    "cust_id": 1502285,
@@ -562,7 +562,7 @@
    "prequal_best": 104.2862,
    "position": 70,
    "split": 3,
-   "pace_index": 0.478
+   "pace_index": 0.487
   },
   {
    "cust_id": 885918,
@@ -570,7 +570,7 @@
    "prequal_best": 104.3475,
    "position": 71,
    "split": 3,
-   "pace_index": 0.537
+   "pace_index": 0.546
   },
   {
    "cust_id": 1037755,
@@ -578,327 +578,319 @@
    "prequal_best": 104.4137,
    "position": 72,
    "split": 3,
-   "pace_index": 0.601
-  },
-  {
-   "cust_id": 668040,
-   "name": "Hendrik Mulder",
-   "prequal_best": 104.4215,
-   "position": 73,
-   "split": 3,
-   "pace_index": 0.609
+   "pace_index": 0.61
   },
   {
    "cust_id": 644286,
    "name": "Leroy Bolkestein",
    "prequal_best": 104.4219,
-   "position": 74,
+   "position": 73,
    "split": 3,
-   "pace_index": 0.609
+   "pace_index": 0.617
   },
   {
    "cust_id": 1342343,
    "name": "Klaas De Boer3",
    "prequal_best": 104.4931,
-   "position": 75,
+   "position": 74,
    "split": 3,
-   "pace_index": 0.678
+   "pace_index": 0.686
   },
   {
    "cust_id": 1034423,
    "name": "Jesse Nant Schiffelers",
    "prequal_best": 104.5074,
-   "position": 76,
+   "position": 75,
    "split": 3,
-   "pace_index": 0.691
+   "pace_index": 0.7
   },
   {
    "cust_id": 891391,
    "name": "Ivo Dahlmans",
    "prequal_best": 104.6747,
-   "position": 77,
+   "position": 76,
    "split": 3,
-   "pace_index": 0.853
+   "pace_index": 0.861
   },
   {
    "cust_id": 1184391,
    "name": "Roy Van De Geer",
    "prequal_best": 104.7363,
-   "position": 78,
+   "position": 77,
    "split": 3,
-   "pace_index": 0.912
+   "pace_index": 0.92
   },
   {
    "cust_id": 1525973,
    "name": "Jasper Bloem",
    "prequal_best": 104.7606,
-   "position": 79,
+   "position": 78,
    "split": 3,
-   "pace_index": 0.935
+   "pace_index": 0.944
   },
   {
    "cust_id": 1151922,
    "name": "Ole Corvers",
    "prequal_best": 104.7964,
-   "position": 80,
+   "position": 79,
    "split": 3,
-   "pace_index": 0.97
+   "pace_index": 0.978
   },
   {
    "cust_id": 1028172,
    "name": "Raymon Van Zutphen",
    "prequal_best": 104.7989,
-   "position": 81,
+   "position": 80,
    "split": 3,
-   "pace_index": 0.972
+   "pace_index": 0.981
   },
   {
    "cust_id": 1094132,
    "name": "Timo Geurts3",
    "prequal_best": 104.8173,
-   "position": 82,
+   "position": 81,
    "split": 3,
-   "pace_index": 0.99
+   "pace_index": 0.998
   },
   {
    "cust_id": 609781,
    "name": "Ben Dam",
    "prequal_best": 104.8734,
-   "position": 83,
+   "position": 82,
    "split": 3,
-   "pace_index": 1.044
+   "pace_index": 1.053
   },
   {
    "cust_id": 90754,
    "name": "Ronny van den Hof",
    "prequal_best": 104.8904,
-   "position": 84,
+   "position": 83,
    "split": 3,
-   "pace_index": 1.061
+   "pace_index": 1.069
   },
   {
    "cust_id": 1504412,
    "name": "Tommy Vlieger",
    "prequal_best": 104.8975,
-   "position": 85,
+   "position": 84,
    "split": 3,
-   "pace_index": 1.067
+   "pace_index": 1.076
   },
   {
    "cust_id": 928791,
    "name": "Yoeri Pluim",
    "prequal_best": 105.0197,
-   "position": 86,
+   "position": 85,
    "split": 3,
-   "pace_index": 1.185
+   "pace_index": 1.193
   },
   {
    "cust_id": 1152265,
    "name": "Mitch Hendriks2",
    "prequal_best": 105.0623,
-   "position": 87,
+   "position": 86,
    "split": 3,
-   "pace_index": 1.226
+   "pace_index": 1.235
   },
   {
    "cust_id": 1343555,
    "name": "Marc Van Den Broecke",
    "prequal_best": 105.1136,
-   "position": 88,
+   "position": 87,
    "split": 3,
-   "pace_index": 1.276
+   "pace_index": 1.284
   },
   {
    "cust_id": 1201016,
    "name": "Stefan Visser4",
    "prequal_best": 105.1192,
-   "position": 89,
+   "position": 88,
    "split": 3,
-   "pace_index": 1.281
+   "pace_index": 1.289
   },
   {
    "cust_id": 435662,
    "name": "J.T Korting",
    "prequal_best": 105.1262,
-   "position": 90,
+   "position": 89,
    "split": 3,
-   "pace_index": 1.288
+   "pace_index": 1.296
   },
   {
    "cust_id": 1157491,
    "name": "Thijmen Bakker",
    "prequal_best": 105.1437,
-   "position": 91,
-   "split": 4,
-   "pace_index": 1.305
+   "position": 90,
+   "split": 3,
+   "pace_index": 1.313
   },
   {
    "cust_id": 1320313,
    "name": "Sylvester Van Den Bos",
    "prequal_best": 105.1565,
-   "position": 92,
+   "position": 91,
    "split": 4,
-   "pace_index": 1.317
+   "pace_index": 1.325
   },
   {
    "cust_id": 1034093,
    "name": "Lars Van Geresteijn",
    "prequal_best": 105.2116,
-   "position": 93,
+   "position": 92,
    "split": 4,
-   "pace_index": 1.37
+   "pace_index": 1.378
   },
   {
    "cust_id": 1163032,
    "name": "Kaustubh Patil",
    "prequal_best": 105.3167,
-   "position": 94,
+   "position": 93,
    "split": 4,
-   "pace_index": 1.471
+   "pace_index": 1.48
   },
   {
    "cust_id": 1557725,
    "name": "Kees Meurs",
    "prequal_best": 105.4026,
-   "position": 95,
+   "position": 94,
    "split": 4,
-   "pace_index": 1.554
+   "pace_index": 1.562
   },
   {
    "cust_id": 1550201,
    "name": "Brandon Uffelie",
    "prequal_best": 105.5941,
-   "position": 96,
+   "position": 95,
    "split": 4,
-   "pace_index": 1.739
+   "pace_index": 1.747
   },
   {
    "cust_id": 1316632,
    "name": "Jeffrey Mokum",
    "prequal_best": 105.6111,
-   "position": 97,
+   "position": 96,
    "split": 4,
-   "pace_index": 1.755
+   "pace_index": 1.763
   },
   {
    "cust_id": 975207,
    "name": "Marco Vd Ven",
    "prequal_best": 105.7977,
-   "position": 98,
+   "position": 97,
    "split": 4,
-   "pace_index": 1.935
+   "pace_index": 1.943
   },
   {
    "cust_id": 1498375,
    "name": "Elco Roest",
    "prequal_best": 105.8281,
-   "position": 99,
+   "position": 98,
    "split": 4,
-   "pace_index": 1.964
+   "pace_index": 1.972
   },
   {
    "cust_id": 1493620,
    "name": "Thomas Jack Slack",
    "prequal_best": 105.8789,
-   "position": 100,
+   "position": 99,
    "split": 4,
-   "pace_index": 2.013
+   "pace_index": 2.021
   },
   {
    "cust_id": 848209,
    "name": "Kevin Minderhoud",
    "prequal_best": 105.9104,
-   "position": 101,
+   "position": 100,
    "split": 4,
-   "pace_index": 2.043
+   "pace_index": 2.052
   },
   {
    "cust_id": 793423,
    "name": "Dick Liefting",
    "prequal_best": 105.9748,
-   "position": 102,
+   "position": 101,
    "split": 4,
-   "pace_index": 2.105
+   "pace_index": 2.114
   },
   {
    "cust_id": 1272155,
    "name": "Evert Geurtsen5",
    "prequal_best": 105.9777,
-   "position": 103,
+   "position": 102,
    "split": 4,
-   "pace_index": 2.108
+   "pace_index": 2.117
   },
   {
    "cust_id": 1217836,
    "name": "John De Bruijn",
    "prequal_best": 105.9888,
-   "position": 104,
+   "position": 103,
    "split": 4,
-   "pace_index": 2.119
+   "pace_index": 2.127
   },
   {
    "cust_id": 1325013,
    "name": "Vincent Van Der Linden2",
    "prequal_best": 106.1112,
-   "position": 105,
+   "position": 104,
    "split": 4,
-   "pace_index": 2.237
+   "pace_index": 2.245
   },
   {
    "cust_id": 1471664,
    "name": "Justin Van Heuzen2",
    "prequal_best": 106.2787,
-   "position": 106,
+   "position": 105,
    "split": 4,
-   "pace_index": 2.398
+   "pace_index": 2.407
   },
   {
    "cust_id": 1562310,
    "name": "Dennis De Konink",
    "prequal_best": 106.4573,
-   "position": 107,
+   "position": 106,
    "split": 4,
-   "pace_index": 2.57
+   "pace_index": 2.579
   },
   {
    "cust_id": 1509116,
    "name": "Eric Nijmeijer2",
    "prequal_best": 106.5195,
-   "position": 108,
+   "position": 107,
    "split": 4,
-   "pace_index": 2.63
+   "pace_index": 2.639
   },
   {
    "cust_id": 1316738,
    "name": "Kylian Weerwag",
    "prequal_best": 106.5256,
-   "position": 109,
+   "position": 108,
    "split": 4,
-   "pace_index": 2.636
+   "pace_index": 2.645
   },
   {
    "cust_id": 1343880,
    "name": "Tim De Jong2",
    "prequal_best": 106.5312,
-   "position": 110,
+   "position": 109,
    "split": 4,
-   "pace_index": 2.641
+   "pace_index": 2.65
   },
   {
    "cust_id": 1325894,
    "name": "Richard De Ruiter",
    "prequal_best": 107.0605,
-   "position": 111,
+   "position": 110,
    "split": 4,
-   "pace_index": 3.151
+   "pace_index": 3.16
   },
   {
    "cust_id": 1569414,
    "name": "Michiel De Jong",
    "prequal_best": 108.4686,
-   "position": 112,
+   "position": 111,
    "split": 4,
-   "pace_index": 4.508
+   "pace_index": 4.517
   }
  ]
 }

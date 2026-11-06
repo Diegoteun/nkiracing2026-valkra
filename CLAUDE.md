@@ -164,8 +164,8 @@ Huidige schema-voorbeeld (kan wijzigen na fetch):
 
 1. Komende race = eerstvolgende geplande start na `fetched_at`, anders laatste
 2. **Pace-index** vs veldmediaan uit VIR-prequal + eerdere races (zwaarder bij meer ronden; vol bij 20)
-3. Fit op huidige baan: beste test ≈ `c + k×index + g×ln(ronden)`
-4. Verwachting racedag + 20 000 sims per split → target (P3), winnaar-/top-10-pace, `chance_top3`
+3. Fit op huidige baan: beste test ≈ `c + k×index + h×ln(iRating)` (geen ronden-term meer; backtest Suzuka: RMSE per rijder 0,79 → 0,56 s). Zonder testtijden voor de komende baan: `race.pending_tests = true`, geen splits
+4. Verwachting racedag (eigen afwijking telt n/(n+40) mee, testronde is geen ondergrens) + 20 000 sims per split met gezamenlijke split-afwijking (±0,45 s) → target (P3), winnaar-/top-10-pace, `chance_top3`
 5. Teams uit `model/teams.csv` (koppeling startnummer, anders genormaliseerde naam)
 
 Constanten o.a.: `TEAM = "Valkra Performance"`, `N_SIM = 20000`, `SPLIT_SIZE = 30`, `SHOW_SPLITS = (1, 2)`, `QUALI_LAPS = 5`.

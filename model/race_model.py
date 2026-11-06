@@ -9,10 +9,12 @@ Opbouw
 2. Pace-index per rijder uit de geschiedenis: hoeveel procent hij sneller of trager is dan de mediaan van het veld.
    Bronnen: de VIR-prequal en elke eerder verreden race (testsessies + kwalificatie + race op die baan).
    Een race telt zwaarder naarmate de rijder er meer ronden reed (volle weging vanaf 20 ronden).
-3. Lijn voor de komende baan: beste testronde = c + k × pace-index + g × ln(ronden), gefit op rijders met beide.
-   Wie meer ronden rijdt, wordt sneller (g < 0).
-4. Verwachting op racedag: lijn bij de ronden die een rijder dan naar verwachting heeft, plus zijn eigen afwijking
-   van de lijn (die telt voor n / (n + 20) mee). Een al gereden ronde kan niet trager worden.
+3. Lijn voor de komende baan: beste testronde = c + k × pace-index + h × ln(iRating), gefit op alle rijders met een
+   testtijd (met lichte ridge). Het aantal ronden zit er niet meer in: na Suzuka bleek dat het geen voorspellende
+   waarde had op racedag, terwijl iRating dat wel had.
+4. Verwachting op racedag: de lijn plus de eigen afwijking van de rijder (die telt voor n / (n + 40) mee, n = testronden).
+   Een testronde is geen ondergrens: de helft van de rijders was op racedag trager dan de beste testronde.
+   Zonder testtijden voor de komende baan toont het dashboard "nog geen testdata" in plaats van een gok.
 5. 20.000 simulaties per split geven de target (derde snelste tijd in de split), de winnaars- en top-10-pace en per
    rijder de kans op een top 3.
 """
@@ -28,7 +30,11 @@ import numpy as np
 
 TEAM = "Valkra Performance"
 N_SIM = 20000
-PRIOR_LAPS = 20          # eigen afwijking telt voor 50% bij 20 ronden
+PRIOR_LAPS = 40          # eigen afwijking telt voor 50% bij 40 testronden (backtest Suzuka)
+MIN_FIT_DRIVERS = 8
+RIDGE = 2.0
+SPLIT_SHOCK = 0.45      # gezamenlijke afwijking van een heel split op racedag (s), uit de Suzuka-backtest
+IND_SD = 0.42           # eigen onzekerheid per rijder zonder testtijd (s)
 MIN_FIT_LAPS = 3
 SPLIT_SIZE = 30
 SHOW_SPLITS = (1, 2)
@@ -119,30 +125,75 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         history_events.append(dict(id=eid, kind="race", track=tr, date=s[:10], drivers=len(best), reference=round(ref, 3)))
     prior = {cid: (sum(i * w for _, i, w in h) / sum(w for *_, w in h), len(h)) for cid, h in hist.items() if h and sum(w for *_, w in h) > 0}
 
-    # 3. Line for the coming track
-    fit = [(prior[r["id"]][0], cur_tests[r["id"]]["best"], cur_tests[r["id"]]["laps"]) for r in rows
-           if r["id"] in prior and r["id"] in cur_tests and cur_tests[r["id"]]["best"] and cur_tests[r["id"]]["laps"] >= MIN_FIT_LAPS]
-    if len(fit) >= 8:
-        A = np.array([[1.0, p, math.log(n)] for p, _, n in fit]); y = np.array([b for _, b, _ in fit])
-        (c0, k1, g1), *_ = np.linalg.lstsq(A, y, rcond=None)
-        res = y - A @ np.array([c0, k1, g1]); sd = float(res.std(ddof=3))
-        r2 = float(1 - (res ** 2).sum() / ((y - y.mean()) ** 2).sum())
-    else:  # too few test times yet: scale the index to the track, average learning effect
-        y = [b for _, b, _ in fit]
-        base = st.median(y) if y else 110.0
-        c0, k1, g1, sd, r2 = base, base, -0.3, 0.8, None
-    line = lambda p, n: c0 + k1 * p + g1 * math.log(max(n, 1))
+    # History on disk (re-written from the season data on every run)
+    hdir = ROOT / "data" / "history"; hdir.mkdir(parents=True, exist_ok=True)
+    pv = [dict(cust_id=r["id"], name=r["name"], prequal_best=r["qBest"], position=r["now"], split=math.ceil(r["now"] / SPLIT_SIZE),
+               pace_index=round((r["qBest"] / q_med - 1) * 100, 3)) for r in sorted(ranked, key=lambda r: r["now"])]
+    json.dump(dict(id="prequal-vir", kind="prequal", track="Virginia International Raceway – Full Course", reference=q_med, drivers=pv),
+              open(hdir / "prequal-vir.json", "w"), ensure_ascii=False, indent=1)
+    names = {r["id"]: r["name"] for r in rows}
+    for s, tr in rounds:
+        tt = T.get(tr); rr = [x for x in race_rows if x["track"] == tr]
+        if not tt and not rr:
+            continue
+        rec = dict(id=f"{s[:10]}-{_slug(tr)}", track=tr, race_start=s, fetched_at=tests["fetched_at"],
+                   tests=dict(days=tt["days"], sessions_used=tt["sessions_used"],
+                              drivers=[dict(d, name=names.get(d["cust_id"])) for d in tt["drivers"]]) if tt else None,
+                   race=[dict(x, name=names.get(x["cust_id"])) for x in rr])
+        json.dump(rec, open(hdir / f"{rec['id']}.json", "w"), ensure_ascii=False, indent=1)
 
-    # laps still to come before the race: remaining evening test sessions + race qualifying
+
+    # 3. Line for the coming track: best test lap = c + k*index + h*ln(iRating), ridge on standardised features
+    ir_of = lambda r: math.log(max(r.get("ir") or 1500, 300))
+    idx_vals = [v[0] for v in prior.values()]
+    m_idx, s_idx = (float(np.mean(idx_vals)), float(np.std(idx_vals)) or 1.0) if idx_vals else (0.0, 1.0)
+    ir_vals = [ir_of(r) for r in rows]
+    m_ir, s_ir = float(np.mean(ir_vals)), float(np.std(ir_vals)) or 1.0
+
+    def feats(r):
+        p = prior.get(r["id"], (None, 0))[0]
+        return np.array([1.0, ((m_idx if p is None else p) - m_idx) / s_idx, (ir_of(r) - m_ir) / s_ir])
+
+    fit_rows = [r for r in rows if r["id"] in cur_tests and cur_tests[r["id"]]["best"] and cur_tests[r["id"]]["laps"] >= MIN_FIT_LAPS]
+    pending = len(fit_rows) < MIN_FIT_DRIVERS
+    if not pending:
+        A = np.array([feats(r) for r in fit_rows]); y = np.array([cur_tests[r["id"]]["best"] for r in fit_rows])
+        pen = np.diag([0.0, RIDGE, RIDGE])
+        beta = np.linalg.solve(A.T @ A + pen, A.T @ y)
+        res = y - A @ beta; sd = float(res.std(ddof=3))
+        r2 = float(1 - (res ** 2).sum() / ((y - y.mean()) ** 2).sum())
+        c0 = float(beta[0] - beta[1] * m_idx / s_idx - beta[2] * m_ir / s_ir)
+        k1 = float(beta[1] / s_idx / 100); h1 = float(beta[2] / s_ir)   # k per 1% of index
+        line = lambda r: float(feats(r) @ beta)
+    else:
+        sd, r2, c0, k1, h1 = None, None, None, None, None
     days_left = max(0, (_dt(cur_start).date() - fetched.date()).days - (1 if fetched.hour >= 19 else 0))
-    pairs = [(d, v) for d in T.get(cur_track, {"drivers": []})["drivers"] for v in d["best_per_day"] if v is not None]
-    per_day = max(8.0, sum(d["laps"] for d in cur_tests.values()) / max(1, len(pairs)))
-    extra = days_left * per_day + QUALI_LAPS
+
+    # Race pace offsets (average race lap minus best lap, top 10 finishers) from the latest earlier race, per split
+    race_off = {}
+    prev = [(s_, tr) for s_, tr in rounds if (s_, tr) != (cur_start, cur_track) and any(x["track"] == tr for x in race_rows)]
+    if prev:
+        ptr = prev[-1][1]
+        for sp in (1, 2, 3, 4):
+            rr = sorted((x for x in race_rows if x["track"] == ptr and x["split"] == sp and (x["race_laps"] or 0) >= 25
+                         and x["race_avg"] and x["race_best"] and x["finish"]), key=lambda x: x["finish"])[:10]
+            if len(rr) >= 5:
+                race_off[sp] = round(float(st.median(x["race_avg"] - x["race_best"] for x in rr)), 2)
+
+    if pending:
+        return dict(
+            round=round_no, track=cur_track, race_start=cur_start, team=TEAM, pending_tests=True,
+            test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
+            model=dict(description="Nog geen testtijden voor deze baan. Zodra er genoeg rijders getest hebben, verschijnen targets en verwachte tijden.",
+                       c=None, k=None, h=None, g=0.0, residual_sd=None, r2=None, fit_n=len(fit_rows), test_days_left=days_left,
+                       expected_extra_laps=0, prior_laps=PRIOR_LAPS, pace_definition="snelste ronde (kwalificatie-niveau)"),
+            history=history_events, splits=[], team_drivers=[])
 
     # 4. Splits: official split from race results, else the prequal rank
     official = {}
     for x in sorted(race_rows, key=lambda x: x["subsession_id"] or 0):
-        official[x["cust_id"]] = x["split"]
+        if (x["race_laps"] or 0) > 0 or x["cust_id"] not in official:
+            official[x["cust_id"]] = x["split"]
     people = []
     for r in rows:
         sp = official.get(r["id"]) or (math.ceil(r["now"] / SPLIT_SIZE) if r.get("now") else None)
@@ -152,12 +203,10 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         d = cur_tests.get(r["id"], {})
         best, n = d.get("best"), d.get("laps", 0) or 0
         p = prior.get(r["id"], (None, 0))[0]
-        if p is None:
-            mu, sig, w = None, sd * 1.5, 0.0
-        else:
-            w = n / (n + PRIOR_LAPS) if best else 0.0
-            mu = line(p, n + extra) + (w * (best - line(p, n)) if best else 0.0)
-            sig = sd * (1 - 0.5 * w)
+        base = line(r)
+        w = n / (n + PRIOR_LAPS) if best else 0.0
+        mu = base + w * (best - base) if best else base
+        sig = IND_SD * (1 - 0.4 * w) if best else IND_SD
         people.append(dict(r=r, split=sp, best=best, laps=n, mu=mu, sig=sig, w=w, prior=p, n_events=prior.get(r["id"], (None, 0))[1],
                            car=d.get("car") or entry_car, team=team, days=d.get("best_per_day")))
 
@@ -169,10 +218,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
             continue
         fallback = st.median(p["mu"] for p in ms if p["mu"] is not None)
         mu = np.array([p["mu"] if p["mu"] is not None else fallback for p in ms]); sg = np.array([p["sig"] for p in ms])
-        draw = rnd.normal(mu, sg, size=(N_SIM, len(ms)))
-        for j, p in enumerate(ms):
-            if p["best"]:
-                draw[:, j] = np.minimum(draw[:, j], p["best"])
+        draw = rnd.normal(mu, sg, size=(N_SIM, len(ms))) + rnd.normal(0, SPLIT_SHOCK, size=(N_SIM, 1))
         srt = np.sort(draw, axis=1)
         order = np.argsort(draw, axis=1)
         rankpos = np.empty_like(order); rankpos[np.arange(N_SIM)[:, None], order] = np.arange(1, len(ms) + 1)[None, :]
@@ -200,28 +246,13 @@ def build_race(rows, INPUT, ROOT, seed=2026):
                            with_time=len(timed), now=dict(p1=timed[0]["best"] if timed else None,
                                                           p3=timed[2]["best"] if len(timed) >= 3 else None,
                                                           p10=timed[9]["best"] if len(timed) >= 10 else None),
-                           target=target, winner_pace=band(srt[:, 0]), top10_pace=band(srt[:, min(9, len(ms) - 1)]), drivers=out))
+                           target=target, race_pace_offset=race_off.get(sp_no),
+                           race_pace_target=({k_: round(v_ + race_off[sp_no], 3) for k_, v_ in target.items()} if sp_no in race_off else None),
+                           winner_pace=band(srt[:, 0]), top10_pace=band(srt[:, min(9, len(ms) - 1)]), drivers=out))
 
     team_rows = [dict(d, split=S["split"], target=S["target"]["p50"]) for S in splits for d in S["drivers"] if d["is_team"]]
     team_rows.sort(key=lambda d: (d["split"], d["expected_pace"]["mean"]))
     fast = min((p for p in people if p["best"]), key=lambda p: p["best"], default=None)
-
-    # Keep a record of every event in data/history (re-written from the season data on every run)
-    hdir = ROOT / "data" / "history"; hdir.mkdir(parents=True, exist_ok=True)
-    pv = [dict(cust_id=r["id"], name=r["name"], prequal_best=r["qBest"], position=r["now"], split=math.ceil(r["now"] / SPLIT_SIZE),
-               pace_index=round((r["qBest"] / q_med - 1) * 100, 3)) for r in sorted(ranked, key=lambda r: r["now"])]
-    json.dump(dict(id="prequal-vir", kind="prequal", track="Virginia International Raceway – Full Course", reference=q_med, drivers=pv),
-              open(hdir / "prequal-vir.json", "w"), ensure_ascii=False, indent=1)
-    names = {r["id"]: r["name"] for r in rows}
-    for s, tr in rounds:
-        tt = T.get(tr); rr = [x for x in race_rows if x["track"] == tr]
-        if not tt and not rr:
-            continue
-        rec = dict(id=f"{s[:10]}-{_slug(tr)}", track=tr, race_start=s, fetched_at=tests["fetched_at"],
-                   tests=dict(days=tt["days"], sessions_used=tt["sessions_used"],
-                              drivers=[dict(d, name=names.get(d["cust_id"])) for d in tt["drivers"]]) if tt else None,
-                   race=[dict(x, name=names.get(x["cust_id"])) for x in rr])
-        json.dump(rec, open(hdir / f"{rec['id']}.json", "w"), ensure_ascii=False, indent=1)
 
     return dict(
         round=round_no, track=cur_track, race_start=cur_start, team=TEAM,
@@ -230,10 +261,11 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         fastest=(dict(name=fast["r"]["name"], time=fast["best"], car=fast["car"], split=fast["split"], team=fast["team"]) if fast else None),
         model=dict(
             description=("Pace-index per rijder = procent sneller of trager dan de mediaan van het veld, uit de VIR-prequal en eerder verreden races. "
-                         "Lijn voor deze baan: beste testronde = c + k × pace-index + g × ln(ronden). Verwachting op racedag: de lijn bij de ronden die een rijder "
-                         f"dan heeft, plus zijn eigen afwijking (50% bij {PRIOR_LAPS} ronden). Een gereden ronde kan niet trager worden. "
+                         "Lijn voor deze baan: beste testronde = c + k × pace-index + h × ln(iRating), gefit op de testtijden. Verwachting op racedag: "
+                         f"de lijn plus de eigen afwijking van de rijder (50% bij {PRIOR_LAPS} testronden). Een testronde is geen ondergrens. "
                          "Target = derde snelste tijd in de split, uit " + f"{N_SIM:,}".replace(",", ".") + " simulaties."),
-            c=round(float(c0), 3), k=round(float(k1), 3), g=round(float(g1), 4), residual_sd=round(sd, 3), r2=(round(r2, 3) if r2 is not None else None),
-            fit_n=len(fit), test_days_left=days_left, expected_extra_laps=round(extra, 1), prior_laps=PRIOR_LAPS,
-            pace_definition="snelste ronde (kwalificatie-niveau); racepace volgt zodra er raceresultaten zijn"),
+            c=round(c0, 3), k=round(k1, 4), h=round(h1, 4), g=0.0, residual_sd=round(sd, 3), r2=round(r2, 3),
+            fit_n=len(fit_rows), test_days_left=days_left, expected_extra_laps=0, prior_laps=PRIOR_LAPS,
+            race_pace_offsets=race_off,
+            pace_definition="snelste ronde op racedag (kwalificatie of race)"),
         history=history_events, splits=splits, team_drivers=team_rows)
