@@ -818,7 +818,10 @@
         "race_best": 116.561,
         "race_avg": 118.0291,
         "laps": 31,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -1.88
        },
        {
         "name": "Youp De Vos",
@@ -832,7 +835,10 @@
         "race_best": 117.0713,
         "race_avg": 118.5885,
         "laps": 31,
-        "incidents": 11
+        "incidents": 11,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -1.38
        },
        {
         "name": "Ian Laurence Brown",
@@ -846,7 +852,10 @@
         "race_best": 117.0723,
         "race_avg": 118.6536,
         "laps": 31,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": 117.4797,
+        "practice_laps": 14,
+        "pace_index": -1.58
        },
        {
         "name": "Yurica Kasdorp",
@@ -860,7 +869,10 @@
         "race_best": 116.9334,
         "race_avg": 118.6703,
         "laps": 31,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -1.38
        },
        {
         "name": "Lucas de Vries",
@@ -874,7 +886,10 @@
         "race_best": 117.3223,
         "race_avg": 118.9856,
         "laps": 31,
-        "incidents": 16
+        "incidents": 16,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -1.42
        },
        {
         "name": "Justin De Jong",
@@ -888,7 +903,10 @@
         "race_best": 117.1927,
         "race_avg": 119.0283,
         "laps": 31,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": 116.7882,
+        "practice_laps": 57,
+        "pace_index": -1.42
        },
        {
         "name": "Owen Illsley",
@@ -902,7 +920,10 @@
         "race_best": 117.3348,
         "race_avg": 119.1521,
         "laps": 31,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": 117.408,
+        "practice_laps": 40,
+        "pace_index": -1.18
        },
        {
         "name": "Rens de Kok",
@@ -916,7 +937,10 @@
         "race_best": 117.1606,
         "race_avg": 119.1646,
         "laps": 31,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 118.5216,
+        "practice_laps": 19,
+        "pace_index": -1.1
        },
        {
         "name": "Luciano Witvoet",
@@ -930,7 +954,10 @@
         "race_best": 117.6648,
         "race_avg": 119.2992,
         "laps": 31,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 118.3124,
+        "practice_laps": 6,
+        "pace_index": -1.12
        },
        {
         "name": "Calvin Leijdekkers",
@@ -944,7 +971,10 @@
         "race_best": 117.4975,
         "race_avg": 119.3482,
         "laps": 31,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": 117.2002,
+        "practice_laps": 81,
+        "pace_index": -1.07
        },
        {
         "name": "Tom Walstra",
@@ -958,7 +988,10 @@
         "race_best": 117.5081,
         "race_avg": 119.3753,
         "laps": 31,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -1.34
        },
        {
         "name": "Barry Arends",
@@ -972,7 +1005,10 @@
         "race_best": 117.5915,
         "race_avg": 119.5624,
         "laps": 31,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 117.2919,
+        "practice_laps": 86,
+        "pace_index": -0.99
        },
        {
         "name": "Mathijs Wijten",
@@ -986,7 +1022,10 @@
         "race_best": 117.2853,
         "race_avg": 119.5806,
         "laps": 31,
-        "incidents": 8
+        "incidents": 8,
+        "practice_best": 116.9611,
+        "practice_laps": 33,
+        "pace_index": -1.27
        },
        {
         "name": "Jeanpaul Seemann",
@@ -1000,7 +1039,10 @@
         "race_best": 117.2801,
         "race_avg": 120.1616,
         "laps": 31,
-        "incidents": 23
+        "incidents": 23,
+        "practice_best": 117.2603,
+        "practice_laps": 37,
+        "pace_index": -1.4
        },
        {
         "name": "Joep van Tilburg",
@@ -1014,7 +1056,10 @@
         "race_best": 117.8666,
         "race_avg": 120.2242,
         "laps": 31,
-        "incidents": 13
+        "incidents": 13,
+        "practice_best": 117.9424,
+        "practice_laps": 80,
+        "pace_index": -0.8
        },
        {
         "name": "Rick Postema",
@@ -1028,7 +1073,10 @@
         "race_best": 117.7915,
         "race_avg": 120.2386,
         "laps": 31,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": 117.2893,
+        "practice_laps": 76,
+        "pace_index": -1.0
        },
        {
         "name": "Timur Aslan Overman",
@@ -1042,7 +1090,10 @@
         "race_best": 117.4028,
         "race_avg": 120.2428,
         "laps": 31,
-        "incidents": 20
+        "incidents": 20,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -1.15
        },
        {
         "name": "Lennon Henriquez",
@@ -1056,7 +1107,10 @@
         "race_best": 117.8353,
         "race_avg": 120.3402,
         "laps": 31,
-        "incidents": 22
+        "incidents": 22,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -1.1
        },
        {
         "name": "Gian Zoutewelle",
@@ -1070,7 +1124,10 @@
         "race_best": 117.7232,
         "race_avg": 120.5272,
         "laps": 31,
-        "incidents": 17
+        "incidents": 17,
+        "practice_best": 117.7643,
+        "practice_laps": 22,
+        "pace_index": -1.03
        },
        {
         "name": "Kris Verstijnen",
@@ -1084,7 +1141,10 @@
         "race_best": 117.6691,
         "race_avg": 120.7551,
         "laps": 31,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": 117.6871,
+        "practice_laps": 19,
+        "pace_index": -0.83
        },
        {
         "name": "Justin van der Linden",
@@ -1098,7 +1158,10 @@
         "race_best": 117.8046,
         "race_avg": 120.7904,
         "laps": 31,
-        "incidents": 13
+        "incidents": 13,
+        "practice_best": 117.4533,
+        "practice_laps": 50,
+        "pace_index": -0.86
        },
        {
         "name": "Wessel Stevens",
@@ -1112,7 +1175,10 @@
         "race_best": 117.7266,
         "race_avg": 120.9699,
         "laps": 31,
-        "incidents": 18
+        "incidents": 18,
+        "practice_best": 117.9937,
+        "practice_laps": 124,
+        "pace_index": -0.63
        },
        {
         "name": "Daniel Morpey",
@@ -1126,7 +1192,10 @@
         "race_best": 117.4745,
         "race_avg": 123.8796,
         "laps": 29,
-        "incidents": 18
+        "incidents": 18,
+        "practice_best": 117.0931,
+        "practice_laps": 67,
+        "pace_index": -1.16
        },
        {
         "name": "Danny Hoogendoorn",
@@ -1140,7 +1209,10 @@
         "race_best": 117.659,
         "race_avg": 133.4577,
         "laps": 28,
-        "incidents": 13
+        "incidents": 13,
+        "practice_best": 117.7287,
+        "practice_laps": 19,
+        "pace_index": -0.68
        },
        {
         "name": "Bram Lenten",
@@ -1154,7 +1226,10 @@
         "race_best": 117.3922,
         "race_avg": 122.7877,
         "laps": 25,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": 116.8784,
+        "practice_laps": 66,
+        "pace_index": -1.34
        },
        {
         "name": "Twan van den Beld",
@@ -1168,7 +1243,10 @@
         "race_best": 117.4692,
         "race_avg": 122.1664,
         "laps": 21,
-        "incidents": 18
+        "incidents": 18,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -0.84
        },
        {
         "name": "Milan Schröer2",
@@ -1182,7 +1260,10 @@
         "race_best": null,
         "race_avg": 151.5038,
         "laps": 3,
-        "incidents": 5
+        "incidents": 5,
+        "practice_best": 117.4183,
+        "practice_laps": 37,
+        "pace_index": -0.89
        },
        {
         "name": "Davey Van De Wakker",
@@ -1196,7 +1277,10 @@
         "race_best": null,
         "race_avg": null,
         "laps": 0,
-        "incidents": 5
+        "incidents": 5,
+        "practice_best": 118.2081,
+        "practice_laps": 21,
+        "pace_index": -0.22
        }
       ],
       "podium_best": [
@@ -1229,7 +1313,10 @@
         "race_best": 118.1624,
         "race_avg": 120.0675,
         "laps": 30,
-        "incidents": 8
+        "incidents": 8,
+        "practice_best": 117.8028,
+        "practice_laps": 106,
+        "pace_index": -0.56
        },
        {
         "name": "Sander Jorritsma",
@@ -1243,7 +1330,10 @@
         "race_best": 118.4948,
         "race_avg": 120.4117,
         "laps": 30,
-        "incidents": 3
+        "incidents": 3,
+        "practice_best": 117.7308,
+        "practice_laps": 91,
+        "pace_index": -0.62
        },
        {
         "name": "Jorrit Drent",
@@ -1257,7 +1347,10 @@
         "race_best": 118.6051,
         "race_avg": 120.4545,
         "laps": 30,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 117.53,
+        "practice_laps": 69,
+        "pace_index": -0.79
        },
        {
         "name": "Milan Wassenburg",
@@ -1271,7 +1364,10 @@
         "race_best": 118.6465,
         "race_avg": 120.656,
         "laps": 30,
-        "incidents": 4
+        "incidents": 4,
+        "practice_best": 117.5735,
+        "practice_laps": 50,
+        "pace_index": -0.76
        },
        {
         "name": "Otto Karis",
@@ -1285,7 +1381,10 @@
         "race_best": 118.4972,
         "race_avg": 120.6645,
         "laps": 30,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 117.9688,
+        "practice_laps": 56,
+        "pace_index": -0.42
        },
        {
         "name": "Gert Bos",
@@ -1299,7 +1398,10 @@
         "race_best": 118.8847,
         "race_avg": 120.7089,
         "laps": 30,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": 118.3177,
+        "practice_laps": 21,
+        "pace_index": -0.17
        },
        {
         "name": "Stijn Handgraaf",
@@ -1313,7 +1415,10 @@
         "race_best": 118.8324,
         "race_avg": 120.7213,
         "laps": 30,
-        "incidents": 6
+        "incidents": 6,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.22
        },
        {
         "name": "Mika Van Den Hurk",
@@ -1327,7 +1432,10 @@
         "race_best": 118.8573,
         "race_avg": 120.7472,
         "laps": 30,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 117.3917,
+        "practice_laps": 13,
+        "pace_index": -0.91
        },
        {
         "name": "Max De Rooij",
@@ -1341,7 +1449,10 @@
         "race_best": 118.7349,
         "race_avg": 120.9902,
         "laps": 30,
-        "incidents": 11
+        "incidents": 11,
+        "practice_best": 117.5598,
+        "practice_laps": 60,
+        "pace_index": -0.77
        },
        {
         "name": "Kevin Versantvoort",
@@ -1355,7 +1466,10 @@
         "race_best": 118.8994,
         "race_avg": 120.9934,
         "laps": 30,
-        "incidents": 13
+        "incidents": 13,
+        "practice_best": 118.3809,
+        "practice_laps": 19,
+        "pace_index": -0.07
        },
        {
         "name": "Stefan van der Velde",
@@ -1369,7 +1483,10 @@
         "race_best": 118.8597,
         "race_avg": 121.0084,
         "laps": 30,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 118.8873,
+        "practice_laps": 17,
+        "pace_index": 0.1
        },
        {
         "name": "Dick Jansen",
@@ -1383,7 +1500,10 @@
         "race_best": 119.2212,
         "race_avg": 121.3215,
         "laps": 30,
-        "incidents": 11
+        "incidents": 11,
+        "practice_best": 118.5679,
+        "practice_laps": 50,
+        "pace_index": 0.08
        },
        {
         "name": "Donny de Waal",
@@ -1397,7 +1517,10 @@
         "race_best": 119.0012,
         "race_avg": 121.3636,
         "laps": 30,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.07
        },
        {
         "name": "Thimo Baum",
@@ -1411,7 +1534,10 @@
         "race_best": 119.1778,
         "race_avg": 121.3949,
         "laps": 30,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": 117.9104,
+        "practice_laps": 36,
+        "pace_index": -0.47
        },
        {
         "name": "Alexander Gorissen",
@@ -1425,7 +1551,10 @@
         "race_best": 119.4337,
         "race_avg": 121.4105,
         "laps": 30,
-        "incidents": 13
+        "incidents": 13,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.47
        },
        {
         "name": "Cas Brinckhuizen",
@@ -1439,7 +1568,10 @@
         "race_best": 119.4144,
         "race_avg": 121.4337,
         "laps": 30,
-        "incidents": 9
+        "incidents": 9,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.8
        },
        {
         "name": "Ron Gravesteijn",
@@ -1453,7 +1585,10 @@
         "race_best": 119.2202,
         "race_avg": 121.4775,
         "laps": 30,
-        "incidents": 16
+        "incidents": 16,
+        "practice_best": 118.6313,
+        "practice_laps": 55,
+        "pace_index": 0.14
        },
        {
         "name": "Michel Van Der Ven",
@@ -1467,7 +1602,10 @@
         "race_best": 119.0862,
         "race_avg": 121.4876,
         "laps": 30,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.51
        },
        {
         "name": "Wulfert Van Goor",
@@ -1481,7 +1619,10 @@
         "race_best": 118.7847,
         "race_avg": 121.5569,
         "laps": 30,
-        "incidents": 11
+        "incidents": 11,
+        "practice_best": 117.8021,
+        "practice_laps": 29,
+        "pace_index": -0.56
        },
        {
         "name": "Diego Teunissen",
@@ -1495,7 +1636,10 @@
         "race_best": 118.7636,
         "race_avg": 121.6652,
         "laps": 30,
-        "incidents": 19
+        "incidents": 19,
+        "practice_best": 117.6246,
+        "practice_laps": 72,
+        "pace_index": -0.71
        },
        {
         "name": "Quinten Klumpert",
@@ -1509,7 +1653,10 @@
         "race_best": 119.1479,
         "race_avg": 121.674,
         "laps": 30,
-        "incidents": 5
+        "incidents": 5,
+        "practice_best": 117.603,
+        "practice_laps": 81,
+        "pace_index": -0.73
        },
        {
         "name": "Freek Van Santvoord",
@@ -1523,7 +1670,10 @@
         "race_best": 119.6704,
         "race_avg": 121.7226,
         "laps": 30,
-        "incidents": 16
+        "incidents": 16,
+        "practice_best": 119.523,
+        "practice_laps": 21,
+        "pace_index": 0.88
        },
        {
         "name": "Kevin Messak",
@@ -1537,7 +1687,10 @@
         "race_best": 119.2721,
         "race_avg": 121.7359,
         "laps": 30,
-        "incidents": 3
+        "incidents": 3,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.68
        },
        {
         "name": "Luuk Feitsma",
@@ -1551,7 +1704,10 @@
         "race_best": 118.8091,
         "race_avg": 121.7051,
         "laps": 28,
-        "incidents": 22
+        "incidents": 22,
+        "practice_best": 118.4666,
+        "practice_laps": 20,
+        "pace_index": -0.0
        },
        {
         "name": "Ruud Lopez",
@@ -1565,7 +1721,10 @@
         "race_best": 119.5704,
         "race_avg": 132.5489,
         "laps": 28,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 117.9671,
+        "practice_laps": 92,
+        "pace_index": -0.42
        },
        {
         "name": "Patrick Strijdonck",
@@ -1579,7 +1738,10 @@
         "race_best": 119.8797,
         "race_avg": 134.6761,
         "laps": 27,
-        "incidents": 7
+        "incidents": 7,
+        "practice_best": 119.2837,
+        "practice_laps": 16,
+        "pace_index": 0.69
        },
        {
         "name": "Patrick A Hesterman",
@@ -1593,7 +1755,10 @@
         "race_best": 119.5223,
         "race_avg": 141.602,
         "laps": 26,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.89
        },
        {
         "name": "Brandon Uffelie",
@@ -1607,7 +1772,10 @@
         "race_best": null,
         "race_avg": null,
         "laps": 0,
-        "incidents": 0
+        "incidents": 0,
+        "practice_best": 121.1631,
+        "practice_laps": 29,
+        "pace_index": 2.27
        }
       ],
       "podium_best": [
@@ -1640,7 +1808,10 @@
         "race_best": 117.8216,
         "race_avg": 119.7663,
         "laps": 31,
-        "incidents": 9
+        "incidents": 9,
+        "practice_best": 117.5943,
+        "practice_laps": 65,
+        "pace_index": -0.74
        },
        {
         "name": "Jeroen Wijnbergen",
@@ -1654,7 +1825,10 @@
         "race_best": 117.8593,
         "race_avg": 119.8099,
         "laps": 31,
-        "incidents": 4
+        "incidents": 4,
+        "practice_best": 117.8131,
+        "practice_laps": 40,
+        "pace_index": -0.55
        },
        {
         "name": "J.T Korting",
@@ -1668,7 +1842,10 @@
         "race_best": 118.6503,
         "race_avg": 121.0557,
         "laps": 31,
-        "incidents": 11
+        "incidents": 11,
+        "practice_best": 118.8355,
+        "practice_laps": 38,
+        "pace_index": 0.15
        },
        {
         "name": "Roy Van Veenendaal",
@@ -1682,7 +1859,10 @@
         "race_best": 118.3449,
         "race_avg": 121.1019,
         "laps": 31,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": -0.1
        },
        {
         "name": "Ben Dam",
@@ -1696,7 +1876,10 @@
         "race_best": 118.6402,
         "race_avg": 121.5672,
         "laps": 31,
-        "incidents": 6
+        "incidents": 6,
+        "practice_best": 118.8223,
+        "practice_laps": 37,
+        "pace_index": 0.15
        },
        {
         "name": "Thijmen Bakker",
@@ -1710,7 +1893,10 @@
         "race_best": 119.2996,
         "race_avg": 121.7876,
         "laps": 31,
-        "incidents": 16
+        "incidents": 16,
+        "practice_best": 120.0621,
+        "practice_laps": 40,
+        "pace_index": 0.7
        },
        {
         "name": "Ivo Dahlmans",
@@ -1724,7 +1910,10 @@
         "race_best": 119.4622,
         "race_avg": 121.8196,
         "laps": 31,
-        "incidents": 0
+        "incidents": 0,
+        "practice_best": 119.3525,
+        "practice_laps": 69,
+        "pace_index": 0.75
        },
        {
         "name": "Roy Van De Geer",
@@ -1738,7 +1927,10 @@
         "race_best": 119.3535,
         "race_avg": 121.8386,
         "laps": 31,
-        "incidents": 6
+        "incidents": 6,
+        "practice_best": 119.8848,
+        "practice_laps": 12,
+        "pace_index": 0.73
        },
        {
         "name": "Raymon Van Zutphen",
@@ -1752,7 +1944,10 @@
         "race_best": 119.644,
         "race_avg": 121.8678,
         "laps": 31,
-        "incidents": 4
+        "incidents": 4,
+        "practice_best": 119.6015,
+        "practice_laps": 79,
+        "pace_index": 0.96
        },
        {
         "name": "Mitch Hendriks2",
@@ -1766,7 +1961,10 @@
         "race_best": 119.5537,
         "race_avg": 122.3465,
         "laps": 31,
-        "incidents": 6
+        "incidents": 6,
+        "practice_best": 120.8932,
+        "practice_laps": 28,
+        "pace_index": 0.87
        },
        {
         "name": "Marc Van Den Broecke",
@@ -1780,7 +1978,10 @@
         "race_best": 119.802,
         "race_avg": 122.4181,
         "laps": 31,
-        "incidents": 2
+        "incidents": 2,
+        "practice_best": 119.9684,
+        "practice_laps": 15,
+        "pace_index": 1.13
        },
        {
         "name": "Tommy Vlieger",
@@ -1794,7 +1995,10 @@
         "race_best": 119.3761,
         "race_avg": 122.6741,
         "laps": 31,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": 119.1693,
+        "practice_laps": 10,
+        "pace_index": 0.59
        },
        {
         "name": "Stefan Visser4",
@@ -1808,7 +2012,10 @@
         "race_best": 119.6791,
         "race_avg": 122.796,
         "laps": 31,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 1.02
        },
        {
         "name": "Jasper Bloem",
@@ -1822,7 +2029,10 @@
         "race_best": 119.3557,
         "race_avg": 128.7094,
         "laps": 29,
-        "incidents": 7
+        "incidents": 7,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.69
        },
        {
         "name": "Klaas De Boer3",
@@ -1836,7 +2046,10 @@
         "race_best": 118.0438,
         "race_avg": 128.7146,
         "laps": 29,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 117.7309,
+        "practice_laps": 53,
+        "pace_index": -0.62
        },
        {
         "name": "Marc Verlinden",
@@ -1850,7 +2063,10 @@
         "race_best": 118.787,
         "race_avg": 134.1937,
         "laps": 28,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 118.4684,
+        "practice_laps": 25,
+        "pace_index": 0.0
        },
        {
         "name": "Bart Tonkes",
@@ -1864,7 +2080,10 @@
         "race_best": 118.3722,
         "race_avg": 140.0026,
         "laps": 27,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 118.7223,
+        "practice_laps": 86,
+        "pace_index": -0.19
        },
        {
         "name": "Tycho Van Dijk",
@@ -1878,7 +2097,10 @@
         "race_best": 118.4731,
         "race_avg": 140.9677,
         "laps": 27,
-        "incidents": 14
+        "incidents": 14,
+        "practice_best": 118.6299,
+        "practice_laps": 206,
+        "pace_index": 0.0
        },
        {
         "name": "Ole Corvers",
@@ -1892,7 +2114,10 @@
         "race_best": 119.4731,
         "race_avg": 143.4688,
         "laps": 26,
-        "incidents": 21
+        "incidents": 21,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.85
        },
        {
         "name": "Leroy Bolkestein",
@@ -1906,7 +2131,10 @@
         "race_best": 118.2264,
         "race_avg": 154.9186,
         "laps": 24,
-        "incidents": 13
+        "incidents": 13,
+        "practice_best": 118.2091,
+        "practice_laps": 14,
+        "pace_index": -0.3
        },
        {
         "name": "Jaimy Peters",
@@ -1920,7 +2148,10 @@
         "race_best": 119.1941,
         "race_avg": 155.199,
         "laps": 24,
-        "incidents": 9
+        "incidents": 9,
+        "practice_best": 119.8428,
+        "practice_laps": 53,
+        "pace_index": 0.61
        },
        {
         "name": "Timo Geurts3",
@@ -1934,7 +2165,10 @@
         "race_best": 118.8307,
         "race_avg": 126.5555,
         "laps": 23,
-        "incidents": 18
+        "incidents": 18,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.1
        },
        {
         "name": "Jesse Nant Schiffelers",
@@ -1948,7 +2182,10 @@
         "race_best": 119.9158,
         "race_avg": 127.0103,
         "laps": 11,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 119.8258,
+        "practice_laps": 39,
+        "pace_index": 1.15
        },
        {
         "name": "Franklyn Nwanaforo",
@@ -1962,7 +2199,10 @@
         "race_best": 119.5149,
         "race_avg": 132.328,
         "laps": 7,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 118.5206,
+        "practice_laps": 35,
+        "pace_index": -0.17
        },
        {
         "name": "Danny Lugt",
@@ -1976,7 +2216,10 @@
         "race_best": null,
         "race_avg": 168.645,
         "laps": 2,
-        "incidents": 2
+        "incidents": 2,
+        "practice_best": 119.4384,
+        "practice_laps": 45,
+        "pace_index": 0.51
        }
       ],
       "podium_best": [
@@ -2009,7 +2252,10 @@
         "race_best": 119.1356,
         "race_avg": 121.2156,
         "laps": 30,
-        "incidents": 8
+        "incidents": 8,
+        "practice_best": 119.9082,
+        "practice_laps": 22,
+        "pace_index": 0.56
        },
        {
         "name": "Kaustubh Patil",
@@ -2023,7 +2269,10 @@
         "race_best": 119.1764,
         "race_avg": 121.5843,
         "laps": 30,
-        "incidents": 12
+        "incidents": 12,
+        "practice_best": 119.3131,
+        "practice_laps": 17,
+        "pace_index": 0.45
        },
        {
         "name": "Eric Nijmeijer2",
@@ -2037,7 +2286,10 @@
         "race_best": 119.2498,
         "race_avg": 121.6762,
         "laps": 30,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 119.2078,
+        "practice_laps": 110,
+        "pace_index": 0.46
        },
        {
         "name": "Kees Meurs",
@@ -2051,7 +2303,10 @@
         "race_best": 119.6303,
         "race_avg": 122.2852,
         "laps": 30,
-        "incidents": 2
+        "incidents": 2,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.97
        },
        {
         "name": "Jeffrey Mokum",
@@ -2065,7 +2320,10 @@
         "race_best": 119.8382,
         "race_avg": 122.4028,
         "laps": 30,
-        "incidents": 8
+        "incidents": 8,
+        "practice_best": 121.6567,
+        "practice_laps": 10,
+        "pace_index": 1.16
        },
        {
         "name": "Kylian Weerwag",
@@ -2079,7 +2337,10 @@
         "race_best": 119.317,
         "race_avg": 122.5979,
         "laps": 30,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.72
        },
        {
         "name": "John De Bruijn",
@@ -2093,7 +2354,10 @@
         "race_best": 119.9203,
         "race_avg": 122.6369,
         "laps": 30,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": 119.7565,
+        "practice_laps": 35,
+        "pace_index": 1.09
        },
        {
         "name": "Kevin Minderhoud",
@@ -2107,7 +2371,10 @@
         "race_best": 119.9352,
         "race_avg": 122.7837,
         "laps": 30,
-        "incidents": 16
+        "incidents": 16,
+        "practice_best": 121.4245,
+        "practice_laps": 19,
+        "pace_index": 1.24
        },
        {
         "name": "Justin Van Heuzen2",
@@ -2121,7 +2388,10 @@
         "race_best": 120.147,
         "race_avg": 122.8534,
         "laps": 30,
-        "incidents": 5
+        "incidents": 5,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 1.42
        },
        {
         "name": "Tim De Jong2",
@@ -2135,7 +2405,10 @@
         "race_best": 119.8359,
         "race_avg": 122.8844,
         "laps": 30,
-        "incidents": 11
+        "incidents": 11,
+        "practice_best": 119.9599,
+        "practice_laps": 25,
+        "pace_index": 1.15
        },
        {
         "name": "Thomas Jack Slack",
@@ -2149,7 +2422,10 @@
         "race_best": 119.1972,
         "race_avg": 123.348,
         "laps": 30,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 0.52
        },
        {
         "name": "Richard De Ruiter",
@@ -2163,7 +2439,10 @@
         "race_best": 121.15,
         "race_avg": 124.1002,
         "laps": 30,
-        "incidents": 8
+        "incidents": 8,
+        "practice_best": 120.3556,
+        "practice_laps": 24,
+        "pace_index": 1.59
        },
        {
         "name": "Lars Van Geresteijn",
@@ -2177,7 +2456,10 @@
         "race_best": 120.049,
         "race_avg": 122.8721,
         "laps": 29,
-        "incidents": 10
+        "incidents": 10,
+        "practice_best": null,
+        "practice_laps": 0,
+        "pace_index": 1.33
        },
        {
         "name": "Vincent Van Der Linden2",
@@ -2191,7 +2473,10 @@
         "race_best": 119.9669,
         "race_avg": 125.5283,
         "laps": 29,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 121.7348,
+        "practice_laps": 21,
+        "pace_index": 1.26
        },
        {
         "name": "Elco Roest",
@@ -2205,7 +2490,10 @@
         "race_best": 120.019,
         "race_avg": 127.6901,
         "laps": 29,
-        "incidents": 15
+        "incidents": 15,
+        "practice_best": 120.207,
+        "practice_laps": 70,
+        "pace_index": 0.98
        },
        {
         "name": "Michiel De Jong",
@@ -2219,7 +2507,10 @@
         "race_best": 121.632,
         "race_avg": 130.1876,
         "laps": 28,
-        "incidents": 9
+        "incidents": 9,
+        "practice_best": 122.9877,
+        "practice_laps": 25,
+        "pace_index": 2.67
        },
        {
         "name": "Dennis De Konink",
@@ -2233,7 +2524,10 @@
         "race_best": 120.3994,
         "race_avg": 130.692,
         "laps": 28,
-        "incidents": 23
+        "incidents": 23,
+        "practice_best": 119.9486,
+        "practice_laps": 26,
+        "pace_index": 1.17
        },
        {
         "name": "Marco Vd Ven",
@@ -2247,7 +2541,10 @@
         "race_best": null,
         "race_avg": 134.9422,
         "laps": 5,
-        "incidents": 6
+        "incidents": 6,
+        "practice_best": 121.1012,
+        "practice_laps": 10,
+        "pace_index": 2.22
        },
        {
         "name": "Evert Geurtsen5",
@@ -2261,7 +2558,10 @@
         "race_best": null,
         "race_avg": null,
         "laps": 0,
-        "incidents": 0
+        "incidents": 0,
+        "practice_best": 122.3886,
+        "practice_laps": 2,
+        "pace_index": 3.31
        }
       ],
       "podium_best": [
@@ -2293,6 +2593,9 @@
       "race_avg": 120.0675,
       "laps": 30,
       "incidents": 8,
+      "practice_best": 117.8028,
+      "practice_laps": 106,
+      "pace_index": -0.56,
       "split": 2
      },
      {
@@ -2308,6 +2611,9 @@
       "race_avg": 120.4545,
       "laps": 30,
       "incidents": 15,
+      "practice_best": 117.53,
+      "practice_laps": 69,
+      "pace_index": -0.79,
       "split": 2
      },
      {
@@ -2323,6 +2629,9 @@
       "race_avg": 121.4775,
       "laps": 30,
       "incidents": 16,
+      "practice_best": 118.6313,
+      "practice_laps": 55,
+      "pace_index": 0.14,
       "split": 2
      },
      {
@@ -2338,6 +2647,9 @@
       "race_avg": 121.6652,
       "laps": 30,
       "incidents": 19,
+      "practice_best": 117.6246,
+      "practice_laps": 72,
+      "pace_index": -0.71,
       "split": 2
      },
      {
@@ -2353,6 +2665,9 @@
       "race_avg": 121.7051,
       "laps": 28,
       "incidents": 22,
+      "practice_best": 118.4666,
+      "practice_laps": 20,
+      "pace_index": -0.0,
       "split": 2
      },
      {
@@ -2368,6 +2683,9 @@
       "race_avg": 132.5489,
       "laps": 28,
       "incidents": 15,
+      "practice_best": 117.9671,
+      "practice_laps": 92,
+      "pace_index": -0.42,
       "split": 2
      }
     ]

@@ -189,6 +189,9 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         rr_ = [x for x in rr_ if (x["race_laps"] or 0) > 0 or x["cust_id"] not in ran]   # drop DNS ghosts in a second split
         if not rr_ or (s_, tr_) == (cur_start, cur_track):
             continue
+        tt_ = {d["cust_id"]: d for d in T.get(tr_, {"drivers": []})["drivers"]}
+        eid_ = f"{s_[:10]}-{_slug(tr_)}"
+        idx_ = {cid: next((i for e, i, _ in h if e == eid_), None) for cid, h in hist.items()}
         sps = []
         for sp in sorted({x["split"] for x in rr_}):
             ds = []
@@ -197,7 +200,9 @@ def build_race(rows, INPUT, ROOT, seed=2026):
                 team, entry_car = team_of(r)
                 ds.append(dict(name=r["name"], car_number=r["num"], irating=r["ir"], team=team, is_team=team == TEAM,
                                car=x.get("car") or entry_car, finish=x["finish"], quali_best=x["quali_best"], race_best=x["race_best"],
-                               race_avg=x["race_avg"], laps=x["race_laps"], incidents=x["incidents"]))
+                               race_avg=x["race_avg"], laps=x["race_laps"], incidents=x["incidents"],
+                               practice_best=(tt_.get(x["cust_id"]) or {}).get("best"), practice_laps=(tt_.get(x["cust_id"]) or {}).get("laps", 0),
+                               pace_index=(round(idx_[x["cust_id"]] * 100, 2) if idx_.get(x["cust_id"]) is not None else None)))
             sps.append(dict(split=sp, shown=sp in SHOW_SPLITS, drivers=ds,
                             podium_best=[d["race_best"] for d in ds[:3]], podium_avg=[d["race_avg"] for d in ds[:3]],
                             p3_best=ds[2]["race_best"] if len(ds) >= 3 else None, p3_avg=ds[2]["race_avg"] if len(ds) >= 3 else None,

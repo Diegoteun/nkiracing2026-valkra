@@ -720,10 +720,12 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     ],
     results: [
       ["Pos", "Eindpositie in de race van die split."],
+      ["Practice", "Snelste ronde in de officiële testsessies van die week, met het aantal ronden."],
       ["Kwali", "Snelste ronde in de kwalificatie."],
       ["Race", "Snelste raceronde."],
       ["Gem.", "Gemiddelde rondetijd in de race, inclusief start en incidenten."],
       ["Inc.", "Aantal incidents."],
+      ["Index", "Pace op deze baan in procent ten opzichte van de mediaan van het veld (negatief = sneller). Neemt het model mee naar de volgende race."],
     ],
     prequal: [
       ["Beste", "Snelste prequal-ronde op VIR."],
@@ -987,7 +989,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     activeSplit = S ? S.split : 1;
 
     $("hero-h1").textContent = `Ronde ${X.round}: ${trackShort(X.track)}`;
-    $("hero-p").textContent = `Uitslag van de race van ${dateNl(X.race_start)}. Kwalificatie, racepace en incidents per split.`;
+    $("hero-p").textContent = `Uitslag van de race van ${dateNl(X.race_start)}. Per rijder de practice, kwalificatie en racepace. De index gaat mee naar de volgende race.`;
 
     const tiles = [];
     if (S) {
@@ -1004,12 +1006,14 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const row = (d, withSplit) => `<tr class="${d.is_team ? "team" : ""}">
         <td class="l pos">${d.finish || '<span class="none">-</span>'}</td>
         <td class="l">${driverCell(d, { showTeam: false })}</td>${withSplit ? `<td class="c">${d.split}</td>` : ""}
+        <td>${d.practice_best ? `${lap(d.practice_best)}<span class="laps">${d.practice_laps}r</span>` : '<span class="none">-</span>'}</td>
         <td>${d.quali_best ? lap(d.quali_best) : '<span class="none">-</span>'}</td>
         <td>${d.race_best ? lap(d.race_best) : '<span class="none">-</span>'}</td>
         <td>${d.race_avg && d.laps >= 25 ? lap(d.race_avg) : '<span class="none">-</span>'}</td>
         <td>${d.incidents == null ? "-" : d.incidents}</td>
+        <td>${d.pace_index == null ? '<span class="none">-</span>' : (d.pace_index > 0 ? "+" : "") + d.pace_index.toFixed(2).replace(".", ",") + "%"}</td>
       </tr>`;
-    const head = withSplit => `<thead><tr><th class="l">Pos</th><th class="l">Rijder</th>${withSplit ? '<th class="c">Split</th>' : ""}<th>Kwali</th><th>Race</th><th>Gem.</th><th>Inc.</th></tr></thead>`;
+    const head = withSplit => `<thead><tr><th class="l">Pos</th><th class="l">Rijder</th>${withSplit ? '<th class="c">Split</th>' : ""}<th>Practice</th><th>Kwali</th><th>Race</th><th>Gem.</th><th>Inc.</th><th>Index</th></tr></thead>`;
     $("teamtbl").innerHTML = head(true) + "<tbody>" + T.map(d => row(d, true)).join("") + "</tbody>";
 
     $("split-switch").innerHTML = list.map(x =>
