@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-06T15:43:35.246Z",
+ "fetched_at": "2026-11-06T21:45:30.066Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -126,6 +126,14 @@
    "safety_rating": 3.98
   },
   {
+   "cust_id": 604599,
+   "name": "Daan Pepels",
+   "car_number": null,
+   "irating": 4107,
+   "license": "A",
+   "safety_rating": 3.9
+  },
+  {
    "cust_id": 297879,
    "name": "Daan van der Ven",
    "car_number": null,
@@ -241,17 +249,17 @@
    "cust_id": 1498375,
    "name": "Elco Roest",
    "car_number": "179",
-   "irating": 1415,
+   "irating": 1422,
    "license": "A",
-   "safety_rating": 3.29
+   "safety_rating": 3
   },
   {
    "cust_id": 1509116,
    "name": "Eric Nijmeijer2",
    "car_number": "306",
-   "irating": 1303,
+   "irating": 1371,
    "license": "A",
-   "safety_rating": 2.93
+   "safety_rating": 3.45
   },
   {
    "cust_id": 1272155,
@@ -633,9 +641,9 @@
    "cust_id": 1024584,
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3428,
+   "irating": 3464,
    "license": "A",
-   "safety_rating": 2.71
+   "safety_rating": 2.69
   },
   {
    "cust_id": 1176867,
@@ -649,9 +657,9 @@
    "cust_id": 1091310,
    "name": "Milan Wassenburg",
    "car_number": "159",
-   "irating": 3531,
+   "irating": 3560,
    "license": "A",
-   "safety_rating": 3.75
+   "safety_rating": 3.68
   },
   {
    "cust_id": 1152265,
@@ -697,9 +705,9 @@
    "cust_id": 1028127,
    "name": "Patrick A Hesterman",
    "car_number": "105",
-   "irating": 2945,
+   "irating": 3011,
    "license": "A",
-   "safety_rating": 2.26
+   "safety_rating": 2.58
   },
   {
    "cust_id": 1073252,
@@ -793,9 +801,9 @@
    "cust_id": 1538667,
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1744,
+   "irating": 1683,
    "license": "B",
-   "safety_rating": 3.31
+   "safety_rating": 3.29
   },
   {
    "cust_id": 1062772,
@@ -889,9 +897,9 @@
    "cust_id": 1343880,
    "name": "Tim De Jong2",
    "car_number": "39",
-   "irating": 1373,
+   "irating": 1425,
    "license": "A",
-   "safety_rating": 1.2
+   "safety_rating": 1.28
   },
   {
    "cust_id": 1094132,
@@ -969,9 +977,9 @@
    "cust_id": 928791,
    "name": "Yoeri Pluim",
    "car_number": null,
-   "irating": 1496,
+   "irating": 1474,
    "license": "B",
-   "safety_rating": 3.61
+   "safety_rating": 3.34
   },
   {
    "cust_id": 1046505,
