@@ -501,6 +501,41 @@ body.gate-open { overflow: hidden; }
 }
 .mini .s { font-size: 12px; color: var(--ink-muted); }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: end;
+  margin: 0 0 12px;
+}
+.filters label {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  min-width: min(180px, 100%);
+}
+.filters select {
+  font: 500 14px/1.2 var(--sans);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-control);
+  padding: 10px 12px;
+  min-width: 160px;
+  max-width: 100%;
+}
+.filters .btn.ghost {
+  padding: 10px 14px;
+  align-self: end;
+}
+.filters-meta {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-left: auto;
+  align-self: center;
+}
 .tbox {
   overflow-x: auto;
   scrollbar-width: none;
@@ -728,6 +763,20 @@ table { border-collapse: collapse; width: 100%; }
       </div>
       <p class="cap" id="field-cap"></p>
       <div class="pace-row" id="pace-row"></div>
+      <div class="filters" id="field-filters" aria-label="Filter veld">
+        <label>Team
+          <select id="filter-team" aria-label="Filter op team">
+            <option value="">Alle teams</option>
+          </select>
+        </label>
+        <label>Auto
+          <select id="filter-car" aria-label="Filter op auto">
+            <option value="">Alle auto's</option>
+          </select>
+        </label>
+        <button type="button" class="btn ghost" id="filter-reset">Wis filters</button>
+        <span class="filters-meta" id="filter-count"></span>
+      </div>
       <div class="tbox"><table class="stbl" id="fieldtbl"></table></div>
       <p class="hint" id="field-hint"></p>
     </section>
@@ -741,6 +790,20 @@ table { border-collapse: collapse; width: 100%; }
         <span class="rng" id="pq-sub"></span>
       </div>
       <p class="cap" id="pq-cap">VIR Full Course. Splits volgen uit deze stand (P1 tot P30 = split 1, P31 tot P60 = split 2).</p>
+      <div class="filters" id="pq-filters" aria-label="Filter prequal">
+        <label>Team
+          <select id="pq-filter-team" aria-label="Filter prequal op team">
+            <option value="">Alle teams</option>
+          </select>
+        </label>
+        <label>Auto
+          <select id="pq-filter-car" aria-label="Filter prequal op auto">
+            <option value="">Alle auto's</option>
+          </select>
+        </label>
+        <button type="button" class="btn ghost" id="pq-filter-reset">Wis filters</button>
+        <span class="filters-meta" id="pq-filter-count"></span>
+      </div>
       <div class="tbox"><table class="stbl" id="pq-tbl"></table></div>
     </section>
   </div>
@@ -862,6 +925,36 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
   const sgn = v => (v > 0 ? "+" : v < 0 ? "-" : "+/-") + Math.abs(v).toFixed(3).replace(".", ",");
   const carShort = c => c ? String(c).replace(/ GT3.*$/i, "").replace(/ EVO( II)?$/i, "").replace(/ \(992\)$/i, "") : "";
+  const carLabel = d => carShort(d && d.car) || (d && d.car) || "";
+  let filterTeam = "";
+  let filterCar = "";
+  const uniqueSorted = arr => [...new Set(arr.filter(Boolean))].sort((a, b) => a.localeCompare(b, "nl", { sensitivity: "base" }));
+  const passFilter = d => {
+    if (filterTeam && (d.team || "") !== filterTeam) return false;
+    if (filterCar && carLabel(d) !== filterCar) return false;
+    return true;
+  };
+  const fillSelect = (el, values, emptyLabel, selected) => {
+    if (!el) return selected && values.includes(selected) ? selected : "";
+    const keep = selected && values.includes(selected) ? selected : "";
+    el.innerHTML = `<option value="">${esc(emptyLabel)}</option>` + values.map(v =>
+      `<option value="${esc(v)}"${v === keep ? " selected" : ""}>${esc(v)}</option>`
+    ).join("");
+    return keep;
+  };
+  const syncFilterControls = (drivers, { teamId, carId, countId } = {}) => {
+    const list = drivers || [];
+    filterTeam = fillSelect($(teamId), uniqueSorted(list.map(d => d.team)), "Alle teams", filterTeam);
+    filterCar = fillSelect($(carId), uniqueSorted(list.map(carLabel)), "Alle auto's", filterCar);
+    const shown = list.filter(passFilter).length;
+    const count = $(countId);
+    if (count) {
+      count.textContent = (filterTeam || filterCar)
+        ? `${shown} van ${list.length} rijders`
+        : `${list.length} rijders`;
+    }
+    return list.filter(passFilter);
+  };
   const trackShort = t => String(t || "").split(/\s*[\u2013\u2014\u2212\-]\s*/)[0]
     .replace(" International Racing Course", "")
     .replace(" International Raceway", "");
@@ -989,15 +1082,16 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     ];
     $("pq-tiles").innerHTML = tiles.map(t => `<div class="tile glass"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
 
+    const filtered = syncFilterControls(drivers, { teamId: "pq-filter-team", carId: "pq-filter-car", countId: "pq-filter-count" });
     $("pq-sub").textContent = `${drivers.length} rijders`;
     $("pq-tbl").innerHTML = `<thead><tr>
         <th class="l">#</th><th class="l">Rijder</th><th>Beste</th><th>iRating</th><th>Split 1</th><th>Split 2</th>
-      </tr></thead><tbody>` + drivers.map(d => {
-      const isTeam = teamNames.has((d.name || "").toLowerCase());
+      </tr></thead><tbody>` + filtered.map(d => {
+      const isTeam = teamNames.has((d.name || "").toLowerCase()) || d.is_team || d.team === "Valkra Performance";
       const pos = d.prequal_position_now || "-";
       return `<tr class="${isTeam ? "team" : ""}">
         <td class="l pos">${pos}</td>
-        <td class="l"><div class="driver"><div class="driver-text"><span class="driver-name">${esc(d.name)}</span><span class="driver-meta">${[d.car_number ? "#" + d.car_number : "", d.license || ""].filter(Boolean).map(esc).join(" / ")}</span></div></div></td>
+        <td class="l">${driverCell(d)}</td>
         <td>${d.best_time != null ? `${lap(d.best_time)}<span class="laps">${d.laps_total || 0}r</span>` : '<span class="none">-</span>'}</td>
         <td>${nl(d.irating || 0)}</td>
         <td>${Math.round(d.chance_split1 || 0)}%</td>
@@ -1087,6 +1181,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       $("pace-row").innerHTML = "";
       $("fieldtbl").innerHTML = "";
       $("field-hint").textContent = "";
+      syncFilterControls([], { teamId: "filter-team", carId: "filter-car", countId: "filter-count" });
     } else if (priorMode) {
       $("field-title").textContent = `Split ${S.split}`;
       $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. Schatting zonder Zandvoort-tests: wie sneller/trager was dan het veld in prequal + Suzuka.`;
@@ -1101,9 +1196,10 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         <div class="mini glass"><span class="lbl">P3-gat</span><span class="v">relatief</span><span class="s">geen absolute rondetijd</span></div>
         <div class="mini glass"><span class="lbl">Rijders</span><span class="v">${S.members}</span><span class="s">allen geschat</span></div>`;
 
+      const filtered = syncFilterControls(S.drivers || [], { teamId: "filter-team", carId: "filter-car", countId: "filter-count" });
       $("fieldtbl").innerHTML = `<thead><tr>
           <th class="l">#</th><th class="l">Rijder</th><th>vs veld</th><th>Rang</th><th>Gat</th><th>Top 3</th>
-        </tr></thead><tbody>` + (S.drivers || []).map((d, i) => `<tr class="${d.is_team ? "team" : ""}">
+        </tr></thead><tbody>` + filtered.map((d, i) => `<tr class="${d.is_team ? "team" : ""}">
           <td class="l pos">${i + 1}</td>
           <td class="l">${driverCell(d)}</td>
           <td>${idxHtml(d.pace_index)}</td>
@@ -1126,10 +1222,11 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         <div class="mini glass"><span class="lbl">Al gereden</span><span class="v">${S.with_time}/${S.members}</span><span class="s">${S.now && S.now.p1 ? "snelste " + lap(S.now.p1) : "nog geen tijden"}</span></div>`;
 
       const rows = S.drivers || [];
+      const filtered = syncFilterControls(rows, { teamId: "filter-team", carId: "filter-car", countId: "filter-count" });
       const contenders = rows.filter(d => !d.best && d.chance_top3 >= 10).sort((a, b) => b.chance_top3 - a.chance_top3).slice(0, 4);
       $("fieldtbl").innerHTML = `<thead><tr>
           <th class="l">#</th><th class="l">Rijder</th><th>Beste</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
-        </tr></thead><tbody>` + rows.map(d => `<tr class="${d.is_team ? "team" : ""}">
+        </tr></thead><tbody>` + filtered.map(d => `<tr class="${d.is_team ? "team" : ""}">
           <td class="l pos">${d.rank_now || '<span class="none">-</span>'}</td>
           <td class="l">${driverCell(d)}</td>
           <td>${d.best ? `${lap(d.best)}<span class="laps">${d.laps}r</span>` : '<span class="none">-</span>'}</td>
@@ -1203,8 +1300,11 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       $("field-title").textContent = `Split ${S.split}`;
       $("field-cap").textContent = `${S.drivers.length} rijders in de uitslag.`;
       $("pace-row").innerHTML = "";
-      $("fieldtbl").innerHTML = head(false) + "<tbody>" + S.drivers.map(d => row(d, false)).join("") + "</tbody>";
+      const filtered = syncFilterControls(S.drivers || [], { teamId: "filter-team", carId: "filter-car", countId: "filter-count" });
+      $("fieldtbl").innerHTML = head(false) + "<tbody>" + filtered.map(d => row(d, false)).join("") + "</tbody>";
       $("field-hint").textContent = "Gemiddelde rondetijd alleen getoond bij minstens 25 ronden.";
+    } else {
+      syncFilterControls([], { teamId: "filter-team", carId: "filter-car", countId: "filter-count" });
     }
     $("note").textContent = "\"vs veld\" is hoeveel procent sneller of trager dan de mediaan op deze baan. Dat neemt het model mee naar de volgende race.";
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
@@ -1268,6 +1368,23 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     syncSplitGate();
     if (current) render(current);
   });
+
+  const onFilterChange = e => {
+    const id = e.target && e.target.id || "";
+    if (id.includes("team")) filterTeam = e.target.value || "";
+    if (id.includes("car")) filterCar = e.target.value || "";
+    if (current) render(current);
+  };
+  ["filter-team", "filter-car", "pq-filter-team", "pq-filter-car"].forEach(id => {
+    $(id).addEventListener("change", onFilterChange);
+  });
+  const clearFilters = () => {
+    filterTeam = "";
+    filterCar = "";
+    if (current) render(current);
+  };
+  $("filter-reset").addEventListener("click", clearFilters);
+  $("pq-filter-reset").addEventListener("click", clearFilters);
 
   let published = null;
   const msg = (text, kind) => { const el = $("admin-msg"); el.textContent = text; el.className = "msg" + (kind ? " " + kind : ""); };

@@ -211,16 +211,32 @@ lx = np.log(irs); h = 1.06 * np.std(lx) * len(lx) ** (-1 / 5); xs = list(range(5
 dens = [round(float(np.exp(-0.5 * ((math.log(v) - lx) / h) ** 2).sum() / (len(lx) * h * math.sqrt(2 * math.pi)) / v * len(irs) * 500), 3) for v in xs]
 fastest = min((r for r in rows if r["best"] is not None), key=lambda r: r["best"])
 
-from race_model import build_race  # noqa: E402
+from race_model import build_race, load_teams  # noqa: E402
 RACE = build_race(rows, INPUT, ROOT, seed=SEED)
+_by_num, _by_name = load_teams(ROOT / "model" / "teams.csv")
 
-drivers = [dict(name=r["name"], car_number=r["num"], irating=r["ir"], license=r["lic"], safety_rating=r["sr"],
-                practice_best=r["pBest"], practice_laps=r["pLaps"], prequal_best=r["qBest"], prequal_laps=r["qLaps"],
-                prequal_sessions_used=r["qSess"], best_time=r["best"], laps_total=r["laps"], time_status=r["status"],
-                model_time=round(pace(r["ir"]), 3), prequal_position_now=r.get("now"),
-                expected_prequal=r["exp"], expected_position=r["pos"],
-                chance_p1=r["p1"], chance_split1=r["s1"], chance_split2=r["s2"])
-           for r in sorted(rows, key=lambda r: (r["pos"]["p50"] if r["pos"] else 10 ** 6, -r["ir"]))]
+def _team_car(r):
+    t = _by_num.get(str(r["num"])) if r.get("num") not in (None, "", "0") else None
+    if not t:
+        from race_model import _name_keys
+        for key in _name_keys(r.get("name")):
+            t = _by_name.get(key)
+            if t:
+                break
+    team = ((t or {}).get("team") or "").strip() or None
+    car = ((t or {}).get("car") or "").strip() or None
+    return team, car
+
+drivers = []
+for r in sorted(rows, key=lambda r: (r["pos"]["p50"] if r["pos"] else 10 ** 6, -r["ir"])):
+    team, car = _team_car(r)
+    drivers.append(dict(name=r["name"], car_number=r["num"], irating=r["ir"], license=r["lic"], safety_rating=r["sr"],
+                        team=team, car=car,
+                        practice_best=r["pBest"], practice_laps=r["pLaps"], prequal_best=r["qBest"], prequal_laps=r["qLaps"],
+                        prequal_sessions_used=r["qSess"], best_time=r["best"], laps_total=r["laps"], time_status=r["status"],
+                        model_time=round(pace(r["ir"]), 3), prequal_position_now=r.get("now"),
+                        expected_prequal=r["exp"], expected_position=r["pos"],
+                        chance_p1=r["p1"], chance_split1=r["s1"], chance_split2=r["s2"]))
 
 _tp = INPUT / "tests.json"
 generated = ((json.load(open(_tp)).get("fetched_at") if _tp.exists() else None) or laps_in.get("fetched_at")
