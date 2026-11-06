@@ -718,6 +718,12 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       ["Gat", "Verwacht minus target. Negatief of groen: al binnen de target."],
       ["Top 3", "Kans op een podiumplek in die split (simulatie)."],
     ],
+    prior: [
+      ["Index", "Pace uit prequal + eerdere races, in procent t.o.v. de veldmediaan (negatief = sneller)."],
+      ["Rang", "Verwachte finishpositie in deze split, alleen op basis van die index (geen Zandvoort-testtijden)."],
+      ["Gat", "Geschat verschil tot de P3-pace in seconden (relatief, geen absolute rondetijd)."],
+      ["Top 3", "Kans op een podiumplek in die split (simulatie op de index)."],
+    ],
     results: [
       ["Pos", "Eindpositie in de race van die split."],
       ["Practice", "Snelste ronde in de officiële testsessies van die week, met het aantal ronden."],
@@ -791,8 +797,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     return `<div class="chance"><b>${p}%</b><span class="chance-bar" aria-hidden="true"><i style="width:${p}%"></i></span></div>`;
   };
   const driverCell = (d, { showTeam = true } = {}) => {
+    /* Teamnaam altijd tonen als die er is (ook bij Valkra); nooit weglaten achter is_team. */
     const meta = [
-      showTeam && d.team && !d.is_team ? d.team : "",
+      showTeam && d.team ? d.team : "",
       carShort(d.car),
       d.prequal_position ? "prequal P" + d.prequal_position : "",
     ].filter(Boolean).map(esc).join(" / ");
@@ -854,11 +861,11 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("help-dl").innerHTML = rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
   }
 
-  function showView(kind) {
+  function showView(kind, helpKind) {
     $("view-race").hidden = kind !== "race" && kind !== "results";
     $("view-prequal").hidden = kind !== "prequal";
     $("view-soon").hidden = kind !== "soon";
-    setHelp(kind);
+    setHelp(helpKind || kind);
   }
 
   function renderPrequal(D) {
@@ -900,34 +907,63 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}).`;
   }
 
+  function idxHtml(v) {
+    if (v == null) return '<span class="none">-</span>';
+    return `${v > 0 ? "+" : ""}${v.toFixed(2).replace(".", ",")}%`;
+  }
+
   function renderRace(D) {
     const R = D.race, M = R.model;
     const shown = shownSplits(R);
     const S = pickSplit(R);
+    const priorMode = !!R.prior_forecast;
 
     $("hero-h1").textContent = `Ronde ${R.round}: ${trackShort(R.track)}`;
-    $("hero-p").textContent = R.pending_tests
+    $("hero-p").textContent = priorMode
+      ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden op deze baan - schatting op pace-index uit prequal + Suzuka (geen absolute rondetijden).`
+      : R.pending_tests
       ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden voor deze baan, targets en verwachte tijden volgen zodra rijders getest hebben.`
       : `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Kies split 1 of 2 voor targets, verwachte tijden en het veld.`;
 
     const tiles = [];
-    if (S) {
-      tiles.push({ cls: "goal", lbl: `Target top 3, split ${S.split}`, val: lap(S.target.p50), sub: `80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}` });
-      tiles.push({ cls: "", lbl: "Winnaar-pace", val: lap(S.winner_pace.p50), sub: `${lap(S.winner_pace.p10)} tot ${lap(S.winner_pace.p90)}` });
+    if (priorMode && S) {
+      const fav = (S.drivers || []).slice().sort((a, b) => b.chance_top3 - a.chance_top3)[0];
+      tiles.push({ cls: "goal", lbl: `Favoriet split ${S.split}`, val: fav ? `${Math.round(fav.chance_top3)}%` : "-", sub: fav ? `top 3 - ${esc(fav.name)}` : "op index" });
+      tiles.push({ cls: "", lbl: "Schaal", val: `${(M.sec_per_pct || M.k || 0).toFixed(2).replace(".", ",")} s`, sub: "per 1% pace-index (uit Suzuka)" });
+      tiles.push({ cls: "", lbl: "Testavonden", val: nl(M.test_days_left || 0), sub: "nog te gaan tot de race" });
+      tiles.push({ cls: "", lbl: "Veld", val: nl(S.members), sub: `split ${S.split}, schatting zonder tests` });
+    } else {
+      if (S) {
+        tiles.push({ cls: "goal", lbl: `Target top 3, split ${S.split}`, val: lap(S.target.p50), sub: `80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}` });
+        tiles.push({ cls: "", lbl: "Winnaar-pace", val: lap(S.winner_pace.p50), sub: `${lap(S.winner_pace.p10)} tot ${lap(S.winner_pace.p90)}` });
+      }
+      if (R.fastest) tiles.push({ cls: "", lbl: "Snelste testronde", val: lap(R.fastest.time), sub: `${esc(R.fastest.name)}${R.fastest.split ? ", split " + R.fastest.split : ""}${R.fastest.car ? ", " + esc(carShort(R.fastest.car)) : ""}` });
+      tiles.push({ cls: "", lbl: "Testdata", val: nl(R.test_laps || 0), sub: `${R.test_drivers || 0} rijders, ${R.test_sessions || 0} sessies` });
     }
-    if (R.fastest) tiles.push({ cls: "", lbl: "Snelste testronde", val: lap(R.fastest.time), sub: `${esc(R.fastest.name)}${R.fastest.split ? ", split " + R.fastest.split : ""}${R.fastest.car ? ", " + esc(carShort(R.fastest.car)) : ""}` });
-    tiles.push({ cls: "", lbl: "Testdata", val: nl(R.test_laps), sub: `${R.test_drivers} rijders, ${R.test_sessions} sessies` });
     $("tiles").innerHTML = tiles.slice(0, 4).map(t => `<div class="tile glass ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
 
     const T = R.team_drivers || [];
     $("team").hidden = !T.length;
     $("team-title").textContent = R.team || "Team";
     $("team-sub").textContent = `${T.length} rijders`;
-    $("team-cap").textContent = "Onze rijders. Gele streep links markeert Valkra.";
-    $("teamtbl").innerHTML = `<thead><tr>
+    $("team-cap").textContent = priorMode
+      ? "Onze rijders op de Suzuka/prequal-index. Gele streep links markeert Valkra."
+      : "Onze rijders. Gele streep links markeert Valkra.";
+    $("teamtbl").innerHTML = priorMode
+      ? `<thead><tr>
+        <th class="l">Rijder</th><th class="c">Split</th><th>Index</th><th>Rang</th><th>Gat</th><th>Top 3</th>
+      </tr></thead><tbody>` + T.map(d => `<tr class="team">
+        <td class="l">${driverCell(d)}</td>
+        <td class="c">${d.split}</td>
+        <td>${idxHtml(d.pace_index)}</td>
+        <td>${d.expected_rank != null ? d.expected_rank.toFixed(1).replace(".", ",") : '<span class="none">-</span>'}</td>
+        <td>${gapHtml(d.gap_to_target_expected)}</td>
+        <td>${chanceHtml(d.chance_top3)}</td>
+      </tr>`).join("") + `</tbody>`
+      : `<thead><tr>
         <th class="l">Rijder</th><th class="c">Split</th><th>Beste</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
       </tr></thead><tbody>` + T.map(d => `<tr class="team">
-        <td class="l">${driverCell(d, { showTeam: false })}</td>
+        <td class="l">${driverCell(d)}</td>
         <td class="c">${d.split}</td>
         <td>${d.best ? `${lap(d.best)}<span class="laps">${d.laps}r</span>` : '<span class="none">-</span>'}</td>
         <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
@@ -945,6 +981,31 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       $("pace-row").innerHTML = "";
       $("fieldtbl").innerHTML = "";
       $("field-hint").textContent = "";
+    } else if (priorMode) {
+      $("field-title").textContent = `Split ${S.split}`;
+      $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. Schatting zonder Zandvoort-tests, op index uit eerdere events.`;
+      const fav = (S.drivers || []).slice().sort((a, b) => b.chance_top3 - a.chance_top3)[0];
+      $("pace-row").innerHTML = `
+        <div class="pace3 glass">
+          <span class="lbl">Top-3 favoriet</span>
+          <span class="val">${fav ? esc(fav.name) : "-"}</span>
+          <span class="sub">${fav ? Math.round(fav.chance_top3) + "% kans op top 3 (index-model)" : "geen data"}</span>
+        </div>
+        <div class="mini glass"><span class="lbl">Win-kans #1</span><span class="v">${fav ? Math.round(fav.chance_win) + "%" : "-"}</span><span class="s">${fav ? esc(fav.name) : ""}</span></div>
+        <div class="mini glass"><span class="lbl">P3-gat 0</span><span class="v">relatief</span><span class="s">geen absolute rondetijd</span></div>
+        <div class="mini glass"><span class="lbl">Rijders</span><span class="v">${S.members}</span><span class="s">allen geschat</span></div>`;
+
+      $("fieldtbl").innerHTML = `<thead><tr>
+          <th class="l">#</th><th class="l">Rijder</th><th>Index</th><th>Rang</th><th>Gat</th><th>Top 3</th>
+        </tr></thead><tbody>` + (S.drivers || []).map((d, i) => `<tr class="${d.is_team ? "team" : ""}">
+          <td class="l pos">${i + 1}</td>
+          <td class="l">${driverCell(d)}</td>
+          <td>${idxHtml(d.pace_index)}</td>
+          <td>${d.expected_rank != null ? d.expected_rank.toFixed(1).replace(".", ",") : '<span class="none">-</span>'}</td>
+          <td>${gapHtml(d.gap_to_target_expected)}</td>
+          <td>${chanceHtml(d.chance_top3)}</td>
+        </tr>`).join("") + `</tbody>`;
+      $("field-hint").textContent = "Volgorde op geschatte relatieve pace. Absolute Zandvoort-tijden verschijnen zodra er testsessies zijn.";
     } else {
       $("field-title").textContent = `Split ${S.split}`;
       $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. ${S.with_time} van ${S.members} hebben al een tijd.`;
@@ -975,7 +1036,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         : `Volgorde op beste testtijd. Rijders zonder tijd staan onderaan met een schatting.`;
     }
 
-    $("note").textContent = R.pending_tests
+    $("note").textContent = priorMode
+      ? "Dit is een index-gok zonder Zandvoort-rondetijden. Zodra er testsessies zijn, komen echte targets en verwachte tijden."
+      : R.pending_tests
       ? "Zodra er testtijden zijn, rekent het model targets uit iRating, eerdere races en die tijden."
       : "Verwachting uit iRating, eerdere races en testtijden. Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.";
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
@@ -1005,7 +1068,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("team-cap").textContent = "Onze rijders. Gele streep links markeert Valkra.";
     const row = (d, withSplit) => `<tr class="${d.is_team ? "team" : ""}">
         <td class="l pos">${d.finish || '<span class="none">-</span>'}</td>
-        <td class="l">${driverCell(d, { showTeam: false })}</td>${withSplit ? `<td class="c">${d.split}</td>` : ""}
+        <td class="l">${driverCell(d)}</td>${withSplit ? `<td class="c">${d.split}</td>` : ""}
         <td>${d.practice_best ? `${lap(d.practice_best)}<span class="laps">${d.practice_laps}r</span>` : '<span class="none">-</span>'}</td>
         <td>${d.quali_best ? lap(d.quali_best) : '<span class="none">-</span>'}</td>
         <td>${d.race_best ? lap(d.race_best) : '<span class="none">-</span>'}</td>
@@ -1057,7 +1120,8 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const g = new Date(D.meta.generated_at);
     $("stamp").textContent = "Stand " + g.toLocaleDateString("nl-NL", { day: "numeric", month: "long", timeZone: "Europe/Amsterdam" }) + ", " + g.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
 
-    showView(tab.kind);
+    const helpKind = tab.kind === "race" && D.race && D.race.prior_forecast ? "prior" : tab.kind;
+    showView(tab.kind, helpKind);
     if (tab.kind === "prequal") renderPrequal(D);
     else if (tab.kind === "race") renderRace(D);
     else if (tab.kind === "results") renderResults(D, tab);

@@ -14,8 +14,10 @@ Opbouw
    waarde had op racedag, terwijl iRating dat wel had.
 4. Verwachting op racedag: de lijn plus de eigen afwijking van de rijder (die telt voor n / (n + 40) mee, n = testronden).
    Een testronde is geen ondergrens: de helft van de rijders was op racedag trager dan de beste testronde.
-   Zonder testtijden voor de komende baan toont het dashboard "nog geen testdata" in plaats van een gok.
-5. 20.000 simulaties per split geven de target (derde snelste tijd in de split), de winnaars- en top-10-pace en per
+5. Zonder testtijden op de komende baan: geen absolute rondetijden (die hangen van de baan af). Wel een
+   prior-forecast uit pace-index (prequal + eerdere races): relatieve seconden t.o.v. de veldmediaan, top-3-kansen
+   en gat tot P3. Zodra er genoeg tests zijn, schakelt het model over op echte baantijden.
+6. 20.000 simulaties per split geven de target (derde snelste tijd in de split), de winnaars- en top-10-pace en per
    rijder de kans op een top 3.
 """
 import csv
@@ -43,7 +45,22 @@ QUALI_LAPS = 5           # ronden in de 10 minuten kwalificatie op racedag
 
 def _norm(s):
     s = re.sub(r"\d+", "", (s or "").lower())
-    return re.sub(r"\s+", " ", re.sub(r"[^a-zà-ÿ ]", "", s)).strip()
+    s = re.sub(r"[^a-zà-ÿ ]", "", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    # Drop single-letter middle initials ("Patrick A Hesterman" → "patrick hesterman").
+    parts = [p for p in s.split() if len(p) > 1]
+    return " ".join(parts) if parts else s
+
+
+def _name_keys(s):
+    n = _norm(s)
+    if not n:
+        return set()
+    parts = n.split()
+    keys = {n}
+    if len(parts) >= 2:
+        keys.add(" ".join(sorted(parts)))  # "jelmer berends" ↔ "berends jelmer"
+    return keys
 
 
 def _slug(s):
@@ -59,7 +76,10 @@ def load_teams(path):
         return {}, {}
     rows = list(csv.DictReader(open(path, encoding="utf-8")))
     by_num = {r["car_number"]: r for r in rows if r["car_number"] not in ("", "0")}
-    by_name = {_norm(r["name"]): r for r in rows}
+    by_name = {}
+    for r in rows:
+        for key in _name_keys(r["name"]):
+            by_name.setdefault(key, r)
     return by_num, by_name
 
 
@@ -73,9 +93,16 @@ def build_race(rows, INPUT, ROOT, seed=2026):
     by_num, by_name = load_teams(ROOT / "model" / "teams.csv")
 
     def team_of(r):
-        t = by_num.get(str(r["num"])) if r.get("num") else None
-        t = t or by_name.get(_norm(r["name"]))
-        return (t or {}).get("team") or None, (t or {}).get("car") or None
+        """Resolve team + entry car from teams.csv. Prefer number, then fuzzy name. Never invent empty strings."""
+        t = by_num.get(str(r["num"])) if r.get("num") not in (None, "", "0") else None
+        if not t:
+            for key in _name_keys(r.get("name")):
+                t = by_name.get(key)
+                if t:
+                    break
+        team = ((t or {}).get("team") or "").strip() or None
+        car = ((t or {}).get("car") or "").strip() or None
+        return team, car
 
     # 1. Coming race: earliest scheduled start after the fetch, else the last one
     starts = sorted({(x["start"], x["track"]) for x in sched["races"]})
@@ -210,35 +237,68 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         results.append(dict(round=i_, track=tr_, race_start=s_, splits=sps,
                             team_drivers=[dict(d, split=sp["split"]) for sp in sps for d in sp["drivers"] if d["is_team"]]))
 
-    if pending:
-        return dict(
-            round=round_no, track=cur_track, race_start=cur_start, team=TEAM, pending_tests=True,
-            test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
-            model=dict(description="Nog geen testtijden voor deze baan. Zodra er genoeg rijders getest hebben, verschijnen targets en verwachte tijden.",
-                       c=None, k=None, h=None, g=0.0, residual_sd=None, r2=None, fit_n=len(fit_rows), test_days_left=days_left,
-                       expected_extra_laps=0, prior_laps=PRIOR_LAPS, pace_definition="snelste ronde (kwalificatie-niveau)"),
-            history=history_events, splits=[], team_drivers=[], results=results)
-
     # 4. Splits: official split from race results, else the prequal rank
     official = {}
     for x in sorted(race_rows, key=lambda x: x["subsession_id"] or 0):
         if (x["race_laps"] or 0) > 0 or x["cust_id"] not in official:
             official[x["cust_id"]] = x["split"]
-    people = []
-    for r in rows:
-        sp = official.get(r["id"]) or (math.ceil(r["now"] / SPLIT_SIZE) if r.get("now") else None)
-        if not sp:
-            continue
-        team, entry_car = team_of(r)
-        d = cur_tests.get(r["id"], {})
-        best, n = d.get("best"), d.get("laps", 0) or 0
-        p = prior.get(r["id"], (None, 0))[0]
-        base = line(r)
-        w = n / (n + PRIOR_LAPS) if best else 0.0
-        mu = base + w * (best - base) if best else base
-        sig = IND_SD * (1 - 0.4 * w) if best else IND_SD
-        people.append(dict(r=r, split=sp, best=best, laps=n, mu=mu, sig=sig, w=w, prior=p, n_events=prior.get(r["id"], (None, 0))[1],
-                           car=d.get("car") or entry_car, team=team, days=d.get("best_per_day")))
+
+    # Seconds per 1% pace-index, from the latest finished race (absolute track times stay unknown without tests).
+    sec_per_pct = 0.35
+    if prev:
+        ptr = prev[-1][1]
+        rb = [x["race_best"] for x in race_rows if x["track"] == ptr and x["race_best"]]
+        if len(rb) >= 10:
+            med_rb = st.median(rb)
+            xs, ys = [], []
+            for x in race_rows:
+                if x["track"] != ptr or not x["race_best"] or x["cust_id"] not in prior:
+                    continue
+                xs.append(prior[x["cust_id"]][0] * 100)
+                ys.append(x["race_best"] - med_rb)
+            if len(xs) >= 10 and (max(xs) - min(xs)) > 0.2:
+                # slope only: delta_time ≈ sec_per_pct * index_%
+                num = sum(a * b for a, b in zip(xs, ys))
+                den = sum(a * a for a in xs) or 1.0
+                sec_per_pct = float(np.clip(num / den, 0.15, 0.8))
+
+    def build_people(use_track_line):
+        out = []
+        for r in rows:
+            sp = official.get(r["id"]) or (math.ceil(r["now"] / SPLIT_SIZE) if r.get("now") else None)
+            if not sp:
+                continue
+            team, entry_car = team_of(r)
+            d = cur_tests.get(r["id"], {})
+            best, n = d.get("best"), d.get("laps", 0) or 0
+            p = prior.get(r["id"], (None, 0))[0]
+            if use_track_line:
+                base = line(r)
+                w = n / (n + PRIOR_LAPS) if best else 0.0
+                mu = base + w * (best - base) if best else base
+                sig = IND_SD * (1 - 0.4 * w) if best else IND_SD
+            else:
+                # Relative seconds vs field median (0); no absolute Zandvoort lap times.
+                mu = (0.0 if p is None else p * 100 * sec_per_pct)
+                w = 0.0
+                sig = IND_SD
+                best, n = None, 0
+            out.append(dict(r=r, split=sp, best=best, laps=n, mu=mu, sig=sig, w=w, prior=p,
+                            n_events=prior.get(r["id"], (None, 0))[1],
+                            car=d.get("car") or entry_car, team=team, days=d.get("best_per_day")))
+        return out
+
+    if pending and not any(prior.values()):
+        return dict(
+            round=round_no, track=cur_track, race_start=cur_start, team=TEAM, pending_tests=True, prior_forecast=False,
+            test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
+            model=dict(description="Nog geen testtijden voor deze baan en nog geen eerdere race-index. Zodra er tests of uitslagen zijn, verschijnen schattingen.",
+                       c=None, k=None, h=None, g=0.0, residual_sd=None, r2=None, fit_n=len(fit_rows), test_days_left=days_left,
+                       expected_extra_laps=0, prior_laps=PRIOR_LAPS, pace_definition="snelste ronde (kwalificatie-niveau)"),
+            history=history_events, splits=[], team_drivers=[], results=results)
+
+    people = build_people(use_track_line=not pending)
+    prior_forecast = bool(pending)
 
     rnd = np.random.default_rng(seed)
     splits = []
@@ -260,17 +320,22 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         for j, p in enumerate(ms):
             r = p["r"]
             exp = dict(band(draw[:, j]), mean=round(float(draw[:, j].mean()), 3))
+            exp_rank = round(float(rankpos[:, j].mean()), 1)
             out.append(dict(
                 name=r["name"], car_number=r["num"], irating=r["ir"], team=p["team"], is_team=p["team"] == TEAM, car=p["car"],
                 prequal_position=r.get("now"), prequal_best=r.get("qBest"), pace_index=(round(p["prior"] * 100, 2) if p["prior"] is not None else None),
                 history_events=p["n_events"], best=p["best"], laps=p["laps"], best_per_day=p["days"],
                 rank_now=(timed.index(p) + 1) if p["best"] else None,
-                expected_pace=exp, estimated_only=not p["best"],
+                expected_rank=exp_rank,
+                expected_pace=exp, estimated_only=prior_forecast or not p["best"],
                 gap_to_target_now=(round(p["best"] - target["p50"], 3) if p["best"] else None),
                 gap_to_target_expected=round(exp["mean"] - target["p50"], 3),
                 chance_top3=round(float((rankpos[:, j] <= 3).mean() * 100), 1),
                 chance_win=round(float((rankpos[:, j] == 1).mean() * 100), 1)))
-        out.sort(key=lambda d: (d["best"] is None, d["best"] or 0, d["expected_pace"]["mean"]))
+        if prior_forecast:
+            out.sort(key=lambda d: (d["expected_pace"]["mean"], -d["chance_top3"]))
+        else:
+            out.sort(key=lambda d: (d["best"] is None, d["best"] or 0, d["expected_pace"]["mean"]))
         lo = (sp_no - 1) * SPLIT_SIZE + 1
         splits.append(dict(split=sp_no, shown=sp_no in SHOW_SPLITS, prequal_from=lo, prequal_to=lo + len(ms) - 1, members=len(ms),
                            with_time=len(timed), now=dict(p1=timed[0]["best"] if timed else None,
@@ -284,8 +349,24 @@ def build_race(rows, INPUT, ROOT, seed=2026):
     team_rows.sort(key=lambda d: (d["split"], d["expected_pace"]["mean"]))
     fast = min((p for p in people if p["best"]), key=lambda p: p["best"], default=None)
 
+    if prior_forecast:
+        return dict(
+            round=round_no, track=cur_track, race_start=cur_start, team=TEAM,
+            pending_tests=True, prior_forecast=True,
+            test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
+            model=dict(
+                description=("Nog geen Zandvoort-testtijden. Schatting op pace-index uit prequal + Suzuka: relatieve seconden "
+                             f"t.o.v. de veldmediaan (~{sec_per_pct:.2f} s per 1% index), top-3-kansen uit "
+                             + f"{N_SIM:,}".replace(",", ".") + " simulaties. Absolute rondetijden volgen zodra er getest is."),
+                c=None, k=round(sec_per_pct, 4), h=None, g=0.0, residual_sd=IND_SD, r2=None, fit_n=0,
+                test_days_left=days_left, expected_extra_laps=0, prior_laps=PRIOR_LAPS,
+                sec_per_pct=round(sec_per_pct, 4), race_pace_offsets=race_off,
+                pace_definition="relatieve pace t.o.v. veldmediaan (geen baantijd)"),
+            history=history_events, splits=splits, team_drivers=team_rows, results=results)
+
     return dict(
         round=round_no, track=cur_track, race_start=cur_start, team=TEAM,
+        pending_tests=False, prior_forecast=False,
         test_days=T.get(cur_track, {}).get("days", []), test_sessions=len(T.get(cur_track, {}).get("sessions_used", [])),
         test_drivers=sum(1 for d in cur_tests.values() if d["best"]), test_laps=sum(d["laps"] for d in cur_tests.values()),
         fastest=(dict(name=fast["r"]["name"], time=fast["best"], car=fast["car"], split=fast["split"], team=fast["team"]) if fast else None),
