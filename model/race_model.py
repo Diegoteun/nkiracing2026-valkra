@@ -355,8 +355,8 @@ def build_race(rows, INPUT, ROOT, seed=2026):
             pending_tests=True, prior_forecast=True,
             test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
             model=dict(
-                description=("Nog geen Zandvoort-testtijden. Schatting op pace-index uit prequal + Suzuka: relatieve seconden "
-                             f"t.o.v. de veldmediaan (~{sec_per_pct:.2f} s per 1% index), top-3-kansen uit "
+                description=("Nog geen Zandvoort-testtijden. Schatting op basis van wie sneller/trager was dan het veld "
+                             f"in prequal + Suzuka (~{sec_per_pct:.2f} s per 1% verschil), top-3-kansen uit "
                              + f"{N_SIM:,}".replace(",", ".") + " simulaties. Absolute rondetijden volgen zodra er getest is."),
                 c=None, k=round(sec_per_pct, 4), h=None, g=0.0, residual_sd=IND_SD, r2=None, fit_n=0,
                 test_days_left=days_left, expected_extra_laps=0, prior_laps=PRIOR_LAPS,

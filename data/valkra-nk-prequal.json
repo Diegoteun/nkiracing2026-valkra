@@ -764,7 +764,7 @@
   "test_laps": 0,
   "fastest": null,
   "model": {
-   "description": "Nog geen Zandvoort-testtijden. Schatting op pace-index uit prequal + Suzuka: relatieve seconden t.o.v. de veldmediaan (~0.80 s per 1% index), top-3-kansen uit 20.000 simulaties. Absolute rondetijden volgen zodra er getest is.",
+   "description": "Nog geen Zandvoort-testtijden. Schatting op basis van wie sneller/trager was dan het veld in prequal + Suzuka (~0.80 s per 1% verschil), top-3-kansen uit 20.000 simulaties. Absolute rondetijden volgen zodra er getest is.",
    "c": null,
    "k": 0.8,
    "h": null,

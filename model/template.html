@@ -719,10 +719,10 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       ["Top 3", "Kans op een podiumplek in die split (simulatie)."],
     ],
     prior: [
-      ["Index", "Pace uit prequal + eerdere races, in procent t.o.v. de veldmediaan (negatief = sneller)."],
-      ["Rang", "Verwachte finishpositie in deze split, alleen op basis van die index (geen Zandvoort-testtijden)."],
+      ["vs veld", "Hoeveel procent sneller of trager dan de mediaan van het veld, uit prequal + eerdere races. Geen Zandvoort-testtijden."],
+      ["Rang", "Verwachte finishpositie in deze split op die relatieve pace."],
       ["Gat", "Geschat verschil tot de P3-pace in seconden (relatief, geen absolute rondetijd)."],
-      ["Top 3", "Kans op een podiumplek in die split (simulatie op de index)."],
+      ["Top 3", "Kans op een podiumplek in die split (simulatie op relatieve pace)."],
     ],
     results: [
       ["Pos", "Eindpositie in de race van die split."],
@@ -731,7 +731,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       ["Race", "Snelste raceronde."],
       ["Gem.", "Gemiddelde rondetijd in de race, inclusief start en incidenten."],
       ["Inc.", "Aantal incidents."],
-      ["Index", "Pace op deze baan in procent ten opzichte van de mediaan van het veld (negatief = sneller). Neemt het model mee naar de volgende race."],
+      ["vs veld", "Op deze baan: procent sneller of trager dan de mediaan van het veld. Gaat mee naar de volgende race."],
     ],
     prequal: [
       ["Beste", "Snelste prequal-ronde op VIR."],
@@ -909,7 +909,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
 
   function idxHtml(v) {
     if (v == null) return '<span class="none">-</span>';
-    return `${v > 0 ? "+" : ""}${v.toFixed(2).replace(".", ",")}%`;
+    const abs = Math.abs(v).toFixed(2).replace(".", ",");
+    if (Math.abs(v) < 0.005) return "gelijk";
+    return v < 0 ? `${abs}% sneller` : `${abs}% trager`;
   }
 
   function renderRace(D) {
@@ -920,7 +922,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
 
     $("hero-h1").textContent = `Ronde ${R.round}: ${trackShort(R.track)}`;
     $("hero-p").textContent = priorMode
-      ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden op deze baan - schatting op pace-index uit prequal + Suzuka (geen absolute rondetijden).`
+      ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden hier - we schatten wie sneller/trager is dan het veld op basis van prequal + Suzuka (geen absolute rondetijden).`
       : R.pending_tests
       ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden voor deze baan, targets en verwachte tijden volgen zodra rijders getest hebben.`
       : `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Kies split 1 of 2 voor targets, verwachte tijden en het veld.`;
@@ -928,8 +930,8 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const tiles = [];
     if (priorMode && S) {
       const fav = (S.drivers || []).slice().sort((a, b) => b.chance_top3 - a.chance_top3)[0];
-      tiles.push({ cls: "goal", lbl: `Favoriet split ${S.split}`, val: fav ? `${Math.round(fav.chance_top3)}%` : "-", sub: fav ? `top 3 - ${esc(fav.name)}` : "op index" });
-      tiles.push({ cls: "", lbl: "Schaal", val: `${(M.sec_per_pct || M.k || 0).toFixed(2).replace(".", ",")} s`, sub: "per 1% pace-index (uit Suzuka)" });
+      tiles.push({ cls: "goal", lbl: `Favoriet split ${S.split}`, val: fav ? `${Math.round(fav.chance_top3)}%` : "-", sub: fav ? `top 3 - ${esc(fav.name)}` : "op relatieve pace" });
+      tiles.push({ cls: "", lbl: "Vertaling", val: `${(M.sec_per_pct || M.k || 0).toFixed(2).replace(".", ",")} s`, sub: "ongeveer per 1% sneller/trager dan het veld (Suzuka)" });
       tiles.push({ cls: "", lbl: "Testavonden", val: nl(M.test_days_left || 0), sub: "nog te gaan tot de race" });
       tiles.push({ cls: "", lbl: "Veld", val: nl(S.members), sub: `split ${S.split}, schatting zonder tests` });
     } else {
@@ -947,11 +949,11 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("team-title").textContent = R.team || "Team";
     $("team-sub").textContent = `${T.length} rijders`;
     $("team-cap").textContent = priorMode
-      ? "Onze rijders op de Suzuka/prequal-index. Gele streep links markeert Valkra."
+      ? "Onze rijders op relatieve pace uit prequal + Suzuka. Gele streep links markeert Valkra."
       : "Onze rijders. Gele streep links markeert Valkra.";
     $("teamtbl").innerHTML = priorMode
       ? `<thead><tr>
-        <th class="l">Rijder</th><th class="c">Split</th><th>Index</th><th>Rang</th><th>Gat</th><th>Top 3</th>
+        <th class="l">Rijder</th><th class="c">Split</th><th>vs veld</th><th>Rang</th><th>Gat</th><th>Top 3</th>
       </tr></thead><tbody>` + T.map(d => `<tr class="team">
         <td class="l">${driverCell(d)}</td>
         <td class="c">${d.split}</td>
@@ -983,20 +985,20 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       $("field-hint").textContent = "";
     } else if (priorMode) {
       $("field-title").textContent = `Split ${S.split}`;
-      $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. Schatting zonder Zandvoort-tests, op index uit eerdere events.`;
+      $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. Schatting zonder Zandvoort-tests: wie sneller/trager was dan het veld in prequal + Suzuka.`;
       const fav = (S.drivers || []).slice().sort((a, b) => b.chance_top3 - a.chance_top3)[0];
       $("pace-row").innerHTML = `
         <div class="pace3 glass">
           <span class="lbl">Top-3 favoriet</span>
           <span class="val">${fav ? esc(fav.name) : "-"}</span>
-          <span class="sub">${fav ? Math.round(fav.chance_top3) + "% kans op top 3 (index-model)" : "geen data"}</span>
+          <span class="sub">${fav ? Math.round(fav.chance_top3) + "% kans op top 3 (relatieve pace)" : "geen data"}</span>
         </div>
         <div class="mini glass"><span class="lbl">Win-kans #1</span><span class="v">${fav ? Math.round(fav.chance_win) + "%" : "-"}</span><span class="s">${fav ? esc(fav.name) : ""}</span></div>
-        <div class="mini glass"><span class="lbl">P3-gat 0</span><span class="v">relatief</span><span class="s">geen absolute rondetijd</span></div>
+        <div class="mini glass"><span class="lbl">P3-gat</span><span class="v">relatief</span><span class="s">geen absolute rondetijd</span></div>
         <div class="mini glass"><span class="lbl">Rijders</span><span class="v">${S.members}</span><span class="s">allen geschat</span></div>`;
 
       $("fieldtbl").innerHTML = `<thead><tr>
-          <th class="l">#</th><th class="l">Rijder</th><th>Index</th><th>Rang</th><th>Gat</th><th>Top 3</th>
+          <th class="l">#</th><th class="l">Rijder</th><th>vs veld</th><th>Rang</th><th>Gat</th><th>Top 3</th>
         </tr></thead><tbody>` + (S.drivers || []).map((d, i) => `<tr class="${d.is_team ? "team" : ""}">
           <td class="l pos">${i + 1}</td>
           <td class="l">${driverCell(d)}</td>
@@ -1005,7 +1007,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
           <td>${gapHtml(d.gap_to_target_expected)}</td>
           <td>${chanceHtml(d.chance_top3)}</td>
         </tr>`).join("") + `</tbody>`;
-      $("field-hint").textContent = "Volgorde op geschatte relatieve pace. Absolute Zandvoort-tijden verschijnen zodra er testsessies zijn.";
+      $("field-hint").textContent = "Volgorde: wie sneller was dan het veld in prequal + Suzuka. Absolute Zandvoort-tijden volgen na de eerste tests.";
     } else {
       $("field-title").textContent = `Split ${S.split}`;
       $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. ${S.with_time} van ${S.members} hebben al een tijd.`;
@@ -1037,7 +1039,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     }
 
     $("note").textContent = priorMode
-      ? "Dit is een index-gok zonder Zandvoort-rondetijden. Zodra er testsessies zijn, komen echte targets en verwachte tijden."
+      ? "Schatting zonder Zandvoort-rondetijden: wie sneller of trager was dan het veld in prequal + Suzuka. Na de eerste tests komen echte targets."
       : R.pending_tests
       ? "Zodra er testtijden zijn, rekent het model targets uit iRating, eerdere races en die tijden."
       : "Verwachting uit iRating, eerdere races en testtijden. Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.";
@@ -1052,7 +1054,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     activeSplit = S ? S.split : 1;
 
     $("hero-h1").textContent = `Ronde ${X.round}: ${trackShort(X.track)}`;
-    $("hero-p").textContent = `Uitslag van de race van ${dateNl(X.race_start)}. Per rijder de practice, kwalificatie en racepace. De index gaat mee naar de volgende race.`;
+    $("hero-p").textContent = `Uitslag van de race van ${dateNl(X.race_start)}. Practice, kwali en racepace per rijder. Kolom "vs veld" = % sneller of trager dan de mediaan; die gaat mee naar de volgende race.`;
 
     const tiles = [];
     if (S) {
@@ -1074,9 +1076,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         <td>${d.race_best ? lap(d.race_best) : '<span class="none">-</span>'}</td>
         <td>${d.race_avg && d.laps >= 25 ? lap(d.race_avg) : '<span class="none">-</span>'}</td>
         <td>${d.incidents == null ? "-" : d.incidents}</td>
-        <td>${d.pace_index == null ? '<span class="none">-</span>' : (d.pace_index > 0 ? "+" : "") + d.pace_index.toFixed(2).replace(".", ",") + "%"}</td>
+        <td>${idxHtml(d.pace_index)}</td>
       </tr>`;
-    const head = withSplit => `<thead><tr><th class="l">Pos</th><th class="l">Rijder</th>${withSplit ? '<th class="c">Split</th>' : ""}<th>Practice</th><th>Kwali</th><th>Race</th><th>Gem.</th><th>Inc.</th><th>Index</th></tr></thead>`;
+    const head = withSplit => `<thead><tr><th class="l">Pos</th><th class="l">Rijder</th>${withSplit ? '<th class="c">Split</th>' : ""}<th>Practice</th><th>Kwali</th><th>Race</th><th>Gem.</th><th>Inc.</th><th>vs veld</th></tr></thead>`;
     $("teamtbl").innerHTML = head(true) + "<tbody>" + T.map(d => row(d, true)).join("") + "</tbody>";
 
     $("split-switch").innerHTML = list.map(x =>
@@ -1089,7 +1091,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       $("fieldtbl").innerHTML = head(false) + "<tbody>" + S.drivers.map(d => row(d, false)).join("") + "</tbody>";
       $("field-hint").textContent = "Gemiddelde rondetijd alleen getoond bij minstens 25 ronden.";
     }
-    $("note").textContent = "Deze tijden voeden het model voor de volgende baan.";
+    $("note").textContent = "\"vs veld\" is hoeveel procent sneller of trager dan de mediaan op deze baan. Dat neemt het model mee naar de volgende race.";
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
   }
 
