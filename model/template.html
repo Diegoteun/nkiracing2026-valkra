@@ -114,9 +114,73 @@ body {
 }
 .btn:focus-visible,
 .seg button:focus-visible,
-.help summary:focus-visible {
+.help summary:focus-visible,
+.split-gate button:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
+}
+
+.split-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(245, 245, 242, 0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
+  backdrop-filter: saturate(180%) blur(18px);
+}
+.split-gate[hidden] { display: none; }
+body.gate-open { overflow: hidden; }
+.split-gate-card {
+  width: min(420px, 100%);
+  padding: 28px 24px;
+  text-align: center;
+  display: grid;
+  gap: 16px;
+  animation: fade-up 420ms var(--ease-out) both;
+}
+.split-gate-card h2 {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.split-gate-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.split-gate-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.split-gate-actions button {
+  font: 600 16px/1.2 var(--sans);
+  padding: 16px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-control);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out), background 160ms var(--ease-out);
+}
+.split-gate-actions button:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+.split-gate-actions button.primary {
+  background: var(--brand);
+  border-color: transparent;
+  color: var(--on-brand);
+}
+.split-gate-hint {
+  font-size: 12px;
+  color: var(--ink-muted);
 }
 
 .shell {
@@ -601,6 +665,18 @@ table { border-collapse: collapse; width: 100%; }
 </head>
 <body>
 
+<div class="split-gate" id="split-gate" hidden role="dialog" aria-modal="true" aria-labelledby="split-gate-title">
+  <div class="split-gate-card glass">
+    <h2 id="split-gate-title">In welke split rijd je?</h2>
+    <p>We zetten die split als standaard op deze pagina, zodat je meteen de juiste stand ziet.</p>
+    <div class="split-gate-actions">
+      <button type="button" class="primary" data-pick-split="1">Split 1</button>
+      <button type="button" data-pick-split="2">Split 2</button>
+    </div>
+    <p class="split-gate-hint">Later kun je dit altijd wijzigen met Split 1 / Split 2 boven de tabel.</p>
+  </div>
+</div>
+
 <div class="wrap">
   <section class="admin glass" id="admin" hidden aria-label="Data bijwerken">
     <strong>Data bijwerken</strong>
@@ -692,6 +768,38 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   const $ = id => document.getElementById(id);
 
   const SPLIT_KEY = "valkra-split";
+  const SPLIT_COOKIE = "valkra_split";
+  const SPLIT_COOKIE_DAYS = 400;
+  const readCookie = name => {
+    const m = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/[$()*+.?[\\\]^{|}]/g, "\\$&") + "=([^;]*)"));
+    return m ? decodeURIComponent(m[1]) : null;
+  };
+  const writeCookie = (name, value, days) => {
+    const maxAge = Math.round(days * 24 * 60 * 60);
+    document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+  };
+  const readSplitPref = () => {
+    const c = readCookie(SPLIT_COOKIE);
+    if (c === "1" || c === "2") return Number(c);
+    let ls = null;
+    try { ls = localStorage.getItem(SPLIT_KEY); } catch (_) {}
+    if (ls === "1" || ls === "2") {
+      writeCookie(SPLIT_COOKIE, ls, SPLIT_COOKIE_DAYS);
+      return Number(ls);
+    }
+    return null;
+  };
+  const saveSplitPref = n => {
+    activeSplit = Number(n);
+    writeCookie(SPLIT_COOKIE, String(activeSplit), SPLIT_COOKIE_DAYS);
+    try { localStorage.setItem(SPLIT_KEY, String(activeSplit)); } catch (_) {}
+  };
+  const syncSplitGate = () => {
+    const gate = $("split-gate");
+    const open = !(activeSplit === 1 || activeSplit === 2);
+    gate.hidden = !open;
+    document.body.classList.toggle("gate-open", open);
+  };
   /* Ronde-tabs volgen de kalender (Amsterdam). Handmatige keuze blijft alleen in deze sessie. */
   const ROUND_SWITCH = [
     { from: "2026-11-20", id: "round-4" },
@@ -815,8 +923,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   }
 
   let current = null;
-  let activeSplit = Number(localStorage.getItem(SPLIT_KEY)) || 1;
+  let activeSplit = readSplitPref(); /* null tot de gebruiker kiest; daarna 1 of 2 via cookie */
   let activeView = defaultViewId();
+  syncSplitGate();
 
   function shownSplits(R) {
     const list = (R.splits || []).filter(S => S.shown);
@@ -825,12 +934,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
 
   function pickSplit(R) {
     const shown = shownSplits(R);
-    let S = shown.find(x => x.split === activeSplit);
-    if (!S) {
-      S = shown[0];
-      activeSplit = S ? S.split : 1;
-    }
-    return S;
+    return shown.find(x => x.split === activeSplit) || shown[0] || null;
   }
 
   function buildTabs(D) {
@@ -1050,18 +1154,29 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const X = D.race.results.find(x => x.round === tab.round);
     const shown = (X.splits || []).filter(x => x.shown);
     const list = shown.length ? shown : (X.splits || []).slice(0, 2);
-    let S = list.find(x => x.split === activeSplit) || list[0];
-    activeSplit = S ? S.split : 1;
+    const S = list.find(x => x.split === activeSplit) || list[0];
 
     $("hero-h1").textContent = `Ronde ${X.round}: ${trackShort(X.track)}`;
     $("hero-p").textContent = `Uitslag van de race van ${dateNl(X.race_start)}. Practice, kwali en racepace per rijder. Kolom "vs veld" = % sneller of trager dan de mediaan; die gaat mee naar de volgende race.`;
 
+    /* Cards altijd voor split 1 én 2; de tabel eronder volgt de actieve split. */
+    const tileSplits = [1, 2].map(n => (X.splits || []).find(x => x.split === n)).filter(Boolean);
     const tiles = [];
-    if (S) {
-      tiles.push({ cls: "goal", lbl: `P3 racepace, split ${S.split}`, val: lap(S.p3_best), sub: `Snelste ronde van de nummer 3. Gemiddeld ${lap(S.p3_avg)}` });
-      tiles.push({ cls: "", lbl: "Winnaar", val: esc((S.winner || "-").replace(/\d+$/, "")), sub: S.podium_best[0] ? `Snelste ronde ${lap(S.podium_best[0])}` : "" });
+    for (const Sp of tileSplits) {
+      tiles.push({
+        cls: Sp.split === 1 ? "goal" : "",
+        lbl: `P3 racepace, split ${Sp.split}`,
+        val: Sp.p3_best != null ? lap(Sp.p3_best) : "-",
+        sub: Sp.p3_avg != null ? `Snelste ronde van de nummer 3. Gemiddeld ${lap(Sp.p3_avg)}` : "Snelste ronde van de nummer 3",
+      });
+      tiles.push({
+        cls: "",
+        lbl: `Winnaar split ${Sp.split}`,
+        val: esc((Sp.winner || "-").replace(/\d+$/, "")),
+        sub: Sp.podium_best && Sp.podium_best[0] ? `Snelste ronde ${lap(Sp.podium_best[0])}` : "",
+      });
     }
-    $("tiles").innerHTML = tiles.map(t => `<div class="tile glass ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
+    $("tiles").innerHTML = tiles.slice(0, 4).map(t => `<div class="tile glass ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
 
     const T = (X.team_drivers || []).filter(d => d.split === 1 || d.split === 2 || true);
     $("team").hidden = !T.length;
@@ -1122,6 +1237,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const g = new Date(D.meta.generated_at);
     $("stamp").textContent = "Stand " + g.toLocaleDateString("nl-NL", { day: "numeric", month: "long", timeZone: "Europe/Amsterdam" }) + ", " + g.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Amsterdam" });
 
+    syncSplitGate();
     const helpKind = tab.kind === "race" && D.race && D.race.prior_forecast ? "prior" : tab.kind;
     showView(tab.kind, helpKind);
     if (tab.kind === "prequal") renderPrequal(D);
@@ -1140,9 +1256,17 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   $("split-switch").addEventListener("click", e => {
     const b = e.target.closest("button[data-split]");
     if (!b || !current) return;
-    activeSplit = Number(b.dataset.split);
-    localStorage.setItem(SPLIT_KEY, String(activeSplit));
+    saveSplitPref(b.dataset.split);
+    syncSplitGate();
     render(current);
+  });
+
+  $("split-gate").addEventListener("click", e => {
+    const b = e.target.closest("button[data-pick-split]");
+    if (!b) return;
+    saveSplitPref(b.dataset.pickSplit);
+    syncSplitGate();
+    if (current) render(current);
   });
 
   let published = null;
