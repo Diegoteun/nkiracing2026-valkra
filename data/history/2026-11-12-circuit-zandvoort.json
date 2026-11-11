@@ -2,13 +2,15 @@
  "id": "2026-11-12-circuit-zandvoort",
  "track": "Circuit Zandvoort – Grand Prix",
  "race_start": "2026-11-12T18:30:00Z",
- "fetched_at": "2026-11-10T08:12:49.174Z",
+ "fetched_at": "2026-11-11T21:47:20.076Z",
  "tests": {
   "days": [
    "2026-11-06",
    "2026-11-07",
    "2026-11-08",
-   "2026-11-09"
+   "2026-11-09",
+   "2026-11-10",
+   "2026-11-11"
   ],
   "sessions_used": [
    89924526,
@@ -16,7 +18,9 @@
    89950133,
    89950134,
    89975245,
-   89998320
+   89998320,
+   90022258,
+   90046490
   ],
   "drivers": [
    {
@@ -27,6 +31,8 @@
      null,
      null,
      91.6269,
+     null,
+     null,
      null
     ],
     "car": "BMW M4 GT3 EVO",
@@ -35,12 +41,14 @@
    {
     "cust_id": 355420,
     "best": 89.8967,
-    "laps": 40,
+    "laps": 79,
     "best_per_day": [
      null,
      null,
      89.8967,
-     90.4063
+     90.4063,
+     90.3965,
+     90.5667
     ],
     "car": "Ferrari 296 GT3",
     "name": "Tom Walstra"
@@ -48,12 +56,14 @@
    {
     "cust_id": 529650,
     "best": 90.4114,
-    "laps": 25,
+    "laps": 47,
     "best_per_day": [
      null,
      null,
      90.4114,
-     null
+     null,
+     null,
+     90.9007
     ],
     "car": "Ferrari 296 GT3",
     "name": "Luciano Witvoet"
@@ -61,12 +71,14 @@
    {
     "cust_id": 705452,
     "best": 90.9443,
-    "laps": 18,
+    "laps": 75,
     "best_per_day": [
      null,
      90.9443,
      92.4259,
-     null
+     null,
+     91.3329,
+     91.0323
     ],
     "car": "Chevrolet Corvette Z06 GT3.R",
     "name": "Rick Postema"
@@ -74,25 +86,29 @@
    {
     "cust_id": 737386,
     "best": 91.8812,
-    "laps": 39,
+    "laps": 45,
     "best_per_day": [
      92.2543,
      91.8812,
      null,
-     92.0411
+     92.0411,
+     null,
+     92.135
     ],
     "car": "Porsche 911 GT3 R (992)",
     "name": "Dick Jansen"
    },
    {
     "cust_id": 761872,
-    "best": 91.5502,
-    "laps": 79,
+    "best": 91.2727,
+    "laps": 189,
     "best_per_day": [
      91.5502,
      null,
      null,
-     91.7882
+     91.7882,
+     91.332,
+     91.2727
     ],
     "car": "Lamborghini Huracán GT3 EVO",
     "name": "Kelvin Huurman3"
@@ -100,12 +116,14 @@
    {
     "cust_id": 885918,
     "best": 91.6302,
-    "laps": 94,
+    "laps": 112,
     "best_per_day": [
      92.1577,
      null,
      91.6302,
-     92.2494
+     92.2494,
+     92.3405,
+     null
     ],
     "car": "BMW M4 GT3 EVO",
     "name": "Danny Lugt"
@@ -118,6 +136,8 @@
      null,
      91.5836,
      null,
+     null,
+     null,
      null
     ],
     "car": "BMW M4 GT3 EVO",
@@ -126,12 +146,14 @@
    {
     "cust_id": 906989,
     "best": 90.77,
-    "laps": 23,
+    "laps": 38,
     "best_per_day": [
      null,
      null,
      90.77,
-     91.1413
+     91.1413,
+     91.2237,
+     91.456
     ],
     "car": "Ferrari 296 GT3",
     "name": "Gian Zoutewelle"
@@ -139,24 +161,28 @@
    {
     "cust_id": 912688,
     "best": 90.6696,
-    "laps": 88,
+    "laps": 223,
     "best_per_day": [
      90.7795,
      null,
      null,
-     90.6696
+     90.6696,
+     90.9514,
+     90.9793
     ],
     "car": "Ferrari 296 GT3",
     "name": "Justin De Jong"
    },
    {
     "cust_id": 937690,
-    "best": 92.9947,
-    "laps": 12,
+    "best": 92.7086,
+    "laps": 54,
     "best_per_day": [
      92.9947,
      null,
      null,
+     null,
+     92.7086,
      null
     ],
     "car": "Porsche 911 GT3 R (992)",
@@ -165,12 +191,14 @@
    {
     "cust_id": 960839,
     "best": 91.5834,
-    "laps": 9,
+    "laps": 32,
     "best_per_day": [
      null,
      91.5834,
      null,
-     null
+     null,
+     null,
+     91.8597
     ],
     "car": "Mercedes-AMG GT3 2020",
     "name": "Franklyn Nwanaforo"
@@ -178,25 +206,29 @@
    {
     "cust_id": 1028127,
     "best": 91.8062,
-    "laps": 28,
+    "laps": 58,
     "best_per_day": [
      92.0156,
      null,
      null,
-     91.8062
+     91.8062,
+     92.0241,
+     null
     ],
     "car": "McLaren 720S GT3 EVO",
     "name": "Patrick A Hesterman"
    },
    {
     "cust_id": 1028172,
-    "best": 91.9307,
-    "laps": 45,
+    "best": 91.8197,
+    "laps": 98,
     "best_per_day": [
      91.9307,
      null,
      null,
-     92.2082
+     92.2082,
+     92.4551,
+     91.8197
     ],
     "car": "Porsche 911 GT3 R (992)",
     "name": "Raymon Van Zutphen"
@@ -204,12 +236,14 @@
    {
     "cust_id": 1043603,
     "best": 91.2299,
-    "laps": 53,
+    "laps": 101,
     "best_per_day": [
      null,
      91.2299,
      null,
-     91.547
+     91.547,
+     91.6175,
+     91.4732
     ],
     "car": "Ferrari 296 GT3",
     "name": "Joep van Tilburg"
@@ -217,12 +251,14 @@
    {
     "cust_id": 1070721,
     "best": 90.7041,
-    "laps": 122,
+    "laps": 214,
     "best_per_day": [
      90.7041,
      91.1378,
      null,
-     91.2219
+     91.2219,
+     91.1602,
+     90.9227
     ],
     "car": "Porsche 911 GT3 R (992)",
     "name": "Wessel Stevens"
@@ -233,6 +269,8 @@
     "laps": 4,
     "best_per_day": [
      92.3811,
+     null,
+     null,
      null,
      null,
      null
@@ -248,7 +286,9 @@
      91.3207,
      null,
      null,
-     92.0665
+     92.0665,
+     null,
+     null
     ],
     "car": "Lamborghini Huracán GT3 EVO",
     "name": "Otto Karis"
@@ -260,6 +300,8 @@
     "best_per_day": [
      null,
      91.5604,
+     null,
+     null,
      null,
      null
     ],
@@ -274,6 +316,8 @@
      null,
      null,
      92.3392,
+     null,
+     null,
      null
     ],
     "car": "Mercedes-AMG GT3 2020",
@@ -282,12 +326,14 @@
    {
     "cust_id": 1217836,
     "best": 92.9564,
-    "laps": 60,
+    "laps": 89,
     "best_per_day": [
      92.9564,
      93.1492,
      null,
-     null
+     null,
+     93.2544,
+     93.4383
     ],
     "car": "Acura NSX GT3 EVO 22",
     "name": "John De Bruijn"
@@ -295,12 +341,14 @@
    {
     "cust_id": 1228010,
     "best": 91.2951,
-    "laps": 50,
+    "laps": 106,
     "best_per_day": [
      91.2951,
      null,
      null,
-     91.4901
+     91.4901,
+     91.4211,
+     91.5718
     ],
     "car": "Ferrari 296 GT3",
     "name": "Jorrit Drent"
@@ -313,7 +361,9 @@
      95.0585,
      null,
      92.9659,
-     99.6632
+     99.6632,
+     null,
+     null
     ],
     "car": "BMW M4 GT3 EVO",
     "name": "Evert Geurtsen5"
@@ -326,7 +376,9 @@
      null,
      93.0977,
      null,
-     92.902
+     92.902,
+     null,
+     null
     ],
     "car": "McLaren 720S GT3 EVO",
     "name": "Jeffrey Mokum"
@@ -334,12 +386,14 @@
    {
     "cust_id": 1342343,
     "best": 91.02,
-    "laps": 94,
+    "laps": 102,
     "best_per_day": [
      91.038,
      91.8987,
      91.02,
-     91.3453
+     91.3453,
+     91.7972,
+     null
     ],
     "car": "Mercedes-AMG GT3 2020",
     "name": "Klaas De Boer3"
@@ -347,12 +401,14 @@
    {
     "cust_id": 1361199,
     "best": 90.332,
-    "laps": 26,
+    "laps": 66,
     "best_per_day": [
      null,
      90.4532,
      null,
-     90.332
+     90.332,
+     90.7921,
+     90.6282
     ],
     "car": "Ferrari 296 GT3",
     "name": "Timur Aslan Overman"
@@ -365,6 +421,8 @@
      92.3195,
      null,
      92.7094,
+     null,
+     null,
      null
     ],
     "car": "Ferrari 296 GT3",
@@ -372,26 +430,30 @@
    },
    {
     "cust_id": 1509116,
-    "best": 92.8553,
-    "laps": 28,
+    "best": 92.771,
+    "laps": 58,
     "best_per_day": [
      null,
      null,
      93.9077,
-     92.8553
+     92.8553,
+     92.771,
+     null
     ],
     "car": "McLaren 720S GT3 EVO",
     "name": "Eric Nijmeijer2"
    },
    {
     "cust_id": 377046,
-    "best": 91.5677,
-    "laps": 14,
+    "best": 91.0593,
+    "laps": 82,
     "best_per_day": [
      null,
      null,
      null,
-     91.5677
+     91.5677,
+     91.2055,
+     91.0593
     ],
     "car": "Ferrari 296 GT3",
     "name": "Justin van der Linden"
@@ -404,7 +466,9 @@
      null,
      null,
      null,
-     91.02
+     91.02,
+     null,
+     null
     ],
     "car": "Lamborghini Huracán GT3 EVO",
     "name": "Lucas de Vries"
@@ -417,20 +481,24 @@
      null,
      null,
      null,
-     91.2909
+     91.2909,
+     null,
+     null
     ],
     "car": "Ferrari 296 GT3",
     "name": "Kris Verstijnen"
    },
    {
     "cust_id": 566271,
-    "best": 91.8503,
-    "laps": 10,
+    "best": 91.427,
+    "laps": 56,
     "best_per_day": [
      null,
      null,
      null,
-     91.8503
+     91.8503,
+     null,
+     91.427
     ],
     "car": "BMW M4 GT3 EVO",
     "name": "Daniel Morpey"
@@ -443,20 +511,24 @@
      null,
      null,
      null,
-     91.8591
+     91.8591,
+     null,
+     null
     ],
     "car": "McLaren 720S GT3 EVO",
     "name": "Ben Dam"
    },
    {
     "cust_id": 621119,
-    "best": 91.8471,
-    "laps": 13,
+    "best": 91.4926,
+    "laps": 59,
     "best_per_day": [
      null,
      null,
      null,
-     91.8471
+     91.8471,
+     null,
+     91.4926
     ],
     "car": "Lamborghini Huracán GT3 EVO",
     "name": "Wulfert Van Goor"
@@ -469,7 +541,9 @@
      null,
      null,
      null,
-     93.461
+     93.461,
+     null,
+     null
     ],
     "car": "BMW M4 GT3 EVO",
     "name": "Kevin Minderhoud"
@@ -482,7 +556,9 @@
      null,
      null,
      null,
-     93.0002
+     93.0002,
+     null,
+     null
     ],
     "car": "Mercedes-AMG GT3 2020",
     "name": "Yoeri Pluim"
@@ -495,20 +571,24 @@
      null,
      null,
      null,
-     90.7272
+     90.7272,
+     null,
+     null
     ],
     "car": "Ferrari 296 GT3",
     "name": "Owen Illsley"
    },
    {
     "cust_id": 975083,
-    "best": 91.8242,
-    "laps": 22,
+    "best": 91.6991,
+    "laps": 86,
     "best_per_day": [
      null,
      null,
      null,
-     91.8242
+     91.8242,
+     91.6991,
+     91.7891
     ],
     "car": "Porsche 911 GT3 R (992)",
     "name": "Michel Van Der Ven"
@@ -516,12 +596,14 @@
    {
     "cust_id": 1037755,
     "best": 91.6578,
-    "laps": 26,
+    "laps": 49,
     "best_per_day": [
      null,
      null,
      null,
-     91.6578
+     91.6578,
+     91.8271,
+     null
     ],
     "car": "Porsche 911 GT3 R (992)",
     "name": "Marc Verlinden"
@@ -529,12 +611,14 @@
    {
     "cust_id": 1051890,
     "best": 91.6868,
-    "laps": 6,
+    "laps": 13,
     "best_per_day": [
      null,
      null,
      null,
-     91.6868
+     91.6868,
+     91.7573,
+     null
     ],
     "car": "BMW M4 GT3 EVO",
     "name": "Quinten Klumpert"
@@ -542,25 +626,29 @@
    {
     "cust_id": 1062772,
     "best": 92.2873,
-    "laps": 7,
+    "laps": 42,
     "best_per_day": [
      null,
      null,
      null,
-     92.2873
+     92.2873,
+     92.5418,
+     null
     ],
     "car": "Acura NSX GT3 EVO 22",
     "name": "Ruud Lopez"
    },
    {
     "cust_id": 1073252,
-    "best": 92.3988,
-    "laps": 28,
+    "best": 91.8054,
+    "laps": 109,
     "best_per_day": [
      null,
      null,
      null,
-     92.3988
+     92.3988,
+     92.2456,
+     91.8054
     ],
     "car": "Ferrari 296 GT3",
     "name": "Patrick Strijdonck"
@@ -573,7 +661,9 @@
      null,
      null,
      null,
-     91.4024
+     91.4024,
+     null,
+     null
     ],
     "car": "Lamborghini Huracán GT3 EVO",
     "name": "Luuk Feitsma"
@@ -586,20 +676,24 @@
      null,
      null,
      null,
-     92.8044
+     92.8044,
+     null,
+     null
     ],
     "car": "BMW M4 GT3 EVO",
     "name": "Thijmen Bakker"
    },
    {
     "cust_id": 1158266,
-    "best": 92.0332,
-    "laps": 29,
+    "best": 91.9683,
+    "laps": 48,
     "best_per_day": [
      null,
      null,
      null,
-     92.0332
+     92.0332,
+     91.9683,
+     null
     ],
     "car": "Mercedes-AMG GT3 2020",
     "name": "Freek Van Santvoord"
@@ -607,12 +701,14 @@
    {
     "cust_id": 1190039,
     "best": 91.7079,
-    "laps": 29,
+    "laps": 64,
     "best_per_day": [
      null,
      null,
      null,
-     91.7079
+     91.7079,
+     91.913,
+     null
     ],
     "car": "BMW M4 GT3 EVO",
     "name": "Jeroen Wijnbergen"
@@ -620,12 +716,14 @@
    {
     "cust_id": 1364568,
     "best": 91.7724,
-    "laps": 41,
+    "laps": 98,
     "best_per_day": [
      null,
      null,
      null,
-     91.7724
+     91.7724,
+     92.2688,
+     92.1833
     ],
     "car": "Audi R8 LMS EVO II GT3",
     "name": "Sander Jorritsma"
@@ -638,20 +736,24 @@
      null,
      null,
      null,
-     92.5198
+     92.5198,
+     null,
+     null
     ],
     "car": "Porsche 911 GT3 R (992)",
     "name": "Jaimy Peters"
    },
    {
     "cust_id": 1471664,
-    "best": 93.7047,
-    "laps": 14,
+    "best": 93.1261,
+    "laps": 28,
     "best_per_day": [
      null,
      null,
      null,
-     93.7047
+     93.7047,
+     null,
+     93.1261
     ],
     "car": "Mercedes-AMG GT3 2020",
     "name": "Justin Van Heuzen2"
@@ -659,12 +761,14 @@
    {
     "cust_id": 1502285,
     "best": 91.8073,
-    "laps": 65,
+    "laps": 134,
     "best_per_day": [
      null,
      null,
      null,
-     91.8073
+     91.8073,
+     91.9102,
+     91.9048
     ],
     "car": "McLaren 720S GT3 EVO",
     "name": "Tycho Van Dijk"
@@ -677,10 +781,342 @@
      null,
      null,
      null,
-     93.1882
+     93.1882,
+     null,
+     null
     ],
     "car": "McLaren 720S GT3 EVO",
     "name": "Brandon Uffelie"
+   },
+   {
+    "cust_id": 203590,
+    "best": 91.3061,
+    "laps": 80,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     91.3061
+    ],
+    "car": "McLaren 720S GT3 EVO",
+    "name": "Barry Arends"
+   },
+   {
+    "cust_id": 239267,
+    "best": 91.2986,
+    "laps": 143,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     91.5393,
+     91.2986
+    ],
+    "car": "Chevrolet Corvette Z06 GT3.R",
+    "name": "Rens de Kok"
+   },
+   {
+    "cust_id": 365100,
+    "best": 91.3923,
+    "laps": 39,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     91.3923,
+     null
+    ],
+    "car": "Chevrolet Corvette Z06 GT3.R",
+    "name": "Twan van den Beld"
+   },
+   {
+    "cust_id": 371410,
+    "best": 90.9383,
+    "laps": 67,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     90.9383,
+     91.2442
+    ],
+    "car": "Lamborghini Huracán GT3 EVO",
+    "name": "Didier Brobbel"
+   },
+   {
+    "cust_id": 500148,
+    "best": 91.6359,
+    "laps": 44,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     92.0919,
+     91.6359
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Berends Jelmer"
+   },
+   {
+    "cust_id": 502029,
+    "best": 91.0163,
+    "laps": 36,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     91.0163,
+     null
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Danny Hoogendoorn"
+   },
+   {
+    "cust_id": 619495,
+    "best": 92.0764,
+    "laps": 11,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     92.0764
+    ],
+    "car": "Lamborghini Huracán GT3 EVO",
+    "name": "Gert Bos"
+   },
+   {
+    "cust_id": 634750,
+    "best": 91.0138,
+    "laps": 58,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     91.0138
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Mathijs Wijten"
+   },
+   {
+    "cust_id": 730321,
+    "best": 91.5648,
+    "laps": 32,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     91.5648
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Ibrahim Özcan"
+   },
+   {
+    "cust_id": 891391,
+    "best": 92.2832,
+    "laps": 35,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     92.2832,
+     null
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Ivo Dahlmans"
+   },
+   {
+    "cust_id": 918469,
+    "best": 91.458,
+    "laps": 50,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     91.458,
+     91.5705
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Davey Van De Wakker"
+   },
+   {
+    "cust_id": 955204,
+    "best": 90.4992,
+    "laps": 52,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     90.6986,
+     90.4992
+    ],
+    "car": "Acura NSX GT3 EVO 22",
+    "name": "Bram Lenten"
+   },
+   {
+    "cust_id": 1019076,
+    "best": 91.5366,
+    "laps": 24,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     91.5366,
+     null
+    ],
+    "car": "McLaren 720S GT3 EVO",
+    "name": "Kevin Versantvoort"
+   },
+   {
+    "cust_id": 1024584,
+    "best": 91.6563,
+    "laps": 31,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     91.6563
+    ],
+    "car": "Lamborghini Huracán GT3 EVO",
+    "name": "Mika Van Den Hurk"
+   },
+   {
+    "cust_id": 1034423,
+    "best": 92.07,
+    "laps": 31,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     92.07
+    ],
+    "car": "Porsche 911 GT3 R (992)",
+    "name": "Jesse Nant Schiffelers"
+   },
+   {
+    "cust_id": 1131203,
+    "best": 91.7823,
+    "laps": 24,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     91.7823,
+     null
+    ],
+    "car": "Lamborghini Huracán GT3 EVO",
+    "name": "Ron Gravesteijn"
+   },
+   {
+    "cust_id": 1201016,
+    "best": 92.5572,
+    "laps": 14,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     92.5572
+    ],
+    "car": "Mercedes-AMG GT3 2020",
+    "name": "Stefan Visser4"
+   },
+   {
+    "cust_id": 1202767,
+    "best": 91.2755,
+    "laps": 10,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     91.2755,
+     null
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Ian Laurence Brown"
+   },
+   {
+    "cust_id": 1504412,
+    "best": 92.0387,
+    "laps": 15,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     92.0387
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Tommy Vlieger"
+   },
+   {
+    "cust_id": 1538667,
+    "best": null,
+    "laps": 0,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "car": "Chevrolet Corvette Z06 GT3.R",
+    "name": "Roy Van Veenendaal"
+   },
+   {
+    "cust_id": 1562310,
+    "best": 92.8755,
+    "laps": 19,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     92.8755,
+     null
+    ],
+    "car": "Porsche 911 GT3 R (992)",
+    "name": "Dennis De Konink"
+   },
+   {
+    "cust_id": 1569414,
+    "best": 95.1902,
+    "laps": 31,
+    "best_per_day": [
+     null,
+     null,
+     null,
+     null,
+     95.1902,
+     102.2005
+    ],
+    "car": "Porsche 911 GT3 R (992)",
+    "name": "Michiel De Jong"
    }
   ]
  },
