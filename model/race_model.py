@@ -117,6 +117,8 @@ def build_race(rows, INPUT, ROOT, seed=2026):
     T = {x["track"]: x for x in tests["tracks"]}
     cur_tests = {d["cust_id"]: d for d in T.get(cur_track, {"drivers": []})["drivers"]}
     race_rows = races["rows"]
+    # Last scheduled race already ran and nothing newer is planned: it is a result, not a forecast
+    done = (not upcoming) and any(x["track"] == cur_track for x in race_rows)
 
     # 2. Pace index from history (prequal + earlier races; the current track's tests are used directly)
     hist = {r["id"]: [] for r in rows}
@@ -127,7 +129,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
     history_events = [dict(id="prequal-vir", kind="prequal", track="Virginia International Raceway – Full Course",
                            date="2026-11-01", drivers=len(ranked), reference=round(q_med, 3))]
     for s, tr in rounds:
-        if tr == cur_track and abs((_dt(s) - _dt(cur_start)).days) <= 2:
+        if not done and tr == cur_track and abs((_dt(s) - _dt(cur_start)).days) <= 2:
             continue
         rr = [x for x in race_rows if x["track"] == tr]
         if not rr:
@@ -214,7 +216,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         rr_ = [x for x in race_rows if x["track"] == tr_ and x["cust_id"] in rows_by_id]
         ran = {x["cust_id"] for x in rr_ if (x["race_laps"] or 0) > 0}
         rr_ = [x for x in rr_ if (x["race_laps"] or 0) > 0 or x["cust_id"] not in ran]   # drop DNS ghosts in a second split
-        if not rr_ or (s_, tr_) == (cur_start, cur_track):
+        if not rr_ or ((s_, tr_) == (cur_start, cur_track) and not done):
             continue
         tt_ = {d["cust_id"]: d for d in T.get(tr_, {"drivers": []})["drivers"]}
         eid_ = f"{s_[:10]}-{_slug(tr_)}"
@@ -236,6 +238,15 @@ def build_race(rows, INPUT, ROOT, seed=2026):
                             winner=ds[0]["name"] if ds else None))
         results.append(dict(round=i_, track=tr_, race_start=s_, splits=sps,
                             team_drivers=[dict(d, split=sp["split"]) for sp in sps for d in sp["drivers"] if d["is_team"]]))
+
+    if done:
+        return dict(
+            round=len(rounds) + 1, track=None, race_start=None, team=TEAM, pending_tests=True, prior_forecast=False,
+            test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
+            model=dict(description="De volgende race staat nog niet in het league-schema. Zodra de baan bekend is en er testtijden zijn, verschijnen targets en schattingen. De uitslagen tot nu toe voeden de pace-index.",
+                       c=None, k=None, h=None, g=0.0, residual_sd=None, r2=None, fit_n=0, test_days_left=None,
+                       expected_extra_laps=0, prior_laps=PRIOR_LAPS, pace_definition="snelste ronde (kwalificatie-niveau)"),
+            history=history_events, splits=[], team_drivers=[], results=results)
 
     # 4. Splits: official split from race results, else the prequal rank
     official = {}
