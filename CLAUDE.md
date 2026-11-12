@@ -162,7 +162,7 @@ Huidige schema-voorbeeld (kan wijzigen na fetch):
 
 ### Race (`race_model.py`)
 
-1. Komende race = eerstvolgende geplande start na `fetched_at`, anders laatste. Is de laatste race al gereden en staat er niets nieuws in het schema, dan is die race een uitslag (`race.track = null`, `pending_tests = true`, ronde = volgende nummer) en voedt hij de pace-index
+1. Komende race = eerstvolgende geplande start na `fetched_at`, anders laatste. Is de laatste race al gereden en staat er niets nieuws in het schema, dan is die race een uitslag (`race.track = null`, `pending_tests = true`, ronde = volgende nummer) en voedt hij de pace-index. `PLANNED_ROUNDS` in `race_model.py` vult een bekende ronde aan (nu Road America op 19 nov, datum is een aanname) zolang het league-schema daar rond die datum niets heeft; `race.planned = true` toont dat in de hero
 2. **Pace-index** vs veldmediaan uit VIR-prequal + eerdere races (zwaarder bij meer ronden; vol bij 20)
 3. Fit op huidige baan: beste test ≈ `c + k×index + h×ln(iRating)` (geen ronden-term meer; backtest Suzuka: RMSE per rijder 0,79 → 0,56 s). Zonder testtijden voor de komende baan: `race.pending_tests = true`, geen splits
 4. Verwachting racedag (eigen afwijking telt n/(n+40) mee, testronde is geen ondergrens) + 20 000 sims per split met gezamenlijke split-afwijking (±0,45 s) → target (P3), winnaar-/top-10-pace, `chance_top3`

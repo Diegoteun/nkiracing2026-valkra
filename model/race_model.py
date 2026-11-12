@@ -30,6 +30,8 @@ from pathlib import Path
 
 import numpy as np
 
+# (start, track) - fallback until the league schedule lists the round; the date is an assumption (weekly slot)
+PLANNED_ROUNDS = [("2026-11-19T18:30:00Z", "Road America \u2013 Full Course")]
 TEAM = "Valkra Performance"
 N_SIM = 20000
 PRIOR_LAPS = 40          # eigen afwijking telt voor 50% bij 40 testronden (backtest Suzuka)
@@ -89,6 +91,13 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         return None
     tests = json.load(open(tests_p)); races = json.load(open(races_p)) if races_p.exists() else {"rows": []}
     sched = json.load(open(sched_p))
+    # Rounds the league has not scheduled yet but whose track and date are known (dropped as soon as the schedule has a race near that date)
+    planned = False
+    for start, track in PLANNED_ROUNDS:
+        if not any(abs((_dt(x["start"]) - _dt(start)).days) <= 2 for x in sched["races"]):
+            planned = True
+            for sp in (1, 2, 3, 4):
+                sched["races"].append(dict(split=sp, start=start, track=track, subsession_id=None, has_results=False))
     fetched = _dt(tests["fetched_at"])
     by_num, by_name = load_teams(ROOT / "model" / "teams.csv")
 
@@ -301,7 +310,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
 
     if pending and not any(prior.values()):
         return dict(
-            round=round_no, track=cur_track, race_start=cur_start, team=TEAM, pending_tests=True, prior_forecast=False,
+            round=round_no, track=cur_track, race_start=cur_start, planned=planned, team=TEAM, pending_tests=True, prior_forecast=False,
             test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
             model=dict(description="Nog geen testtijden voor deze baan en nog geen eerdere race-index. Zodra er tests of uitslagen zijn, verschijnen schattingen.",
                        c=None, k=None, h=None, g=0.0, residual_sd=None, r2=None, fit_n=len(fit_rows), test_days_left=days_left,
@@ -362,12 +371,12 @@ def build_race(rows, INPUT, ROOT, seed=2026):
 
     if prior_forecast:
         return dict(
-            round=round_no, track=cur_track, race_start=cur_start, team=TEAM,
+            round=round_no, track=cur_track, race_start=cur_start, planned=planned, team=TEAM,
             pending_tests=True, prior_forecast=True,
             test_days=[], test_sessions=0, test_drivers=0, test_laps=0, fastest=None,
             model=dict(
-                description=("Nog geen Zandvoort-testtijden. Schatting op basis van wie sneller/trager was dan het veld "
-                             f"in prequal + Suzuka (~{sec_per_pct:.2f} s per 1% verschil), top-3-kansen uit "
+                description=(f"Nog geen {cur_track.split(' \u2013 ')[0]}-testtijden. Schatting op basis van wie sneller/trager was dan het veld "
+                             f"in de prequal en eerdere races (~{sec_per_pct:.2f} s per 1% verschil, uit de vorige baan), top-3-kansen uit "
                              + f"{N_SIM:,}".replace(",", ".") + " simulaties. Absolute rondetijden volgen zodra er getest is."),
                 c=None, k=round(sec_per_pct, 4), h=None, g=0.0, residual_sd=IND_SD, r2=None, fit_n=0,
                 test_days_left=days_left, expected_extra_laps=0, prior_laps=PRIOR_LAPS,
@@ -376,7 +385,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
             history=history_events, splits=splits, team_drivers=team_rows, results=results)
 
     return dict(
-        round=round_no, track=cur_track, race_start=cur_start, team=TEAM,
+        round=round_no, track=cur_track, race_start=cur_start, planned=planned, team=TEAM,
         pending_tests=False, prior_forecast=False,
         test_days=T.get(cur_track, {}).get("days", []), test_sessions=len(T.get(cur_track, {}).get("sessions_used", [])),
         test_drivers=sum(1 for d in cur_tests.values() if d["best"]), test_laps=sum(d["laps"] for d in cur_tests.values()),

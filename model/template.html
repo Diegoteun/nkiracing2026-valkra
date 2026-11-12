@@ -891,7 +891,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       ["Top 3", "Kans op een podiumplek in die split (simulatie)."],
     ],
     prior: [
-      ["vs veld", "Hoeveel procent sneller of trager dan de mediaan van het veld, uit prequal + eerdere races. Geen Zandvoort-testtijden."],
+      ["vs veld", "Hoeveel procent sneller of trager dan de mediaan van het veld, uit prequal + eerdere races. Nog geen testtijden voor deze baan."],
       ["Rang", "Verwachte finishpositie in deze split op die relatieve pace."],
       ["Gat", "Geschat verschil tot de P3-pace in seconden (relatief, geen absolute rondetijd)."],
       ["Top 3", "Kans op een podiumplek in die split (simulatie op relatieve pace)."],
@@ -1120,8 +1120,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const priorMode = !!R.prior_forecast;
 
     $("hero-h1").textContent = `Ronde ${R.round}: ${trackShort(R.track)}`;
+    const plannedNote = R.planned ? " De league heeft deze race nog niet ingepland: datum en baan zijn een aanname." : "";
     $("hero-p").textContent = priorMode
-      ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden hier - we schatten wie sneller/trager is dan het veld op basis van prequal + Suzuka (geen absolute rondetijden).`
+      ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden hier - we schatten wie sneller/trager is dan het veld op basis van de prequal en eerdere races (geen absolute rondetijden).${plannedNote}`
       : R.pending_tests
       ? `Race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Nog geen testtijden voor deze baan, targets en verwachte tijden volgen zodra rijders getest hebben.`
       : `Pace per split voor de race van ${dateNl(R.race_start)} om ${timeNl(R.race_start)}. Kies split 1 of 2 voor targets, verwachte tijden en het veld.`;
@@ -1130,7 +1131,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     if (priorMode && S) {
       const fav = (S.drivers || []).slice().sort((a, b) => b.chance_top3 - a.chance_top3)[0];
       tiles.push({ cls: "goal", lbl: `Favoriet split ${S.split}`, val: fav ? `${Math.round(fav.chance_top3)}%` : "-", sub: fav ? `top 3 - ${esc(fav.name)}` : "op relatieve pace" });
-      tiles.push({ cls: "", lbl: "Vertaling", val: `${(M.sec_per_pct || M.k || 0).toFixed(2).replace(".", ",")} s`, sub: "ongeveer per 1% sneller/trager dan het veld (Suzuka)" });
+      tiles.push({ cls: "", lbl: "Vertaling", val: `${(M.sec_per_pct || M.k || 0).toFixed(2).replace(".", ",")} s`, sub: "ongeveer per 1% sneller/trager dan het veld, uit de vorige baan (verschilt per baan)" });
       tiles.push({ cls: "", lbl: "Testavonden", val: nl(M.test_days_left || 0), sub: "nog te gaan tot de race" });
       tiles.push({ cls: "", lbl: "Veld", val: nl(S.members), sub: `split ${S.split}, schatting zonder tests` });
     } else {
@@ -1148,7 +1149,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("team-title").textContent = R.team || "Team";
     $("team-sub").textContent = `${T.length} rijders`;
     $("team-cap").textContent = priorMode
-      ? "Onze rijders op relatieve pace uit prequal + Suzuka. Gele streep links markeert Valkra."
+      ? "Onze rijders op relatieve pace uit de prequal en eerdere races. Gele streep links markeert Valkra."
       : "Onze rijders. Gele streep links markeert Valkra.";
     $("teamtbl").innerHTML = priorMode
       ? `<thead><tr>
@@ -1185,7 +1186,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       syncFilterControls([], { teamId: "filter-team", carId: "filter-car", countId: "filter-count" });
     } else if (priorMode) {
       $("field-title").textContent = `Split ${S.split}`;
-      $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. Schatting zonder Zandvoort-tests: wie sneller/trager was dan het veld in prequal + Suzuka.`;
+      $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. Schatting zonder ${trackShort(R.track)}-tests: wie sneller/trager was dan het veld in de prequal en eerdere races.`;
       const fav = (S.drivers || []).slice().sort((a, b) => b.chance_top3 - a.chance_top3)[0];
       $("pace-row").innerHTML = `
         <div class="pace3 glass">
@@ -1208,7 +1209,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
           <td>${gapHtml(d.gap_to_target_expected)}</td>
           <td>${chanceHtml(d.chance_top3)}</td>
         </tr>`).join("") + `</tbody>`;
-      $("field-hint").textContent = "Volgorde: wie sneller was dan het veld in prequal + Suzuka. Absolute Zandvoort-tijden volgen na de eerste tests.";
+      $("field-hint").textContent = `Volgorde: wie sneller was dan het veld in de prequal en eerdere races. Absolute ${trackShort(R.track)}-tijden volgen na de eerste tests.`;
     } else {
       $("field-title").textContent = `Split ${S.split}`;
       $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. ${S.with_time} van ${S.members} hebben al een tijd.`;
@@ -1241,7 +1242,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     }
 
     $("note").textContent = priorMode
-      ? "Schatting zonder Zandvoort-rondetijden: wie sneller of trager was dan het veld in prequal + Suzuka. Na de eerste tests komen echte targets."
+      ? `Schatting zonder ${trackShort(R.track)}-rondetijden: wie sneller of trager was dan het veld in de prequal en eerdere races. Na de eerste tests komen echte targets.`
       : R.pending_tests
       ? "Zodra er testtijden zijn, rekent het model targets uit iRating, eerdere races en die tijden."
       : "Verwachting uit iRating, eerdere races en testtijden. Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.";
