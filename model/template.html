@@ -782,6 +782,41 @@ table { border-collapse: collapse; width: 100%; }
     </section>
   </div>
 
+  <div class="view" id="view-stand" hidden>
+    <section class="tiles" id="stand-tiles" aria-label="Kampioenschap"></section>
+    <section class="card glass" id="stand-team" aria-labelledby="stand-team-title">
+      <div class="ttl">
+        <h2 id="stand-team-title">Valkra Performance</h2>
+        <span class="rng" id="stand-team-sub"></span>
+      </div>
+      <p class="cap" id="stand-team-cap">Onze rijders in deze split-stand. Gele streep links markeert Valkra.</p>
+      <div class="tbox"><table class="stbl" id="stand-teamtbl"></table></div>
+    </section>
+    <section class="card glass" aria-labelledby="stand-title">
+      <div class="ttl">
+        <h2 id="stand-title">Kampioenschapsstand</h2>
+        <div class="seg" id="stand-split-switch" role="tablist" aria-label="Kies split"></div>
+      </div>
+      <p class="cap" id="stand-cap"></p>
+      <div class="filters" id="stand-filters" aria-label="Filter stand">
+        <label>Team
+          <select id="stand-filter-team" aria-label="Filter stand op team">
+            <option value="">Alle teams</option>
+          </select>
+        </label>
+        <label>Auto
+          <select id="stand-filter-car" aria-label="Filter stand op auto">
+            <option value="">Alle auto's</option>
+          </select>
+        </label>
+        <button type="button" class="btn ghost" id="stand-filter-reset">Wis filters</button>
+        <span class="filters-meta" id="stand-filter-count"></span>
+      </div>
+      <div class="tbox"><table class="stbl" id="stand-tbl"></table></div>
+      <p class="hint" id="stand-hint">Punten per race: P1 100, P2 88, P3 80, daarna aflopend tot P30 = 2, P31+ = 1.</p>
+    </section>
+  </div>
+
   <div class="view" id="view-prequal" hidden>
     <section class="tiles" id="pq-tiles" aria-label="Prequal kerncijfers"></section>
     <section class="card glass" aria-labelledby="pq-title">
@@ -914,6 +949,72 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     soon: [
       ["Later", "Deze ronde heeft nog geen baan of testdata. De tab blijft klaarstaan."],
     ],
+    stand: [
+      ["R1 / R2 / …", "Punten gehaald in die ronde (volgens de NK-puntenschaal)."],
+      ["Totaal", "Som van alle gereden rondes in deze split."],
+      ["Punten", "P1=100, P2=88, P3=80, daarna omlaag tot P30=2; P31 of lager = 1 punt."],
+    ],
+  };
+
+  const RACE_POINTS = {
+    1: 100, 2: 88, 3: 80, 4: 76, 5: 72, 6: 68, 7: 64, 8: 60, 9: 56, 10: 52,
+    11: 48, 12: 44, 13: 40, 14: 36, 15: 32, 16: 30, 17: 28, 18: 26, 19: 24, 20: 22,
+    21: 20, 22: 18, 23: 16, 24: 14, 25: 12, 26: 10, 27: 8, 28: 6, 29: 4, 30: 2,
+  };
+  const pointsFor = fin => {
+    if (fin == null || fin < 1) return 0;
+    if (fin >= 31) return 1;
+    return RACE_POINTS[fin] || 1;
+  };
+  const buildStandings = D => {
+    const results = ((D.race && D.race.results) || []).slice().sort((a, b) => a.round - b.round);
+    const bySplit = { 1: new Map(), 2: new Map() };
+    for (const X of results) {
+      for (const sp of [1, 2]) {
+        const S = (X.splits || []).find(s => s.split === sp);
+        if (!S) continue;
+        const map = bySplit[sp];
+        for (const d of S.drivers || []) {
+          if (d.finish == null) continue;
+          const key = String(d.name || "").toLowerCase();
+          if (!key) continue;
+          let row = map.get(key);
+          if (!row) {
+            row = {
+              name: d.name, team: d.team, car: d.car, is_team: !!d.is_team, car_number: d.car_number,
+              rounds: {}, total: 0, wins: 0, finishSum: 0, finishN: 0,
+            };
+            map.set(key, row);
+          }
+          if (d.team) row.team = d.team;
+          if (d.car) row.car = d.car;
+          if (d.is_team) row.is_team = true;
+          if (d.car_number) row.car_number = d.car_number;
+          const pts = pointsFor(d.finish);
+          row.rounds[X.round] = { finish: d.finish, points: pts, track: trackShort(X.track) };
+          row.total += pts;
+          if (d.finish === 1) row.wins += 1;
+          row.finishSum += d.finish;
+          row.finishN += 1;
+        }
+      }
+    }
+    const avg = d => (d.finishN ? d.finishSum / d.finishN : 999);
+    const pack = sp => {
+      const list = [...bySplit[sp].values()];
+      list.sort((a, b) =>
+        b.total - a.total ||
+        b.wins - a.wins ||
+        avg(a) - avg(b) ||
+        String(a.name).localeCompare(String(b.name), "nl")
+      );
+      list.forEach((d, i) => { d.pos = i + 1; });
+      return list;
+    };
+    return {
+      rounds: results.map(X => ({ round: X.round, track: trackShort(X.track), label: `R${X.round}` })),
+      splits: { 1: pack(1), 2: pack(2) },
+    };
   };
 
   const fmtT = (t, d) => {
@@ -1035,7 +1136,10 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const R = D.race || {};
     const currentRound = Number(R.round) || 1;
     const currentTrack = trackShort(R.track);
-    const tabs = [{ id: "prequal", label: "Prequali", kind: "prequal" }];
+    const tabs = [
+      { id: "prequal", label: "Prequali", kind: "prequal" },
+      { id: "stand", label: "Stand", kind: "stand" },
+    ];
     for (let n = 1; n <= 4; n++) {
       const knownTrack = ROUND_TRACKS[n];
       if (n === currentRound && R.track) {
@@ -1061,6 +1165,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
 
   function showView(kind, helpKind) {
     $("view-race").hidden = kind !== "race" && kind !== "results";
+    $("view-stand").hidden = kind !== "stand";
     $("view-prequal").hidden = kind !== "prequal";
     $("view-soon").hidden = kind !== "soon";
     setHelp(helpKind || kind);
@@ -1312,6 +1417,72 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
   }
 
+  function renderStand(D) {
+    const stand = buildStandings(D);
+    const sp = (activeSplit === 2) ? 2 : 1;
+    const rows = stand.splits[sp] || [];
+    const rounds = stand.rounds || [];
+    const leader = rows[0];
+    const valkra = rows.filter(d => d.is_team || d.team === "Valkra Performance");
+
+    $("hero-h1").textContent = "Kampioenschapsstand";
+    $("hero-p").textContent = rounds.length
+      ? `Punten over ${rounds.map(r => `R${r.round} ${r.track}`).join(" · ")}. Kies split 1 of 2; jouw keuze blijft onthouden.`
+      : "Nog geen race-uitslagen. Zodra er gereden is, verschijnt hier de stand.";
+
+    const tiles = [];
+    if (leader) {
+      tiles.push({ cls: "goal", lbl: `Leider split ${sp}`, val: esc(leader.name), sub: `${leader.total} punten · ${leader.wins}× winst` });
+      tiles.push({ cls: "", lbl: "Rondes", val: String(rounds.length), sub: rounds.map(r => r.track).join(", ") || "nog geen" });
+      tiles.push({ cls: "", lbl: "Veld", val: nl(rows.length), sub: `rijders met punten in split ${sp}` });
+      if (valkra[0]) tiles.push({ cls: "", lbl: "Beste Valkra", val: `P${valkra[0].pos}`, sub: `${esc(valkra[0].name)} · ${valkra[0].total} pnt` });
+    } else {
+      tiles.push({ cls: "", lbl: "Stand", val: "-", sub: "nog geen uitslagen" });
+    }
+    $("stand-tiles").innerHTML = tiles.slice(0, 4).map(t =>
+      `<div class="tile glass ${t.cls || ""}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`
+    ).join("");
+
+    $("stand-team").hidden = !valkra.length;
+    $("stand-team-title").textContent = (D.race && D.race.team) || "Valkra Performance";
+    $("stand-team-sub").textContent = `${valkra.length} rijders`;
+    const roundHeads = rounds.map(r => `<th>R${r.round}</th>`).join("");
+    const ptsCell = (d, r) => {
+      const cell = d.rounds[r.round];
+      if (!cell) return '<span class="none">-</span>';
+      return `${cell.points}<span class="laps">P${cell.finish}</span>`;
+    };
+    $("stand-teamtbl").innerHTML = `<thead><tr>
+        <th class="l">#</th><th class="l">Rijder</th>${roundHeads}<th>Totaal</th>
+      </tr></thead><tbody>` + valkra.map(d => `<tr class="team">
+        <td class="l pos">${d.pos}</td>
+        <td class="l">${driverCell(d)}</td>
+        ${rounds.map(r => `<td>${ptsCell(d, r)}</td>`).join("")}
+        <td><b>${d.total}</b></td>
+      </tr>`).join("") + `</tbody>`;
+
+    $("stand-title").textContent = `Split ${sp}`;
+    $("stand-cap").textContent = rounds.length
+      ? `Tussenstand na ${rounds.length} ronde${rounds.length === 1 ? "" : "s"}. Alleen split ${sp}.`
+      : "Nog geen punten.";
+    $("stand-split-switch").innerHTML = [1, 2].map(n =>
+      `<button type="button" role="tab" data-split="${n}" aria-selected="${n === sp}">Split ${n}</button>`
+    ).join("");
+
+    const filtered = syncFilterControls(rows, { teamId: "stand-filter-team", carId: "stand-filter-car", countId: "stand-filter-count" });
+    $("stand-tbl").innerHTML = `<thead><tr>
+        <th class="l">#</th><th class="l">Rijder</th>${roundHeads}<th>Totaal</th>
+      </tr></thead><tbody>` + filtered.map(d => `<tr class="${d.is_team ? "team" : ""}">
+        <td class="l pos">${d.pos}</td>
+        <td class="l">${driverCell(d)}</td>
+        ${rounds.map(r => `<td>${ptsCell(d, r)}</td>`).join("")}
+        <td><b>${d.total}</b></td>
+      </tr>`).join("") + `</tbody>`;
+
+    $("note").textContent = "Stand telt alleen split 1 en 2. Punten volgen de NK-schaal; bij gelijk totaal winnen meer overwinningen, daarna gemiddelde finish.";
+    $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
+  }
+
   function renderSoon(tab) {
     const track = tab.track || ROUND_TRACKS[tab.round];
     $("hero-h1").textContent = track ? `Ronde ${tab.round}: ${track}` : `Ronde ${tab.round}`;
@@ -1343,6 +1514,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const helpKind = tab.kind === "race" && D.race && D.race.prior_forecast ? "prior" : tab.kind;
     showView(tab.kind, helpKind);
     if (tab.kind === "prequal") renderPrequal(D);
+    else if (tab.kind === "stand") renderStand(D);
     else if (tab.kind === "race") renderRace(D);
     else if (tab.kind === "results") renderResults(D, tab);
     else renderSoon(tab);
@@ -1355,13 +1527,15 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     render(current);
   });
 
-  $("split-switch").addEventListener("click", e => {
+  const onSplitClick = e => {
     const b = e.target.closest("button[data-split]");
     if (!b || !current) return;
     saveSplitPref(b.dataset.split);
     syncSplitGate();
     render(current);
-  });
+  };
+  $("split-switch").addEventListener("click", onSplitClick);
+  $("stand-split-switch").addEventListener("click", onSplitClick);
 
   $("split-gate").addEventListener("click", e => {
     const b = e.target.closest("button[data-pick-split]");
@@ -1377,7 +1551,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     if (id.includes("car")) filterCar = e.target.value || "";
     if (current) render(current);
   };
-  ["filter-team", "filter-car", "pq-filter-team", "pq-filter-car"].forEach(id => {
+  ["filter-team", "filter-car", "pq-filter-team", "pq-filter-car", "stand-filter-team", "stand-filter-car"].forEach(id => {
     $(id).addEventListener("change", onFilterChange);
   });
   const clearFilters = () => {
@@ -1387,6 +1561,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   };
   $("filter-reset").addEventListener("click", clearFilters);
   $("pq-filter-reset").addEventListener("click", clearFilters);
+  $("stand-filter-reset").addEventListener("click", clearFilters);
 
   let published = null;
   const msg = (text, kind) => { const el = $("admin-msg"); el.textContent = text; el.className = "msg" + (kind ? " " + kind : ""); };
