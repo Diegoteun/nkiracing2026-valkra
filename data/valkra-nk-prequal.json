@@ -4300,6 +4300,7 @@
         "race_avg": 118.0291,
         "laps": 31,
         "incidents": 15,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.88
@@ -4317,6 +4318,7 @@
         "race_avg": 118.5885,
         "laps": 31,
         "incidents": 11,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.38
@@ -4334,6 +4336,7 @@
         "race_avg": 118.6536,
         "laps": 31,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 117.4797,
         "practice_laps": 14,
         "pace_index": -1.58
@@ -4351,6 +4354,7 @@
         "race_avg": 118.6703,
         "laps": 31,
         "incidents": 15,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.38
@@ -4368,6 +4372,7 @@
         "race_avg": 118.9856,
         "laps": 31,
         "incidents": 16,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.42
@@ -4385,6 +4390,7 @@
         "race_avg": 119.0283,
         "laps": 31,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 116.7882,
         "practice_laps": 57,
         "pace_index": -1.42
@@ -4402,6 +4408,7 @@
         "race_avg": 119.1521,
         "laps": 31,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 117.408,
         "practice_laps": 40,
         "pace_index": -1.18
@@ -4419,6 +4426,7 @@
         "race_avg": 119.1646,
         "laps": 31,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 118.5216,
         "practice_laps": 19,
         "pace_index": -1.1
@@ -4436,6 +4444,7 @@
         "race_avg": 119.2992,
         "laps": 31,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 118.3124,
         "practice_laps": 6,
         "pace_index": -1.12
@@ -4453,6 +4462,7 @@
         "race_avg": 119.3482,
         "laps": 31,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 117.2002,
         "practice_laps": 81,
         "pace_index": -1.07
@@ -4470,6 +4480,7 @@
         "race_avg": 119.3753,
         "laps": 31,
         "incidents": 14,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.34
@@ -4487,6 +4498,7 @@
         "race_avg": 119.5624,
         "laps": 31,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 117.2919,
         "practice_laps": 86,
         "pace_index": -0.99
@@ -4504,6 +4516,7 @@
         "race_avg": 119.5806,
         "laps": 31,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 116.9611,
         "practice_laps": 33,
         "pace_index": -1.27
@@ -4521,6 +4534,7 @@
         "race_avg": 120.1616,
         "laps": 31,
         "incidents": 23,
+        "dnf": false,
         "practice_best": 117.2603,
         "practice_laps": 37,
         "pace_index": -1.4
@@ -4538,6 +4552,7 @@
         "race_avg": 120.2242,
         "laps": 31,
         "incidents": 13,
+        "dnf": false,
         "practice_best": 117.9424,
         "practice_laps": 80,
         "pace_index": -0.8
@@ -4555,6 +4570,7 @@
         "race_avg": 120.2386,
         "laps": 31,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 117.2893,
         "practice_laps": 76,
         "pace_index": -1.0
@@ -4572,6 +4588,7 @@
         "race_avg": 120.2428,
         "laps": 31,
         "incidents": 20,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.15
@@ -4589,6 +4606,7 @@
         "race_avg": 120.3402,
         "laps": 31,
         "incidents": 22,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.1
@@ -4606,6 +4624,7 @@
         "race_avg": 120.5272,
         "laps": 31,
         "incidents": 17,
+        "dnf": false,
         "practice_best": 117.7643,
         "practice_laps": 22,
         "pace_index": -1.03
@@ -4623,6 +4642,7 @@
         "race_avg": 120.7551,
         "laps": 31,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 117.6871,
         "practice_laps": 19,
         "pace_index": -0.83
@@ -4640,6 +4660,7 @@
         "race_avg": 120.7904,
         "laps": 31,
         "incidents": 13,
+        "dnf": false,
         "practice_best": 117.4533,
         "practice_laps": 50,
         "pace_index": -0.86
@@ -4657,6 +4678,7 @@
         "race_avg": 120.9699,
         "laps": 31,
         "incidents": 18,
+        "dnf": false,
         "practice_best": 117.9937,
         "practice_laps": 124,
         "pace_index": -0.63
@@ -4674,6 +4696,7 @@
         "race_avg": 123.8796,
         "laps": 29,
         "incidents": 18,
+        "dnf": false,
         "practice_best": 117.0931,
         "practice_laps": 67,
         "pace_index": -1.16
@@ -4691,6 +4714,7 @@
         "race_avg": 133.4577,
         "laps": 28,
         "incidents": 13,
+        "dnf": false,
         "practice_best": 117.7287,
         "practice_laps": 19,
         "pace_index": -0.68
@@ -4708,6 +4732,7 @@
         "race_avg": 122.7877,
         "laps": 25,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 116.8784,
         "practice_laps": 66,
         "pace_index": -1.34
@@ -4725,6 +4750,7 @@
         "race_avg": 122.1664,
         "laps": 21,
         "incidents": 18,
+        "dnf": true,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.84
@@ -4742,6 +4768,7 @@
         "race_avg": 151.5038,
         "laps": 3,
         "incidents": 5,
+        "dnf": true,
         "practice_best": 117.4183,
         "practice_laps": 37,
         "pace_index": -0.89
@@ -4759,6 +4786,7 @@
         "race_avg": null,
         "laps": 0,
         "incidents": 5,
+        "dnf": true,
         "practice_best": 118.2081,
         "practice_laps": 21,
         "pace_index": -0.22
@@ -4795,6 +4823,7 @@
         "race_avg": 120.0675,
         "laps": 30,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 117.8028,
         "practice_laps": 106,
         "pace_index": -0.56
@@ -4812,6 +4841,7 @@
         "race_avg": 120.4117,
         "laps": 30,
         "incidents": 3,
+        "dnf": false,
         "practice_best": 117.7308,
         "practice_laps": 91,
         "pace_index": -0.62
@@ -4829,6 +4859,7 @@
         "race_avg": 120.4545,
         "laps": 30,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 117.53,
         "practice_laps": 69,
         "pace_index": -0.79
@@ -4846,6 +4877,7 @@
         "race_avg": 120.656,
         "laps": 30,
         "incidents": 4,
+        "dnf": false,
         "practice_best": 117.5735,
         "practice_laps": 50,
         "pace_index": -0.76
@@ -4863,6 +4895,7 @@
         "race_avg": 120.6645,
         "laps": 30,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 117.9688,
         "practice_laps": 56,
         "pace_index": -0.42
@@ -4880,6 +4913,7 @@
         "race_avg": 120.7089,
         "laps": 30,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 118.3177,
         "practice_laps": 21,
         "pace_index": -0.17
@@ -4897,6 +4931,7 @@
         "race_avg": 120.7213,
         "laps": 30,
         "incidents": 6,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.22
@@ -4914,6 +4949,7 @@
         "race_avg": 120.7472,
         "laps": 30,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 117.3917,
         "practice_laps": 13,
         "pace_index": -0.91
@@ -4931,6 +4967,7 @@
         "race_avg": 120.9902,
         "laps": 30,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 117.5598,
         "practice_laps": 60,
         "pace_index": -0.77
@@ -4948,6 +4985,7 @@
         "race_avg": 120.9934,
         "laps": 30,
         "incidents": 13,
+        "dnf": false,
         "practice_best": 118.3809,
         "practice_laps": 19,
         "pace_index": -0.07
@@ -4965,6 +5003,7 @@
         "race_avg": 121.0084,
         "laps": 30,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 118.8873,
         "practice_laps": 17,
         "pace_index": 0.1
@@ -4982,6 +5021,7 @@
         "race_avg": 121.3215,
         "laps": 30,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 118.5679,
         "practice_laps": 50,
         "pace_index": 0.08
@@ -4999,6 +5039,7 @@
         "race_avg": 121.3636,
         "laps": 30,
         "incidents": 12,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.07
@@ -5016,6 +5057,7 @@
         "race_avg": 121.3949,
         "laps": 30,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 117.9104,
         "practice_laps": 36,
         "pace_index": -0.47
@@ -5033,6 +5075,7 @@
         "race_avg": 121.4105,
         "laps": 30,
         "incidents": 13,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.47
@@ -5050,6 +5093,7 @@
         "race_avg": 121.4337,
         "laps": 30,
         "incidents": 9,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.8
@@ -5067,6 +5111,7 @@
         "race_avg": 121.4775,
         "laps": 30,
         "incidents": 16,
+        "dnf": false,
         "practice_best": 118.6313,
         "practice_laps": 55,
         "pace_index": 0.14
@@ -5084,6 +5129,7 @@
         "race_avg": 121.4876,
         "laps": 30,
         "incidents": 12,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.51
@@ -5101,6 +5147,7 @@
         "race_avg": 121.5569,
         "laps": 30,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 117.8021,
         "practice_laps": 29,
         "pace_index": -0.56
@@ -5118,6 +5165,7 @@
         "race_avg": 121.6652,
         "laps": 30,
         "incidents": 19,
+        "dnf": false,
         "practice_best": 117.6246,
         "practice_laps": 72,
         "pace_index": -0.71
@@ -5135,6 +5183,7 @@
         "race_avg": 121.674,
         "laps": 30,
         "incidents": 5,
+        "dnf": false,
         "practice_best": 117.603,
         "practice_laps": 81,
         "pace_index": -0.73
@@ -5152,6 +5201,7 @@
         "race_avg": 121.7226,
         "laps": 30,
         "incidents": 16,
+        "dnf": false,
         "practice_best": 119.523,
         "practice_laps": 21,
         "pace_index": 0.88
@@ -5169,6 +5219,7 @@
         "race_avg": 121.7359,
         "laps": 30,
         "incidents": 3,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.68
@@ -5186,6 +5237,7 @@
         "race_avg": 121.7051,
         "laps": 28,
         "incidents": 22,
+        "dnf": false,
         "practice_best": 118.4666,
         "practice_laps": 20,
         "pace_index": -0.0
@@ -5203,6 +5255,7 @@
         "race_avg": 132.5489,
         "laps": 28,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 117.9671,
         "practice_laps": 92,
         "pace_index": -0.42
@@ -5220,6 +5273,7 @@
         "race_avg": 134.6761,
         "laps": 27,
         "incidents": 7,
+        "dnf": false,
         "practice_best": 119.2837,
         "practice_laps": 16,
         "pace_index": 0.69
@@ -5237,6 +5291,7 @@
         "race_avg": 141.602,
         "laps": 26,
         "incidents": 14,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.89
@@ -5254,6 +5309,7 @@
         "race_avg": null,
         "laps": 0,
         "incidents": 0,
+        "dnf": true,
         "practice_best": 121.1631,
         "practice_laps": 29,
         "pace_index": 2.27
@@ -5290,6 +5346,7 @@
         "race_avg": 119.7663,
         "laps": 31,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 117.5943,
         "practice_laps": 65,
         "pace_index": -0.74
@@ -5307,6 +5364,7 @@
         "race_avg": 119.8099,
         "laps": 31,
         "incidents": 4,
+        "dnf": false,
         "practice_best": 117.8131,
         "practice_laps": 40,
         "pace_index": -0.55
@@ -5324,6 +5382,7 @@
         "race_avg": 121.0557,
         "laps": 31,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 118.8355,
         "practice_laps": 38,
         "pace_index": 0.15
@@ -5341,6 +5400,7 @@
         "race_avg": 121.1019,
         "laps": 31,
         "incidents": 10,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.1
@@ -5358,6 +5418,7 @@
         "race_avg": 121.5672,
         "laps": 31,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 118.8223,
         "practice_laps": 37,
         "pace_index": 0.15
@@ -5375,6 +5436,7 @@
         "race_avg": 121.7876,
         "laps": 31,
         "incidents": 16,
+        "dnf": false,
         "practice_best": 120.0621,
         "practice_laps": 40,
         "pace_index": 0.7
@@ -5392,6 +5454,7 @@
         "race_avg": 121.8196,
         "laps": 31,
         "incidents": 0,
+        "dnf": false,
         "practice_best": 119.3525,
         "practice_laps": 69,
         "pace_index": 0.75
@@ -5409,6 +5472,7 @@
         "race_avg": 121.8386,
         "laps": 31,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 119.8848,
         "practice_laps": 12,
         "pace_index": 0.73
@@ -5426,6 +5490,7 @@
         "race_avg": 121.8678,
         "laps": 31,
         "incidents": 4,
+        "dnf": false,
         "practice_best": 119.6015,
         "practice_laps": 79,
         "pace_index": 0.96
@@ -5443,6 +5508,7 @@
         "race_avg": 122.3465,
         "laps": 31,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 120.8932,
         "practice_laps": 28,
         "pace_index": 0.87
@@ -5460,6 +5526,7 @@
         "race_avg": 122.4181,
         "laps": 31,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 119.9684,
         "practice_laps": 15,
         "pace_index": 1.13
@@ -5477,6 +5544,7 @@
         "race_avg": 122.6741,
         "laps": 31,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 119.1693,
         "practice_laps": 10,
         "pace_index": 0.59
@@ -5494,6 +5562,7 @@
         "race_avg": 122.796,
         "laps": 31,
         "incidents": 12,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.02
@@ -5511,6 +5580,7 @@
         "race_avg": 128.7094,
         "laps": 29,
         "incidents": 7,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.69
@@ -5528,6 +5598,7 @@
         "race_avg": 128.7146,
         "laps": 29,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 117.7309,
         "practice_laps": 53,
         "pace_index": -0.62
@@ -5545,6 +5616,7 @@
         "race_avg": 134.1937,
         "laps": 28,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 118.4684,
         "practice_laps": 25,
         "pace_index": 0.0
@@ -5562,6 +5634,7 @@
         "race_avg": 140.0026,
         "laps": 27,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 118.7223,
         "practice_laps": 86,
         "pace_index": -0.19
@@ -5579,6 +5652,7 @@
         "race_avg": 140.9677,
         "laps": 27,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 118.6299,
         "practice_laps": 206,
         "pace_index": 0.0
@@ -5596,6 +5670,7 @@
         "race_avg": 143.4688,
         "laps": 26,
         "incidents": 21,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.85
@@ -5613,6 +5688,7 @@
         "race_avg": 154.9186,
         "laps": 24,
         "incidents": 13,
+        "dnf": false,
         "practice_best": 118.2091,
         "practice_laps": 14,
         "pace_index": -0.3
@@ -5630,6 +5706,7 @@
         "race_avg": 155.199,
         "laps": 24,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 119.8428,
         "practice_laps": 53,
         "pace_index": 0.61
@@ -5647,6 +5724,7 @@
         "race_avg": 126.5555,
         "laps": 23,
         "incidents": 18,
+        "dnf": true,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.1
@@ -5664,6 +5742,7 @@
         "race_avg": 127.0103,
         "laps": 11,
         "incidents": 10,
+        "dnf": true,
         "practice_best": 119.8258,
         "practice_laps": 39,
         "pace_index": 1.15
@@ -5681,6 +5760,7 @@
         "race_avg": 132.328,
         "laps": 7,
         "incidents": 10,
+        "dnf": true,
         "practice_best": 118.5206,
         "practice_laps": 35,
         "pace_index": -0.17
@@ -5698,6 +5778,7 @@
         "race_avg": 168.645,
         "laps": 2,
         "incidents": 2,
+        "dnf": true,
         "practice_best": 119.4384,
         "practice_laps": 45,
         "pace_index": 0.51
@@ -5734,6 +5815,7 @@
         "race_avg": 121.2156,
         "laps": 30,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 119.9082,
         "practice_laps": 22,
         "pace_index": 0.56
@@ -5751,6 +5833,7 @@
         "race_avg": 121.5843,
         "laps": 30,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 119.3131,
         "practice_laps": 17,
         "pace_index": 0.45
@@ -5768,6 +5851,7 @@
         "race_avg": 121.6762,
         "laps": 30,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 119.2078,
         "practice_laps": 110,
         "pace_index": 0.46
@@ -5785,6 +5869,7 @@
         "race_avg": 122.2852,
         "laps": 30,
         "incidents": 2,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.97
@@ -5802,6 +5887,7 @@
         "race_avg": 122.4028,
         "laps": 30,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 121.6567,
         "practice_laps": 10,
         "pace_index": 1.16
@@ -5819,6 +5905,7 @@
         "race_avg": 122.5979,
         "laps": 30,
         "incidents": 10,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.72
@@ -5836,6 +5923,7 @@
         "race_avg": 122.6369,
         "laps": 30,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 119.7565,
         "practice_laps": 35,
         "pace_index": 1.09
@@ -5853,6 +5941,7 @@
         "race_avg": 122.7837,
         "laps": 30,
         "incidents": 16,
+        "dnf": false,
         "practice_best": 121.4245,
         "practice_laps": 19,
         "pace_index": 1.24
@@ -5870,6 +5959,7 @@
         "race_avg": 122.8534,
         "laps": 30,
         "incidents": 5,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.42
@@ -5887,6 +5977,7 @@
         "race_avg": 122.8844,
         "laps": 30,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 119.9599,
         "practice_laps": 25,
         "pace_index": 1.15
@@ -5904,6 +5995,7 @@
         "race_avg": 123.348,
         "laps": 30,
         "incidents": 15,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.52
@@ -5921,6 +6013,7 @@
         "race_avg": 124.1002,
         "laps": 30,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 120.3556,
         "practice_laps": 24,
         "pace_index": 1.59
@@ -5938,6 +6031,7 @@
         "race_avg": 122.8721,
         "laps": 29,
         "incidents": 10,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.33
@@ -5955,6 +6049,7 @@
         "race_avg": 125.5283,
         "laps": 29,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 121.7348,
         "practice_laps": 21,
         "pace_index": 1.26
@@ -5972,6 +6067,7 @@
         "race_avg": 127.6901,
         "laps": 29,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 120.207,
         "practice_laps": 70,
         "pace_index": 0.98
@@ -5989,6 +6085,7 @@
         "race_avg": 130.1876,
         "laps": 28,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 122.9877,
         "practice_laps": 25,
         "pace_index": 2.67
@@ -6006,6 +6103,7 @@
         "race_avg": 130.692,
         "laps": 28,
         "incidents": 23,
+        "dnf": false,
         "practice_best": 119.9486,
         "practice_laps": 26,
         "pace_index": 1.17
@@ -6023,6 +6121,7 @@
         "race_avg": 134.9422,
         "laps": 5,
         "incidents": 6,
+        "dnf": true,
         "practice_best": 121.1012,
         "practice_laps": 10,
         "pace_index": 2.22
@@ -6040,6 +6139,7 @@
         "race_avg": null,
         "laps": 0,
         "incidents": 0,
+        "dnf": true,
         "practice_best": 122.3886,
         "practice_laps": 2,
         "pace_index": 3.31
@@ -6074,6 +6174,7 @@
       "race_avg": 120.0675,
       "laps": 30,
       "incidents": 8,
+      "dnf": false,
       "practice_best": 117.8028,
       "practice_laps": 106,
       "pace_index": -0.56,
@@ -6092,6 +6193,7 @@
       "race_avg": 120.4545,
       "laps": 30,
       "incidents": 15,
+      "dnf": false,
       "practice_best": 117.53,
       "practice_laps": 69,
       "pace_index": -0.79,
@@ -6110,6 +6212,7 @@
       "race_avg": 121.4775,
       "laps": 30,
       "incidents": 16,
+      "dnf": false,
       "practice_best": 118.6313,
       "practice_laps": 55,
       "pace_index": 0.14,
@@ -6128,6 +6231,7 @@
       "race_avg": 121.6652,
       "laps": 30,
       "incidents": 19,
+      "dnf": false,
       "practice_best": 117.6246,
       "practice_laps": 72,
       "pace_index": -0.71,
@@ -6146,6 +6250,7 @@
       "race_avg": 121.7051,
       "laps": 28,
       "incidents": 22,
+      "dnf": false,
       "practice_best": 118.4666,
       "practice_laps": 20,
       "pace_index": -0.0,
@@ -6164,6 +6269,7 @@
       "race_avg": 132.5489,
       "laps": 28,
       "incidents": 15,
+      "dnf": false,
       "practice_best": 117.9671,
       "practice_laps": 92,
       "pace_index": -0.42,
@@ -6193,6 +6299,7 @@
         "race_avg": 91.6212,
         "laps": 40,
         "incidents": 0,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.69
@@ -6210,6 +6317,7 @@
         "race_avg": 92.1762,
         "laps": 40,
         "incidents": 1,
+        "dnf": false,
         "practice_best": 90.332,
         "practice_laps": 66,
         "pace_index": -1.48
@@ -6227,6 +6335,7 @@
         "race_avg": 92.2251,
         "laps": 40,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 90.4992,
         "practice_laps": 52,
         "pace_index": -1.3
@@ -6244,6 +6353,7 @@
         "race_avg": 92.296,
         "laps": 40,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 90.4114,
         "practice_laps": 47,
         "pace_index": -1.4
@@ -6261,6 +6371,7 @@
         "race_avg": 92.2966,
         "laps": 40,
         "incidents": 7,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.44
@@ -6278,6 +6389,7 @@
         "race_avg": 92.3272,
         "laps": 40,
         "incidents": 6,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.89
@@ -6295,6 +6407,7 @@
         "race_avg": 92.3305,
         "laps": 40,
         "incidents": 4,
+        "dnf": false,
         "practice_best": 91.2755,
         "practice_laps": 10,
         "pace_index": -0.97
@@ -6312,6 +6425,7 @@
         "race_avg": 92.571,
         "laps": 40,
         "incidents": 1,
+        "dnf": false,
         "practice_best": 91.0138,
         "practice_laps": 58,
         "pace_index": -0.74
@@ -6329,6 +6443,7 @@
         "race_avg": 92.714,
         "laps": 40,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 91.2986,
         "practice_laps": 143,
         "pace_index": -0.81
@@ -6346,6 +6461,7 @@
         "race_avg": 92.86,
         "laps": 40,
         "incidents": 9,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -1.12
@@ -6363,6 +6479,7 @@
         "race_avg": 92.8943,
         "laps": 40,
         "incidents": 1,
+        "dnf": false,
         "practice_best": 91.2909,
         "practice_laps": 20,
         "pace_index": -0.87
@@ -6380,6 +6497,7 @@
         "race_avg": 92.9079,
         "laps": 40,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 90.6696,
         "practice_laps": 223,
         "pace_index": -1.12
@@ -6397,6 +6515,7 @@
         "race_avg": 93.0013,
         "laps": 40,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 90.9383,
         "practice_laps": 67,
         "pace_index": -0.82
@@ -6414,6 +6533,7 @@
         "race_avg": 93.0413,
         "laps": 40,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 91.458,
         "practice_laps": 50,
         "pace_index": -0.51
@@ -6431,6 +6551,7 @@
         "race_avg": 93.06,
         "laps": 40,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 91.0593,
         "practice_laps": 82,
         "pace_index": -0.9
@@ -6448,6 +6569,7 @@
         "race_avg": 93.223,
         "laps": 40,
         "incidents": 9,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.41
@@ -6465,6 +6587,7 @@
         "race_avg": 93.2606,
         "laps": 40,
         "incidents": 1,
+        "dnf": false,
         "practice_best": 91.427,
         "practice_laps": 56,
         "pace_index": -0.55
@@ -6482,6 +6605,7 @@
         "race_avg": 93.2621,
         "laps": 40,
         "incidents": 14,
+        "dnf": false,
         "practice_best": 91.3061,
         "practice_laps": 80,
         "pace_index": -0.43
@@ -6499,6 +6623,7 @@
         "race_avg": 93.3163,
         "laps": 40,
         "incidents": 15,
+        "dnf": false,
         "practice_best": 90.77,
         "practice_laps": 38,
         "pace_index": -1.01
@@ -6516,6 +6641,7 @@
         "race_avg": 93.489,
         "laps": 40,
         "incidents": 10,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.88
@@ -6533,6 +6659,7 @@
         "race_avg": 93.6958,
         "laps": 40,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 91.2299,
         "practice_laps": 101,
         "pace_index": -0.51
@@ -6550,6 +6677,7 @@
         "race_avg": 92.139,
         "laps": 39,
         "incidents": 5,
+        "dnf": false,
         "practice_best": 89.8967,
         "practice_laps": 79,
         "pace_index": -1.96
@@ -6567,6 +6695,7 @@
         "race_avg": 94.7193,
         "laps": 39,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 91.0163,
         "practice_laps": 36,
         "pace_index": -0.74
@@ -6584,6 +6713,7 @@
         "race_avg": 96.2954,
         "laps": 30,
         "incidents": 22,
+        "dnf": false,
         "practice_best": 91.3923,
         "practice_laps": 39,
         "pace_index": -0.87
@@ -6601,6 +6731,7 @@
         "race_avg": 98.0386,
         "laps": 28,
         "incidents": 13,
+        "dnf": true,
         "practice_best": 91.5648,
         "practice_laps": 32,
         "pace_index": -0.55
@@ -6618,6 +6749,7 @@
         "race_avg": 101.5232,
         "laps": 18,
         "incidents": 13,
+        "dnf": true,
         "practice_best": 90.7041,
         "practice_laps": 214,
         "pace_index": -1.08
@@ -6635,6 +6767,7 @@
         "race_avg": 94.2805,
         "laps": 13,
         "incidents": 6,
+        "dnf": true,
         "practice_best": 90.7272,
         "practice_laps": 9,
         "pace_index": -1.05
@@ -6652,6 +6785,7 @@
         "race_avg": 93.9953,
         "laps": 10,
         "incidents": 12,
+        "dnf": true,
         "practice_best": 90.9443,
         "practice_laps": 75,
         "pace_index": -0.82
@@ -6669,6 +6803,7 @@
         "race_avg": 108.919,
         "laps": 5,
         "incidents": 8,
+        "dnf": true,
         "practice_best": 91.02,
         "practice_laps": 38,
         "pace_index": -1.17
@@ -6705,6 +6840,7 @@
         "race_avg": 92.9492,
         "laps": 39,
         "incidents": 3,
+        "dnf": false,
         "practice_best": 92.3811,
         "practice_laps": 4,
         "pace_index": -0.42
@@ -6722,6 +6858,7 @@
         "race_avg": 93.2,
         "laps": 39,
         "incidents": 7,
+        "dnf": false,
         "practice_best": 91.5836,
         "practice_laps": 23,
         "pace_index": -0.26
@@ -6739,6 +6876,7 @@
         "race_avg": 93.5116,
         "laps": 39,
         "incidents": 5,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.42
@@ -6756,6 +6894,7 @@
         "race_avg": 93.5119,
         "laps": 39,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 91.6563,
         "practice_laps": 31,
         "pace_index": -0.04
@@ -6773,6 +6912,7 @@
         "race_avg": 93.5252,
         "laps": 39,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 91.4926,
         "practice_laps": 59,
         "pace_index": -0.45
@@ -6790,6 +6930,7 @@
         "race_avg": 93.792,
         "laps": 39,
         "incidents": 7,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.15
@@ -6807,6 +6948,7 @@
         "race_avg": 93.8024,
         "laps": 39,
         "incidents": 7,
+        "dnf": false,
         "practice_best": 91.7823,
         "practice_laps": 24,
         "pace_index": -0.04
@@ -6824,6 +6966,7 @@
         "race_avg": 93.8675,
         "laps": 39,
         "incidents": 0,
+        "dnf": false,
         "practice_best": 91.6868,
         "practice_laps": 13,
         "pace_index": -0.01
@@ -6841,6 +6984,7 @@
         "race_avg": 93.9544,
         "laps": 39,
         "incidents": 9,
+        "dnf": false,
         "practice_best": 91.9683,
         "practice_laps": 48,
         "pace_index": 0.3
@@ -6858,6 +7002,7 @@
         "race_avg": 93.9622,
         "laps": 39,
         "incidents": 5,
+        "dnf": false,
         "practice_best": 91.4024,
         "practice_laps": 23,
         "pace_index": -0.32
@@ -6875,6 +7020,7 @@
         "race_avg": 94.157,
         "laps": 39,
         "incidents": 1,
+        "dnf": false,
         "practice_best": 91.8054,
         "practice_laps": 109,
         "pace_index": 0.12
@@ -6892,6 +7038,7 @@
         "race_avg": 94.1643,
         "laps": 39,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 91.7724,
         "practice_laps": 98,
         "pace_index": 0.04
@@ -6909,6 +7056,7 @@
         "race_avg": 94.2217,
         "laps": 39,
         "incidents": 6,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.41
@@ -6926,6 +7074,7 @@
         "race_avg": 94.3708,
         "laps": 39,
         "incidents": 4,
+        "dnf": false,
         "practice_best": 91.6269,
         "practice_laps": 14,
         "pace_index": -0.07
@@ -6943,6 +7092,7 @@
         "race_avg": 94.5955,
         "laps": 39,
         "incidents": 16,
+        "dnf": false,
         "practice_best": 91.6991,
         "practice_laps": 86,
         "pace_index": 0.01
@@ -6960,6 +7110,7 @@
         "race_avg": 95.1523,
         "laps": 39,
         "incidents": 6,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.75
@@ -6977,6 +7128,7 @@
         "race_avg": 98.6911,
         "laps": 37,
         "incidents": 7,
+        "dnf": false,
         "practice_best": 91.8062,
         "practice_laps": 58,
         "pace_index": 0.12
@@ -6994,6 +7146,7 @@
         "race_avg": 98.8835,
         "laps": 37,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 91.5366,
         "practice_laps": 24,
         "pace_index": -0.17
@@ -7011,6 +7164,7 @@
         "race_avg": 108.5103,
         "laps": 34,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 91.3207,
         "practice_laps": 42,
         "pace_index": -0.41
@@ -7028,6 +7182,7 @@
         "race_avg": 105.5951,
         "laps": 26,
         "incidents": 9,
+        "dnf": true,
         "practice_best": 91.8812,
         "practice_laps": 45,
         "pace_index": 0.21
@@ -7045,6 +7200,7 @@
         "race_avg": 97.9562,
         "laps": 24,
         "incidents": 9,
+        "dnf": true,
         "practice_best": 91.2951,
         "practice_laps": 106,
         "pace_index": -0.43
@@ -7062,6 +7218,7 @@
         "race_avg": 105.0344,
         "laps": 17,
         "incidents": 9,
+        "dnf": true,
         "practice_best": 91.2727,
         "practice_laps": 189,
         "pace_index": -0.46
@@ -7079,6 +7236,7 @@
         "race_avg": 137.7628,
         "laps": 10,
         "incidents": 4,
+        "dnf": true,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.76
@@ -7096,6 +7254,7 @@
         "race_avg": null,
         "laps": 0,
         "incidents": 6,
+        "dnf": true,
         "practice_best": 91.5604,
         "practice_laps": 23,
         "pace_index": -0.14
@@ -7132,6 +7291,7 @@
         "race_avg": 92.9929,
         "laps": 39,
         "incidents": 0,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": -0.53
@@ -7149,6 +7309,7 @@
         "race_avg": 93.4826,
         "laps": 39,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 91.5834,
         "practice_laps": 32,
         "pace_index": -0.12
@@ -7166,6 +7327,7 @@
         "race_avg": 93.6864,
         "laps": 39,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 91.02,
         "practice_laps": 102,
         "pace_index": -0.73
@@ -7183,6 +7345,7 @@
         "race_avg": 93.8438,
         "laps": 39,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 91.6359,
         "practice_laps": 44,
         "pace_index": -0.06
@@ -7200,6 +7363,7 @@
         "race_avg": 94.1167,
         "laps": 39,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 91.6302,
         "practice_laps": 112,
         "pace_index": -0.07
@@ -7217,6 +7381,7 @@
         "race_avg": 94.1195,
         "laps": 39,
         "incidents": 4,
+        "dnf": false,
         "practice_best": 91.7079,
         "practice_laps": 64,
         "pace_index": 0.02
@@ -7234,6 +7399,7 @@
         "race_avg": 94.1356,
         "laps": 39,
         "incidents": 4,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.26
@@ -7251,6 +7417,7 @@
         "race_avg": 94.2771,
         "laps": 39,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 91.8073,
         "practice_laps": 134,
         "pace_index": 0.12
@@ -7268,6 +7435,7 @@
         "race_avg": 94.4031,
         "laps": 39,
         "incidents": 3,
+        "dnf": false,
         "practice_best": 91.8591,
         "practice_laps": 12,
         "pace_index": 0.18
@@ -7285,6 +7453,7 @@
         "race_avg": 94.4534,
         "laps": 39,
         "incidents": 7,
+        "dnf": false,
         "practice_best": 92.0387,
         "practice_laps": 15,
         "pace_index": 0.38
@@ -7302,6 +7471,7 @@
         "race_avg": 94.5331,
         "laps": 39,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 92.07,
         "practice_laps": 31,
         "pace_index": 0.41
@@ -7319,6 +7489,7 @@
         "race_avg": 94.8497,
         "laps": 39,
         "incidents": 5,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.23
@@ -7336,6 +7507,7 @@
         "race_avg": 94.952,
         "laps": 39,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 92.5572,
         "practice_laps": 14,
         "pace_index": 0.94
@@ -7353,6 +7525,7 @@
         "race_avg": 95.1635,
         "laps": 39,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 92.8044,
         "practice_laps": 15,
         "pace_index": 1.21
@@ -7370,6 +7543,7 @@
         "race_avg": 95.3117,
         "laps": 39,
         "incidents": 3,
+        "dnf": false,
         "practice_best": 92.2832,
         "practice_laps": 35,
         "pace_index": 0.64
@@ -7387,6 +7561,7 @@
         "race_avg": 95.5028,
         "laps": 38,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 92.7086,
         "practice_laps": 54,
         "pace_index": 0.93
@@ -7404,6 +7579,7 @@
         "race_avg": 95.6859,
         "laps": 38,
         "incidents": 11,
+        "dnf": false,
         "practice_best": 91.6578,
         "practice_laps": 49,
         "pace_index": -0.04
@@ -7421,6 +7597,7 @@
         "race_avg": 95.8985,
         "laps": 38,
         "incidents": 4,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.2
@@ -7438,6 +7615,7 @@
         "race_avg": 95.9017,
         "laps": 38,
         "incidents": 4,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.02
@@ -7455,6 +7633,7 @@
         "race_avg": 96.2651,
         "laps": 38,
         "incidents": 17,
+        "dnf": false,
         "practice_best": 92.5198,
         "practice_laps": 37,
         "pace_index": 0.9
@@ -7472,6 +7651,7 @@
         "race_avg": 96.3922,
         "laps": 38,
         "incidents": 1,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.74
@@ -7489,6 +7669,7 @@
         "race_avg": 97.7444,
         "laps": 38,
         "incidents": 1,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.43
@@ -7506,6 +7687,7 @@
         "race_avg": 100.8245,
         "laps": 37,
         "incidents": 17,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.71
@@ -7523,6 +7705,7 @@
         "race_avg": 102.3409,
         "laps": 36,
         "incidents": 8,
+        "dnf": false,
         "practice_best": 91.8197,
         "practice_laps": 98,
         "pace_index": 0.14
@@ -7540,6 +7723,7 @@
         "race_avg": 95.4651,
         "laps": 27,
         "incidents": 16,
+        "dnf": true,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.79
@@ -7557,6 +7741,7 @@
         "race_avg": 96.3174,
         "laps": 26,
         "incidents": 10,
+        "dnf": true,
         "practice_best": 93.0002,
         "practice_laps": 12,
         "pace_index": 1.43
@@ -7593,6 +7778,7 @@
         "race_avg": 93.7701,
         "laps": 39,
         "incidents": 8,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 0.04
@@ -7610,6 +7796,7 @@
         "race_avg": 94.7197,
         "laps": 39,
         "incidents": 2,
+        "dnf": false,
         "practice_best": 92.771,
         "practice_laps": 58,
         "pace_index": 1.0
@@ -7627,6 +7814,7 @@
         "race_avg": 94.8028,
         "laps": 39,
         "incidents": 4,
+        "dnf": false,
         "practice_best": 93.1882,
         "practice_laps": 29,
         "pace_index": 1.09
@@ -7644,6 +7832,7 @@
         "race_avg": 95.4375,
         "laps": 39,
         "incidents": 15,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.35
@@ -7661,6 +7850,7 @@
         "race_avg": 96.3119,
         "laps": 38,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 92.8755,
         "practice_laps": 19,
         "pace_index": 1.15
@@ -7678,6 +7868,7 @@
         "race_avg": 96.4098,
         "laps": 38,
         "incidents": 6,
+        "dnf": false,
         "practice_best": 92.902,
         "practice_laps": 15,
         "pace_index": 1.08
@@ -7695,6 +7886,7 @@
         "race_avg": 96.5172,
         "laps": 38,
         "incidents": 12,
+        "dnf": false,
         "practice_best": 92.9564,
         "practice_laps": 89,
         "pace_index": 1.38
@@ -7712,6 +7904,7 @@
         "race_avg": 96.6279,
         "laps": 38,
         "incidents": 10,
+        "dnf": false,
         "practice_best": 93.461,
         "practice_laps": 10,
         "pace_index": 1.93
@@ -7729,6 +7922,7 @@
         "race_avg": 96.6353,
         "laps": 38,
         "incidents": 15,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.85
@@ -7746,6 +7940,7 @@
         "race_avg": 96.6527,
         "laps": 38,
         "incidents": 1,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 2.0
@@ -7763,6 +7958,7 @@
         "race_avg": 97.1898,
         "laps": 38,
         "incidents": 2,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 2.44
@@ -7780,6 +7976,7 @@
         "race_avg": 97.8134,
         "laps": 38,
         "incidents": 7,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 1.24
@@ -7797,6 +7994,7 @@
         "race_avg": 98.107,
         "laps": 38,
         "incidents": 5,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 2.88
@@ -7814,6 +8012,7 @@
         "race_avg": 99.3132,
         "laps": 37,
         "incidents": 11,
+        "dnf": false,
         "practice_best": null,
         "practice_laps": 0,
         "pace_index": 2.18
@@ -7831,6 +8030,7 @@
         "race_avg": 104.1529,
         "laps": 36,
         "incidents": 7,
+        "dnf": false,
         "practice_best": 95.1902,
         "practice_laps": 31,
         "pace_index": 3.81
@@ -7848,6 +8048,7 @@
         "race_avg": 101.6018,
         "laps": 20,
         "incidents": 15,
+        "dnf": true,
         "practice_best": 92.9659,
         "practice_laps": 40,
         "pace_index": 1.39
@@ -7865,6 +8066,7 @@
         "race_avg": 107.1698,
         "laps": 14,
         "incidents": 20,
+        "dnf": true,
         "practice_best": 92.3392,
         "practice_laps": 10,
         "pace_index": 0.7
@@ -7882,6 +8084,7 @@
         "race_avg": 251.8534,
         "laps": 2,
         "incidents": 4,
+        "dnf": true,
         "practice_best": 93.1261,
         "practice_laps": 28,
         "pace_index": 1.56
@@ -7916,6 +8119,7 @@
       "race_avg": 93.792,
       "laps": 39,
       "incidents": 7,
+      "dnf": false,
       "practice_best": null,
       "practice_laps": 0,
       "pace_index": 0.15,
@@ -7934,6 +8138,7 @@
       "race_avg": 93.8024,
       "laps": 39,
       "incidents": 7,
+      "dnf": false,
       "practice_best": 91.7823,
       "practice_laps": 24,
       "pace_index": -0.04,
@@ -7952,6 +8157,7 @@
       "race_avg": 93.9622,
       "laps": 39,
       "incidents": 5,
+      "dnf": false,
       "practice_best": 91.4024,
       "practice_laps": 23,
       "pace_index": -0.32,
@@ -7970,6 +8176,7 @@
       "race_avg": 97.9562,
       "laps": 24,
       "incidents": 9,
+      "dnf": true,
       "practice_best": 91.2951,
       "practice_laps": 106,
       "pace_index": -0.43,
@@ -7988,6 +8195,7 @@
       "race_avg": 105.0344,
       "laps": 17,
       "incidents": 9,
+      "dnf": true,
       "practice_best": 91.2727,
       "practice_laps": 189,
       "pace_index": -0.46,

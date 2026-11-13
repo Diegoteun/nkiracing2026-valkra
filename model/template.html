@@ -813,7 +813,7 @@ table { border-collapse: collapse; width: 100%; }
         <span class="filters-meta" id="stand-filter-count"></span>
       </div>
       <div class="tbox"><table class="stbl" id="stand-tbl"></table></div>
-      <p class="hint" id="stand-hint">Punten per race: P1 100, P2 88, P3 80, daarna aflopend tot P30 = 2, P31+ = 1.</p>
+      <p class="hint" id="stand-hint">Punten per race: P1 100, P2 88, P3 80, daarna aflopend tot P30 = 2, P31+ = 1. DNF (minder dan 75% raceafstand) = 0 punten.</p>
     </section>
   </div>
 
@@ -952,7 +952,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     stand: [
       ["R1 / R2 / …", "Punten gehaald in die ronde (volgens de NK-puntenschaal)."],
       ["Totaal", "Som van alle gereden rondes in deze split."],
-      ["Punten", "P1=100, P2=88, P3=80, daarna omlaag tot P30=2; P31 of lager = 1 punt."],
+      ["Punten", "P1=100, P2=88, P3=80, daarna omlaag tot P30=2; P31 of lager = 1 punt. DNF (minder dan 75% raceafstand) = 0 punten."],
     ],
   };
 
@@ -966,6 +966,13 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     if (fin >= 31) return 1;
     return RACE_POINTS[fin] || 1;
   };
+  const isDnf = (d, maxLaps) => {
+    if (d.dnf === true) return true;
+    if (d.dnf === false) return false;
+    const laps = d.laps;
+    if (laps == null || !(maxLaps > 0)) return false;
+    return laps < maxLaps * 0.75;
+  };
   const buildStandings = D => {
     const results = ((D.race && D.race.results) || []).slice().sort((a, b) => a.round - b.round);
     const bySplit = { 1: new Map(), 2: new Map() };
@@ -974,7 +981,9 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         const S = (X.splits || []).find(s => s.split === sp);
         if (!S) continue;
         const map = bySplit[sp];
-        for (const d of S.drivers || []) {
+        const drivers = S.drivers || [];
+        const maxLaps = drivers.reduce((m, d) => Math.max(m, d.laps || 0), 0);
+        for (const d of drivers) {
           if (d.finish == null) continue;
           const key = String(d.name || "").toLowerCase();
           if (!key) continue;
@@ -990,12 +999,15 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
           if (d.car) row.car = d.car;
           if (d.is_team) row.is_team = true;
           if (d.car_number) row.car_number = d.car_number;
-          const pts = pointsFor(d.finish);
-          row.rounds[X.round] = { finish: d.finish, points: pts, track: trackShort(X.track) };
+          const dnf = isDnf(d, maxLaps);
+          const pts = dnf ? 0 : pointsFor(d.finish);
+          row.rounds[X.round] = { finish: d.finish, points: pts, dnf, track: trackShort(X.track) };
           row.total += pts;
-          if (d.finish === 1) row.wins += 1;
-          row.finishSum += d.finish;
-          row.finishN += 1;
+          if (!dnf && d.finish === 1) row.wins += 1;
+          if (!dnf) {
+            row.finishSum += d.finish;
+            row.finishN += 1;
+          }
         }
       }
     }
@@ -1450,6 +1462,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const ptsCell = (d, r) => {
       const cell = d.rounds[r.round];
       if (!cell) return '<span class="none">-</span>';
+      if (cell.dnf) return `0<span class="laps">DNF</span>`;
       return `${cell.points}<span class="laps">P${cell.finish}</span>`;
     };
     $("stand-teamtbl").innerHTML = `<thead><tr>
@@ -1479,7 +1492,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         <td><b>${d.total}</b></td>
       </tr>`).join("") + `</tbody>`;
 
-    $("note").textContent = "Stand telt alleen split 1 en 2. Punten volgen de NK-schaal; bij gelijk totaal winnen meer overwinningen, daarna gemiddelde finish.";
+    $("note").textContent = "Stand telt alleen split 1 en 2. Punten volgen de NK-schaal; DNF (minder dan 75% raceafstand) geeft 0 punten. Bij gelijk totaal: meer overwinningen, daarna gemiddelde finish.";
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
   }
 

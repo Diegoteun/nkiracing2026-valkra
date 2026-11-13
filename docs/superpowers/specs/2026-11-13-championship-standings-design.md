@@ -14,6 +14,7 @@ Season leaderboard per split (1 and 2) from finished race results, using the off
 | 4–15 | 76, 72, 68, 64, 60, 56, 52, 48, 44, 40, 36, 32 |
 | 16–30 | 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2 |
 | 31+ | 1 |
+| DNF / niet geklasseerd (&lt; 75% raceafstand) | 0 |
 
 ## UX
 
