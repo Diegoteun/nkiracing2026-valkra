@@ -1,0 +1,147 @@
+{
+ "id": "2026-11-19-road-america",
+ "track": "Road America – Full Course",
+ "race_start": "2026-11-19T18:30:00Z",
+ "fetched_at": "2026-11-14T06:07:34.548Z",
+ "tests": {
+  "days": [
+   "2026-11-13"
+  ],
+  "sessions_used": [
+   90093406
+  ],
+  "drivers": [
+   {
+    "cust_id": 203590,
+    "best": 122.0862,
+    "laps": 17,
+    "best_per_day": [
+     122.0862
+    ],
+    "car": "McLaren 720S GT3 EVO",
+    "name": "Barry Arends"
+   },
+   {
+    "cust_id": 355420,
+    "best": 122.4472,
+    "laps": 3,
+    "best_per_day": [
+     122.4472
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Tom Walstra"
+   },
+   {
+    "cust_id": 502029,
+    "best": 122.3865,
+    "laps": 7,
+    "best_per_day": [
+     122.3865
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Danny Hoogendoorn"
+   },
+   {
+    "cust_id": 619495,
+    "best": 122.5603,
+    "laps": 16,
+    "best_per_day": [
+     122.5603
+    ],
+    "car": "Lamborghini Huracán GT3 EVO",
+    "name": "Gert Bos"
+   },
+   {
+    "cust_id": 634750,
+    "best": 121.3978,
+    "laps": 42,
+    "best_per_day": [
+     121.3978
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Mathijs Wijten"
+   },
+   {
+    "cust_id": 730321,
+    "best": 121.949,
+    "laps": 28,
+    "best_per_day": [
+     121.949
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Ibrahim Özcan"
+   },
+   {
+    "cust_id": 737386,
+    "best": 123.2159,
+    "laps": 5,
+    "best_per_day": [
+     123.2159
+    ],
+    "car": "Porsche 911 GT3 R (992)",
+    "name": "Dick Jansen"
+   },
+   {
+    "cust_id": 955204,
+    "best": 122.7022,
+    "laps": 10,
+    "best_per_day": [
+     122.7022
+    ],
+    "car": "Acura NSX GT3 EVO 22",
+    "name": "Bram Lenten"
+   },
+   {
+    "cust_id": 1019076,
+    "best": 122.8301,
+    "laps": 3,
+    "best_per_day": [
+     122.8301
+    ],
+    "car": "McLaren 720S GT3 EVO",
+    "name": "Kevin Versantvoort"
+   },
+   {
+    "cust_id": 1070721,
+    "best": 122.0266,
+    "laps": 19,
+    "best_per_day": [
+     122.0266
+    ],
+    "car": "Porsche 911 GT3 R (992)",
+    "name": "Wessel Stevens"
+   },
+   {
+    "cust_id": 1202767,
+    "best": 121.5972,
+    "laps": 22,
+    "best_per_day": [
+     121.5972
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Ian Laurence Brown"
+   },
+   {
+    "cust_id": 1228010,
+    "best": null,
+    "laps": 0,
+    "best_per_day": [
+     null
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Jorrit Drent"
+   },
+   {
+    "cust_id": 1498375,
+    "best": 124.056,
+    "laps": 36,
+    "best_per_day": [
+     124.056
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Elco Roest"
+   }
+  ]
+ },
+ "race": []
+}
