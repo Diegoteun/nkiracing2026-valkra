@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-14T06:07:34.548Z",
+ "fetched_at": "2026-11-15T12:39:35.754Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -41,9 +41,9 @@
    "cust_id": 20477,
    "name": "Albert Priem",
    "car_number": "151",
-   "irating": 4393,
+   "irating": 4410,
    "license": "A",
-   "safety_rating": 4.59
+   "safety_rating": 4.45
   },
   {
    "cust_id": 602622,
@@ -57,17 +57,17 @@
    "cust_id": 203590,
    "name": "Barry Arends",
    "car_number": "268",
-   "irating": 5085,
+   "irating": 5051,
    "license": "A",
-   "safety_rating": 4.8
+   "safety_rating": 3.57
   },
   {
    "cust_id": 937690,
    "name": "Bart Tonkes",
    "car_number": "128",
-   "irating": 1723,
+   "irating": 1689,
    "license": "B",
-   "safety_rating": 3.74
+   "safety_rating": 3.37
   },
   {
    "cust_id": 609781,
@@ -97,9 +97,9 @@
    "cust_id": 1550201,
    "name": "Brandon Uffelie",
    "car_number": "212",
-   "irating": 1339,
+   "irating": 1376,
    "license": "A",
-   "safety_rating": 2.94
+   "safety_rating": 2.18
   },
   {
    "cust_id": 764408,
@@ -153,9 +153,9 @@
    "cust_id": 566271,
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5118,
+   "irating": 5134,
    "license": "A",
-   "safety_rating": 2.35
+   "safety_rating": 2.44
   },
   {
    "cust_id": 502029,
@@ -193,9 +193,9 @@
    "cust_id": 1562310,
    "name": "Dennis De Konink",
    "car_number": "75",
-   "irating": 1342,
+   "irating": 1375,
    "license": "B",
-   "safety_rating": 3.16
+   "safety_rating": 3.09
   },
   {
    "cust_id": 342590,
@@ -305,9 +305,9 @@
    "cust_id": 1202767,
    "name": "Ian Laurence Brown",
    "car_number": "299",
-   "irating": 7673,
+   "irating": 7700,
    "license": "A",
-   "safety_rating": 3.08
+   "safety_rating": 3.43
   },
   {
    "cust_id": 730321,
@@ -329,9 +329,9 @@
    "cust_id": 435662,
    "name": "J.T Korting",
    "car_number": "185",
-   "irating": 2553,
+   "irating": 2613,
    "license": "A",
-   "safety_rating": 3.21
+   "safety_rating": 2.4
   },
   {
    "cust_id": 1398811,
@@ -401,9 +401,9 @@
    "cust_id": 1043603,
    "name": "Joep van Tilburg",
    "car_number": "176",
-   "irating": 3879,
+   "irating": 3817,
    "license": "A",
-   "safety_rating": 2.51
+   "safety_rating": 2.24
   },
   {
    "cust_id": 1217836,
@@ -449,9 +449,9 @@
    "cust_id": 1163032,
    "name": "Kaustubh Patil",
    "car_number": "347",
-   "irating": 2188,
+   "irating": 2095,
    "license": "A",
-   "safety_rating": 4.8
+   "safety_rating": 3.51
   },
   {
    "cust_id": 1557725,
@@ -529,9 +529,9 @@
    "cust_id": 1034093,
    "name": "Lars Van Geresteijn",
    "car_number": "135",
-   "irating": 1667,
+   "irating": 1695,
    "license": "C",
-   "safety_rating": 3.02
+   "safety_rating": 3.07
   },
   {
    "cust_id": 385126,
@@ -617,9 +617,9 @@
    "cust_id": 1161525,
    "name": "Max De Rooij",
    "car_number": null,
-   "irating": 2613,
+   "irating": 2641,
    "license": "A",
-   "safety_rating": 4.59
+   "safety_rating": 4.28
   },
   {
    "cust_id": 975083,
@@ -633,17 +633,17 @@
    "cust_id": 1569414,
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 615,
+   "irating": 747,
    "license": "D",
-   "safety_rating": 2.21
+   "safety_rating": 2.43
   },
   {
    "cust_id": 1024584,
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3601,
+   "irating": 3640,
    "license": "A",
-   "safety_rating": 2.38
+   "safety_rating": 2.08
   },
   {
    "cust_id": 1176867,
@@ -801,9 +801,9 @@
    "cust_id": 1538667,
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1474,
+   "irating": 1479,
    "license": "A",
-   "safety_rating": 3.49
+   "safety_rating": 2.33
   },
   {
    "cust_id": 1062772,
@@ -857,25 +857,25 @@
    "cust_id": 1320313,
    "name": "Sylvester Van Den Bos",
    "car_number": "189",
-   "irating": 1650,
+   "irating": 1660,
    "license": "A",
-   "safety_rating": 1.23
+   "safety_rating": 1.5
   },
   {
    "cust_id": 1157491,
    "name": "Thijmen Bakker",
    "car_number": null,
-   "irating": 1074,
+   "irating": 995,
    "license": "B",
-   "safety_rating": 3.66
+   "safety_rating": 3.59
   },
   {
    "cust_id": 886666,
    "name": "Thimo Baum",
    "car_number": "312",
-   "irating": 3043,
+   "irating": 3071,
    "license": "A",
-   "safety_rating": 4.78
+   "safety_rating": 4.19
   },
   {
    "cust_id": 1493620,
@@ -921,17 +921,17 @@
    "cust_id": 355420,
    "name": "Tom Walstra",
    "car_number": "270",
-   "irating": 7181,
+   "irating": 7214,
    "license": "A",
-   "safety_rating": 4.94
+   "safety_rating": 4.99
   },
   {
    "cust_id": 1504412,
    "name": "Tommy Vlieger",
    "car_number": "249",
-   "irating": 2124,
+   "irating": 2138,
    "license": "A",
-   "safety_rating": 4
+   "safety_rating": 4.1
   },
   {
    "cust_id": 365100,
@@ -969,9 +969,9 @@
    "cust_id": 621119,
    "name": "Wulfert Van Goor",
    "car_number": "100",
-   "irating": 2731,
+   "irating": 2624,
    "license": "A",
-   "safety_rating": 1.43
+   "safety_rating": 1.14
   },
   {
    "cust_id": 928791,
@@ -993,9 +993,9 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 9132,
+   "irating": 9140,
    "license": "A",
-   "safety_rating": 2.36
+   "safety_rating": 2.39
   }
  ]
 }
