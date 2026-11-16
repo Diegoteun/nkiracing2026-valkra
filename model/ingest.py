@@ -1,7 +1,7 @@
 """
 Controleert de compacte uitvoer van model/fetch_iracing.js (versie 3) en schrijft de invoer voor build.py:
   model/input/roster.json     ledenlijst met iRating en licentie
-  model/input/tests.json      testsessies per baan (beste ronde, ronden, beste per dag, auto)
+  model/input/tests.json      testsessies per baan (beste ronde, ronden, beste per dag, auto, regen per testdag)
   model/input/races.json      raceresultaten per split (kwalificatie, snelste en gemiddelde raceronde, uitslag)
   model/input/schedule.json   geplande races per split
 De VIR-prequal (model/input/laps.json) blijft ongemoeid: die is definitief.
@@ -39,7 +39,7 @@ if problems:
 meta = dict(fetched_at=src["fetched_at"], league_id=src["league_id"], league_name=src["league_name"], season_name=src["season_name"])
 roster = dict(meta, category="sports_car",
               members=[dict(cust_id=x[0], name=x[1], car_number=x[2], irating=x[3], license=x[4], safety_rating=x[5]) for x in m])
-tests = dict(meta, tracks=[dict(track=T["track"], days=T["days"], sessions_used=T["sessions"],
+tests = dict(meta, tracks=[dict(track=T["track"], days=T["days"], sessions_used=T["sessions"], rain_by_day=T.get("rain"),
                                 drivers=[dict(cust_id=x[0], best=x[1], laps=x[2], best_per_day=x[3], car=x[4]) for x in T["s"]]) for T in t])
 races = dict(meta, rows=[dict(cust_id=x[0], split=x[1], track=x[2], quali_best=x[3], race_best=x[4], race_avg=x[5], race_laps=x[6],
                               finish=x[7], incidents=x[8], car=x[9], subsession_id=x[10]) for x in r])

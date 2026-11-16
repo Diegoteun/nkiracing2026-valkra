@@ -5,7 +5,8 @@
 //
 // Wat erin zit:
 //   m      ledenlijst met iRating en licentie (Sports Car)
-//   t      testsessies per baan uit het NK-seizoen (alles behalve VIR, dat was de prequal)
+//   t      testsessies per baan uit het NK-seizoen (alles behalve VIR, dat was de prequal), met per testdag
+//          het hoogste regenpercentage van die dag (rain, uit precip_time_pct van iRacing; null = onbekend)
 //   r      raceresultaten uit de split-seizoenen (kwalificatie, snelste en gemiddelde raceronde, uitslag)
 //   sched  geplande races per split (baan en starttijd), om de komende race te bepalen
 // De VIR-prequal wordt niet opnieuw opgehaald: die staat definitief in model/input/laps.json.
@@ -33,11 +34,13 @@
   for (const s of (season.sessions || []).filter(s => s.subsession_id && s.has_results)) {
     const tr = trackOf(s);
     if (tr.startsWith("Virginia")) continue;
-    const T = tests[tr] = tests[tr] || { days: [], sessions: [], per: {} };
+    const T = tests[tr] = tests[tr] || { days: [], sessions: [], per: {}, rain: {} };
     const day = s.launch_at.slice(0, 10);
     let di = T.days.indexOf(day); if (di < 0) { T.days.push(day); di = T.days.length - 1; }
     T.sessions.push(s.subsession_id);
     const r = await get("results/get?subsession_id=" + s.subsession_id);
+    const pr = r.weather ? r.weather.precip_time_pct : null;
+    if (pr != null) T.rain[di] = Math.max(T.rain[di] ?? 0, pr);
     for (const sr of r.session_results || []) for (const x of sr.results || []) {
       const o = T.per[x.cust_id] = T.per[x.cust_id] || { id: x.cust_id, laps: 0, best: null, d: {}, car: x.car_name || null };
       const t = x.best_lap_time > 0 ? x.best_lap_time / 1e4 : null;
@@ -46,6 +49,7 @@
     }
   }
   const t = Object.entries(tests).map(([track, T]) => ({ track, days: T.days, sessions: T.sessions,
+    rain: T.days.map((_, i) => T.rain[i] != null ? Math.round(T.rain[i] * 10) / 10 : null),
     s: Object.values(T.per).map(o => [o.id, o.best, o.laps, T.days.map((_, i) => o.d[i] ?? null), o.car]) }));
 
   // Race results and schedule per split season ("NK Split N")

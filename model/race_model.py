@@ -19,6 +19,10 @@ Opbouw
    en gat tot P3. Zodra er genoeg tests zijn, schakelt het model over op echte baantijden.
 6. 20.000 simulaties per split geven de target (derde snelste tijd in de split), de winnaars- en top-10-pace en per
    rijder de kans op een top 3.
+7. Droog en nat: een dagbeste telt als nat als het die dag regende (precip_time_pct van iRacing) en de tijd meer dan
+   WET_RATIO trager is dan de droge referentie. De lijn en de verwachting hierboven gebruiken alleen droge tijden. Uit rijders
+   met natte tijden komt een natte factor (natte tijd / droge verwachting). Daarmee volgt een tweede simulatie met bredere
+   spreiding: target, winnaars-pace, verwachte tijd en top-3-kans voor een natte race (`*_wet`).
 """
 import csv
 import json
@@ -43,6 +47,11 @@ MIN_FIT_LAPS = 3
 SPLIT_SIZE = 30
 SHOW_SPLITS = (1, 2)
 QUALI_LAPS = 5           # ronden in de 10 minuten kwalificatie op racedag
+WET_RATIO = 1.06         # dagbeste op een regendag die > 6% trager is dan de droge referentie telt als nat
+MIN_WET_OBS = 3          # minimaal aantal rijders met een natte tijd voor een natte voorspelling
+WET_BLEND = 0.35         # gewicht van de eigen natte tijd t.o.v. natte factor x droge verwachting (een natte ronde is ruis)
+WET_SKILL_SD = 0.012     # aanname: eigen natte afwijking per rijder, relatief (ongeveer 1,7 s)
+WET_COMMON_SD = 0.025    # aanname: regenintensiteit op racedag, gezamenlijk voor het hele split, relatief
 
 
 def _norm(s):
@@ -71,6 +80,40 @@ def _slug(s):
 
 def _dt(s):
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+
+def split_dry_wet(entry):
+    """Per rijder (droge beste, natte beste) van een baan, uit de beste tijd per testdag.
+
+    Een dagbeste is nat als het die dag regende (rain_by_day > 0, of onbekend) en de tijd meer dan WET_RATIO trager is dan de
+    droge referentie (mediaan van de snelste droge dagtijden, of anders van de beste tijden van het veld)."""
+    if not entry:
+        return {}
+    ds = entry["drivers"]
+    rain = entry.get("rain_by_day")
+
+    def days_of(d):
+        bpd = d.get("best_per_day")
+        if bpd:
+            return [(i, t) for i, t in enumerate(bpd) if t]
+        return [(None, d["best"])] if d.get("best") else []
+
+    def dry_day(i):
+        return rain is not None and i is not None and i < len(rain) and rain[i] == 0
+
+    cand = [min(t for i, t in dd if dry_day(i)) for dd in (days_of(d) for d in ds) if any(dry_day(i) for i, _ in dd)]
+    if len(cand) < 5:
+        cand = [d["best"] for d in ds if d.get("best") and (d.get("laps") or 0) >= 10]
+    if not cand:
+        return {d["cust_id"]: (d.get("best"), None) for d in ds}
+    ref = st.median(cand)
+    out = {}
+    for d in ds:
+        dry, wet = [], []
+        for i, t in days_of(d):
+            (wet if (not dry_day(i)) and t > WET_RATIO * ref else dry).append(t)
+        out[d["cust_id"]] = (min(dry) if dry else None, min(wet) if wet else None)
+    return out
 
 
 def load_teams(path):
@@ -144,9 +187,11 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         if not rr:
             continue
         best = {}
+        dw_tr = split_dry_wet(T.get(tr))
         for d in T.get(tr, {"drivers": []})["drivers"]:
-            if d["best"]:
-                best[d["cust_id"]] = [d["best"], d["laps"]]
+            b_dry = dw_tr.get(d["cust_id"], (d["best"], None))[0]
+            if b_dry:
+                best[d["cust_id"]] = [b_dry, d["laps"]]
         for x in rr:
             b = [v for v in (x["quali_best"], x["race_best"]) if v]
             if not b:
@@ -175,7 +220,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         if not tt and not rr:
             continue
         rec = dict(id=f"{s[:10]}-{_slug(tr)}", track=tr, race_start=s, fetched_at=tests["fetched_at"],
-                   tests=dict(days=tt["days"], sessions_used=tt["sessions_used"],
+                   tests=dict(days=tt["days"], sessions_used=tt["sessions_used"], rain_by_day=tt.get("rain_by_day"),
                               drivers=[dict(d, name=names.get(d["cust_id"])) for d in tt["drivers"]]) if tt else None,
                    race=[dict(x, name=names.get(x["cust_id"])) for x in rr])
         json.dump(rec, open(hdir / f"{rec['id']}.json", "w"), ensure_ascii=False, indent=1)
@@ -192,10 +237,13 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         p = prior.get(r["id"], (None, 0))[0]
         return np.array([1.0, ((m_idx if p is None else p) - m_idx) / s_idx, (ir_of(r) - m_ir) / s_ir])
 
-    fit_rows = [r for r in rows if r["id"] in cur_tests and cur_tests[r["id"]]["best"] and cur_tests[r["id"]]["laps"] >= MIN_FIT_LAPS]
+    dw_cur = split_dry_wet(T.get(cur_track))
+    cur_dry = {cid: v[0] for cid, v in dw_cur.items()}
+    cur_wet = {cid: v[1] for cid, v in dw_cur.items()}
+    fit_rows = [r for r in rows if r["id"] in cur_tests and cur_dry.get(r["id"]) and cur_tests[r["id"]]["laps"] >= MIN_FIT_LAPS]
     pending = len(fit_rows) < MIN_FIT_DRIVERS
     if not pending:
-        A = np.array([feats(r) for r in fit_rows]); y = np.array([cur_tests[r["id"]]["best"] for r in fit_rows])
+        A = np.array([feats(r) for r in fit_rows]); y = np.array([cur_dry[r["id"]] for r in fit_rows])
         pen = np.diag([0.0, RIDGE, RIDGE])
         beta = np.linalg.solve(A.T @ A + pen, A.T @ y)
         res = y - A @ beta; sd = float(res.std(ddof=3))
@@ -295,7 +343,8 @@ def build_race(rows, INPUT, ROOT, seed=2026):
                 continue
             team, entry_car = team_of(r)
             d = cur_tests.get(r["id"], {})
-            best, n = d.get("best"), d.get("laps", 0) or 0
+            best, n = cur_dry.get(r["id"]), d.get("laps", 0) or 0
+            wet_best = cur_wet.get(r["id"]) if use_track_line else None
             p = prior.get(r["id"], (None, 0))[0]
             if use_track_line:
                 base = line(r)
@@ -308,7 +357,7 @@ def build_race(rows, INPUT, ROOT, seed=2026):
                 w = 0.0
                 sig = IND_SD
                 best, n = None, 0
-            out.append(dict(r=r, split=sp, best=best, laps=n, mu=mu, sig=sig, w=w, prior=p,
+            out.append(dict(r=r, split=sp, best=best, wet_best=wet_best, laps=n, mu=mu, sig=sig, w=w, prior=p,
                             n_events=prior.get(r["id"], (None, 0))[1],
                             car=d.get("car") or entry_car, team=team, days=d.get("best_per_day")))
         return out
@@ -325,7 +374,15 @@ def build_race(rows, INPUT, ROOT, seed=2026):
     people = build_people(use_track_line=not pending)
     prior_forecast = bool(pending)
 
+    # Natte factor: natte testtijd / droge verwachting (lijn) van de rijders die een natte tijd hebben
+    wet_model = None
+    if not pending:
+        obs = [p["wet_best"] / line(p["r"]) for p in people if p["wet_best"]]
+        if len(obs) >= MIN_WET_OBS:
+            wet_model = dict(factor=float(st.median(obs)), n=len(obs), lo=float(min(obs)), hi=float(max(obs)))
+
     rnd = np.random.default_rng(seed)
+    rnd_w = np.random.default_rng(seed + 1)   # eigen stroom, zodat de droge uitkomst niet verandert
     splits = []
     for sp_no in sorted({p["split"] for p in people}):
         ms = [p for p in people if p["split"] == sp_no]
@@ -341,6 +398,17 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         band = lambda a: dict(p10=qs(a, .1), p50=qs(a, .5), p90=qs(a, .9))
         timed = sorted((p for p in ms if p["best"]), key=lambda p: p["best"])
         target = band(srt[:, 2])
+        wet_ctx = None
+        if wet_model:
+            f_ = wet_model["factor"]
+            mu_w = np.array([(1 - WET_BLEND) * f_ * m_ + WET_BLEND * p["wet_best"] if p["wet_best"] else f_ * m_ for p, m_ in zip(ms, mu)])
+            sg_w = np.sqrt((sg * f_) ** 2 + (WET_SKILL_SD * mu_w) ** 2)
+            shock_w = math.sqrt((SPLIT_SHOCK * f_) ** 2 + (WET_COMMON_SD * float(np.median(mu_w))) ** 2)
+            draw_w = rnd_w.normal(mu_w, sg_w, size=(N_SIM, len(ms))) + rnd_w.normal(0, shock_w, size=(N_SIM, 1))
+            srt_w = np.sort(draw_w, axis=1)
+            order_w = np.argsort(draw_w, axis=1)
+            rank_w = np.empty_like(order_w); rank_w[np.arange(N_SIM)[:, None], order_w] = np.arange(1, len(ms) + 1)[None, :]
+            wet_ctx = dict(draw=draw_w, rank=rank_w, target=band(srt_w[:, 2]), winner=band(srt_w[:, 0]), top10=band(srt_w[:, min(9, len(ms) - 1)]))
         out = []
         for j, p in enumerate(ms):
             r = p["r"]
@@ -357,6 +425,14 @@ def build_race(rows, INPUT, ROOT, seed=2026):
                 gap_to_target_expected=round(exp["mean"] - target["p50"], 3),
                 chance_top3=round(float((rankpos[:, j] <= 3).mean() * 100), 1),
                 chance_win=round(float((rankpos[:, j] == 1).mean() * 100), 1)))
+            if wet_ctx:
+                ew = dict(band(wet_ctx["draw"][:, j]), mean=round(float(wet_ctx["draw"][:, j].mean()), 3))
+                out[-1].update(
+                    best_wet=p["wet_best"], expected_pace_wet=ew, expected_rank_wet=round(float(wet_ctx["rank"][:, j].mean()), 1),
+                    estimated_wet=p["wet_best"] is None,
+                    gap_to_target_wet=round(ew["mean"] - wet_ctx["target"]["p50"], 3),
+                    chance_top3_wet=round(float((wet_ctx["rank"][:, j] <= 3).mean() * 100), 1),
+                    chance_win_wet=round(float((wet_ctx["rank"][:, j] == 1).mean() * 100), 1))
         if prior_forecast:
             out.sort(key=lambda d: (d["expected_pace"]["mean"], -d["chance_top3"]))
         else:
@@ -367,10 +443,13 @@ def build_race(rows, INPUT, ROOT, seed=2026):
                                                           p3=timed[2]["best"] if len(timed) >= 3 else None,
                                                           p10=timed[9]["best"] if len(timed) >= 10 else None),
                            target=target, race_pace_offset=race_off.get(sp_no),
+                           target_wet=wet_ctx["target"] if wet_ctx else None, winner_pace_wet=wet_ctx["winner"] if wet_ctx else None,
+                           top10_pace_wet=wet_ctx["top10"] if wet_ctx else None,
+                           with_wet_time=sum(1 for p in ms if p["wet_best"]),
                            race_pace_target=({k_: round(v_ + race_off[sp_no], 3) for k_, v_ in target.items()} if sp_no in race_off else None),
                            winner_pace=band(srt[:, 0]), top10_pace=band(srt[:, min(9, len(ms) - 1)]), drivers=out))
 
-    team_rows = [dict(d, split=S["split"], target=S["target"]["p50"]) for S in splits for d in S["drivers"] if d["is_team"]]
+    team_rows = [dict(d, split=S["split"], target=S["target"]["p50"], target_wet=(S["target_wet"] or {}).get("p50")) for S in splits for d in S["drivers"] if d["is_team"]]
     team_rows.sort(key=lambda d: (d["split"], d["expected_pace"]["mean"]))
     fast = min((p for p in people if p["best"]), key=lambda p: p["best"], default=None)
 
@@ -397,11 +476,17 @@ def build_race(rows, INPUT, ROOT, seed=2026):
         fastest=(dict(name=fast["r"]["name"], time=fast["best"], car=fast["car"], split=fast["split"], team=fast["team"]) if fast else None),
         model=dict(
             description=("Pace-index per rijder = procent sneller of trager dan de mediaan van het veld, uit de VIR-prequal en eerder verreden races. "
-                         "Lijn voor deze baan: beste testronde = c + k × pace-index + h × ln(iRating), gefit op de testtijden. Verwachting op racedag: "
+                         "Lijn voor deze baan: beste testronde = c + k × pace-index + h × ln(iRating), gefit op de droge testtijden (natte tijden tellen niet mee). Verwachting op racedag: "
                          f"de lijn plus de eigen afwijking van de rijder (50% bij {PRIOR_LAPS} testronden). Een testronde is geen ondergrens. "
                          "Target = derde snelste tijd in de split, uit " + f"{N_SIM:,}".replace(",", ".") + " simulaties."),
             c=round(c0, 3), k=round(k1, 4), h=round(h1, 4), g=0.0, residual_sd=round(sd, 3), r2=round(r2, 3),
             fit_n=len(fit_rows), test_days_left=days_left, expected_extra_laps=0, prior_laps=PRIOR_LAPS,
-            race_pace_offsets=race_off,
+            race_pace_offsets=race_off, wet_ratio=WET_RATIO,
+            wet=(dict(factor=round(wet_model["factor"], 3), n=wet_model["n"], lo=round(wet_model["lo"], 3), hi=round(wet_model["hi"], 3),
+                      blend=WET_BLEND, skill_sd=WET_SKILL_SD, common_sd=WET_COMMON_SD,
+                      description=(f"Natte race: droge verwachting x {wet_model['factor']:.2f} (mediaan van {wet_model['n']} rijders met een natte testtijd, "
+                                   f"spreiding {wet_model['lo']:.2f} tot {wet_model['hi']:.2f}). Eigen natte tijd telt voor {int(WET_BLEND * 100)}% mee. "
+                                   f"Aannames: eigen natte afwijking {WET_SKILL_SD * 100:.1f}% per rijder en regenintensiteit {WET_COMMON_SD * 100:.1f}% voor het hele split.")
+                      ) if wet_model else None),
             pace_definition="snelste ronde op racedag (kwalificatie of race)"),
         history=history_events, splits=splits, team_drivers=team_rows, results=results)

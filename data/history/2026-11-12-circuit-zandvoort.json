@@ -2,7 +2,7 @@
  "id": "2026-11-12-circuit-zandvoort",
  "track": "Circuit Zandvoort – Grand Prix",
  "race_start": "2026-11-12T18:30:00Z",
- "fetched_at": "2026-11-15T12:39:35.754Z",
+ "fetched_at": "2026-11-16T07:51:38.820Z",
  "tests": {
   "days": [
    "2026-11-06",
@@ -21,6 +21,14 @@
    89998320,
    90022258,
    90046490
+  ],
+  "rain_by_day": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
   ],
   "drivers": [
    {

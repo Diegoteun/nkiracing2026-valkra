@@ -71,6 +71,9 @@ en de target voor een top 3, plus een blok met de Valkra-rijders en hun gat tot 
 - **Pace-index**: per rijder procent sneller of trager dan de mediaan van het veld, uit de VIR-prequal en elke verreden race.
   Wordt na elke race nauwkeuriger; zo is ook een schatting mogelijk voor wie niet test.
 - **Geschiedenis**: `data/history/` bevat per race testtijden en raceresultaten, plus `prequal-vir.json`.
+- **Droog en nat**: de fetch haalt per testdag het regenpercentage op. Natte tijden (regendag en meer dan 6% trager dan de droge
+  referentie) tellen niet mee in de droge lijn. Uit rijders met een natte tijd komt een natte factor, waarmee het dashboard
+  een Nat-weergave toont (target en kansen bij regen, indicatie).
 - **Teams**: `model/teams.csv` (inschrijflijst), gekoppeld op startnummer en anders op naam.
 - **Splits**: vast voor het seizoen, volgens de prequal-eindstand; na de eerste race volgens de officiële uitslag.
 - De JSON heet nog steeds `data/valkra-nk-prequal.json`. Het nieuwe deel staat onder `race`;

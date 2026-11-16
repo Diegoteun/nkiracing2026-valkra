@@ -417,6 +417,9 @@ body.gate-open { overflow: hidden; }
   outline-offset: 2px;
 }
 
+.cond-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.cond-row .cap { margin: 0; flex: 1 1 280px; }
+
 .view { display: grid; gap: 20px; }
 .view[hidden] { display: none !important; }
 .view:not([hidden]) > * {
@@ -745,6 +748,10 @@ table { border-collapse: collapse; width: 100%; }
   </section>
 
   <div class="view" id="view-race">
+    <div class="cond-row" id="cond-row" hidden>
+      <div class="seg" id="cond-switch" role="tablist" aria-label="Kies droog of nat"></div>
+      <p class="cap" id="cond-note"></p>
+    </div>
     <section class="tiles" id="tiles" aria-label="Kerncijfers"></section>
 
     <section class="card glass" id="team" aria-labelledby="team-title">
@@ -924,6 +931,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       ["Verwacht", "Wat het model denkt dat de snelste ronde op racedag wordt."],
       ["Gat", "Verwacht minus target. Negatief of groen: al binnen de target."],
       ["Top 3", "Kans op een podiumplek in die split (simulatie)."],
+      ["Droog / Nat", "Nat toont wat het model verwacht als het op racedag regent: droge verwachting maal een natte factor uit de natte testtijden, met meer spreiding. Een indicatie, want er zijn weinig natte tijden."],
     ],
     prior: [
       ["vs veld", "Hoeveel procent sneller of trager dan de mediaan van het veld, uit prequal + eerdere races. Nog geen testtijden voor deze baan."],
@@ -1132,6 +1140,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
   let current = null;
   let activeSplit = readSplitPref(); /* null tot de gebruiker kiest; daarna 1 of 2 via cookie */
   let activeView = defaultViewId();
+  let activeCond = "droog"; /* alleen in deze browsersessie, zoals de tabkeuze */
   syncSplitGate();
 
   function shownSplits(R) {
@@ -1235,6 +1244,21 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     const shown = shownSplits(R);
     const S = pickSplit(R);
     const priorMode = !!R.prior_forecast;
+    const wetOk = !priorMode && !R.pending_tests && !!(M && M.wet) && !!(S && S.target_wet);
+    const W = wetOk && activeCond === "nat";
+    const pick = d => W
+      ? { best: d.best_wet, laps: null, exp: d.expected_pace_wet, gap: d.gap_to_target_wet, top3: d.chance_top3_wet, est: d.estimated_wet }
+      : { best: d.best, laps: d.laps, exp: d.expected_pace, gap: d.gap_to_target_expected, top3: d.chance_top3, est: d.estimated_only };
+    const bestCell = x => x.best ? `${lap(x.best)}${x.laps != null ? `<span class="laps">${x.laps}r</span>` : ""}` : '<span class="none">-</span>';
+    const f2 = v => v.toFixed(2).replace(".", ",");
+    $("cond-row").hidden = !wetOk;
+    if (wetOk) {
+      $("cond-switch").innerHTML = [["droog", "Droog"], ["nat", "Nat"]].map(([k, l]) =>
+        `<button type="button" role="tab" data-cond="${k}" aria-selected="${k === activeCond}">${l}</button>`).join("");
+      $("cond-note").textContent = W
+        ? `Als het regent: droge verwachting x ${f2(M.wet.factor)} (mediaan van ${M.wet.n} rijders met een natte tijd). Indicatie, want er zijn weinig natte tijden.`
+        : "Verwachting voor een droge race. Kies Nat voor een indicatie bij regen.";
+    }
 
     $("hero-h1").textContent = `Ronde ${R.round}: ${trackShort(R.track)}`;
     const plannedNote = R.planned ? " De league heeft deze race nog niet ingepland: datum en baan zijn een aanname." : "";
@@ -1253,10 +1277,12 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       tiles.push({ cls: "", lbl: "Veld", val: nl(S.members), sub: `split ${S.split}, schatting zonder tests` });
     } else {
       if (S) {
-        tiles.push({ cls: "goal", lbl: `Target top 3, split ${S.split}`, val: lap(S.target.p50), sub: `80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}` });
-        tiles.push({ cls: "", lbl: "Winnaar-pace", val: lap(S.winner_pace.p50), sub: `${lap(S.winner_pace.p10)} tot ${lap(S.winner_pace.p90)}` });
+        const TG = W ? S.target_wet : S.target, WP = W ? S.winner_pace_wet : S.winner_pace;
+        tiles.push({ cls: "goal", lbl: `Target top 3${W ? " nat" : ""}, split ${S.split}`, val: lap(TG.p50), sub: `80% zeker tussen ${lap(TG.p10)} en ${lap(TG.p90)}` });
+        tiles.push({ cls: "", lbl: W ? "Winnaar-pace nat" : "Winnaar-pace", val: lap(WP.p50), sub: `${lap(WP.p10)} tot ${lap(WP.p90)}` });
       }
-      if (R.fastest) tiles.push({ cls: "", lbl: "Snelste testronde", val: lap(R.fastest.time), sub: `${esc(R.fastest.name)}${R.fastest.split ? ", split " + R.fastest.split : ""}${R.fastest.car ? ", " + esc(carShort(R.fastest.car)) : ""}` });
+      if (W) tiles.push({ cls: "", lbl: "Natte factor", val: `x ${f2(M.wet.factor)}`, sub: `${M.wet.n} rijders met een natte tijd, ${f2(M.wet.lo)} tot ${f2(M.wet.hi)}` });
+      if (R.fastest && !W) tiles.push({ cls: "", lbl: "Snelste testronde", val: lap(R.fastest.time), sub: `${esc(R.fastest.name)}${R.fastest.split ? ", split " + R.fastest.split : ""}${R.fastest.car ? ", " + esc(carShort(R.fastest.car)) : ""}` });
       tiles.push({ cls: "", lbl: "Testdata", val: nl(R.test_laps || 0), sub: `${R.test_drivers || 0} rijders, ${R.test_sessions || 0} sessies` });
     }
     $("tiles").innerHTML = tiles.slice(0, 4).map(t => `<div class="tile glass ${t.cls}"><span class="lbl">${t.lbl}</span><span class="val">${t.val}</span><span class="sub">${t.sub}</span></div>`).join("");
@@ -1267,7 +1293,7 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     $("team-sub").textContent = `${T.length} rijders`;
     $("team-cap").textContent = priorMode
       ? "Onze rijders op relatieve pace uit de prequal en eerdere races. Gele streep links markeert Valkra."
-      : "Onze rijders. Gele streep links markeert Valkra.";
+      : W ? "Onze rijders bij regen. Gele streep links markeert Valkra." : "Onze rijders. Gele streep links markeert Valkra.";
     $("teamtbl").innerHTML = priorMode
       ? `<thead><tr>
         <th class="l">Rijder</th><th class="c">Split</th><th>vs veld</th><th>Rang</th><th>Gat</th><th>Top 3</th>
@@ -1280,15 +1306,15 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
         <td>${chanceHtml(d.chance_top3)}</td>
       </tr>`).join("") + `</tbody>`
       : `<thead><tr>
-        <th class="l">Rijder</th><th class="c">Split</th><th>Beste</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
-      </tr></thead><tbody>` + T.map(d => `<tr class="team">
+        <th class="l">Rijder</th><th class="c">Split</th><th>${W ? "Beste nat" : "Beste"}</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
+      </tr></thead><tbody>` + (W ? T.slice().sort((a, b) => a.split - b.split || a.expected_pace_wet.mean - b.expected_pace_wet.mean) : T).map(d => { const x = pick(d); return `<tr class="team">
         <td class="l">${driverCell(d)}</td>
         <td class="c">${d.split}</td>
-        <td>${d.best ? `${lap(d.best)}<span class="laps">${d.laps}r</span>` : '<span class="none">-</span>'}</td>
-        <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
-        <td>${gapHtml(d.gap_to_target_expected)}</td>
-        <td>${chanceHtml(d.chance_top3)}</td>
-      </tr>`).join("") + `</tbody>`;
+        <td>${bestCell(x)}</td>
+        <td>${lap(x.exp.mean)}${x.est ? '<span class="est">schatting</span>' : ""}</td>
+        <td>${gapHtml(x.gap)}</td>
+        <td>${chanceHtml(x.top3)}</td>
+      </tr>`; }).join("") + `</tbody>`;
 
     $("split-switch").innerHTML = shown.map(x =>
       `<button type="button" role="tab" data-split="${x.split}" aria-selected="${x.split === activeSplit}">Split ${x.split}</button>`
@@ -1329,31 +1355,44 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       $("field-hint").textContent = `Volgorde: wie sneller was dan het veld in de prequal en eerdere races. Absolute ${trackShort(R.track)}-tijden volgen na de eerste tests.`;
     } else {
       $("field-title").textContent = `Split ${S.split}`;
-      $("field-cap").textContent = `Prequal P${S.prequal_from} tot P${S.prequal_to}. ${S.with_time} van ${S.members} hebben al een tijd.`;
+      const wetTimed = W ? (S.drivers || []).filter(d => d.best_wet).sort((a, b) => a.best_wet - b.best_wet) : [];
+      $("field-cap").textContent = W
+        ? `Prequal P${S.prequal_from} tot P${S.prequal_to}. ${S.with_wet_time} van ${S.members} hebben een natte tijd, de rest is geschat met de natte factor.`
+        : `Prequal P${S.prequal_from} tot P${S.prequal_to}. ${S.with_time} van ${S.members} hebben al een tijd.`;
+      const TG = W ? S.target_wet : S.target, WP = W ? S.winner_pace_wet : S.winner_pace, T10 = W ? S.top10_pace_wet : S.top10_pace;
       $("pace-row").innerHTML = `
         <div class="pace3 glass">
-          <span class="lbl">Target voor een top 3</span>
-          <span class="val">${lap(S.target.p50)}</span>
-          <span class="sub">80% zeker tussen ${lap(S.target.p10)} en ${lap(S.target.p90)}${S.now && S.now.p3 ? `. Nu P3 op ${lap(S.now.p3)}` : ""}</span>
+          <span class="lbl">${W ? "Target voor een top 3 bij regen" : "Target voor een top 3"}</span>
+          <span class="val">${lap(TG.p50)}</span>
+          <span class="sub">80% zeker tussen ${lap(TG.p10)} en ${lap(TG.p90)}${!W && S.now && S.now.p3 ? `. Nu P3 op ${lap(S.now.p3)}` : ""}</span>
         </div>
-        <div class="mini glass"><span class="lbl">Winnaar-pace</span><span class="v">${lap(S.winner_pace.p50)}</span><span class="s">${lap(S.winner_pace.p10)} tot ${lap(S.winner_pace.p90)}</span></div>
-        <div class="mini glass"><span class="lbl">Top-10 pace</span><span class="v">${lap(S.top10_pace.p50)}</span><span class="s">${lap(S.top10_pace.p10)} tot ${lap(S.top10_pace.p90)}</span></div>
-        <div class="mini glass"><span class="lbl">Al gereden</span><span class="v">${S.with_time}/${S.members}</span><span class="s">${S.now && S.now.p1 ? "snelste " + lap(S.now.p1) : "nog geen tijden"}</span></div>`;
+        <div class="mini glass"><span class="lbl">Winnaar-pace</span><span class="v">${lap(WP.p50)}</span><span class="s">${lap(WP.p10)} tot ${lap(WP.p90)}</span></div>
+        <div class="mini glass"><span class="lbl">Top-10 pace</span><span class="v">${lap(T10.p50)}</span><span class="s">${lap(T10.p10)} tot ${lap(T10.p90)}</span></div>
+        ${W
+          ? `<div class="mini glass"><span class="lbl">Natte tijd</span><span class="v">${S.with_wet_time}/${S.members}</span><span class="s">${wetTimed.length ? "snelste " + lap(wetTimed[0].best_wet) : "nog geen natte tijden"}</span></div>`
+          : `<div class="mini glass"><span class="lbl">Al gereden</span><span class="v">${S.with_time}/${S.members}</span><span class="s">${S.now && S.now.p1 ? "snelste " + lap(S.now.p1) : "nog geen tijden"}</span></div>`}`;
 
-      const rows = S.drivers || [];
+      let rows = S.drivers || [];
+      if (W) {
+        const wr = new Map(wetTimed.map((d, i) => [d, i + 1]));
+        rows = rows.slice().sort((a, b) => (!a.best_wet - !b.best_wet) || (a.best_wet && b.best_wet ? a.best_wet - b.best_wet : a.expected_pace_wet.mean - b.expected_pace_wet.mean));
+        rows.forEach(d => { d._wetRank = wr.get(d) || null; });
+      }
       const filtered = syncFilterControls(rows, { teamId: "filter-team", carId: "filter-car", countId: "filter-count" });
-      const contenders = rows.filter(d => !d.best && d.chance_top3 >= 10).sort((a, b) => b.chance_top3 - a.chance_top3).slice(0, 4);
+      const contenders = rows.filter(d => !pick(d).best && pick(d).top3 >= 10).sort((a, b) => pick(b).top3 - pick(a).top3).slice(0, 4);
       $("fieldtbl").innerHTML = `<thead><tr>
-          <th class="l">#</th><th class="l">Rijder</th><th>Beste</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
-        </tr></thead><tbody>` + filtered.map(d => `<tr class="${d.is_team ? "team" : ""}">
-          <td class="l pos">${d.rank_now || '<span class="none">-</span>'}</td>
+          <th class="l">#</th><th class="l">Rijder</th><th>${W ? "Beste nat" : "Beste"}</th><th>Verwacht</th><th>Gat</th><th>Top 3</th>
+        </tr></thead><tbody>` + filtered.map(d => { const x = pick(d); return `<tr class="${d.is_team ? "team" : ""}">
+          <td class="l pos">${(W ? d._wetRank : d.rank_now) || '<span class="none">-</span>'}</td>
           <td class="l">${driverCell(d)}</td>
-          <td>${d.best ? `${lap(d.best)}<span class="laps">${d.laps}r</span>` : '<span class="none">-</span>'}</td>
-          <td>${lap(d.expected_pace.mean)}${d.estimated_only ? '<span class="est">schatting</span>' : ""}</td>
-          <td>${gapHtml(d.gap_to_target_expected)}</td>
-          <td>${chanceHtml(d.chance_top3)}</td>
-        </tr>`).join("") + `</tbody>`;
-      $("field-hint").textContent = contenders.length
+          <td>${bestCell(x)}</td>
+          <td>${lap(x.exp.mean)}${x.est ? '<span class="est">schatting</span>' : ""}</td>
+          <td>${gapHtml(x.gap)}</td>
+          <td>${chanceHtml(x.top3)}</td>
+        </tr>`; }).join("") + `</tbody>`;
+      $("field-hint").textContent = W
+        ? `Bij regen schudt de volgorde door elkaar, dus de kansen liggen dichter bij elkaar. ${contenders.length ? `Kanshebbers zonder natte tijd: ${contenders.map(d => `${d.name} (${Math.round(pick(d).top3)}%)`).join(", ")}.` : ""}`.trim()
+        : contenders.length
         ? `Nog niet gereden, wel kanshebber: ${contenders.map(d => `${d.name} (${Math.round(d.chance_top3)}%)`).join(", ")}.`
         : `Volgorde op beste testtijd. Rijders zonder tijd staan onderaan met een schatting.`;
     }
@@ -1362,11 +1401,14 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
       ? `Schatting zonder ${trackShort(R.track)}-rondetijden: wie sneller of trager was dan het veld in de prequal en eerdere races. Na de eerste tests komen echte targets.`
       : R.pending_tests
       ? "Zodra er testtijden zijn, rekent het model targets uit iRating, eerdere races en die tijden."
-      : "Verwachting uit iRating, eerdere races en testtijden. Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.";
+      : W
+      ? "Natte indicatie: droge verwachting maal de natte factor, met meer spreiding. Natte testtijden tellen voor een deel mee."
+      : "Verwachting uit iRating, eerdere races en droge testtijden. Target is sneller dan de verwachte P3, omdat er altijd uitschieters zijn.";
     $("source").textContent = `Bron: iRacing Data API (${D.meta.league ? D.meta.league.name : "SRVN.nl"}). Logo's: vehiclespecs/brand-logos.`;
   }
 
   function renderResults(D, tab) {
+    $("cond-row").hidden = true;
     const X = D.race.results.find(x => x.round === tab.round);
     const shown = (X.splits || []).filter(x => x.shown);
     const list = shown.length ? shown : (X.splits || []).slice(0, 2);
@@ -1548,6 +1590,12 @@ const VALKRA_EMBEDDED_DATA = /*__DATA__*/null;
     render(current);
   };
   $("split-switch").addEventListener("click", onSplitClick);
+  $("cond-switch").addEventListener("click", e => {
+    const b = e.target.closest("button[data-cond]");
+    if (!b || !current) return;
+    activeCond = b.dataset.cond;
+    render(current);
+  });
   $("stand-split-switch").addEventListener("click", onSplitClick);
 
   $("split-gate").addEventListener("click", e => {

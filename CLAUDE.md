@@ -50,14 +50,14 @@ Wanneer de gebruiker **nieuwe run** vraagt:
 | `LEAGUE_ID` | `15445` | SRVN.nl iRacing (Powered by KNAF) |
 | `TEST_SEASON` | `138636` | NK iRacing 2026 prequal + testsessies |
 
-Fetch haalt op: ledenlijst (`m`), tests per baan behalve VIR (`t`), raceresultaten split-seizoenen (`r`), schema (`sched`). VIR-prequal wordt **niet** opnieuw opgehaald.
+Fetch haalt op: ledenlijst (`m`), tests per baan behalve VIR (`t`, met per testdag het regenpercentage `rain` uit `precip_time_pct`), raceresultaten split-seizoenen (`r`), schema (`sched`). VIR-prequal wordt **niet** opnieuw opgehaald.
 
 ### Wat ingest schrijft / niet schrijft
 
 | Bestand | Actie |
 | :--- | :--- |
 | `model/input/roster.json` | overschrijven |
-| `model/input/tests.json` | overschrijven |
+| `model/input/tests.json` | overschrijven (incl. `rain_by_day` per baan) |
 | `model/input/races.json` | overschrijven |
 | `model/input/schedule.json` | overschrijven |
 | `model/input/laps.json` | **niet aanraken** (definitieve VIR-prequal) |
@@ -83,6 +83,8 @@ Build **faalt** als `public/assets/brands/` ontbreekt of leeg is.
 - [ ] `meta.prequal_closed` is `true` (na 1 nov 2026)
 - [ ] `race.round` / `race.track` kloppen met het schema
 - [ ] Splits 1–2 hebben testdata / drivers als die er zijn
+- [ ] Fit zonder uitschieters: `race.model.r2` en `residual_sd` normaal (ongeveer R² 0,4 tot 0,6, residual onder 1 s). Een fit met residual van seconden betekent natte tijden in de fit: check `rain_by_day` en `WET_RATIO`
+- [ ] `race.model.wet` bestaat als er minstens 3 rijders een natte testtijd hebben (anders geen Droog/Nat-schakelaar)
 - [ ] `public/assets/brands/` heeft logo’s; nieuwe autonamen matchen `CAR_BRANDS`
 - [ ] Geen em dashes in nieuwe UI-copy; geen `/upload` teruggezet
 
@@ -166,7 +168,8 @@ Huidige schema-voorbeeld (kan wijzigen na fetch):
 2. **Pace-index** vs veldmediaan uit VIR-prequal + eerdere races (zwaarder bij meer ronden; vol bij 20)
 3. Fit op huidige baan: beste test ≈ `c + k×index + h×ln(iRating)` (geen ronden-term meer; backtest Suzuka: RMSE per rijder 0,79 → 0,56 s). Zonder testtijden voor de komende baan: `race.pending_tests = true`, geen splits
 4. Verwachting racedag (eigen afwijking telt n/(n+40) mee, testronde is geen ondergrens) + 20 000 sims per split met gezamenlijke split-afwijking (±0,45 s) → target (P3), winnaar-/top-10-pace, `chance_top3`
-5. Teams uit `model/teams.csv` (koppeling startnummer, anders genormaliseerde naam)
+5. **Droog en nat** (`split_dry_wet`): een dagbeste telt als nat als het die dag regende (`rain_by_day` > 0, of onbekend) én de tijd meer dan `WET_RATIO` (1,06) trager is dan de droge referentie. De fit, `best`, `rank_now`, targets en de pace-index gebruiken alleen droge tijden. Uit rijders met een natte tijd komt een **natte factor** (natte tijd / droge lijn, mediaan; minimaal `MIN_WET_OBS` = 3 rijders). Tweede simulatie (eigen random-stroom, droge uitkomst verandert niet): natte verwachting = factor × droge verwachting, eigen natte tijd telt voor `WET_BLEND` (35%) mee, spreiding met aannames `WET_SKILL_SD` (1,2% per rijder) en `WET_COMMON_SD` (2,5% regenintensiteit, gezamenlijk). Output: `target_wet`, `winner_pace_wet`, `top10_pace_wet`, per rijder `best_wet`, `expected_pace_wet`, `gap_to_target_wet`, `chance_top3_wet`; `race.model.wet` (factor, n, spreiding)
+6. Teams uit `model/teams.csv` (koppeling startnummer, anders genormaliseerde naam)
 
 Constanten o.a.: `TEAM = "Valkra Performance"`, `N_SIM = 20000`, `SPLIT_SIZE = 30`, `SHOW_SPLITS = (1, 2)`, `QUALI_LAPS = 5`.
 
@@ -193,7 +196,7 @@ Tokens: `design/tokens.json` (Poppins, `#feea27`, light/dark tokens; **UI is lig
 
 | View | Inhoud |
 | :--- | :--- |
-| Race (`#view-race`) | Tiles, Valkra-blok, veld-tabel, target/winnaar/top10 |
+| Race (`#view-race`) | Schakelaar Droog / Nat (alleen als `race.model.wet` bestaat; keuze alleen in de browsersessie), tiles, Valkra-blok, veld-tabel, target/winnaar/top10 |
 | Prequal (`#view-prequal`) | Eindstand VIR, split-kansen |
 | Soon (`#view-soon`) | Placeholder ronde zonder baan/data |
 
@@ -204,6 +207,7 @@ Tokens: `design/tokens.json` (Poppins, `#feea27`, light/dark tokens; **UI is lig
 - **Verwacht** — model-inschatting racedag  
 - **Gat** — verwacht − target (≤0 = binnen target)  
 - **Top 3** — gesimuleerde podiumkans  
+- **Droog / Nat** — Nat = droge verwachting × natte factor, met meer spreiding; indicatie bij weinig natte tijden  
 
 ### Merklogo’s (kritisch bij nieuwe data)
 

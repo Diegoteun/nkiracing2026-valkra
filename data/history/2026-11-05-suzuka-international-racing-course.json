@@ -2,7 +2,7 @@
  "id": "2026-11-05-suzuka-international-racing-course",
  "track": "Suzuka International Racing Course – Grand Prix",
  "race_start": "2026-11-05T18:30:00Z",
- "fetched_at": "2026-11-15T12:39:35.754Z",
+ "fetched_at": "2026-11-16T07:51:38.820Z",
  "tests": {
   "days": [
    "2026-10-30",
@@ -25,6 +25,14 @@
    89852592,
    89876723,
    89876724
+  ],
+  "rain_by_day": [
+   0,
+   4.9,
+   0,
+   0,
+   31.6,
+   0
   ],
   "drivers": [
    {

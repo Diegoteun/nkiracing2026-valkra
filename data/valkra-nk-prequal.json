@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-15T12:39:35.754Z",
+  "generated_at": "2026-11-16T07:51:38.820Z",
   "league": {
    "id": 15445,
    "name": "SRVN.nl iRacing (Powered by KNAF)"
@@ -47,17 +47,17 @@
   },
   "model": {
    "description": "Tempo per iRating: lap = a + b*ln(iRating), gefit op rijders met 20+ ronden; boven 7.000 iRating vlakker, zodat een rijder van 10.000 in de prequal mediaan 1:42.30 rijdt. Rijders met minder dan 20 ronden of zonder tijd krijgen het modeltempo plus de spreiding van hun iRating-groep, nooit trager dan hun gereden tijd. Iedereen rijdt zijn resterende prequal-sessies (max 2); een poging = beste tijd of modeltempo + afwijking uit het gemeten verschil tussen prequal en training. Geen poging sneller dan de absolute toptijd.",
-   "a": 115.7948,
-   "b": -1.4618,
+   "a": 115.8852,
+   "b": -1.4731,
    "knee_irating": 7000,
-   "slope_above_knee": -0.847,
-   "pace_at_10000": 102.55,
+   "slope_above_knee": -0.835,
+   "pace_at_10000": 102.545,
    "expected_prequal_at_10000": 102.3,
    "absolute_top_time": 102.25,
-   "r2": 0.624,
+   "r2": 0.63,
    "fit_n": 74,
-   "spread_irating_4000_plus": 0.321,
-   "spread_irating_below_4000": 0.685,
+   "spread_irating_4000_plus": 0.322,
+   "spread_irating_below_4000": 0.679,
    "attempt_mean": -0.109,
    "attempt_sd": 0.391,
    "attempt_sd_irating_4000_plus": 0.317,
@@ -761,11 +761,12 @@
   "prior_forecast": false,
   "test_days": [
    "2026-11-13",
-   "2026-11-14"
+   "2026-11-14",
+   "2026-11-15"
   ],
-  "test_sessions": 2,
-  "test_drivers": 24,
-  "test_laps": 472,
+  "test_sessions": 3,
+  "test_drivers": 38,
+  "test_laps": 809,
   "fastest": {
    "name": "Mathijs Wijten",
    "time": 120.9572,
@@ -774,15 +775,15 @@
    "team": "KNAF Digital"
   },
   "model": {
-   "description": "Pace-index per rijder = procent sneller of trager dan de mediaan van het veld, uit de VIR-prequal en eerder verreden races. Lijn voor deze baan: beste testronde = c + k × pace-index + h × ln(iRating), gefit op de testtijden. Verwachting op racedag: de lijn plus de eigen afwijking van de rijder (50% bij 40 testronden). Een testronde is geen ondergrens. Target = derde snelste tijd in de split, uit 20.000 simulaties.",
-   "c": 123.961,
-   "k": 0.5068,
-   "h": -0.1782,
+   "description": "Pace-index per rijder = procent sneller of trager dan de mediaan van het veld, uit de VIR-prequal en eerder verreden races. Lijn voor deze baan: beste testronde = c + k × pace-index + h × ln(iRating), gefit op de droge testtijden (natte tijden tellen niet mee). Verwachting op racedag: de lijn plus de eigen afwijking van de rijder (50% bij 40 testronden). Een testronde is geen ondergrens. Target = derde snelste tijd in de split, uit 20.000 simulaties.",
+   "c": 124.127,
+   "k": 0.6084,
+   "h": -0.1902,
    "g": 0.0,
-   "residual_sd": 0.718,
-   "r2": 0.423,
-   "fit_n": 24,
-   "test_days_left": 4,
+   "residual_sd": 0.627,
+   "r2": 0.578,
+   "fit_n": 30,
+   "test_days_left": 3,
    "expected_extra_laps": 0,
    "prior_laps": 40,
    "race_pace_offsets": {
@@ -790,6 +791,17 @@
     "2": 1.92,
     "3": 2.06,
     "4": 2.86
+   },
+   "wet_ratio": 1.06,
+   "wet": {
+    "factor": 1.157,
+    "n": 11,
+    "lo": 1.077,
+    "hi": 1.183,
+    "blend": 0.35,
+    "skill_sd": 0.012,
+    "common_sd": 0.025,
+    "description": "Natte race: droge verwachting x 1.16 (mediaan van 11 rijders met een natte testtijd, spreiding 1.08 tot 1.18). Eigen natte tijd telt voor 35% mee. Aannames: eigen natte afwijking 1.2% per rijder en regenintensiteit 2.5% voor het hele split."
    },
    "pace_definition": "snelste ronde op racedag (kwalificatie of race)"
   },
@@ -826,32 +838,48 @@
     "prequal_from": 1,
     "prequal_to": 30,
     "members": 30,
-    "with_time": 12,
+    "with_time": 14,
     "now": {
      "p1": 120.9572,
      "p3": 121.4271,
-     "p10": 122.4472
+     "p10": 122.1652
     },
     "target": {
-     "p10": 120.652,
-     "p50": 121.254,
-     "p90": 121.854
+     "p10": 120.615,
+     "p50": 121.216,
+     "p90": 121.812
     },
     "race_pace_offset": 1.51,
+    "target_wet": {
+     "p10": 133.865,
+     "p50": 138.488,
+     "p90": 143.039
+    },
+    "winner_pace_wet": {
+     "p10": 132.557,
+     "p50": 137.274,
+     "p90": 141.952
+    },
+    "top10_pace_wet": {
+     "p10": 135.46,
+     "p50": 140.082,
+     "p90": 144.595
+    },
+    "with_wet_time": 2,
     "race_pace_target": {
-     "p10": 122.162,
-     "p50": 122.764,
-     "p90": 123.364
+     "p10": 122.125,
+     "p50": 122.726,
+     "p90": 123.322
     },
     "winner_pace": {
-     "p10": 120.312,
-     "p50": 120.955,
-     "p90": 121.579
+     "p10": 120.264,
+     "p50": 120.912,
+     "p90": 121.538
     },
     "top10_pace": {
-     "p10": 121.071,
-     "p50": 121.662,
-     "p90": 122.252
+     "p10": 121.034,
+     "p50": 121.623,
+     "p90": 122.213
     },
     "drivers": [
      {
@@ -869,21 +897,34 @@
       "laps": 62,
       "best_per_day": [
        121.3978,
-       120.9572
+       120.9572,
+       null
       ],
       "rank_now": 1,
-      "expected_rank": 5.2,
+      "expected_rank": 5.5,
       "expected_pace": {
-       "p10": 120.61,
-       "p50": 121.315,
-       "p90": 122.025,
-       "mean": 121.316
+       "p10": 120.595,
+       "p50": 121.299,
+       "p90": 122.009,
+       "mean": 121.3
       },
       "estimated_only": false,
-      "gap_to_target_now": -0.297,
-      "gap_to_target_expected": 0.062,
-      "chance_top3": 47.8,
-      "chance_win": 20.4
+      "gap_to_target_now": -0.259,
+      "gap_to_target_expected": 0.084,
+      "chance_top3": 45.1,
+      "chance_win": 18.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.236,
+       "p50": 140.331,
+       "p90": 145.369,
+       "mean": 140.322
+      },
+      "expected_rank_wet": 12.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.834,
+      "chance_top3_wet": 16.1,
+      "chance_win_wet": 5.8
      },
      {
       "name": "Ibrahim Özcan",
@@ -900,21 +941,34 @@
       "laps": 46,
       "best_per_day": [
        121.949,
-       121.0632
+       121.0632,
+       null
       ],
       "rank_now": 2,
-      "expected_rank": 8.9,
+      "expected_rank": 9.5,
       "expected_pace": {
-       "p10": 120.837,
-       "p50": 121.545,
-       "p90": 122.265,
-       "mean": 121.548
+       "p10": 120.834,
+       "p50": 121.542,
+       "p90": 122.261,
+       "mean": 121.544
       },
       "estimated_only": false,
-      "gap_to_target_now": -0.191,
-      "gap_to_target_expected": 0.294,
-      "chance_top3": 22.2,
-      "chance_win": 6.8
+      "gap_to_target_now": -0.153,
+      "gap_to_target_expected": 0.328,
+      "chance_top3": 19.3,
+      "chance_win": 5.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.53,
+       "p50": 140.616,
+       "p90": 145.65,
+       "mean": 140.603
+      },
+      "expected_rank_wet": 14.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.115,
+      "chance_top3_wet": 12.3,
+      "chance_win_wet": 4.2
      },
      {
       "name": "Calvin Leijdekkers",
@@ -928,24 +982,37 @@
       "pace_index": -0.76,
       "history_events": 3,
       "best": 121.4271,
-      "laps": 12,
+      "laps": 35,
       "best_per_day": [
        null,
-       121.4271
+       121.4271,
+       122.1039
       ],
       "rank_now": 3,
-      "expected_rank": 16.5,
+      "expected_rank": 14.0,
       "expected_pace": {
-       "p10": 121.17,
-       "p50": 121.922,
-       "p90": 122.692,
-       "mean": 121.926
+       "p10": 121.046,
+       "p50": 121.764,
+       "p90": 122.498,
+       "mean": 121.768
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.173,
-      "gap_to_target_expected": 0.672,
-      "chance_top3": 5.0,
-      "chance_win": 1.1
+      "gap_to_target_now": 0.211,
+      "gap_to_target_expected": 0.552,
+      "chance_top3": 6.9,
+      "chance_win": 1.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.771,
+       "p50": 140.86,
+       "p90": 145.937,
+       "mean": 140.858
+      },
+      "expected_rank_wet": 15.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.37,
+      "chance_top3_wet": 10.0,
+      "chance_win_wet": 3.2
      },
      {
       "name": "Ian Laurence Brown",
@@ -962,21 +1029,34 @@
       "laps": 22,
       "best_per_day": [
        121.5972,
+       null,
        null
       ],
       "rank_now": 4,
       "expected_rank": 11.6,
       "expected_pace": {
-       "p10": 120.945,
-       "p50": 121.685,
-       "p90": 122.436,
-       "mean": 121.687
+       "p10": 120.903,
+       "p50": 121.643,
+       "p90": 122.394,
+       "mean": 121.645
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.343,
-      "gap_to_target_expected": 0.433,
-      "chance_top3": 13.7,
-      "chance_win": 3.8
+      "gap_to_target_now": 0.381,
+      "gap_to_target_expected": 0.429,
+      "chance_top3": 13.8,
+      "chance_win": 3.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.623,
+       "p50": 140.723,
+       "p90": 145.804,
+       "mean": 140.72
+      },
+      "expected_rank_wet": 14.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.232,
+      "chance_top3_wet": 11.7,
+      "chance_win_wet": 3.8
      },
      {
       "name": "Rick Postema",
@@ -990,24 +1070,125 @@
       "pace_index": -0.81,
       "history_events": 3,
       "best": 121.6959,
-      "laps": 5,
+      "laps": 14,
       "best_per_day": [
        null,
-       121.6959
+       121.6959,
+       122.4558
       ],
       "rank_now": 5,
-      "expected_rank": 18.0,
+      "expected_rank": 17.5,
       "expected_pace": {
-       "p10": 121.227,
-       "p50": 122.001,
-       "p90": 122.783,
-       "mean": 122.005
+       "p10": 121.183,
+       "p50": 121.937,
+       "p90": 122.695,
+       "mean": 121.94
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.442,
-      "gap_to_target_expected": 0.751,
-      "chance_top3": 3.9,
-      "chance_win": 0.8
+      "gap_to_target_now": 0.48,
+      "gap_to_target_expected": 0.724,
+      "chance_top3": 3.6,
+      "chance_win": 0.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.031,
+       "p50": 141.066,
+       "p90": 146.154,
+       "mean": 141.077
+      },
+      "expected_rank_wet": 16.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.589,
+      "chance_top3_wet": 8.2,
+      "chance_win_wet": 2.6
+     },
+     {
+      "name": "Bram Lenten",
+      "car_number": "142",
+      "irating": 7851,
+      "team": "KNAF Digital",
+      "is_team": false,
+      "car": "Acura NSX GT3 EVO 22",
+      "prequal_position": 9,
+      "prequal_best": 102.7114,
+      "pace_index": -1.22,
+      "history_events": 3,
+      "best": 121.9211,
+      "laps": 26,
+      "best_per_day": [
+       122.7022,
+       null,
+       121.9211
+      ],
+      "rank_now": 6,
+      "expected_rank": 14.1,
+      "expected_pace": {
+       "p10": 121.047,
+       "p50": 121.765,
+       "p90": 122.512,
+       "mean": 121.773
+      },
+      "estimated_only": false,
+      "gap_to_target_now": 0.705,
+      "gap_to_target_expected": 0.557,
+      "chance_top3": 7.4,
+      "chance_win": 1.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.802,
+       "p50": 140.806,
+       "p90": 145.9,
+       "mean": 140.853
+      },
+      "expected_rank_wet": 15.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.365,
+      "chance_top3_wet": 9.8,
+      "chance_win_wet": 3.1
+     },
+     {
+      "name": "Tom Walstra",
+      "car_number": "270",
+      "irating": 7214,
+      "team": "KNAF Digital",
+      "is_team": false,
+      "car": "Ferrari 296 GT3",
+      "prequal_position": 14,
+      "prequal_best": 102.8629,
+      "pace_index": -1.4,
+      "history_events": 3,
+      "best": 122.0088,
+      "laps": 18,
+      "best_per_day": [
+       122.4472,
+       null,
+       122.0088
+      ],
+      "rank_now": 7,
+      "expected_rank": 13.2,
+      "expected_pace": {
+       "p10": 120.99,
+       "p50": 121.729,
+       "p90": 122.462,
+       "mean": 121.727
+      },
+      "estimated_only": false,
+      "gap_to_target_now": 0.793,
+      "gap_to_target_expected": 0.511,
+      "chance_top3": 10.1,
+      "chance_win": 2.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.68,
+       "p50": 140.798,
+       "p90": 145.88,
+       "mean": 140.801
+      },
+      "expected_rank_wet": 15.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.313,
+      "chance_top3_wet": 10.7,
+      "chance_win_wet": 3.6
      },
      {
       "name": "Wessel Stevens",
@@ -1021,29 +1202,42 @@
       "pace_index": -0.82,
       "history_events": 3,
       "best": 122.0266,
-      "laps": 19,
+      "laps": 56,
       "best_per_day": [
        122.0266,
-       null
+       null,
+       122.9997
       ],
-      "rank_now": 6,
-      "expected_rank": 19.1,
+      "rank_now": 8,
+      "expected_rank": 19.7,
       "expected_pace": {
-       "p10": 121.319,
-       "p50": 122.052,
-       "p90": 122.789,
-       "mean": 122.055
+       "p10": 121.334,
+       "p50": 122.036,
+       "p90": 122.736,
+       "mean": 122.038
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.773,
-      "gap_to_target_expected": 0.801,
-      "chance_top3": 1.9,
-      "chance_win": 0.4
+      "gap_to_target_now": 0.811,
+      "gap_to_target_expected": 0.822,
+      "chance_top3": 0.9,
+      "chance_win": 0.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.091,
+       "p50": 141.179,
+       "p90": 146.225,
+       "mean": 141.17
+      },
+      "expected_rank_wet": 16.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.682,
+      "chance_top3_wet": 7.5,
+      "chance_win_wet": 2.3
      },
      {
       "name": "Barry Arends",
       "car_number": "268",
-      "irating": 5051,
+      "irating": 4927,
       "team": "Red Eagle Racing",
       "is_team": false,
       "car": "McLaren 720S GT3 EVO",
@@ -1052,24 +1246,37 @@
       "pace_index": -0.68,
       "history_events": 3,
       "best": 122.0862,
-      "laps": 17,
+      "laps": 41,
       "best_per_day": [
        122.0862,
-       null
+       null,
+       140.2078
       ],
-      "rank_now": 7,
-      "expected_rank": 19.8,
+      "rank_now": 9,
+      "expected_rank": 20.7,
       "expected_pace": {
-       "p10": 121.349,
-       "p50": 122.092,
-       "p90": 122.839,
-       "mean": 122.094
+       "p10": 121.378,
+       "p50": 122.089,
+       "p90": 122.81,
+       "mean": 122.092
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.832,
-      "gap_to_target_expected": 0.84,
-      "chance_top3": 1.6,
-      "chance_win": 0.3
+      "gap_to_target_now": 0.87,
+      "gap_to_target_expected": 0.876,
+      "chance_top3": 0.7,
+      "chance_win": 0.1,
+      "best_wet": 140.2078,
+      "expected_pace_wet": {
+       "p10": 135.761,
+       "p50": 140.873,
+       "p90": 145.908,
+       "mean": 140.855
+      },
+      "expected_rank_wet": 15.3,
+      "estimated_wet": false,
+      "gap_to_target_wet": 2.367,
+      "chance_top3_wet": 9.8,
+      "chance_win_wet": 3.4
      },
      {
       "name": "Timur Aslan Overman",
@@ -1086,21 +1293,78 @@
       "laps": 5,
       "best_per_day": [
        null,
-       122.1652
+       122.1652,
+       null
       ],
-      "rank_now": 8,
-      "expected_rank": 12.8,
+      "rank_now": 10,
+      "expected_rank": 12.3,
       "expected_pace": {
-       "p10": 120.971,
-       "p50": 121.737,
-       "p90": 122.508,
-       "mean": 121.74
+       "p10": 120.906,
+       "p50": 121.671,
+       "p90": 122.443,
+       "mean": 121.674
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.911,
-      "gap_to_target_expected": 0.486,
-      "chance_top3": 13.1,
-      "chance_win": 4.1
+      "gap_to_target_now": 0.949,
+      "gap_to_target_expected": 0.458,
+      "chance_top3": 14.6,
+      "chance_win": 4.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.669,
+       "p50": 140.728,
+       "p90": 145.872,
+       "mean": 140.745
+      },
+      "expected_rank_wet": 14.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.257,
+      "chance_top3_wet": 11.4,
+      "chance_win_wet": 3.8
+     },
+     {
+      "name": "Justin De Jong",
+      "car_number": "155",
+      "irating": 7024,
+      "team": "Gamebirds.nl",
+      "is_team": false,
+      "car": "Ferrari 296 GT3",
+      "prequal_position": 10,
+      "prequal_best": 102.8014,
+      "pace_index": -1.16,
+      "history_events": 3,
+      "best": 122.2107,
+      "laps": 7,
+      "best_per_day": [
+       null,
+       null,
+       122.2107
+      ],
+      "rank_now": 11,
+      "expected_rank": 14.8,
+      "expected_pace": {
+       "p10": 121.049,
+       "p50": 121.8,
+       "p90": 122.571,
+       "mean": 121.807
+      },
+      "estimated_only": false,
+      "gap_to_target_now": 0.995,
+      "gap_to_target_expected": 0.591,
+      "chance_top3": 8.1,
+      "chance_win": 2.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.76,
+       "p50": 140.874,
+       "p90": 145.946,
+       "mean": 140.877
+      },
+      "expected_rank_wet": 15.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.389,
+      "chance_top3_wet": 10.1,
+      "chance_win_wet": 3.3
      },
      {
       "name": "Danny Hoogendoorn",
@@ -1117,88 +1381,83 @@
       "laps": 7,
       "best_per_day": [
        122.3865,
+       null,
        null
       ],
-      "rank_now": 9,
-      "expected_rank": 20.1,
+      "rank_now": 12,
+      "expected_rank": 20.6,
       "expected_pace": {
-       "p10": 121.345,
-       "p50": 122.116,
-       "p90": 122.878,
-       "mean": 122.115
+       "p10": 121.336,
+       "p50": 122.107,
+       "p90": 122.868,
+       "mean": 122.106
       },
       "estimated_only": false,
-      "gap_to_target_now": 1.132,
-      "gap_to_target_expected": 0.861,
-      "chance_top3": 2.0,
-      "chance_win": 0.4
+      "gap_to_target_now": 1.171,
+      "gap_to_target_expected": 0.89,
+      "chance_top3": 1.7,
+      "chance_win": 0.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.153,
+       "p50": 141.295,
+       "p90": 146.352,
+       "mean": 141.268
+      },
+      "expected_rank_wet": 17.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.78,
+      "chance_top3_wet": 6.8,
+      "chance_win_wet": 2.2
      },
      {
-      "name": "Tom Walstra",
-      "car_number": "270",
-      "irating": 7214,
-      "team": "KNAF Digital",
+      "name": "Gian Zoutewelle",
+      "car_number": "335",
+      "irating": 4466,
+      "team": "Project 91 Racing Team",
       "is_team": false,
       "car": "Ferrari 296 GT3",
-      "prequal_position": 14,
-      "prequal_best": 102.8629,
-      "pace_index": -1.4,
+      "prequal_position": 22,
+      "prequal_best": 103.0337,
+      "pace_index": -0.92,
       "history_events": 3,
-      "best": 122.4472,
-      "laps": 3,
+      "best": 122.418,
+      "laps": 5,
       "best_per_day": [
-       122.4472,
-       null
+       null,
+       null,
+       122.418
       ],
-      "rank_now": 10,
-      "expected_rank": 12.7,
+      "rank_now": 13,
+      "expected_rank": 18.9,
       "expected_pace": {
-       "p10": 120.964,
-       "p50": 121.736,
-       "p90": 122.504,
-       "mean": 121.734
+       "p10": 121.236,
+       "p50": 122.016,
+       "p90": 122.789,
+       "mean": 122.014
       },
       "estimated_only": false,
-      "gap_to_target_now": 1.193,
-      "gap_to_target_expected": 0.48,
-      "chance_top3": 13.9,
-      "chance_win": 4.4
-     },
-     {
-      "name": "Bram Lenten",
-      "car_number": "142",
-      "irating": 7851,
-      "team": "KNAF Digital",
-      "is_team": false,
-      "car": "Acura NSX GT3 EVO 22",
-      "prequal_position": 9,
-      "prequal_best": 102.7114,
-      "pace_index": -1.22,
-      "history_events": 3,
-      "best": 122.7022,
-      "laps": 10,
-      "best_per_day": [
-       122.7022,
-       null
-      ],
-      "rank_now": 11,
-      "expected_rank": 16.6,
-      "expected_pace": {
-       "p10": 121.185,
-       "p50": 121.926,
-       "p90": 122.7,
-       "mean": 121.934
+      "gap_to_target_now": 1.202,
+      "gap_to_target_expected": 0.798,
+      "chance_top3": 2.9,
+      "chance_win": 0.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.005,
+       "p50": 141.164,
+       "p90": 146.211,
+       "mean": 141.14
       },
-      "estimated_only": false,
-      "gap_to_target_now": 1.448,
-      "gap_to_target_expected": 0.68,
-      "chance_top3": 5.0,
-      "chance_win": 1.2
+      "expected_rank_wet": 16.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.652,
+      "chance_top3_wet": 7.7,
+      "chance_win_wet": 2.5
      },
      {
       "name": "Joep van Tilburg",
       "car_number": "176",
-      "irating": 3817,
+      "irating": 3909,
       "team": "KNAF Digital Academy",
       "is_team": false,
       "car": "Ferrari 296 GT3",
@@ -1210,21 +1469,34 @@
       "laps": 6,
       "best_per_day": [
        null,
-       122.9272
+       122.9272,
+       null
       ],
-      "rank_now": 12,
-      "expected_rank": 22.6,
+      "rank_now": 14,
+      "expected_rank": 23.2,
       "expected_pace": {
-       "p10": 121.496,
-       "p50": 122.255,
-       "p90": 123.037,
-       "mean": 122.26
+       "p10": 121.494,
+       "p50": 122.254,
+       "p90": 123.035,
+       "mean": 122.258
       },
       "estimated_only": false,
-      "gap_to_target_now": 1.673,
-      "gap_to_target_expected": 1.006,
-      "chance_top3": 0.7,
-      "chance_win": 0.2
+      "gap_to_target_now": 1.711,
+      "gap_to_target_expected": 1.042,
+      "chance_top3": 0.6,
+      "chance_win": 0.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.345,
+       "p50": 141.421,
+       "p90": 146.503,
+       "mean": 141.429
+      },
+      "expected_rank_wet": 18.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.941,
+      "chance_top3_wet": 5.5,
+      "chance_win_wet": 1.7
      },
      {
       "name": "Bradley Leenards",
@@ -1241,18 +1513,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 8.1,
+      "expected_rank": 6.9,
       "expected_pace": {
-       "p10": 120.671,
-       "p50": 121.469,
-       "p90": 122.246,
-       "mean": 121.465
+       "p10": 120.558,
+       "p50": 121.355,
+       "p90": 122.132,
+       "mean": 121.352
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.211,
-      "chance_top3": 34.0,
-      "chance_win": 15.0
+      "gap_to_target_expected": 0.136,
+      "chance_top3": 41.2,
+      "chance_win": 19.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.35,
+       "p50": 140.418,
+       "p90": 145.432,
+       "mean": 140.389
+      },
+      "expected_rank_wet": 13.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.901,
+      "chance_top3_wet": 15.5,
+      "chance_win_wet": 5.9
      },
      {
       "name": "Youp De Vos",
@@ -1269,18 +1553,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 11.8,
+      "expected_rank": 11.1,
       "expected_pace": {
-       "p10": 120.904,
-       "p50": 121.68,
-       "p90": 122.463,
-       "mean": 121.682
+       "p10": 120.826,
+       "p50": 121.603,
+       "p90": 122.385,
+       "mean": 121.604
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.428,
-      "chance_top3": 17.3,
-      "chance_win": 6.0
+      "gap_to_target_expected": 0.388,
+      "chance_top3": 19.9,
+      "chance_win": 7.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.566,
+       "p50": 140.669,
+       "p90": 145.747,
+       "mean": 140.664
+      },
+      "expected_rank_wet": 14.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.176,
+      "chance_top3_wet": 12.5,
+      "chance_win_wet": 4.4
      },
      {
       "name": "Luciano Witvoet",
@@ -1297,18 +1593,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 12.4,
+      "expected_rank": 11.9,
       "expected_pace": {
-       "p10": 120.926,
-       "p50": 121.715,
-       "p90": 122.502,
-       "mean": 121.714
+       "p10": 120.861,
+       "p50": 121.65,
+       "p90": 122.437,
+       "mean": 121.65
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.46,
-      "chance_top3": 15.4,
-      "chance_win": 5.3
+      "gap_to_target_expected": 0.434,
+      "chance_top3": 17.0,
+      "chance_win": 6.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.582,
+       "p50": 140.732,
+       "p90": 145.803,
+       "mean": 140.703
+      },
+      "expected_rank_wet": 14.5,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.215,
+      "chance_top3_wet": 11.8,
+      "chance_win_wet": 4.0
      },
      {
       "name": "Lucas de Vries",
@@ -1325,46 +1633,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 13.7,
+      "expected_rank": 13.3,
       "expected_pace": {
-       "p10": 121.0,
-       "p50": 121.783,
-       "p90": 122.584,
-       "mean": 121.785
+       "p10": 120.943,
+       "p50": 121.726,
+       "p90": 122.527,
+       "mean": 121.728
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.531,
-      "chance_top3": 11.6,
-      "chance_win": 3.7
-     },
-     {
-      "name": "Justin De Jong",
-      "car_number": "155",
-      "irating": 7024,
-      "team": "Gamebirds.nl",
-      "is_team": false,
-      "car": "Ferrari 296 GT3",
-      "prequal_position": 10,
-      "prequal_best": 102.8014,
-      "pace_index": -1.16,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 13.9,
-      "expected_pace": {
-       "p10": 121.014,
-       "p50": 121.787,
-       "p90": 122.582,
-       "mean": 121.794
+      "gap_to_target_expected": 0.512,
+      "chance_top3": 12.5,
+      "chance_win": 3.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.686,
+       "p50": 140.812,
+       "p90": 145.836,
+       "mean": 140.807
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.54,
-      "chance_top3": 11.6,
-      "chance_win": 3.5
+      "expected_rank_wet": 15.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.319,
+      "chance_top3_wet": 10.9,
+      "chance_win_wet": 3.5
      },
      {
       "name": "Yurica Kasdorp",
@@ -1381,18 +1673,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 14.1,
+      "expected_rank": 13.9,
       "expected_pace": {
-       "p10": 121.013,
-       "p50": 121.802,
-       "p90": 122.588,
-       "mean": 121.804
+       "p10": 120.963,
+       "p50": 121.752,
+       "p90": 122.538,
+       "mean": 121.754
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.55,
-      "chance_top3": 11.0,
-      "chance_win": 3.4
+      "gap_to_target_expected": 0.538,
+      "chance_top3": 11.4,
+      "chance_win": 3.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.797,
+       "p50": 140.849,
+       "p90": 145.938,
+       "mean": 140.849
+      },
+      "expected_rank_wet": 15.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.361,
+      "chance_top3_wet": 10.2,
+      "chance_win_wet": 3.5
      },
      {
       "name": "Lennon Henriquez",
@@ -1409,18 +1713,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 14.1,
+      "expected_rank": 13.9,
       "expected_pace": {
-       "p10": 121.021,
-       "p50": 121.81,
-       "p90": 122.612,
-       "mean": 121.808
+       "p10": 120.968,
+       "p50": 121.758,
+       "p90": 122.56,
+       "mean": 121.755
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.554,
-      "chance_top3": 10.6,
-      "chance_win": 3.3
+      "gap_to_target_expected": 0.539,
+      "chance_top3": 11.3,
+      "chance_win": 3.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.707,
+       "p50": 140.864,
+       "p90": 145.857,
+       "mean": 140.833
+      },
+      "expected_rank_wet": 15.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.345,
+      "chance_top3_wet": 10.6,
+      "chance_win_wet": 3.4
      },
      {
       "name": "Jeanpaul Seemann",
@@ -1437,18 +1753,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 14.5,
+      "expected_rank": 14.2,
       "expected_pace": {
-       "p10": 121.031,
-       "p50": 121.823,
-       "p90": 122.615,
-       "mean": 121.826
+       "p10": 120.977,
+       "p50": 121.769,
+       "p90": 122.561,
+       "mean": 121.772
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.572,
-      "chance_top3": 9.6,
-      "chance_win": 3.0
+      "gap_to_target_expected": 0.556,
+      "chance_top3": 10.3,
+      "chance_win": 3.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.768,
+       "p50": 140.802,
+       "p90": 145.953,
+       "mean": 140.836
+      },
+      "expected_rank_wet": 15.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.348,
+      "chance_top3_wet": 10.6,
+      "chance_win_wet": 3.6
      },
      {
       "name": "Owen Illsley",
@@ -1467,16 +1795,28 @@
       "rank_now": null,
       "expected_rank": 15.9,
       "expected_pace": {
-       "p10": 121.109,
-       "p50": 121.891,
-       "p90": 122.688,
-       "mean": 121.898
+       "p10": 121.07,
+       "p50": 121.852,
+       "p90": 122.648,
+       "mean": 121.858
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.644,
+      "gap_to_target_expected": 0.642,
       "chance_top3": 7.4,
-      "chance_win": 2.1
+      "chance_win": 2.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.864,
+       "p50": 140.981,
+       "p90": 146.061,
+       "mean": 140.956
+      },
+      "expected_rank_wet": 15.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.468,
+      "chance_top3_wet": 9.3,
+      "chance_win_wet": 3.2
      },
      {
       "name": "Milan Schröer2",
@@ -1493,18 +1833,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 16.6,
+      "expected_rank": 16.7,
       "expected_pace": {
-       "p10": 121.142,
-       "p50": 121.934,
-       "p90": 122.72,
-       "mean": 121.934
+       "p10": 121.111,
+       "p50": 121.903,
+       "p90": 122.689,
+       "mean": 121.903
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.68,
-      "chance_top3": 6.3,
-      "chance_win": 1.8
+      "gap_to_target_expected": 0.687,
+      "chance_top3": 6.1,
+      "chance_win": 1.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.919,
+       "p50": 141.032,
+       "p90": 146.077,
+       "mean": 141.001
+      },
+      "expected_rank_wet": 16.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.513,
+      "chance_top3_wet": 8.7,
+      "chance_win_wet": 2.7
      },
      {
       "name": "Twan van den Beld",
@@ -1521,23 +1873,35 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 17.0,
+      "expected_rank": 17.2,
       "expected_pace": {
-       "p10": 121.172,
-       "p50": 121.955,
-       "p90": 122.732,
-       "mean": 121.954
+       "p10": 121.147,
+       "p50": 121.93,
+       "p90": 122.707,
+       "mean": 121.929
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.7,
-      "chance_top3": 5.7,
-      "chance_win": 1.6
+      "gap_to_target_expected": 0.713,
+      "chance_top3": 5.3,
+      "chance_win": 1.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.928,
+       "p50": 141.048,
+       "p90": 146.098,
+       "mean": 141.043
+      },
+      "expected_rank_wet": 16.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.555,
+      "chance_top3_wet": 8.6,
+      "chance_win_wet": 2.8
      },
      {
       "name": "Daniel Morpey",
       "car_number": "283",
-      "irating": 5134,
+      "irating": 5116,
       "team": "Red Eagle Racing",
       "is_team": false,
       "car": "BMW M4 GT3 EVO",
@@ -1549,18 +1913,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 17.1,
+      "expected_rank": 17.3,
       "expected_pace": {
-       "p10": 121.166,
-       "p50": 121.96,
-       "p90": 122.757,
-       "mean": 121.961
+       "p10": 121.136,
+       "p50": 121.931,
+       "p90": 122.727,
+       "mean": 121.932
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.707,
-      "chance_top3": 5.5,
-      "chance_win": 1.5
+      "gap_to_target_expected": 0.716,
+      "chance_top3": 5.4,
+      "chance_win": 1.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.938,
+       "p50": 141.058,
+       "p90": 146.136,
+       "mean": 141.055
+      },
+      "expected_rank_wet": 16.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.567,
+      "chance_top3_wet": 8.2,
+      "chance_win_wet": 2.5
      },
      {
       "name": "Rens de Kok",
@@ -1577,46 +1953,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 17.2,
+      "expected_rank": 17.5,
       "expected_pace": {
-       "p10": 121.177,
-       "p50": 121.968,
-       "p90": 122.758,
-       "mean": 121.97
+       "p10": 121.15,
+       "p50": 121.942,
+       "p90": 122.732,
+       "mean": 121.943
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.716,
-      "chance_top3": 5.4,
-      "chance_win": 1.4
-     },
-     {
-      "name": "Gian Zoutewelle",
-      "car_number": "335",
-      "irating": 4466,
-      "team": "Project 91 Racing Team",
-      "is_team": false,
-      "car": "Ferrari 296 GT3",
-      "prequal_position": 22,
-      "prequal_best": 103.0337,
-      "pace_index": -0.92,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 17.7,
-      "expected_pace": {
-       "p10": 121.199,
-       "p50": 121.994,
-       "p90": 122.781,
-       "mean": 121.991
+      "gap_to_target_expected": 0.727,
+      "chance_top3": 5.1,
+      "chance_win": 1.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 135.978,
+       "p50": 141.024,
+       "p90": 146.117,
+       "mean": 141.037
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.737,
-      "chance_top3": 4.8,
-      "chance_win": 1.3
+      "expected_rank_wet": 16.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.549,
+      "chance_top3_wet": 8.5,
+      "chance_win_wet": 2.7
      },
      {
       "name": "Didier Brobbel",
@@ -1633,18 +1993,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 18.2,
+      "expected_rank": 18.7,
       "expected_pace": {
-       "p10": 121.235,
-       "p50": 122.018,
-       "p90": 122.813,
-       "mean": 122.02
+       "p10": 121.221,
+       "p50": 122.004,
+       "p90": 122.799,
+       "mean": 122.006
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.766,
-      "chance_top3": 4.3,
-      "chance_win": 1.0
+      "gap_to_target_expected": 0.79,
+      "chance_top3": 3.9,
+      "chance_win": 0.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.03,
+       "p50": 141.14,
+       "p90": 146.208,
+       "mean": 141.123
+      },
+      "expected_rank_wet": 16.5,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.635,
+      "chance_top3_wet": 7.8,
+      "chance_win_wet": 2.4
      },
      {
       "name": "Justin van der Linden",
@@ -1658,21 +2030,37 @@
       "pace_index": -0.79,
       "history_events": 3,
       "best": null,
-      "laps": 0,
-      "best_per_day": null,
+      "laps": 5,
+      "best_per_day": [
+       null,
+       null,
+       139.0515
+      ],
       "rank_now": null,
-      "expected_rank": 18.6,
+      "expected_rank": 19.1,
       "expected_pace": {
-       "p10": 121.252,
-       "p50": 122.045,
-       "p90": 122.822,
-       "mean": 122.042
+       "p10": 121.236,
+       "p50": 122.029,
+       "p90": 122.806,
+       "mean": 122.027
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.788,
-      "chance_top3": 3.9,
-      "chance_win": 1.0
+      "gap_to_target_expected": 0.811,
+      "chance_top3": 3.5,
+      "chance_win": 0.9,
+      "best_wet": 139.0515,
+      "expected_pace_wet": {
+       "p10": 135.306,
+       "p50": 140.407,
+       "p90": 145.49,
+       "mean": 140.405
+      },
+      "expected_rank_wet": 13.1,
+      "estimated_wet": false,
+      "gap_to_target_wet": 1.917,
+      "chance_top3_wet": 15.6,
+      "chance_win_wet": 5.7
      },
      {
       "name": "Kris Verstijnen",
@@ -1689,18 +2077,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 19.1,
+      "expected_rank": 19.5,
       "expected_pace": {
-       "p10": 121.272,
-       "p50": 122.069,
-       "p90": 122.849,
-       "mean": 122.065
+       "p10": 121.259,
+       "p50": 122.056,
+       "p90": 122.836,
+       "mean": 122.052
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.811,
-      "chance_top3": 3.3,
-      "chance_win": 0.7
+      "gap_to_target_expected": 0.836,
+      "chance_top3": 2.8,
+      "chance_win": 0.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.097,
+       "p50": 141.154,
+       "p90": 146.256,
+       "mean": 141.164
+      },
+      "expected_rank_wet": 16.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.676,
+      "chance_top3_wet": 7.8,
+      "chance_win_wet": 2.3
      },
      {
       "name": "Davey Van De Wakker",
@@ -1717,18 +2117,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 21.5,
+      "expected_rank": 22.4,
       "expected_pace": {
-       "p10": 121.413,
-       "p50": 122.204,
-       "p90": 122.983,
-       "mean": 122.201
+       "p10": 121.429,
+       "p50": 122.221,
+       "p90": 123.0,
+       "mean": 122.217
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.947,
-      "chance_top3": 1.6,
-      "chance_win": 0.3
+      "gap_to_target_expected": 1.001,
+      "chance_top3": 1.1,
+      "chance_win": 0.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.216,
+       "p50": 141.356,
+       "p90": 146.459,
+       "mean": 141.368
+      },
+      "expected_rank_wet": 17.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.88,
+      "chance_top3_wet": 6.0,
+      "chance_win_wet": 1.8
      }
     ]
    },
@@ -1738,32 +2150,48 @@
     "prequal_from": 31,
     "prequal_to": 61,
     "members": 31,
-    "with_time": 5,
+    "with_time": 6,
     "now": {
      "p1": 121.4399,
      "p3": 122.4017,
      "p10": null
     },
     "target": {
-     "p10": 121.194,
-     "p50": 121.801,
-     "p90": 122.405
+     "p10": 121.23,
+     "p50": 121.834,
+     "p90": 122.436
     },
     "race_pace_offset": 1.92,
+    "target_wet": {
+     "p10": 134.631,
+     "p50": 139.261,
+     "p90": 143.94
+    },
+    "winner_pace_wet": {
+     "p10": 133.309,
+     "p50": 138.016,
+     "p90": 142.841
+    },
+    "top10_pace_wet": {
+     "p10": 136.248,
+     "p50": 140.831,
+     "p90": 145.452
+    },
+    "with_wet_time": 5,
     "race_pace_target": {
-     "p10": 123.114,
-     "p50": 123.721,
-     "p90": 124.325
+     "p10": 123.15,
+     "p50": 123.754,
+     "p90": 124.356
     },
     "winner_pace": {
-     "p10": 120.861,
-     "p50": 121.51,
-     "p90": 122.142
+     "p10": 120.886,
+     "p50": 121.537,
+     "p90": 122.171
     },
     "top10_pace": {
-     "p10": 121.605,
-     "p50": 122.205,
-     "p90": 122.795
+     "p10": 121.648,
+     "p50": 122.247,
+     "p90": 122.84
     },
     "drivers": [
      {
@@ -1781,21 +2209,34 @@
       "laps": 25,
       "best_per_day": [
        null,
-       121.4399
+       121.4399,
+       null
       ],
       "rank_now": 1,
-      "expected_rank": 7.9,
+      "expected_rank": 7.5,
       "expected_pace": {
-       "p10": 121.284,
-       "p50": 122.021,
-       "p90": 122.754,
-       "mean": 122.019
+       "p10": 121.309,
+       "p50": 122.046,
+       "p90": 122.778,
+       "mean": 122.043
       },
       "estimated_only": false,
-      "gap_to_target_now": -0.361,
-      "gap_to_target_expected": 0.218,
-      "chance_top3": 31.2,
-      "chance_win": 11.7
+      "gap_to_target_now": -0.394,
+      "gap_to_target_expected": 0.209,
+      "chance_top3": 32.0,
+      "chance_win": 11.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.039,
+       "p50": 141.185,
+       "p90": 146.252,
+       "mean": 141.161
+      },
+      "expected_rank_wet": 13.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.9,
+      "chance_top3_wet": 15.6,
+      "chance_win_wet": 5.8
      },
      {
       "name": "Quinten Klumpert",
@@ -1809,24 +2250,37 @@
       "pace_index": -0.26,
       "history_events": 3,
       "best": 121.7237,
-      "laps": 33,
+      "laps": 42,
       "best_per_day": [
        null,
-       121.7237
+       121.7237,
+       141.6978
       ],
       "rank_now": 2,
-      "expected_rank": 9.7,
+      "expected_rank": 8.4,
       "expected_pace": {
-       "p10": 121.392,
-       "p50": 122.127,
-       "p90": 122.862,
-       "mean": 122.126
+       "p10": 121.38,
+       "p50": 122.105,
+       "p90": 122.833,
+       "mean": 122.105
       },
       "estimated_only": false,
-      "gap_to_target_now": -0.077,
-      "gap_to_target_expected": 0.325,
-      "chance_top3": 20.9,
-      "chance_win": 6.5
+      "gap_to_target_now": -0.11,
+      "gap_to_target_expected": 0.271,
+      "chance_top3": 24.8,
+      "chance_win": 8.0,
+      "best_wet": 141.6978,
+      "expected_pace_wet": {
+       "p10": 136.335,
+       "p50": 141.405,
+       "p90": 146.468,
+       "mean": 141.403
+      },
+      "expected_rank_wet": 14.3,
+      "estimated_wet": false,
+      "gap_to_target_wet": 2.142,
+      "chance_top3_wet": 12.3,
+      "chance_win_wet": 4.2
      },
      {
       "name": "Dick Jansen",
@@ -1840,24 +2294,37 @@
       "pace_index": -0.01,
       "history_events": 3,
       "best": 122.4017,
-      "laps": 11,
+      "laps": 15,
       "best_per_day": [
        123.2159,
-       122.4017
+       122.4017,
+       144.9924
       ],
       "rank_now": 3,
-      "expected_rank": 17.1,
+      "expected_rank": 16.9,
       "expected_pace": {
-       "p10": 121.725,
-       "p50": 122.491,
-       "p90": 123.241,
-       "mean": 122.486
+       "p10": 121.777,
+       "p50": 122.534,
+       "p90": 123.279,
+       "mean": 122.53
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.601,
-      "gap_to_target_expected": 0.685,
-      "chance_top3": 4.7,
-      "chance_win": 1.2
+      "gap_to_target_now": 0.568,
+      "gap_to_target_expected": 0.696,
+      "chance_top3": 4.1,
+      "chance_win": 0.9,
+      "best_wet": 144.9924,
+      "expected_pace_wet": {
+       "p10": 137.832,
+       "p50": 142.891,
+       "p90": 147.977,
+       "mean": 142.882
+      },
+      "expected_rank_wet": 21.4,
+      "estimated_wet": false,
+      "gap_to_target_wet": 3.621,
+      "chance_top3_wet": 2.4,
+      "chance_win_wet": 0.6
      },
      {
       "name": "Gert Bos",
@@ -1874,21 +2341,78 @@
       "laps": 16,
       "best_per_day": [
        122.5603,
+       null,
        null
       ],
       "rank_now": 4,
-      "expected_rank": 19.2,
+      "expected_rank": 19.3,
       "expected_pace": {
-       "p10": 121.836,
-       "p50": 122.59,
-       "p90": 123.329,
-       "mean": 122.589
+       "p10": 121.892,
+       "p50": 122.646,
+       "p90": 123.385,
+       "mean": 122.645
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.759,
-      "gap_to_target_expected": 0.788,
-      "chance_top3": 2.4,
-      "chance_win": 0.5
+      "gap_to_target_now": 0.726,
+      "gap_to_target_expected": 0.811,
+      "chance_top3": 2.1,
+      "chance_win": 0.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.767,
+       "p50": 141.864,
+       "p90": 147.005,
+       "mean": 141.856
+      },
+      "expected_rank_wet": 16.5,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.595,
+      "chance_top3_wet": 8.4,
+      "chance_win_wet": 2.4
+     },
+     {
+      "name": "Luuk Feitsma",
+      "car_number": "123",
+      "irating": 2232,
+      "team": "Valkra Performance",
+      "is_team": true,
+      "car": "Lamborghini Huracán GT3 EVO",
+      "prequal_position": 47,
+      "prequal_best": 103.5204,
+      "pace_index": -0.19,
+      "history_events": 3,
+      "best": 122.6123,
+      "laps": 12,
+      "best_per_day": [
+       null,
+       null,
+       122.6123
+      ],
+      "rank_now": 5,
+      "expected_rank": 17.6,
+      "expected_pace": {
+       "p10": 121.806,
+       "p50": 122.566,
+       "p90": 123.321,
+       "mean": 122.563
+      },
+      "estimated_only": false,
+      "gap_to_target_now": 0.778,
+      "gap_to_target_expected": 0.729,
+      "chance_top3": 3.7,
+      "chance_win": 0.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.649,
+       "p50": 141.795,
+       "p90": 146.872,
+       "mean": 141.769
+      },
+      "expected_rank_wet": 16.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.508,
+      "chance_top3_wet": 8.7,
+      "chance_win_wet": 2.7
      },
      {
       "name": "Kevin Versantvoort",
@@ -1905,21 +2429,34 @@
       "laps": 3,
       "best_per_day": [
        122.8301,
+       null,
        null
       ],
-      "rank_now": 5,
-      "expected_rank": 15.6,
+      "rank_now": 6,
+      "expected_rank": 15.4,
       "expected_pace": {
-       "p10": 121.623,
-       "p50": 122.408,
-       "p90": 123.202,
-       "mean": 122.413
+       "p10": 121.663,
+       "p50": 122.449,
+       "p90": 123.243,
+       "mean": 122.453
       },
       "estimated_only": false,
-      "gap_to_target_now": 1.029,
-      "gap_to_target_expected": 0.612,
-      "chance_top3": 8.1,
-      "chance_win": 2.2
+      "gap_to_target_now": 0.996,
+      "gap_to_target_expected": 0.619,
+      "chance_top3": 7.8,
+      "chance_win": 2.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.513,
+       "p50": 141.632,
+       "p90": 146.746,
+       "mean": 141.626
+      },
+      "expected_rank_wet": 15.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.365,
+      "chance_top3_wet": 10.8,
+      "chance_win_wet": 3.7
      },
      {
       "name": "Servais Van Markwijk",
@@ -1936,18 +2473,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 9.9,
+      "expected_rank": 9.2,
       "expected_pace": {
-       "p10": 121.329,
-       "p50": 122.109,
-       "p90": 122.911,
-       "mean": 122.113
+       "p10": 121.331,
+       "p50": 122.111,
+       "p90": 122.913,
+       "mean": 122.115
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.312,
-      "chance_top3": 25.6,
-      "chance_win": 10.7
+      "gap_to_target_expected": 0.281,
+      "chance_top3": 28.2,
+      "chance_win": 11.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.217,
+       "p50": 141.212,
+       "p90": 146.38,
+       "mean": 141.256
+      },
+      "expected_rank_wet": 13.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.995,
+      "chance_top3_wet": 14.8,
+      "chance_win_wet": 5.5
      },
      {
       "name": "Milan Wassenburg",
@@ -1964,23 +2513,35 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 12.1,
+      "expected_rank": 11.5,
       "expected_pace": {
-       "p10": 121.444,
-       "p50": 122.233,
-       "p90": 123.026,
-       "mean": 122.235
+       "p10": 121.458,
+       "p50": 122.247,
+       "p90": 123.04,
+       "mean": 122.249
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.434,
-      "chance_top3": 17.1,
-      "chance_win": 6.2
+      "gap_to_target_expected": 0.415,
+      "chance_top3": 18.3,
+      "chance_win": 6.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.332,
+       "p50": 141.373,
+       "p90": 146.466,
+       "mean": 141.385
+      },
+      "expected_rank_wet": 14.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.124,
+      "chance_top3_wet": 13.1,
+      "chance_win_wet": 4.6
      },
      {
       "name": "Niek Jacobs",
       "car_number": "274",
-      "irating": 4120,
+      "irating": 4145,
       "team": null,
       "is_team": false,
       "car": null,
@@ -1992,46 +2553,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 12.3,
+      "expected_rank": 11.7,
       "expected_pace": {
-       "p10": 121.456,
-       "p50": 122.24,
-       "p90": 123.029,
-       "mean": 122.241
+       "p10": 121.473,
+       "p50": 122.257,
+       "p90": 123.046,
+       "mean": 122.258
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.44,
-      "chance_top3": 17.1,
-      "chance_win": 6.3
-     },
-     {
-      "name": "Mika Van Den Hurk",
-      "car_number": "126",
-      "irating": 3640,
-      "team": null,
-      "is_team": false,
-      "car": "Lamborghini Huracan GT3 EVO",
-      "prequal_position": 36,
-      "prequal_best": 103.2781,
-      "pace_index": -0.48,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 12.6,
-      "expected_pace": {
-       "p10": 121.462,
-       "p50": 122.259,
-       "p90": 123.058,
-       "mean": 122.259
+      "gap_to_target_expected": 0.424,
+      "chance_top3": 18.1,
+      "chance_win": 6.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.279,
+       "p50": 141.422,
+       "p90": 146.47,
+       "mean": 141.398
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.458,
-      "chance_top3": 15.8,
-      "chance_win": 5.7
+      "expected_rank_wet": 14.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.137,
+      "chance_top3_wet": 12.8,
+      "chance_win_wet": 4.6
      },
      {
       "name": "Kelvin Huurman3",
@@ -2048,18 +2593,74 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 12.7,
+      "expected_rank": 12.1,
       "expected_pace": {
-       "p10": 121.48,
-       "p50": 122.263,
-       "p90": 123.063,
-       "mean": 122.266
+       "p10": 121.497,
+       "p50": 122.281,
+       "p90": 123.08,
+       "mean": 122.283
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.465,
-      "chance_top3": 15.3,
-      "chance_win": 5.4
+      "gap_to_target_expected": 0.449,
+      "chance_top3": 16.2,
+      "chance_win": 5.8,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.343,
+       "p50": 141.455,
+       "p90": 146.587,
+       "mean": 141.467
+      },
+      "expected_rank_wet": 14.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.206,
+      "chance_top3_wet": 12.6,
+      "chance_win_wet": 4.3
+     },
+     {
+      "name": "Mika Van Den Hurk",
+      "car_number": "126",
+      "irating": 3554,
+      "team": null,
+      "is_team": false,
+      "car": "Lamborghini Huracán GT3 EVO",
+      "prequal_position": 36,
+      "prequal_best": 103.2781,
+      "pace_index": -0.48,
+      "history_events": 3,
+      "best": null,
+      "laps": 6,
+      "best_per_day": [
+       null,
+       null,
+       143.3554
+      ],
+      "rank_now": null,
+      "expected_rank": 12.2,
+      "expected_pace": {
+       "p10": 121.486,
+       "p50": 122.283,
+       "p90": 123.082,
+       "mean": 122.283
+      },
+      "estimated_only": true,
+      "gap_to_target_now": null,
+      "gap_to_target_expected": 0.449,
+      "chance_top3": 16.4,
+      "chance_win": 5.8,
+      "best_wet": 143.3554,
+      "expected_pace_wet": {
+       "p10": 137.051,
+       "p50": 142.129,
+       "p90": 147.238,
+       "mean": 142.106
+      },
+      "expected_rank_wet": 17.8,
+      "estimated_wet": false,
+      "gap_to_target_wet": 2.845,
+      "chance_top3_wet": 6.3,
+      "chance_win_wet": 1.9
      },
      {
       "name": "Jorrit Drent",
@@ -2076,21 +2677,34 @@
       "laps": 0,
       "best_per_day": [
        null,
+       null,
        null
       ],
       "rank_now": null,
-      "expected_rank": 13.1,
+      "expected_rank": 12.5,
       "expected_pace": {
-       "p10": 121.491,
-       "p50": 122.286,
-       "p90": 123.068,
-       "mean": 122.283
+       "p10": 121.513,
+       "p50": 122.308,
+       "p90": 123.09,
+       "mean": 122.305
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.482,
-      "chance_top3": 14.3,
-      "chance_win": 5.0
+      "gap_to_target_expected": 0.471,
+      "chance_top3": 14.9,
+      "chance_win": 5.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.346,
+       "p50": 141.485,
+       "p90": 146.578,
+       "mean": 141.469
+      },
+      "expected_rank_wet": 14.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.208,
+      "chance_top3_wet": 12.3,
+      "chance_win_wet": 4.3
      },
      {
       "name": "Coen Gerrits",
@@ -2107,18 +2721,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 13.2,
+      "expected_rank": 12.7,
       "expected_pace": {
-       "p10": 121.498,
-       "p50": 122.288,
-       "p90": 123.077,
-       "mean": 122.289
+       "p10": 121.523,
+       "p50": 122.313,
+       "p90": 123.102,
+       "mean": 122.315
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.488,
-      "chance_top3": 14.1,
-      "chance_win": 4.8
+      "gap_to_target_expected": 0.481,
+      "chance_top3": 14.5,
+      "chance_win": 4.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.387,
+       "p50": 141.468,
+       "p90": 146.567,
+       "mean": 141.471
+      },
+      "expected_rank_wet": 14.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.21,
+      "chance_top3_wet": 12.0,
+      "chance_win_wet": 4.4
      },
      {
       "name": "Wulfert Van Goor",
@@ -2135,18 +2761,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 13.4,
+      "expected_rank": 12.8,
       "expected_pace": {
-       "p10": 121.512,
-       "p50": 122.298,
-       "p90": 123.097,
-       "mean": 122.299
+       "p10": 121.532,
+       "p50": 122.319,
+       "p90": 123.118,
+       "mean": 122.32
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.498,
-      "chance_top3": 13.3,
-      "chance_win": 4.4
+      "gap_to_target_expected": 0.486,
+      "chance_top3": 14.0,
+      "chance_win": 4.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.419,
+       "p50": 141.511,
+       "p90": 146.629,
+       "mean": 141.507
+      },
+      "expected_rank_wet": 14.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.246,
+      "chance_top3_wet": 12.1,
+      "chance_win_wet": 4.2
      },
      {
       "name": "Sander Jorritsma",
@@ -2154,32 +2792,48 @@
       "irating": 3901,
       "team": "Altura eSports",
       "is_team": false,
-      "car": "Audi R8 LMS EVO II",
+      "car": "Audi R8 LMS EVO II GT3",
       "prequal_position": 41,
       "prequal_best": 103.3971,
       "pace_index": -0.32,
       "history_events": 3,
       "best": null,
-      "laps": 0,
-      "best_per_day": null,
+      "laps": 6,
+      "best_per_day": [
+       null,
+       null,
+       142.82
+      ],
       "rank_now": null,
-      "expected_rank": 13.9,
+      "expected_rank": 13.6,
       "expected_pace": {
-       "p10": 121.533,
-       "p50": 122.325,
-       "p90": 123.118,
-       "mean": 122.328
+       "p10": 121.568,
+       "p50": 122.36,
+       "p90": 123.153,
+       "mean": 122.363
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.527,
-      "chance_top3": 12.0,
-      "chance_win": 3.8
+      "gap_to_target_expected": 0.529,
+      "chance_top3": 11.9,
+      "chance_win": 3.7,
+      "best_wet": 142.82,
+      "expected_pace_wet": {
+       "p10": 136.801,
+       "p50": 141.999,
+       "p90": 147.068,
+       "mean": 141.97
+      },
+      "expected_rank_wet": 17.1,
+      "estimated_wet": false,
+      "gap_to_target_wet": 2.709,
+      "chance_top3_wet": 7.5,
+      "chance_win_wet": 2.4
      },
      {
       "name": "Max De Rooij",
       "car_number": null,
-      "irating": 2641,
+      "irating": 2770,
       "team": "STROOPWAFEL RACING TEAM",
       "is_team": false,
       "car": "BMW M4 GT3 EVO",
@@ -2191,46 +2845,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 14.5,
+      "expected_rank": 14.0,
       "expected_pace": {
-       "p10": 121.576,
-       "p50": 122.357,
-       "p90": 123.145,
-       "mean": 122.356
+       "p10": 121.599,
+       "p50": 122.38,
+       "p90": 123.167,
+       "mean": 122.379
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.555,
-      "chance_top3": 10.5,
-      "chance_win": 3.3
-     },
-     {
-      "name": "Stijn Handgraaf",
-      "car_number": "129",
-      "irating": 5055,
-      "team": "Project 91 Racing Team",
-      "is_team": false,
-      "car": "Ferrari 296 GT3",
-      "prequal_position": 33,
-      "prequal_best": 103.2154,
-      "pace_index": -0.16,
-      "history_events": 2,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 14.5,
-      "expected_pace": {
-       "p10": 121.561,
-       "p50": 122.362,
-       "p90": 123.145,
-       "mean": 122.357
+      "gap_to_target_expected": 0.545,
+      "chance_top3": 10.9,
+      "chance_win": 3.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.482,
+       "p50": 141.561,
+       "p90": 146.653,
+       "mean": 141.563
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.556,
-      "chance_top3": 10.8,
-      "chance_win": 3.5
+      "expected_rank_wet": 15.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.302,
+      "chance_top3_wet": 10.9,
+      "chance_win_wet": 3.6
      },
      {
       "name": "Otto Karis",
@@ -2247,18 +2885,70 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 14.6,
+      "expected_rank": 14.3,
       "expected_pace": {
-       "p10": 121.571,
-       "p50": 122.358,
-       "p90": 123.158,
-       "mean": 122.361
+       "p10": 121.608,
+       "p50": 122.395,
+       "p90": 123.195,
+       "mean": 122.398
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.56,
-      "chance_top3": 10.7,
-      "chance_win": 3.6
+      "gap_to_target_expected": 0.564,
+      "chance_top3": 10.6,
+      "chance_win": 3.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.455,
+       "p50": 141.562,
+       "p90": 146.742,
+       "mean": 141.567
+      },
+      "expected_rank_wet": 15.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.306,
+      "chance_top3_wet": 11.2,
+      "chance_win_wet": 3.7
+     },
+     {
+      "name": "Stijn Handgraaf",
+      "car_number": "129",
+      "irating": 5055,
+      "team": "Project 91 Racing Team",
+      "is_team": false,
+      "car": "Ferrari 296 GT3",
+      "prequal_position": 33,
+      "prequal_best": 103.2154,
+      "pace_index": -0.16,
+      "history_events": 2,
+      "best": null,
+      "laps": 0,
+      "best_per_day": null,
+      "rank_now": null,
+      "expected_rank": 14.4,
+      "expected_pace": {
+       "p10": 121.608,
+       "p50": 122.409,
+       "p90": 123.193,
+       "mean": 122.404
+      },
+      "estimated_only": true,
+      "gap_to_target_now": null,
+      "gap_to_target_expected": 0.57,
+      "chance_top3": 10.2,
+      "chance_win": 3.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.489,
+       "p50": 141.632,
+       "p90": 146.673,
+       "mean": 141.588
+      },
+      "expected_rank_wet": 15.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.327,
+      "chance_top3_wet": 10.7,
+      "chance_win_wet": 3.6
      },
      {
       "name": "Thimo Baum",
@@ -2275,18 +2965,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 15.2,
+      "expected_rank": 15.0,
       "expected_pace": {
-       "p10": 121.598,
-       "p50": 122.389,
-       "p90": 123.19,
-       "mean": 122.391
+       "p10": 121.64,
+       "p50": 122.43,
+       "p90": 123.232,
+       "mean": 122.432
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.59,
-      "chance_top3": 9.4,
-      "chance_win": 2.9
+      "gap_to_target_expected": 0.598,
+      "chance_top3": 9.2,
+      "chance_win": 2.8,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.477,
+       "p50": 141.584,
+       "p90": 146.755,
+       "mean": 141.601
+      },
+      "expected_rank_wet": 15.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.34,
+      "chance_top3_wet": 10.9,
+      "chance_win_wet": 3.6
      },
      {
       "name": "Donny de Waal",
@@ -2305,44 +3007,28 @@
       "rank_now": null,
       "expected_rank": 16.7,
       "expected_pace": {
-       "p10": 121.671,
-       "p50": 122.464,
-       "p90": 123.267,
-       "mean": 122.467
+       "p10": 121.722,
+       "p50": 122.515,
+       "p90": 123.318,
+       "mean": 122.519
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.666,
-      "chance_top3": 6.7,
-      "chance_win": 2.1
-     },
-     {
-      "name": "Luuk Feitsma",
-      "car_number": "123",
-      "irating": 2232,
-      "team": "Valkra Performance",
-      "is_team": true,
-      "car": "Lamborghini Huracan GT3 EVO",
-      "prequal_position": 47,
-      "prequal_best": 103.5204,
-      "pace_index": -0.19,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 17.2,
-      "expected_pace": {
-       "p10": 121.703,
-       "p50": 122.495,
-       "p90": 123.285,
-       "mean": 122.493
+      "gap_to_target_expected": 0.685,
+      "chance_top3": 6.3,
+      "chance_win": 1.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.609,
+       "p50": 141.692,
+       "p90": 146.844,
+       "mean": 141.7
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.692,
-      "chance_top3": 6.0,
-      "chance_win": 1.7
+      "expected_rank_wet": 15.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.439,
+      "chance_top3_wet": 9.9,
+      "chance_win_wet": 3.3
      },
      {
       "name": "Pawel Jakubowski",
@@ -2359,18 +3045,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 17.6,
+      "expected_rank": 17.8,
       "expected_pace": {
-       "p10": 121.716,
-       "p50": 122.511,
-       "p90": 123.307,
-       "mean": 122.512
+       "p10": 121.782,
+       "p50": 122.576,
+       "p90": 123.372,
+       "mean": 122.577
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.711,
-      "chance_top3": 5.6,
-      "chance_win": 1.6
+      "gap_to_target_expected": 0.743,
+      "chance_top3": 4.7,
+      "chance_win": 1.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.751,
+       "p50": 141.819,
+       "p90": 146.947,
+       "mean": 141.804
+      },
+      "expected_rank_wet": 16.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.543,
+      "chance_top3_wet": 9.0,
+      "chance_win_wet": 2.9
      },
      {
       "name": "Ron Gravesteijn",
@@ -2387,18 +3085,74 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 18.4,
+      "expected_rank": 18.8,
       "expected_pace": {
-       "p10": 121.762,
-       "p50": 122.559,
-       "p90": 123.344,
-       "mean": 122.557
+       "p10": 121.835,
+       "p50": 122.633,
+       "p90": 123.418,
+       "mean": 122.631
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.756,
-      "chance_top3": 4.4,
-      "chance_win": 1.1
+      "gap_to_target_expected": 0.797,
+      "chance_top3": 3.4,
+      "chance_win": 0.8,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.802,
+       "p50": 141.853,
+       "p90": 146.947,
+       "mean": 141.857
+      },
+      "expected_rank_wet": 16.5,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.596,
+      "chance_top3_wet": 8.5,
+      "chance_win_wet": 2.6
+     },
+     {
+      "name": "Ruud Lopez",
+      "car_number": "48",
+      "irating": 2036,
+      "team": "Valkra Performance",
+      "is_team": true,
+      "car": "Acura NSX GT3 EVO 22",
+      "prequal_position": 46,
+      "prequal_best": 103.518,
+      "pace_index": -0.01,
+      "history_events": 3,
+      "best": null,
+      "laps": 21,
+      "best_per_day": [
+       null,
+       null,
+       141.3797
+      ],
+      "rank_now": null,
+      "expected_rank": 19.6,
+      "expected_pace": {
+       "p10": 121.881,
+       "p50": 122.675,
+       "p90": 123.467,
+       "mean": 122.673
+      },
+      "estimated_only": true,
+      "gap_to_target_now": null,
+      "gap_to_target_expected": 0.839,
+      "chance_top3": 3.1,
+      "chance_win": 0.7,
+      "best_wet": 141.3797,
+      "expected_pace_wet": {
+       "p10": 136.618,
+       "p50": 141.714,
+       "p90": 146.817,
+       "mean": 141.722
+      },
+      "expected_rank_wet": 15.9,
+      "estimated_wet": false,
+      "gap_to_target_wet": 2.461,
+      "chance_top3_wet": 9.9,
+      "chance_win_wet": 3.3
      },
      {
       "name": "Stefan van der Velde",
@@ -2415,18 +3169,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 19.2,
+      "expected_rank": 19.8,
       "expected_pace": {
-       "p10": 121.791,
-       "p50": 122.597,
-       "p90": 123.39,
-       "mean": 122.593
+       "p10": 121.881,
+       "p50": 122.687,
+       "p90": 123.48,
+       "mean": 122.683
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.792,
-      "chance_top3": 3.8,
-      "chance_win": 1.0
+      "gap_to_target_expected": 0.849,
+      "chance_top3": 2.9,
+      "chance_win": 0.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.817,
+       "p50": 141.899,
+       "p90": 147.031,
+       "mean": 141.91
+      },
+      "expected_rank_wet": 16.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.649,
+      "chance_top3_wet": 7.9,
+      "chance_win_wet": 2.5
      },
      {
       "name": "Michel Van Der Ven",
@@ -2443,46 +3209,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 19.3,
+      "expected_rank": 19.9,
       "expected_pace": {
-       "p10": 121.808,
-       "p50": 122.6,
-       "p90": 123.392,
-       "mean": 122.598
+       "p10": 121.897,
+       "p50": 122.689,
+       "p90": 123.481,
+       "mean": 122.687
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.797,
-      "chance_top3": 3.8,
-      "chance_win": 0.9
-     },
-     {
-      "name": "Ruud Lopez",
-      "car_number": "48",
-      "irating": 2036,
-      "team": "Valkra Performance",
-      "is_team": true,
-      "car": "Acura NSX GT3 EVO",
-      "prequal_position": 46,
-      "prequal_best": 103.518,
-      "pace_index": -0.01,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 19.2,
-      "expected_pace": {
-       "p10": 121.807,
-       "p50": 122.601,
-       "p90": 123.393,
-       "mean": 122.599
+      "gap_to_target_expected": 0.853,
+      "chance_top3": 2.8,
+      "chance_win": 0.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.836,
+       "p50": 141.876,
+       "p90": 147.065,
+       "mean": 141.893
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.798,
-      "chance_top3": 3.7,
-      "chance_win": 0.9
+      "expected_rank_wet": 16.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.632,
+      "chance_top3_wet": 8.3,
+      "chance_win_wet": 2.5
      },
      {
       "name": "Alexander Gorissen",
@@ -2499,18 +3249,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 19.9,
+      "expected_rank": 20.6,
       "expected_pace": {
-       "p10": 121.836,
-       "p50": 122.631,
-       "p90": 123.423,
-       "mean": 122.631
+       "p10": 121.932,
+       "p50": 122.728,
+       "p90": 123.519,
+       "mean": 122.727
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.83,
-      "chance_top3": 3.0,
-      "chance_win": 0.8
+      "gap_to_target_expected": 0.893,
+      "chance_top3": 2.2,
+      "chance_win": 0.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.864,
+       "p50": 141.973,
+       "p90": 147.091,
+       "mean": 141.963
+      },
+      "expected_rank_wet": 17.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.702,
+      "chance_top3_wet": 7.4,
+      "chance_win_wet": 2.4
      },
      {
       "name": "Patrick A Hesterman",
@@ -2527,18 +3289,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 21.0,
+      "expected_rank": 21.7,
       "expected_pace": {
-       "p10": 121.898,
-       "p50": 122.687,
-       "p90": 123.478,
-       "mean": 122.687
+       "p10": 121.999,
+       "p50": 122.788,
+       "p90": 123.579,
+       "mean": 122.789
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.886,
-      "chance_top3": 2.2,
-      "chance_win": 0.5
+      "gap_to_target_expected": 0.955,
+      "chance_top3": 1.5,
+      "chance_win": 0.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.896,
+       "p50": 142.022,
+       "p90": 147.181,
+       "mean": 142.024
+      },
+      "expected_rank_wet": 17.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.763,
+      "chance_top3_wet": 6.9,
+      "chance_win_wet": 2.2
      },
      {
       "name": "Cas Brinckhuizen",
@@ -2555,18 +3329,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 20.9,
+      "expected_rank": 21.8,
       "expected_pace": {
-       "p10": 121.9,
-       "p50": 122.693,
-       "p90": 123.475,
-       "mean": 122.688
+       "p10": 122.005,
+       "p50": 122.798,
+       "p90": 123.581,
+       "mean": 122.794
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.887,
-      "chance_top3": 2.3,
-      "chance_win": 0.5
+      "gap_to_target_expected": 0.96,
+      "chance_top3": 1.5,
+      "chance_win": 0.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.988,
+       "p50": 142.074,
+       "p90": 147.119,
+       "mean": 142.053
+      },
+      "expected_rank_wet": 17.5,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.792,
+      "chance_top3_wet": 6.9,
+      "chance_win_wet": 2.0
      },
      {
       "name": "Patrick Strijdonck",
@@ -2583,18 +3369,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 21.2,
+      "expected_rank": 22.0,
       "expected_pace": {
-       "p10": 121.921,
-       "p50": 122.704,
-       "p90": 123.481,
-       "mean": 122.704
+       "p10": 122.021,
+       "p50": 122.804,
+       "p90": 123.58,
+       "mean": 122.804
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.903,
-      "chance_top3": 2.0,
-      "chance_win": 0.5
+      "gap_to_target_expected": 0.97,
+      "chance_top3": 1.4,
+      "chance_win": 0.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.992,
+       "p50": 142.052,
+       "p90": 147.18,
+       "mean": 142.046
+      },
+      "expected_rank_wet": 17.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.785,
+      "chance_top3_wet": 7.1,
+      "chance_win_wet": 2.2
      },
      {
       "name": "Kevin Messak",
@@ -2611,18 +3409,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 21.7,
+      "expected_rank": 22.6,
       "expected_pace": {
-       "p10": 121.935,
-       "p50": 122.728,
-       "p90": 123.526,
-       "mean": 122.73
+       "p10": 122.044,
+       "p50": 122.838,
+       "p90": 123.636,
+       "mean": 122.839
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.929,
-      "chance_top3": 1.9,
-      "chance_win": 0.4
+      "gap_to_target_expected": 1.005,
+      "chance_top3": 1.3,
+      "chance_win": 0.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.995,
+       "p50": 142.011,
+       "p90": 147.137,
+       "mean": 142.069
+      },
+      "expected_rank_wet": 17.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.808,
+      "chance_top3_wet": 6.6,
+      "chance_win_wet": 2.0
      },
      {
       "name": "Freek Van Santvoord",
@@ -2639,18 +3449,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 22.4,
+      "expected_rank": 23.3,
       "expected_pace": {
-       "p10": 121.975,
-       "p50": 122.775,
-       "p90": 123.564,
-       "mean": 122.77
+       "p10": 122.089,
+       "p50": 122.889,
+       "p90": 123.678,
+       "mean": 122.884
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.969,
-      "chance_top3": 1.5,
-      "chance_win": 0.3
+      "gap_to_target_expected": 1.05,
+      "chance_top3": 0.9,
+      "chance_win": 0.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.106,
+       "p50": 142.13,
+       "p90": 147.309,
+       "mean": 142.157
+      },
+      "expected_rank_wet": 18.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.896,
+      "chance_top3_wet": 6.3,
+      "chance_win_wet": 1.9
      }
     ]
    },
@@ -2660,32 +3482,48 @@
     "prequal_from": 61,
     "prequal_to": 89,
     "members": 29,
-    "with_time": 5,
+    "with_time": 7,
     "now": {
      "p1": 121.941,
-     "p3": 123.1892,
+     "p3": 122.8961,
      "p10": null
     },
     "target": {
-     "p10": 121.595,
-     "p50": 122.198,
-     "p90": 122.8
+     "p10": 121.684,
+     "p50": 122.291,
+     "p90": 122.889
     },
     "race_pace_offset": 2.06,
+    "target_wet": {
+     "p10": 135.241,
+     "p50": 139.831,
+     "p90": 144.551
+    },
+    "winner_pace_wet": {
+     "p10": 133.874,
+     "p50": 138.565,
+     "p90": 143.375
+    },
+    "top10_pace_wet": {
+     "p10": 136.908,
+     "p50": 141.496,
+     "p90": 146.163
+    },
+    "with_wet_time": 3,
     "race_pace_target": {
-     "p10": 123.655,
-     "p50": 124.258,
-     "p90": 124.86
+     "p10": 123.744,
+     "p50": 124.351,
+     "p90": 124.949
     },
     "winner_pace": {
-     "p10": 121.207,
-     "p50": 121.855,
-     "p90": 122.487
+     "p10": 121.274,
+     "p50": 121.924,
+     "p90": 122.561
     },
     "top10_pace": {
-     "p10": 122.085,
-     "p50": 122.676,
-     "p90": 123.253
+     "p10": 122.21,
+     "p50": 122.802,
+     "p90": 123.384
     },
     "drivers": [
      {
@@ -2703,21 +3541,34 @@
       "laps": 36,
       "best_per_day": [
        null,
-       121.941
+       121.941,
+       null
       ],
       "rank_now": 1,
-      "expected_rank": 4.4,
+      "expected_rank": 3.7,
       "expected_pace": {
-       "p10": 121.491,
-       "p50": 122.219,
-       "p90": 122.939,
-       "mean": 122.216
+       "p10": 121.523,
+       "p50": 122.25,
+       "p90": 122.97,
+       "mean": 122.247
       },
       "estimated_only": false,
-      "gap_to_target_now": -0.257,
-      "gap_to_target_expected": 0.018,
-      "chance_top3": 53.9,
-      "chance_win": 23.2
+      "gap_to_target_now": -0.35,
+      "gap_to_target_expected": -0.044,
+      "chance_top3": 61.6,
+      "chance_win": 27.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.368,
+       "p50": 141.343,
+       "p90": 146.554,
+       "mean": 141.386
+      },
+      "expected_rank_wet": 10.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.555,
+      "chance_top3_wet": 21.0,
+      "chance_win_wet": 7.9
      },
      {
       "name": "Roy Van Veenendaal",
@@ -2734,21 +3585,78 @@
       "laps": 22,
       "best_per_day": [
        null,
-       122.4672
+       122.4672,
+       null
       ],
       "rank_now": 2,
-      "expected_rank": 10.2,
+      "expected_rank": 9.1,
       "expected_pace": {
-       "p10": 121.895,
-       "p50": 122.627,
-       "p90": 123.369,
-       "mean": 122.631
+       "p10": 121.954,
+       "p50": 122.686,
+       "p90": 123.429,
+       "mean": 122.691
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.269,
-      "gap_to_target_expected": 0.433,
-      "chance_top3": 14.1,
-      "chance_win": 3.4
+      "gap_to_target_now": 0.176,
+      "gap_to_target_expected": 0.4,
+      "chance_top3": 16.4,
+      "chance_win": 3.8,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.788,
+       "p50": 141.886,
+       "p90": 147.026,
+       "mean": 141.901
+      },
+      "expected_rank_wet": 13.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.07,
+      "chance_top3_wet": 14.0,
+      "chance_win_wet": 4.6
+     },
+     {
+      "name": "Berends Jelmer",
+      "car_number": "296",
+      "irating": 2204,
+      "team": null,
+      "is_team": false,
+      "car": "Ferrari 296 GT3",
+      "prequal_position": 62,
+      "prequal_best": 103.9493,
+      "pace_index": 0.05,
+      "history_events": 2,
+      "best": 122.8961,
+      "laps": 23,
+      "best_per_day": [
+       null,
+       null,
+       122.8961
+      ],
+      "rank_now": 3,
+      "expected_rank": 10.2,
+      "expected_pace": {
+       "p10": 122.04,
+       "p50": 122.773,
+       "p90": 123.493,
+       "mean": 122.766
+      },
+      "estimated_only": false,
+      "gap_to_target_now": 0.605,
+      "gap_to_target_expected": 0.475,
+      "chance_top3": 11.6,
+      "chance_win": 2.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.98,
+       "p50": 141.98,
+       "p90": 147.151,
+       "mean": 142.009
+      },
+      "expected_rank_wet": 13.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.178,
+      "chance_top3_wet": 12.9,
+      "chance_win_wet": 4.3
      },
      {
       "name": "Jesse Nant Schiffelers",
@@ -2765,26 +3673,39 @@
       "laps": 10,
       "best_per_day": [
        null,
-       123.1892
+       123.1892,
+       null
       ],
-      "rank_now": 3,
-      "expected_rank": 17.9,
+      "rank_now": 4,
+      "expected_rank": 17.3,
       "expected_pace": {
-       "p10": 122.303,
-       "p50": 123.066,
-       "p90": 123.823,
-       "mean": 123.065
+       "p10": 122.427,
+       "p50": 123.189,
+       "p90": 123.947,
+       "mean": 123.189
       },
       "estimated_only": false,
-      "gap_to_target_now": 0.991,
-      "gap_to_target_expected": 0.867,
-      "chance_top3": 1.8,
-      "chance_win": 0.3
+      "gap_to_target_now": 0.898,
+      "gap_to_target_expected": 0.898,
+      "chance_top3": 1.6,
+      "chance_win": 0.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.368,
+       "p50": 142.458,
+       "p90": 147.584,
+       "mean": 142.483
+      },
+      "expected_rank_wet": 15.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.652,
+      "chance_top3_wet": 8.0,
+      "chance_win_wet": 2.4
      },
      {
       "name": "Thijmen Bakker",
       "car_number": null,
-      "irating": 995,
+      "irating": 1031,
       "team": null,
       "is_team": false,
       "car": "BMW M4 GT3 EVO",
@@ -2796,21 +3717,78 @@
       "laps": 9,
       "best_per_day": [
        null,
-       123.4737
+       123.4737,
+       null
       ],
-      "rank_now": 4,
-      "expected_rank": 21.9,
+      "rank_now": 5,
+      "expected_rank": 21.5,
       "expected_pace": {
-       "p10": 122.559,
-       "p50": 123.307,
-       "p90": 124.059,
-       "mean": 123.31
+       "p10": 122.711,
+       "p50": 123.459,
+       "p90": 124.211,
+       "mean": 123.462
       },
       "estimated_only": false,
-      "gap_to_target_now": 1.276,
-      "gap_to_target_expected": 1.112,
-      "chance_top3": 0.4,
-      "chance_win": 0.1
+      "gap_to_target_now": 1.183,
+      "gap_to_target_expected": 1.171,
+      "chance_top3": 0.3,
+      "chance_win": 0.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.766,
+       "p50": 142.805,
+       "p90": 147.917,
+       "mean": 142.809
+      },
+      "expected_rank_wet": 17.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.978,
+      "chance_top3_wet": 5.9,
+      "chance_win_wet": 1.6
+     },
+     {
+      "name": "Stefan Visser4",
+      "car_number": "101",
+      "irating": 1679,
+      "team": "STROOPWAFEL RACING TEAM",
+      "is_team": false,
+      "car": "Mercedes-AMG GT3 2020",
+      "prequal_position": 88,
+      "prequal_best": 105.1192,
+      "pace_index": 1.08,
+      "history_events": 3,
+      "best": 124.2804,
+      "laps": 17,
+      "best_per_day": [
+       null,
+       null,
+       124.2804
+      ],
+      "rank_now": 6,
+      "expected_rank": 23.9,
+      "expected_pace": {
+       "p10": 122.908,
+       "p50": 123.642,
+       "p90": 124.389,
+       "mean": 123.643
+      },
+      "estimated_only": false,
+      "gap_to_target_now": 1.989,
+      "gap_to_target_expected": 1.352,
+      "chance_top3": 0.0,
+      "chance_win": 0.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.921,
+       "p50": 142.959,
+       "p90": 148.115,
+       "mean": 142.99
+      },
+      "expected_rank_wet": 18.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 3.159,
+      "chance_top3_wet": 4.5,
+      "chance_win_wet": 1.2
      },
      {
       "name": "Raymon Van Zutphen",
@@ -2824,24 +3802,37 @@
       "pace_index": 0.69,
       "history_events": 3,
       "best": 124.8224,
-      "laps": 10,
+      "laps": 39,
       "best_per_day": [
        null,
-       124.8224
+       124.8224,
+       125.0072
       ],
-      "rank_now": 5,
-      "expected_rank": 22.3,
+      "rank_now": 7,
+      "expected_rank": 27.0,
       "expected_pace": {
-       "p10": 122.583,
-       "p50": 123.337,
-       "p90": 124.102,
-       "mean": 123.341
+       "p10": 123.24,
+       "p50": 123.954,
+       "p90": 124.679,
+       "mean": 123.958
       },
       "estimated_only": false,
-      "gap_to_target_now": 2.624,
-      "gap_to_target_expected": 1.143,
-      "chance_top3": 0.3,
-      "chance_win": 0.0
+      "gap_to_target_now": 2.531,
+      "gap_to_target_expected": 1.667,
+      "chance_top3": 0.0,
+      "chance_win": 0.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.254,
+       "p50": 143.389,
+       "p90": 148.503,
+       "mean": 143.383
+      },
+      "expected_rank_wet": 19.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 3.552,
+      "chance_top3_wet": 2.8,
+      "chance_win_wet": 0.7
      },
      {
       "name": "Albert Priem",
@@ -2858,18 +3849,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 5.7,
+      "expected_rank": 4.8,
       "expected_pace": {
-       "p10": 121.509,
-       "p50": 122.289,
-       "p90": 123.074,
-       "mean": 122.289
+       "p10": 121.54,
+       "p50": 122.32,
+       "p90": 123.105,
+       "mean": 122.32
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.091,
-      "chance_top3": 45.9,
-      "chance_win": 21.3
+      "gap_to_target_expected": 0.029,
+      "chance_top3": 52.2,
+      "chance_win": 24.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.351,
+       "p50": 141.478,
+       "p90": 146.634,
+       "mean": 141.473
+      },
+      "expected_rank_wet": 11.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.642,
+      "chance_top3_wet": 20.1,
+      "chance_win_wet": 7.6
      },
      {
       "name": "Klaas De Boer3",
@@ -2886,18 +3889,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 8.0,
+      "expected_rank": 7.0,
       "expected_pace": {
-       "p10": 121.681,
-       "p50": 122.465,
-       "p90": 123.245,
-       "mean": 122.467
+       "p10": 121.732,
+       "p50": 122.516,
+       "p90": 123.296,
+       "mean": 122.518
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.269,
-      "chance_top3": 29.6,
-      "chance_win": 10.9
+      "gap_to_target_expected": 0.227,
+      "chance_top3": 33.5,
+      "chance_win": 12.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.623,
+       "p50": 141.691,
+       "p90": 146.794,
+       "mean": 141.695
+      },
+      "expected_rank_wet": 12.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.864,
+      "chance_top3_wet": 16.6,
+      "chance_win_wet": 6.0
      },
      {
       "name": "Franklyn Nwanaforo",
@@ -2914,74 +3929,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 9.7,
+      "expected_rank": 8.9,
       "expected_pace": {
-       "p10": 121.806,
-       "p50": 122.589,
-       "p90": 123.377,
-       "mean": 122.589
+       "p10": 121.883,
+       "p50": 122.665,
+       "p90": 123.453,
+       "mean": 122.665
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.391,
-      "chance_top3": 20.5,
-      "chance_win": 6.3
-     },
-     {
-      "name": "Berends Jelmer",
-      "car_number": "296",
-      "irating": 2204,
-      "team": null,
-      "is_team": false,
-      "car": "Ferrari 296 GT3",
-      "prequal_position": 62,
-      "prequal_best": 103.9493,
-      "pace_index": 0.05,
-      "history_events": 2,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 10.1,
-      "expected_pace": {
-       "p10": 121.834,
-       "p50": 122.618,
-       "p90": 123.39,
-       "mean": 122.613
+      "gap_to_target_expected": 0.374,
+      "chance_top3": 21.7,
+      "chance_win": 6.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.793,
+       "p50": 141.851,
+       "p90": 147.031,
+       "mean": 141.878
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.415,
-      "chance_top3": 18.5,
-      "chance_win": 5.9
-     },
-     {
-      "name": "Leroy Bolkestein",
-      "car_number": "103",
-      "irating": 3816,
-      "team": "G-Force Racing",
-      "is_team": false,
-      "car": "Mercedes-AMG GT3 2020",
-      "prequal_position": 73,
-      "prequal_best": 104.4219,
-      "pace_index": 0.37,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 11.3,
-      "expected_pace": {
-       "p10": 121.904,
-       "p50": 122.677,
-       "p90": 123.475,
-       "mean": 122.683
-      },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.485,
-      "chance_top3": 14.5,
-      "chance_win": 4.1
+      "expected_rank_wet": 13.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.047,
+      "chance_top3_wet": 14.2,
+      "chance_win_wet": 5.1
      },
      {
       "name": "Marc Verlinden",
@@ -2998,18 +3969,70 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 11.4,
+      "expected_rank": 10.7,
       "expected_pace": {
-       "p10": 121.916,
-       "p50": 122.689,
-       "p90": 123.477,
-       "mean": 122.69
+       "p10": 122.01,
+       "p50": 122.783,
+       "p90": 123.571,
+       "mean": 122.784
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.492,
-      "chance_top3": 14.2,
-      "chance_win": 4.2
+      "gap_to_target_expected": 0.493,
+      "chance_top3": 14.3,
+      "chance_win": 3.8,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.914,
+       "p50": 142.0,
+       "p90": 147.155,
+       "mean": 142.018
+      },
+      "expected_rank_wet": 13.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.187,
+      "chance_top3_wet": 12.6,
+      "chance_win_wet": 4.2
+     },
+     {
+      "name": "Leroy Bolkestein",
+      "car_number": "103",
+      "irating": 3816,
+      "team": "G-Force Racing",
+      "is_team": false,
+      "car": "Mercedes-AMG GT3 2020",
+      "prequal_position": 73,
+      "prequal_best": 104.4219,
+      "pace_index": 0.37,
+      "history_events": 3,
+      "best": null,
+      "laps": 0,
+      "best_per_day": null,
+      "rank_now": null,
+      "expected_rank": 10.7,
+      "expected_pace": {
+       "p10": 122.009,
+       "p50": 122.782,
+       "p90": 123.581,
+       "mean": 122.788
+      },
+      "estimated_only": true,
+      "gap_to_target_now": null,
+      "gap_to_target_expected": 0.497,
+      "chance_top3": 14.0,
+      "chance_win": 3.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.946,
+       "p50": 141.952,
+       "p90": 147.095,
+       "mean": 142.01
+      },
+      "expected_rank_wet": 13.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.179,
+      "chance_top3_wet": 12.5,
+      "chance_win_wet": 4.3
      },
      {
       "name": "Tycho Van Dijk",
@@ -3026,18 +4049,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 12.3,
+      "expected_rank": 11.6,
       "expected_pace": {
-       "p10": 121.954,
-       "p50": 122.746,
-       "p90": 123.537,
-       "mean": 122.746
+       "p10": 122.053,
+       "p50": 122.845,
+       "p90": 123.635,
+       "mean": 122.845
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.548,
-      "chance_top3": 11.8,
-      "chance_win": 3.2
+      "gap_to_target_expected": 0.554,
+      "chance_top3": 11.7,
+      "chance_win": 2.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 136.953,
+       "p50": 142.075,
+       "p90": 147.207,
+       "mean": 142.077
+      },
+      "expected_rank_wet": 13.9,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.246,
+      "chance_top3_wet": 11.7,
+      "chance_win_wet": 3.9
      },
      {
       "name": "Jelmer Jekel",
@@ -3054,18 +4089,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 12.8,
+      "expected_rank": 12.3,
       "expected_pace": {
-       "p10": 121.994,
-       "p50": 122.776,
-       "p90": 123.559,
-       "mean": 122.774
+       "p10": 122.108,
+       "p50": 122.89,
+       "p90": 123.673,
+       "mean": 122.888
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.576,
-      "chance_top3": 10.3,
-      "chance_win": 2.7
+      "gap_to_target_expected": 0.597,
+      "chance_top3": 9.5,
+      "chance_win": 2.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.029,
+       "p50": 142.085,
+       "p90": 147.208,
+       "mean": 142.121
+      },
+      "expected_rank_wet": 14.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.29,
+      "chance_top3_wet": 11.5,
+      "chance_win_wet": 3.8
      },
      {
       "name": "Bart Tonkes",
@@ -3079,21 +4126,37 @@
       "pace_index": 0.31,
       "history_events": 3,
       "best": null,
-      "laps": 0,
-      "best_per_day": null,
+      "laps": 21,
+      "best_per_day": [
+       null,
+       null,
+       139.5856
+      ],
       "rank_now": null,
-      "expected_rank": 13.1,
+      "expected_rank": 12.6,
       "expected_pace": {
-       "p10": 122.009,
-       "p50": 122.798,
-       "p90": 123.575,
-       "mean": 122.795
+       "p10": 122.118,
+       "p50": 122.907,
+       "p90": 123.684,
+       "mean": 122.904
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.597,
-      "chance_top3": 9.2,
-      "chance_win": 2.3
+      "gap_to_target_expected": 0.613,
+      "chance_top3": 8.6,
+      "chance_win": 2.0,
+      "best_wet": 139.5856,
+      "expected_pace_wet": {
+       "p10": 136.167,
+       "p50": 141.206,
+       "p90": 146.373,
+       "mean": 141.231
+      },
+      "expected_rank_wet": 10.2,
+      "estimated_wet": false,
+      "gap_to_target_wet": 1.4,
+      "chance_top3_wet": 24.3,
+      "chance_win_wet": 9.8
      },
      {
       "name": "Ben Dam",
@@ -3110,46 +4173,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 13.3,
+      "expected_rank": 12.9,
       "expected_pace": {
-       "p10": 122.014,
-       "p50": 122.805,
-       "p90": 123.591,
-       "mean": 122.805
+       "p10": 122.134,
+       "p50": 122.925,
+       "p90": 123.711,
+       "mean": 122.925
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.607,
-      "chance_top3": 9.0,
-      "chance_win": 2.3
-     },
-     {
-      "name": "Timo Geurts3",
-      "car_number": "169",
-      "irating": 2700,
-      "team": null,
-      "is_team": false,
-      "car": "Ferrari 296 GT3",
-      "prequal_position": 81,
-      "prequal_best": 104.8173,
-      "pace_index": 0.55,
-      "history_events": 2,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 13.7,
-      "expected_pace": {
-       "p10": 122.047,
-       "p50": 122.826,
-       "p90": 123.616,
-       "mean": 122.828
+      "gap_to_target_expected": 0.634,
+      "chance_top3": 8.0,
+      "chance_win": 1.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.101,
+       "p50": 142.151,
+       "p90": 147.296,
+       "mean": 142.176
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.63,
-      "chance_top3": 8.1,
-      "chance_win": 2.0
+      "expected_rank_wet": 14.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.345,
+      "chance_top3_wet": 11.3,
+      "chance_win_wet": 3.6
      },
      {
       "name": "Danny Lugt",
@@ -3166,23 +4213,75 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 13.8,
+      "expected_rank": 13.3,
       "expected_pace": {
-       "p10": 122.041,
-       "p50": 122.836,
-       "p90": 123.616,
-       "mean": 122.832
+       "p10": 122.154,
+       "p50": 122.949,
+       "p90": 123.729,
+       "mean": 122.945
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.634,
-      "chance_top3": 8.1,
-      "chance_win": 1.9
+      "gap_to_target_expected": 0.654,
+      "chance_top3": 7.5,
+      "chance_win": 1.6,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.061,
+       "p50": 142.181,
+       "p90": 147.381,
+       "mean": 142.207
+      },
+      "expected_rank_wet": 14.5,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.376,
+      "chance_top3_wet": 10.7,
+      "chance_win_wet": 3.5
+     },
+     {
+      "name": "Timo Geurts3",
+      "car_number": "169",
+      "irating": 2700,
+      "team": null,
+      "is_team": false,
+      "car": "Ferrari 296 GT3",
+      "prequal_position": 81,
+      "prequal_best": 104.8173,
+      "pace_index": 0.55,
+      "history_events": 2,
+      "best": null,
+      "laps": 0,
+      "best_per_day": null,
+      "rank_now": null,
+      "expected_rank": 13.4,
+      "expected_pace": {
+       "p10": 122.175,
+       "p50": 122.953,
+       "p90": 123.744,
+       "mean": 122.956
+      },
+      "estimated_only": true,
+      "gap_to_target_now": null,
+      "gap_to_target_expected": 0.665,
+      "chance_top3": 7.1,
+      "chance_win": 1.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.049,
+       "p50": 142.161,
+       "p90": 147.315,
+       "mean": 142.194
+      },
+      "expected_rank_wet": 14.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.363,
+      "chance_top3_wet": 10.6,
+      "chance_win_wet": 3.4
      },
      {
       "name": "J.T Korting",
       "car_number": "185",
-      "irating": 2613,
+      "irating": 2584,
       "team": "STROOPWAFEL RACING TEAM",
       "is_team": false,
       "car": "McLaren 720S GT3 EVO",
@@ -3194,18 +4293,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 15.3,
+      "expected_rank": 15.2,
       "expected_pace": {
-       "p10": 122.134,
-       "p50": 122.918,
-       "p90": 123.705,
-       "mean": 122.919
+       "p10": 122.281,
+       "p50": 123.065,
+       "p90": 123.853,
+       "mean": 123.066
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.721,
-      "chance_top3": 5.5,
-      "chance_win": 1.2
+      "gap_to_target_expected": 0.775,
+      "chance_top3": 4.4,
+      "chance_win": 0.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.287,
+       "p50": 142.311,
+       "p90": 147.451,
+       "mean": 142.329
+      },
+      "expected_rank_wet": 15.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.498,
+      "chance_top3_wet": 9.3,
+      "chance_win_wet": 2.9
      },
      {
       "name": "Tommy Vlieger",
@@ -3222,18 +4333,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 15.6,
+      "expected_rank": 15.5,
       "expected_pace": {
-       "p10": 122.156,
-       "p50": 122.938,
-       "p90": 123.714,
-       "mean": 122.936
+       "p10": 122.3,
+       "p50": 123.082,
+       "p90": 123.858,
+       "mean": 123.08
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.738,
-      "chance_top3": 4.9,
-      "chance_win": 1.1
+      "gap_to_target_expected": 0.789,
+      "chance_top3": 3.9,
+      "chance_win": 0.7,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.288,
+       "p50": 142.336,
+       "p90": 147.499,
+       "mean": 142.35
+      },
+      "expected_rank_wet": 15.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.519,
+      "chance_top3_wet": 9.0,
+      "chance_win_wet": 2.7
      },
      {
       "name": "Ivo Dahlmans",
@@ -3250,23 +4373,35 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 16.2,
+      "expected_rank": 16.1,
       "expected_pace": {
-       "p10": 122.19,
-       "p50": 122.972,
-       "p90": 123.748,
-       "mean": 122.97
+       "p10": 122.34,
+       "p50": 123.122,
+       "p90": 123.898,
+       "mean": 123.12
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.772,
-      "chance_top3": 4.2,
-      "chance_win": 0.8
+      "gap_to_target_expected": 0.829,
+      "chance_top3": 3.1,
+      "chance_win": 0.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.317,
+       "p50": 142.317,
+       "p90": 147.591,
+       "mean": 142.383
+      },
+      "expected_rank_wet": 15.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.552,
+      "chance_top3_wet": 8.9,
+      "chance_win_wet": 2.8
      },
      {
       "name": "Jaimy Peters",
       "car_number": "134",
-      "irating": 1470,
+      "irating": 1555,
       "team": "3 Stripe Motorsport",
       "is_team": false,
       "car": "Porsche 911 GT3 R (992)",
@@ -3275,21 +4410,37 @@
       "pace_index": 0.65,
       "history_events": 3,
       "best": null,
-      "laps": 0,
-      "best_per_day": null,
+      "laps": 6,
+      "best_per_day": [
+       null,
+       null,
+       143.737
+      ],
       "rank_now": null,
-      "expected_rank": 16.5,
+      "expected_rank": 16.2,
       "expected_pace": {
-       "p10": 122.222,
-       "p50": 122.982,
-       "p90": 123.768,
-       "mean": 122.989
+       "p10": 122.356,
+       "p50": 123.116,
+       "p90": 123.902,
+       "mean": 123.123
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.791,
-      "chance_top3": 3.8,
-      "chance_win": 0.8
+      "gap_to_target_expected": 0.832,
+      "chance_top3": 3.1,
+      "chance_win": 0.5,
+      "best_wet": 143.737,
+      "expected_pace_wet": {
+       "p10": 137.759,
+       "p50": 142.85,
+       "p90": 147.993,
+       "mean": 142.869
+      },
+      "expected_rank_wet": 17.4,
+      "estimated_wet": false,
+      "gap_to_target_wet": 3.038,
+      "chance_top3_wet": 5.5,
+      "chance_win_wet": 1.6
      },
      {
       "name": "Ole Corvers",
@@ -3303,21 +4454,37 @@
       "pace_index": 0.95,
       "history_events": 3,
       "best": null,
-      "laps": 0,
-      "best_per_day": null,
+      "laps": 3,
+      "best_per_day": [
+       null,
+       null,
+       144.4026
+      ],
       "rank_now": null,
-      "expected_rank": 18.0,
+      "expected_rank": 18.1,
       "expected_pace": {
-       "p10": 122.298,
-       "p50": 123.082,
-       "p90": 123.855,
-       "mean": 123.077
+       "p10": 122.469,
+       "p50": 123.253,
+       "p90": 124.027,
+       "mean": 123.249
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.879,
-      "chance_top3": 2.3,
-      "chance_win": 0.4
+      "gap_to_target_expected": 0.958,
+      "chance_top3": 1.4,
+      "chance_win": 0.2,
+      "best_wet": 144.4026,
+      "expected_pace_wet": {
+       "p10": 138.042,
+       "p50": 143.2,
+       "p90": 148.3,
+       "mean": 143.199
+      },
+      "expected_rank_wet": 18.9,
+      "estimated_wet": false,
+      "gap_to_target_wet": 3.368,
+      "chance_top3_wet": 3.8,
+      "chance_win_wet": 1.0
      },
      {
       "name": "Roy Van De Geer",
@@ -3334,18 +4501,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 18.1,
+      "expected_rank": 18.2,
       "expected_pace": {
-       "p10": 122.292,
-       "p50": 123.076,
-       "p90": 123.87,
-       "mean": 123.081
+       "p10": 122.463,
+       "p50": 123.248,
+       "p90": 124.041,
+       "mean": 123.252
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.883,
-      "chance_top3": 2.4,
-      "chance_win": 0.5
+      "gap_to_target_expected": 0.961,
+      "chance_top3": 1.5,
+      "chance_win": 0.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.473,
+       "p50": 142.566,
+       "p90": 147.663,
+       "mean": 142.554
+      },
+      "expected_rank_wet": 16.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.723,
+      "chance_top3_wet": 7.3,
+      "chance_win_wet": 2.3
      },
      {
       "name": "Jasper Bloem",
@@ -3362,18 +4541,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 19.3,
+      "expected_rank": 19.5,
       "expected_pace": {
-       "p10": 122.367,
-       "p50": 123.158,
-       "p90": 123.931,
-       "mean": 123.153
+       "p10": 122.548,
+       "p50": 123.339,
+       "p90": 124.112,
+       "mean": 123.335
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.955,
-      "chance_top3": 1.6,
-      "chance_win": 0.2
+      "gap_to_target_expected": 1.044,
+      "chance_top3": 0.9,
+      "chance_win": 0.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.496,
+       "p50": 142.638,
+       "p90": 147.809,
+       "mean": 142.644
+      },
+      "expected_rank_wet": 16.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.813,
+      "chance_top3_wet": 7.0,
+      "chance_win_wet": 2.0
      },
      {
       "name": "Mitch Hendriks2",
@@ -3390,46 +4581,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 19.5,
+      "expected_rank": 19.7,
       "expected_pace": {
-       "p10": 122.377,
-       "p50": 123.166,
-       "p90": 123.943,
-       "mean": 123.164
+       "p10": 122.565,
+       "p50": 123.354,
+       "p90": 124.131,
+       "mean": 123.351
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.966,
-      "chance_top3": 1.5,
-      "chance_win": 0.3
-     },
-     {
-      "name": "Stefan Visser4",
-      "car_number": "101",
-      "irating": 1679,
-      "team": "STROOPWAFEL RACING TEAM",
-      "is_team": false,
-      "car": "Mercedes-AMG GT3 2020",
-      "prequal_position": 88,
-      "prequal_best": 105.1192,
-      "pace_index": 1.08,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 19.8,
-      "expected_pace": {
-       "p10": 122.404,
-       "p50": 123.185,
-       "p90": 123.972,
-       "mean": 123.185
+      "gap_to_target_expected": 1.06,
+      "chance_top3": 0.8,
+      "chance_win": 0.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.538,
+       "p50": 142.595,
+       "p90": 147.767,
+       "mean": 142.617
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.987,
-      "chance_top3": 1.4,
-      "chance_win": 0.2
+      "expected_rank_wet": 16.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.786,
+      "chance_top3_wet": 6.9,
+      "chance_win_wet": 2.1
      },
      {
       "name": "Ronny van den Hof",
@@ -3446,18 +4621,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 20.5,
+      "expected_rank": 20.7,
       "expected_pace": {
-       "p10": 122.444,
-       "p50": 123.228,
-       "p90": 124.014,
-       "mean": 123.228
+       "p10": 122.633,
+       "p50": 123.417,
+       "p90": 124.204,
+       "mean": 123.417
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 1.03,
-      "chance_top3": 1.2,
-      "chance_win": 0.2
+      "gap_to_target_expected": 1.126,
+      "chance_top3": 0.7,
+      "chance_win": 0.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.64,
+       "p50": 142.742,
+       "p90": 147.874,
+       "mean": 142.727
+      },
+      "expected_rank_wet": 16.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.896,
+      "chance_top3_wet": 6.2,
+      "chance_win_wet": 1.9
      },
      {
       "name": "Yoeri Pluim",
@@ -3474,18 +4661,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 21.8,
+      "expected_rank": 22.2,
       "expected_pace": {
-       "p10": 122.531,
-       "p50": 123.311,
-       "p90": 124.099,
-       "mean": 123.315
+       "p10": 122.743,
+       "p50": 123.523,
+       "p90": 124.311,
+       "mean": 123.527
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 1.117,
-      "chance_top3": 0.6,
-      "chance_win": 0.1
+      "gap_to_target_expected": 1.236,
+      "chance_top3": 0.3,
+      "chance_win": 0.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.827,
+       "p50": 142.849,
+       "p90": 148.017,
+       "mean": 142.867
+      },
+      "expected_rank_wet": 17.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 3.036,
+      "chance_top3_wet": 5.4,
+      "chance_win_wet": 1.5
      },
      {
       "name": "Marc Van Den Broecke",
@@ -3502,18 +4701,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 22.3,
+      "expected_rank": 22.7,
       "expected_pace": {
-       "p10": 122.567,
-       "p50": 123.354,
-       "p90": 124.128,
-       "mean": 123.351
+       "p10": 122.786,
+       "p50": 123.573,
+       "p90": 124.347,
+       "mean": 123.57
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 1.153,
-      "chance_top3": 0.5,
-      "chance_win": 0.1
+      "gap_to_target_expected": 1.279,
+      "chance_top3": 0.2,
+      "chance_win": 0.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.794,
+       "p50": 142.947,
+       "p90": 148.01,
+       "mean": 142.932
+      },
+      "expected_rank_wet": 17.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 3.101,
+      "chance_top3_wet": 5.2,
+      "chance_win_wet": 1.3
      }
     ]
    },
@@ -3523,32 +4734,48 @@
     "prequal_from": 91,
     "prequal_to": 111,
     "members": 21,
-    "with_time": 2,
+    "with_time": 3,
     "now": {
      "p1": 122.7133,
-     "p3": null,
+     "p3": 124.0124,
      "p10": null
     },
     "target": {
-     "p10": 122.281,
-     "p50": 122.897,
-     "p90": 123.504
+     "p10": 122.465,
+     "p50": 123.086,
+     "p90": 123.697
     },
     "race_pace_offset": 2.86,
+    "target_wet": {
+     "p10": 136.141,
+     "p50": 140.836,
+     "p90": 145.465
+    },
+    "winner_pace_wet": {
+     "p10": 134.682,
+     "p50": 139.431,
+     "p90": 144.158
+    },
+    "top10_pace_wet": {
+     "p10": 138.143,
+     "p50": 142.785,
+     "p90": 147.429
+    },
+    "with_wet_time": 1,
     "race_pace_target": {
-     "p10": 125.141,
-     "p50": 125.757,
-     "p90": 126.364
+     "p10": 125.325,
+     "p50": 125.946,
+     "p90": 126.557
     },
     "winner_pace": {
-     "p10": 121.878,
-     "p50": 122.543,
-     "p90": 123.181
+     "p10": 122.03,
+     "p50": 122.698,
+     "p90": 123.344
     },
     "top10_pace": {
-     "p10": 122.834,
-     "p50": 123.436,
-     "p90": 124.034
+     "p10": 123.071,
+     "p50": 123.674,
+     "p90": 124.273
     },
     "drivers": [
      {
@@ -3563,24 +4790,81 @@
       "pace_index": 1.21,
       "history_events": 3,
       "best": 122.7133,
-      "laps": 62,
+      "laps": 71,
       "best_per_day": [
        124.056,
-       122.7133
+       122.7133,
+       124.2953
       ],
       "rank_now": 1,
-      "expected_rank": 4.2,
+      "expected_rank": 3.0,
       "expected_pace": {
-       "p10": 122.227,
-       "p50": 122.929,
-       "p90": 123.633,
-       "mean": 122.931
+       "p10": 122.285,
+       "p50": 122.984,
+       "p90": 123.684,
+       "mean": 122.986
       },
       "estimated_only": false,
-      "gap_to_target_now": -0.184,
-      "gap_to_target_expected": 0.034,
-      "chance_top3": 52.8,
-      "chance_win": 19.4
+      "gap_to_target_now": -0.373,
+      "gap_to_target_expected": -0.1,
+      "chance_top3": 70.1,
+      "chance_win": 30.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.147,
+       "p50": 142.268,
+       "p90": 147.352,
+       "mean": 142.26
+      },
+      "expected_rank_wet": 8.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.424,
+      "chance_top3_wet": 23.2,
+      "chance_win_wet": 8.5
+     },
+     {
+      "name": "Justin Van Heuzen2",
+      "car_number": "175",
+      "irating": 1391,
+      "team": "STROOPWAFEL RACING TEAM",
+      "is_team": false,
+      "car": "Mercedes-AMG GT3 2020",
+      "prequal_position": 105,
+      "prequal_best": 106.2787,
+      "pace_index": 1.8,
+      "history_events": 3,
+      "best": 123.9573,
+      "laps": 13,
+      "best_per_day": [
+       null,
+       null,
+       123.9573
+      ],
+      "rank_now": 2,
+      "expected_rank": 12.6,
+      "expected_pace": {
+       "p10": 123.109,
+       "p50": 123.871,
+       "p90": 124.616,
+       "mean": 123.866
+      },
+      "estimated_only": false,
+      "gap_to_target_now": 0.871,
+      "gap_to_target_expected": 0.78,
+      "chance_top3": 2.9,
+      "chance_win": 0.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.099,
+       "p50": 143.286,
+       "p90": 148.419,
+       "mean": 143.288
+      },
+      "expected_rank_wet": 12.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.452,
+      "chance_top3_wet": 9.9,
+      "chance_win_wet": 2.7
      },
      {
       "name": "Dick Liefting",
@@ -3597,21 +4881,34 @@
       "laps": 21,
       "best_per_day": [
        null,
-       124.0124
+       124.0124,
+       null
       ],
-      "rank_now": 2,
-      "expected_rank": 14.4,
+      "rank_now": 3,
+      "expected_rank": 13.5,
       "expected_pace": {
-       "p10": 123.018,
-       "p50": 123.77,
-       "p90": 124.503,
-       "mean": 123.767
+       "p10": 123.194,
+       "p50": 123.946,
+       "p90": 124.679,
+       "mean": 123.943
       },
       "estimated_only": false,
-      "gap_to_target_now": 1.115,
-      "gap_to_target_expected": 0.87,
-      "chance_top3": 1.4,
-      "chance_win": 0.1
+      "gap_to_target_now": 0.926,
+      "gap_to_target_expected": 0.857,
+      "chance_top3": 1.6,
+      "chance_win": 0.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.268,
+       "p50": 143.37,
+       "p90": 148.449,
+       "mean": 143.346
+      },
+      "expected_rank_wet": 12.2,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.51,
+      "chance_top3_wet": 9.1,
+      "chance_win_wet": 2.5
      },
      {
       "name": "Sylvester Van Den Bos",
@@ -3628,23 +4925,35 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 4.9,
+      "expected_rank": 4.3,
       "expected_pace": {
-       "p10": 122.172,
-       "p50": 122.964,
-       "p90": 123.75,
-       "mean": 122.961
+       "p10": 122.315,
+       "p50": 123.107,
+       "p90": 123.893,
+       "mean": 123.103
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.064,
-      "chance_top3": 49.2,
-      "chance_win": 22.2
+      "gap_to_target_expected": 0.017,
+      "chance_top3": 54.2,
+      "chance_win": 23.4,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.307,
+       "p50": 142.411,
+       "p90": 147.475,
+       "mean": 142.397
+      },
+      "expected_rank_wet": 9.1,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.561,
+      "chance_top3_wet": 21.5,
+      "chance_win_wet": 7.3
      },
      {
       "name": "Kaustubh Patil",
       "car_number": "347",
-      "irating": 2095,
+      "irating": 2026,
       "team": "Banker Lap",
       "is_team": false,
       "car": "Mercedes-AMG GT3 2020",
@@ -3656,18 +4965,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 5.7,
+      "expected_rank": 5.2,
       "expected_pace": {
-       "p10": 122.25,
-       "p50": 123.041,
-       "p90": 123.831,
-       "mean": 123.041
+       "p10": 122.421,
+       "p50": 123.212,
+       "p90": 124.002,
+       "mean": 123.211
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.144,
-      "chance_top3": 40.9,
-      "chance_win": 17.1
+      "gap_to_target_expected": 0.125,
+      "chance_top3": 43.3,
+      "chance_win": 16.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.322,
+       "p50": 142.515,
+       "p90": 147.664,
+       "mean": 142.501
+      },
+      "expected_rank_wet": 9.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 1.665,
+      "chance_top3_wet": 20.1,
+      "chance_win_wet": 6.9
      },
      {
       "name": "Kees Meurs",
@@ -3684,46 +5005,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 8.3,
+      "expected_rank": 8.0,
       "expected_pace": {
-       "p10": 122.488,
-       "p50": 123.279,
-       "p90": 124.064,
-       "mean": 123.278
+       "p10": 122.694,
+       "p50": 123.486,
+       "p90": 124.271,
+       "mean": 123.484
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.381,
-      "chance_top3": 20.9,
-      "chance_win": 6.1
-     },
-     {
-      "name": "Lars Van Geresteijn",
-      "car_number": "135",
-      "irating": 1695,
-      "team": "XxEpicRacingTeam",
-      "is_team": false,
-      "car": "Porsche 911 GT3 R (992)",
-      "prequal_position": 92,
-      "prequal_best": 105.2116,
-      "pace_index": 1.36,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 8.8,
-      "expected_pace": {
-       "p10": 122.53,
-       "p50": 123.318,
-       "p90": 124.106,
-       "mean": 123.318
+      "gap_to_target_expected": 0.398,
+      "chance_top3": 19.8,
+      "chance_win": 4.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.676,
+       "p50": 142.858,
+       "p90": 148.022,
+       "mean": 142.863
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.421,
-      "chance_top3": 17.7,
-      "chance_win": 5.2
+      "expected_rank_wet": 10.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.027,
+      "chance_top3_wet": 14.8,
+      "chance_win_wet": 4.5
      },
      {
       "name": "Thomas Jack Slack",
@@ -3740,18 +5045,70 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 8.8,
+      "expected_rank": 8.5,
       "expected_pace": {
-       "p10": 122.528,
-       "p50": 123.327,
-       "p90": 124.112,
-       "mean": 123.321
+       "p10": 122.736,
+       "p50": 123.535,
+       "p90": 124.32,
+       "mean": 123.53
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.424,
-      "chance_top3": 18.1,
-      "chance_win": 5.1
+      "gap_to_target_expected": 0.444,
+      "chance_top3": 17.0,
+      "chance_win": 4.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.725,
+       "p50": 142.887,
+       "p90": 148.041,
+       "mean": 142.876
+      },
+      "expected_rank_wet": 10.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.04,
+      "chance_top3_wet": 14.6,
+      "chance_win_wet": 4.7
+     },
+     {
+      "name": "Lars Van Geresteijn",
+      "car_number": "135",
+      "irating": 1695,
+      "team": "XxEpicRacingTeam",
+      "is_team": false,
+      "car": "Porsche 911 GT3 R (992)",
+      "prequal_position": 92,
+      "prequal_best": 105.2116,
+      "pace_index": 1.36,
+      "history_events": 3,
+      "best": null,
+      "laps": 0,
+      "best_per_day": null,
+      "rank_now": null,
+      "expected_rank": 8.6,
+      "expected_pace": {
+       "p10": 122.745,
+       "p50": 123.533,
+       "p90": 124.321,
+       "mean": 123.533
+      },
+      "estimated_only": true,
+      "gap_to_target_now": null,
+      "gap_to_target_expected": 0.447,
+      "chance_top3": 16.4,
+      "chance_win": 4.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.733,
+       "p50": 142.902,
+       "p90": 148.044,
+       "mean": 142.879
+      },
+      "expected_rank_wet": 10.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.043,
+      "chance_top3_wet": 14.1,
+      "chance_win_wet": 4.3
      },
      {
       "name": "Eric Nijmeijer2",
@@ -3768,23 +5125,35 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 9.3,
+      "expected_rank": 9.1,
       "expected_pace": {
-       "p10": 122.563,
-       "p50": 123.37,
-       "p90": 124.143,
-       "mean": 123.36
+       "p10": 122.782,
+       "p50": 123.588,
+       "p90": 124.361,
+       "mean": 123.578
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.463,
-      "chance_top3": 15.7,
-      "chance_win": 4.4
+      "gap_to_target_expected": 0.492,
+      "chance_top3": 14.3,
+      "chance_win": 3.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.815,
+       "p50": 142.9,
+       "p90": 148.07,
+       "mean": 142.939
+      },
+      "expected_rank_wet": 10.9,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.103,
+      "chance_top3_wet": 13.8,
+      "chance_win_wet": 4.4
      },
      {
       "name": "Jeffrey Mokum",
       "car_number": "323",
-      "irating": 1207,
+      "irating": 1248,
       "team": "STROOPWAFEL RACING TEAM",
       "is_team": false,
       "car": "McLaren 720S GT3 EVO",
@@ -3796,18 +5165,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 9.4,
+      "expected_rank": 9.1,
       "expected_pace": {
-       "p10": 122.573,
-       "p50": 123.37,
-       "p90": 124.162,
-       "mean": 123.37
+       "p10": 122.784,
+       "p50": 123.581,
+       "p90": 124.373,
+       "mean": 123.58
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.473,
-      "chance_top3": 15.2,
-      "chance_win": 4.2
+      "gap_to_target_expected": 0.494,
+      "chance_top3": 14.1,
+      "chance_win": 3.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.812,
+       "p50": 142.945,
+       "p90": 148.146,
+       "mean": 142.962
+      },
+      "expected_rank_wet": 10.9,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.126,
+      "chance_top3_wet": 13.4,
+      "chance_win_wet": 3.9
      },
      {
       "name": "John De Bruijn",
@@ -3826,21 +5207,33 @@
       "rank_now": null,
       "expected_rank": 9.9,
       "expected_pace": {
-       "p10": 122.608,
-       "p50": 123.412,
-       "p90": 124.202,
-       "mean": 123.411
+       "p10": 122.841,
+       "p50": 123.644,
+       "p90": 124.435,
+       "mean": 123.644
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.514,
-      "chance_top3": 13.2,
-      "chance_win": 3.6
+      "gap_to_target_expected": 0.558,
+      "chance_top3": 11.3,
+      "chance_win": 2.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 137.855,
+       "p50": 143.031,
+       "p90": 148.134,
+       "mean": 142.988
+      },
+      "expected_rank_wet": 11.0,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.152,
+      "chance_top3_wet": 13.2,
+      "chance_win_wet": 3.9
      },
      {
       "name": "Dennis De Konink",
       "car_number": "75",
-      "irating": 1375,
+      "irating": 1384,
       "team": null,
       "is_team": false,
       "car": "Porsche 911 GT3 R (992)",
@@ -3849,21 +5242,37 @@
       "pace_index": 1.63,
       "history_events": 3,
       "best": null,
-      "laps": 0,
-      "best_per_day": null,
+      "laps": 1,
+      "best_per_day": [
+       null,
+       null,
+       null
+      ],
       "rank_now": null,
       "expected_rank": 11.0,
       "expected_pace": {
-       "p10": 122.709,
-       "p50": 123.493,
-       "p90": 124.291,
-       "mean": 123.497
+       "p10": 122.954,
+       "p50": 123.738,
+       "p90": 124.536,
+       "mean": 123.741
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.6,
-      "chance_top3": 9.4,
-      "chance_win": 2.3
+      "gap_to_target_expected": 0.655,
+      "chance_top3": 7.7,
+      "chance_win": 1.5,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.035,
+       "p50": 143.157,
+       "p90": 148.341,
+       "mean": 143.166
+      },
+      "expected_rank_wet": 11.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.33,
+      "chance_top3_wet": 10.9,
+      "chance_win_wet": 3.1
      },
      {
       "name": "Brandon Uffelie",
@@ -3880,18 +5289,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 11.4,
+      "expected_rank": 11.6,
       "expected_pace": {
-       "p10": 122.738,
-       "p50": 123.539,
-       "p90": 124.329,
-       "mean": 123.533
+       "p10": 122.991,
+       "p50": 123.791,
+       "p90": 124.581,
+       "mean": 123.786
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.636,
-      "chance_top3": 8.0,
-      "chance_win": 1.9
+      "gap_to_target_expected": 0.7,
+      "chance_top3": 6.0,
+      "chance_win": 1.2,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.031,
+       "p50": 143.17,
+       "p90": 148.259,
+       "mean": 143.165
+      },
+      "expected_rank_wet": 11.6,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.329,
+      "chance_top3_wet": 11.1,
+      "chance_win_wet": 3.3
      },
      {
       "name": "Kylian Weerwag",
@@ -3908,18 +5329,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 11.7,
+      "expected_rank": 11.8,
       "expected_pace": {
-       "p10": 122.769,
-       "p50": 123.551,
-       "p90": 124.339,
-       "mean": 123.551
+       "p10": 123.022,
+       "p50": 123.804,
+       "p90": 124.591,
+       "mean": 123.804
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.654,
-      "chance_top3": 7.1,
-      "chance_win": 1.7
+      "gap_to_target_expected": 0.718,
+      "chance_top3": 5.4,
+      "chance_win": 1.0,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.063,
+       "p50": 143.193,
+       "p90": 148.323,
+       "mean": 143.196
+      },
+      "expected_rank_wet": 11.7,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.36,
+      "chance_top3_wet": 10.9,
+      "chance_win_wet": 3.0
      },
      {
       "name": "Kevin Minderhoud",
@@ -3936,46 +5369,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 11.8,
+      "expected_rank": 12.0,
       "expected_pace": {
-       "p10": 122.767,
-       "p50": 123.568,
-       "p90": 124.352,
-       "mean": 123.562
+       "p10": 123.024,
+       "p50": 123.826,
+       "p90": 124.609,
+       "mean": 123.819
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.665,
-      "chance_top3": 7.1,
-      "chance_win": 1.6
-     },
-     {
-      "name": "Justin Van Heuzen2",
-      "car_number": "175",
-      "irating": 1391,
-      "team": "STROOPWAFEL RACING TEAM",
-      "is_team": false,
-      "car": "Mercedes-AMG GT3 2020",
-      "prequal_position": 105,
-      "prequal_best": 106.2787,
-      "pace_index": 1.8,
-      "history_events": 3,
-      "best": null,
-      "laps": 0,
-      "best_per_day": null,
-      "rank_now": null,
-      "expected_rank": 11.9,
-      "expected_pace": {
-       "p10": 122.786,
-       "p50": 123.582,
-       "p90": 124.358,
-       "mean": 123.576
+      "gap_to_target_expected": 0.733,
+      "chance_top3": 5.4,
+      "chance_win": 0.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.053,
+       "p50": 143.226,
+       "p90": 148.357,
+       "mean": 143.217
       },
-      "estimated_only": true,
-      "gap_to_target_now": null,
-      "gap_to_target_expected": 0.679,
-      "chance_top3": 6.7,
-      "chance_win": 1.5
+      "expected_rank_wet": 11.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.381,
+      "chance_top3_wet": 10.8,
+      "chance_win_wet": 3.1
      },
      {
       "name": "Evert Geurtsen5",
@@ -3992,18 +5409,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 12.0,
+      "expected_rank": 12.3,
       "expected_pace": {
-       "p10": 122.8,
-       "p50": 123.581,
-       "p90": 124.371,
-       "mean": 123.581
+       "p10": 123.065,
+       "p50": 123.846,
+       "p90": 124.635,
+       "mean": 123.845
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.684,
-      "chance_top3": 6.4,
-      "chance_win": 1.5
+      "gap_to_target_expected": 0.759,
+      "chance_top3": 4.8,
+      "chance_win": 0.9,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.11,
+       "p50": 143.308,
+       "p90": 148.397,
+       "mean": 143.266
+      },
+      "expected_rank_wet": 11.9,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.43,
+      "chance_top3_wet": 10.1,
+      "chance_win_wet": 2.7
      },
      {
       "name": "Vincent Van Der Linden2",
@@ -4020,18 +5449,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 13.4,
+      "expected_rank": 13.8,
       "expected_pace": {
-       "p10": 122.91,
-       "p50": 123.697,
-       "p90": 124.483,
-       "mean": 123.699
+       "p10": 123.187,
+       "p50": 123.974,
+       "p90": 124.76,
+       "mean": 123.976
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.802,
-      "chance_top3": 3.6,
-      "chance_win": 0.7
+      "gap_to_target_expected": 0.89,
+      "chance_top3": 2.3,
+      "chance_win": 0.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.315,
+       "p50": 143.409,
+       "p90": 148.524,
+       "mean": 143.396
+      },
+      "expected_rank_wet": 12.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.56,
+      "chance_top3_wet": 9.1,
+      "chance_win_wet": 2.6
      },
      {
       "name": "Tim De Jong2",
@@ -4048,23 +5489,35 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 13.6,
+      "expected_rank": 14.1,
       "expected_pace": {
-       "p10": 122.932,
-       "p50": 123.719,
-       "p90": 124.512,
-       "mean": 123.717
+       "p10": 123.222,
+       "p50": 124.01,
+       "p90": 124.802,
+       "mean": 124.007
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.82,
-      "chance_top3": 3.2,
-      "chance_win": 0.7
+      "gap_to_target_expected": 0.921,
+      "chance_top3": 2.0,
+      "chance_win": 0.3,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.333,
+       "p50": 143.441,
+       "p90": 148.494,
+       "mean": 143.43
+      },
+      "expected_rank_wet": 12.4,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.594,
+      "chance_top3_wet": 8.7,
+      "chance_win_wet": 2.5
      },
      {
       "name": "Marco Vd Ven",
       "car_number": "102",
-      "irating": 2251,
+      "irating": 2180,
       "team": "G-Force Racing",
       "is_team": false,
       "car": "McLaren 720S GT3 EVO",
@@ -4076,18 +5529,30 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 14.4,
+      "expected_rank": 15.2,
       "expected_pace": {
-       "p10": 123.006,
-       "p50": 123.786,
-       "p90": 124.585,
-       "mean": 123.789
+       "p10": 123.327,
+       "p50": 124.108,
+       "p90": 124.906,
+       "mean": 124.11
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 0.892,
-      "chance_top3": 2.4,
-      "chance_win": 0.4
+      "gap_to_target_expected": 1.024,
+      "chance_top3": 1.1,
+      "chance_win": 0.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.378,
+       "p50": 143.536,
+       "p90": 148.662,
+       "mean": 143.533
+      },
+      "expected_rank_wet": 12.8,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.697,
+      "chance_top3_wet": 7.8,
+      "chance_win_wet": 2.2
      },
      {
       "name": "Richard De Ruiter",
@@ -4104,23 +5569,35 @@
       "laps": 0,
       "best_per_day": null,
       "rank_now": null,
-      "expected_rank": 15.9,
+      "expected_rank": 16.5,
       "expected_pace": {
-       "p10": 123.128,
-       "p50": 123.925,
-       "p90": 124.726,
-       "mean": 123.926
+       "p10": 123.444,
+       "p50": 124.241,
+       "p90": 125.042,
+       "mean": 124.242
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 1.029,
-      "chance_top3": 1.1,
-      "chance_win": 0.2
+      "gap_to_target_expected": 1.156,
+      "chance_top3": 0.5,
+      "chance_win": 0.1,
+      "best_wet": null,
+      "expected_pace_wet": {
+       "p10": 138.593,
+       "p50": 143.71,
+       "p90": 148.882,
+       "mean": 143.723
+      },
+      "expected_rank_wet": 13.3,
+      "estimated_wet": true,
+      "gap_to_target_wet": 2.887,
+      "chance_top3_wet": 6.7,
+      "chance_win_wet": 1.7
      },
      {
       "name": "Michiel De Jong",
       "car_number": "261",
-      "irating": 747,
+      "irating": 837,
       "team": null,
       "is_team": false,
       "car": "Porsche 911 GT3 R (992)",
@@ -4129,21 +5606,37 @@
       "pace_index": 3.67,
       "history_events": 3,
       "best": null,
-      "laps": 0,
-      "best_per_day": null,
+      "laps": 16,
+      "best_per_day": [
+       null,
+       null,
+       134.7255
+      ],
       "rank_now": null,
-      "expected_rank": 20.3,
+      "expected_rank": 20.7,
       "expected_pace": {
-       "p10": 123.842,
-       "p50": 124.639,
-       "p90": 125.425,
-       "mean": 124.638
+       "p10": 124.28,
+       "p50": 125.077,
+       "p90": 125.863,
+       "mean": 125.076
       },
       "estimated_only": true,
       "gap_to_target_now": null,
-      "gap_to_target_expected": 1.741,
+      "gap_to_target_expected": 1.99,
       "chance_top3": 0.0,
-      "chance_win": 0.0
+      "chance_win": 0.0,
+      "best_wet": 134.7255,
+      "expected_pace_wet": {
+       "p10": 136.082,
+       "p50": 141.225,
+       "p90": 146.331,
+       "mean": 141.2
+      },
+      "expected_rank_wet": 5.6,
+      "estimated_wet": false,
+      "gap_to_target_wet": 0.364,
+      "chance_top3_wet": 46.1,
+      "chance_win_wet": 22.2
      }
     ]
    }
@@ -4164,23 +5657,37 @@
     "laps": 25,
     "best_per_day": [
      null,
-     121.4399
+     121.4399,
+     null
     ],
     "rank_now": 1,
-    "expected_rank": 7.9,
+    "expected_rank": 7.5,
     "expected_pace": {
-     "p10": 121.284,
-     "p50": 122.021,
-     "p90": 122.754,
-     "mean": 122.019
+     "p10": 121.309,
+     "p50": 122.046,
+     "p90": 122.778,
+     "mean": 122.043
     },
     "estimated_only": false,
-    "gap_to_target_now": -0.361,
-    "gap_to_target_expected": 0.218,
-    "chance_top3": 31.2,
-    "chance_win": 11.7,
+    "gap_to_target_now": -0.394,
+    "gap_to_target_expected": 0.209,
+    "chance_top3": 32.0,
+    "chance_win": 11.9,
+    "best_wet": null,
+    "expected_pace_wet": {
+     "p10": 136.039,
+     "p50": 141.185,
+     "p90": 146.252,
+     "mean": 141.161
+    },
+    "expected_rank_wet": 13.1,
+    "estimated_wet": true,
+    "gap_to_target_wet": 1.9,
+    "chance_top3_wet": 15.6,
+    "chance_win_wet": 5.8,
     "split": 2,
-    "target": 121.801
+    "target": 121.834,
+    "target_wet": 139.261
    },
    {
     "name": "Kelvin Huurman3",
@@ -4197,20 +5704,33 @@
     "laps": 0,
     "best_per_day": null,
     "rank_now": null,
-    "expected_rank": 12.7,
+    "expected_rank": 12.1,
     "expected_pace": {
-     "p10": 121.48,
-     "p50": 122.263,
-     "p90": 123.063,
-     "mean": 122.266
+     "p10": 121.497,
+     "p50": 122.281,
+     "p90": 123.08,
+     "mean": 122.283
     },
     "estimated_only": true,
     "gap_to_target_now": null,
-    "gap_to_target_expected": 0.465,
-    "chance_top3": 15.3,
-    "chance_win": 5.4,
+    "gap_to_target_expected": 0.449,
+    "chance_top3": 16.2,
+    "chance_win": 5.8,
+    "best_wet": null,
+    "expected_pace_wet": {
+     "p10": 136.343,
+     "p50": 141.455,
+     "p90": 146.587,
+     "mean": 141.467
+    },
+    "expected_rank_wet": 14.6,
+    "estimated_wet": true,
+    "gap_to_target_wet": 2.206,
+    "chance_top3_wet": 12.6,
+    "chance_win_wet": 4.3,
     "split": 2,
-    "target": 121.801
+    "target": 121.834,
+    "target_wet": 139.261
    },
    {
     "name": "Jorrit Drent",
@@ -4227,23 +5747,37 @@
     "laps": 0,
     "best_per_day": [
      null,
+     null,
      null
     ],
     "rank_now": null,
-    "expected_rank": 13.1,
+    "expected_rank": 12.5,
     "expected_pace": {
-     "p10": 121.491,
-     "p50": 122.286,
-     "p90": 123.068,
-     "mean": 122.283
+     "p10": 121.513,
+     "p50": 122.308,
+     "p90": 123.09,
+     "mean": 122.305
     },
     "estimated_only": true,
     "gap_to_target_now": null,
-    "gap_to_target_expected": 0.482,
-    "chance_top3": 14.3,
+    "gap_to_target_expected": 0.471,
+    "chance_top3": 14.9,
     "chance_win": 5.0,
+    "best_wet": null,
+    "expected_pace_wet": {
+     "p10": 136.346,
+     "p50": 141.485,
+     "p90": 146.578,
+     "mean": 141.469
+    },
+    "expected_rank_wet": 14.6,
+    "estimated_wet": true,
+    "gap_to_target_wet": 2.208,
+    "chance_top3_wet": 12.3,
+    "chance_win_wet": 4.3,
     "split": 2,
-    "target": 121.801
+    "target": 121.834,
+    "target_wet": 139.261
    },
    {
     "name": "Luuk Feitsma",
@@ -4251,29 +5785,46 @@
     "irating": 2232,
     "team": "Valkra Performance",
     "is_team": true,
-    "car": "Lamborghini Huracan GT3 EVO",
+    "car": "Lamborghini Huracán GT3 EVO",
     "prequal_position": 47,
     "prequal_best": 103.5204,
     "pace_index": -0.19,
     "history_events": 3,
-    "best": null,
-    "laps": 0,
-    "best_per_day": null,
-    "rank_now": null,
-    "expected_rank": 17.2,
+    "best": 122.6123,
+    "laps": 12,
+    "best_per_day": [
+     null,
+     null,
+     122.6123
+    ],
+    "rank_now": 5,
+    "expected_rank": 17.6,
     "expected_pace": {
-     "p10": 121.703,
-     "p50": 122.495,
-     "p90": 123.285,
-     "mean": 122.493
+     "p10": 121.806,
+     "p50": 122.566,
+     "p90": 123.321,
+     "mean": 122.563
     },
-    "estimated_only": true,
-    "gap_to_target_now": null,
-    "gap_to_target_expected": 0.692,
-    "chance_top3": 6.0,
-    "chance_win": 1.7,
+    "estimated_only": false,
+    "gap_to_target_now": 0.778,
+    "gap_to_target_expected": 0.729,
+    "chance_top3": 3.7,
+    "chance_win": 0.9,
+    "best_wet": null,
+    "expected_pace_wet": {
+     "p10": 136.649,
+     "p50": 141.795,
+     "p90": 146.872,
+     "mean": 141.769
+    },
+    "expected_rank_wet": 16.1,
+    "estimated_wet": true,
+    "gap_to_target_wet": 2.508,
+    "chance_top3_wet": 8.7,
+    "chance_win_wet": 2.7,
     "split": 2,
-    "target": 121.801
+    "target": 121.834,
+    "target_wet": 139.261
    },
    {
     "name": "Ron Gravesteijn",
@@ -4290,20 +5841,33 @@
     "laps": 0,
     "best_per_day": null,
     "rank_now": null,
-    "expected_rank": 18.4,
+    "expected_rank": 18.8,
     "expected_pace": {
-     "p10": 121.762,
-     "p50": 122.559,
-     "p90": 123.344,
-     "mean": 122.557
+     "p10": 121.835,
+     "p50": 122.633,
+     "p90": 123.418,
+     "mean": 122.631
     },
     "estimated_only": true,
     "gap_to_target_now": null,
-    "gap_to_target_expected": 0.756,
-    "chance_top3": 4.4,
-    "chance_win": 1.1,
+    "gap_to_target_expected": 0.797,
+    "chance_top3": 3.4,
+    "chance_win": 0.8,
+    "best_wet": null,
+    "expected_pace_wet": {
+     "p10": 136.802,
+     "p50": 141.853,
+     "p90": 146.947,
+     "mean": 141.857
+    },
+    "expected_rank_wet": 16.5,
+    "estimated_wet": true,
+    "gap_to_target_wet": 2.596,
+    "chance_top3_wet": 8.5,
+    "chance_win_wet": 2.6,
     "split": 2,
-    "target": 121.801
+    "target": 121.834,
+    "target_wet": 139.261
    },
    {
     "name": "Ruud Lopez",
@@ -4311,29 +5875,46 @@
     "irating": 2036,
     "team": "Valkra Performance",
     "is_team": true,
-    "car": "Acura NSX GT3 EVO",
+    "car": "Acura NSX GT3 EVO 22",
     "prequal_position": 46,
     "prequal_best": 103.518,
     "pace_index": -0.01,
     "history_events": 3,
     "best": null,
-    "laps": 0,
-    "best_per_day": null,
+    "laps": 21,
+    "best_per_day": [
+     null,
+     null,
+     141.3797
+    ],
     "rank_now": null,
-    "expected_rank": 19.2,
+    "expected_rank": 19.6,
     "expected_pace": {
-     "p10": 121.807,
-     "p50": 122.601,
-     "p90": 123.393,
-     "mean": 122.599
+     "p10": 121.881,
+     "p50": 122.675,
+     "p90": 123.467,
+     "mean": 122.673
     },
     "estimated_only": true,
     "gap_to_target_now": null,
-    "gap_to_target_expected": 0.798,
-    "chance_top3": 3.7,
-    "chance_win": 0.9,
+    "gap_to_target_expected": 0.839,
+    "chance_top3": 3.1,
+    "chance_win": 0.7,
+    "best_wet": 141.3797,
+    "expected_pace_wet": {
+     "p10": 136.618,
+     "p50": 141.714,
+     "p90": 146.817,
+     "mean": 141.722
+    },
+    "expected_rank_wet": 15.9,
+    "estimated_wet": false,
+    "gap_to_target_wet": 2.461,
+    "chance_top3_wet": 9.9,
+    "chance_win_wet": 3.3,
     "split": 2,
-    "target": 121.801
+    "target": 121.834,
+    "target_wet": 139.261
    },
    {
     "name": "Jelmer Jekel",
@@ -4350,20 +5931,33 @@
     "laps": 0,
     "best_per_day": null,
     "rank_now": null,
-    "expected_rank": 12.8,
+    "expected_rank": 12.3,
     "expected_pace": {
-     "p10": 121.994,
-     "p50": 122.776,
-     "p90": 123.559,
-     "mean": 122.774
+     "p10": 122.108,
+     "p50": 122.89,
+     "p90": 123.673,
+     "mean": 122.888
     },
     "estimated_only": true,
     "gap_to_target_now": null,
-    "gap_to_target_expected": 0.576,
-    "chance_top3": 10.3,
-    "chance_win": 2.7,
+    "gap_to_target_expected": 0.597,
+    "chance_top3": 9.5,
+    "chance_win": 2.2,
+    "best_wet": null,
+    "expected_pace_wet": {
+     "p10": 137.029,
+     "p50": 142.085,
+     "p90": 147.208,
+     "mean": 142.121
+    },
+    "expected_rank_wet": 14.1,
+    "estimated_wet": true,
+    "gap_to_target_wet": 2.29,
+    "chance_top3_wet": 11.5,
+    "chance_win_wet": 3.8,
     "split": 3,
-    "target": 122.198
+    "target": 122.291,
+    "target_wet": 139.831
    }
   ],
   "results": [
@@ -4577,7 +6171,7 @@
        {
         "name": "Barry Arends",
         "car_number": "268",
-        "irating": 5051,
+        "irating": 4927,
         "team": "Red Eagle Racing",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -4631,7 +6225,7 @@
        {
         "name": "Joep van Tilburg",
         "car_number": "176",
-        "irating": 3817,
+        "irating": 3909,
         "team": "KNAF Digital Academy",
         "is_team": false,
         "car": "Ferrari 296 GT3",
@@ -4775,7 +6369,7 @@
        {
         "name": "Daniel Morpey",
         "car_number": "283",
-        "irating": 5134,
+        "irating": 5116,
         "team": "Red Eagle Racing",
         "is_team": false,
         "car": "BMW M4 GT3 EVO",
@@ -5028,7 +6622,7 @@
        {
         "name": "Mika Van Den Hurk",
         "car_number": "126",
-        "irating": 3640,
+        "irating": 3554,
         "team": null,
         "is_team": false,
         "car": "Lamborghini Huracán GT3 EVO",
@@ -5046,7 +6640,7 @@
        {
         "name": "Max De Rooij",
         "car_number": null,
-        "irating": 2641,
+        "irating": 2770,
         "team": "STROOPWAFEL RACING TEAM",
         "is_team": false,
         "car": "BMW M4 GT3 EVO",
@@ -5461,7 +7055,7 @@
        {
         "name": "J.T Korting",
         "car_number": "185",
-        "irating": 2613,
+        "irating": 2584,
         "team": "STROOPWAFEL RACING TEAM",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -5515,7 +7109,7 @@
        {
         "name": "Thijmen Bakker",
         "car_number": null,
-        "irating": 995,
+        "irating": 1031,
         "team": null,
         "is_team": false,
         "car": "BMW M4 GT3 EVO",
@@ -5785,7 +7379,7 @@
        {
         "name": "Jaimy Peters",
         "car_number": "134",
-        "irating": 1470,
+        "irating": 1555,
         "team": "3 Stripe Motorsport",
         "is_team": false,
         "car": "Porsche 911 GT3 R (992)",
@@ -5912,7 +7506,7 @@
        {
         "name": "Kaustubh Patil",
         "car_number": "347",
-        "irating": 2095,
+        "irating": 2026,
         "team": "Banker Lap",
         "is_team": false,
         "car": "Mercedes-AMG GT3 2020",
@@ -5966,7 +7560,7 @@
        {
         "name": "Jeffrey Mokum",
         "car_number": "323",
-        "irating": 1207,
+        "irating": 1248,
         "team": "STROOPWAFEL RACING TEAM",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -6164,7 +7758,7 @@
        {
         "name": "Michiel De Jong",
         "car_number": "261",
-        "irating": 747,
+        "irating": 837,
         "team": null,
         "is_team": false,
         "car": "Porsche 911 GT3 R (992)",
@@ -6182,7 +7776,7 @@
        {
         "name": "Dennis De Konink",
         "car_number": "75",
-        "irating": 1375,
+        "irating": 1384,
         "team": null,
         "is_team": false,
         "car": "Porsche 911 GT3 R (992)",
@@ -6200,7 +7794,7 @@
        {
         "name": "Marco Vd Ven",
         "car_number": "102",
-        "irating": 2251,
+        "irating": 2180,
         "team": "G-Force Racing",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -6666,7 +8260,7 @@
        {
         "name": "Daniel Morpey",
         "car_number": "283",
-        "irating": 5134,
+        "irating": 5116,
         "team": "Red Eagle Racing",
         "is_team": false,
         "car": "BMW M4 GT3 EVO",
@@ -6684,7 +8278,7 @@
        {
         "name": "Barry Arends",
         "car_number": "268",
-        "irating": 5051,
+        "irating": 4927,
         "team": "Red Eagle Racing",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -6738,7 +8332,7 @@
        {
         "name": "Joep van Tilburg",
         "car_number": "176",
-        "irating": 3817,
+        "irating": 3909,
         "team": "KNAF Digital Academy",
         "is_team": false,
         "car": "Ferrari 296 GT3",
@@ -6973,7 +8567,7 @@
        {
         "name": "Mika Van Den Hurk",
         "car_number": "126",
-        "irating": 3640,
+        "irating": 3554,
         "team": null,
         "is_team": false,
         "car": "Lamborghini Huracán GT3 EVO",
@@ -7333,7 +8927,7 @@
        {
         "name": "Max De Rooij",
         "car_number": null,
-        "irating": 2641,
+        "irating": 2770,
         "team": "STROOPWAFEL RACING TEAM",
         "is_team": false,
         "car": "BMW M4 GT3 EVO",
@@ -7604,7 +9198,7 @@
        {
         "name": "Thijmen Bakker",
         "car_number": null,
-        "irating": 995,
+        "irating": 1031,
         "team": null,
         "is_team": false,
         "car": "BMW M4 GT3 EVO",
@@ -7712,7 +9306,7 @@
        {
         "name": "Jaimy Peters",
         "car_number": "134",
-        "irating": 1470,
+        "irating": 1555,
         "team": "3 Stripe Motorsport",
         "is_team": false,
         "car": "Porsche 911 GT3 R (992)",
@@ -7766,7 +9360,7 @@
        {
         "name": "J.T Korting",
         "car_number": "185",
-        "irating": 2613,
+        "irating": 2584,
         "team": "STROOPWAFEL RACING TEAM",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -7929,7 +9523,7 @@
        {
         "name": "Dennis De Konink",
         "car_number": "75",
-        "irating": 1375,
+        "irating": 1384,
         "team": null,
         "is_team": false,
         "car": "Porsche 911 GT3 R (992)",
@@ -7947,7 +9541,7 @@
        {
         "name": "Jeffrey Mokum",
         "car_number": "323",
-        "irating": 1207,
+        "irating": 1248,
         "team": "STROOPWAFEL RACING TEAM",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -8073,7 +9667,7 @@
        {
         "name": "Marco Vd Ven",
         "car_number": "102",
-        "irating": 2251,
+        "irating": 2180,
         "team": "G-Force Racing",
         "is_team": false,
         "car": "McLaren 720S GT3 EVO",
@@ -8109,7 +9703,7 @@
        {
         "name": "Michiel De Jong",
         "car_number": "261",
-        "irating": 747,
+        "irating": 837,
         "team": null,
         "is_team": false,
         "car": "Porsche 911 GT3 R (992)",
@@ -8145,7 +9739,7 @@
        {
         "name": "Kaustubh Patil",
         "car_number": "347",
-        "irating": 2095,
+        "irating": 2026,
         "team": "Banker Lap",
         "is_team": false,
         "car": "Mercedes-AMG GT3 2020",
@@ -8311,7 +9905,7 @@
    "best_time": 102.3042,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.519,
+   "model_time": 102.515,
    "prequal_position_now": 1,
    "expected_prequal": {
     "p10": 102.3042,
@@ -8343,7 +9937,7 @@
    "best_time": 102.4964,
    "laps_total": 24,
    "time_status": "reliable",
-   "model_time": 102.666,
+   "model_time": 102.66,
    "prequal_position_now": 2,
    "expected_prequal": {
     "p10": 102.4964,
@@ -8375,7 +9969,7 @@
    "best_time": 102.5362,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.727,
+   "model_time": 102.719,
    "prequal_position_now": 3,
    "expected_prequal": {
     "p10": 102.5362,
@@ -8407,7 +10001,7 @@
    "best_time": 102.5976,
    "laps_total": 25,
    "time_status": "reliable",
-   "model_time": 102.771,
+   "model_time": 102.763,
    "prequal_position_now": 4,
    "expected_prequal": {
     "p10": 102.5976,
@@ -8439,7 +10033,7 @@
    "best_time": 102.6026,
    "laps_total": 14,
    "time_status": "few_laps",
-   "model_time": 103.043,
+   "model_time": 103.035,
    "prequal_position_now": 5,
    "expected_prequal": {
     "p10": 102.6026,
@@ -8471,7 +10065,7 @@
    "best_time": 102.6592,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.766,
+   "model_time": 102.758,
    "prequal_position_now": 6,
    "expected_prequal": {
     "p10": 102.6592,
@@ -8490,9 +10084,9 @@
   {
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5134,
+   "irating": 5116,
    "license": "A",
-   "safety_rating": 2.44,
+   "safety_rating": 2.26,
    "team": "Red Eagle Racing",
    "car": "BMW M4 GT3 EVO",
    "practice_best": 102.7733,
@@ -8535,7 +10129,7 @@
    "best_time": 102.7113,
    "laps_total": 35,
    "time_status": "reliable",
-   "model_time": 102.546,
+   "model_time": 102.542,
    "prequal_position_now": 8,
    "expected_prequal": {
     "p10": 102.7113,
@@ -8567,7 +10161,7 @@
    "best_time": 102.7114,
    "laps_total": 34,
    "time_status": "reliable",
-   "model_time": 102.755,
+   "model_time": 102.747,
    "prequal_position_now": 9,
    "expected_prequal": {
     "p10": 102.7114,
@@ -8599,7 +10193,7 @@
    "best_time": 102.8014,
    "laps_total": 81,
    "time_status": "reliable",
-   "model_time": 102.849,
+   "model_time": 102.84,
    "prequal_position_now": 10,
    "expected_prequal": {
     "p10": 102.8014,
@@ -8631,7 +10225,7 @@
    "best_time": 102.8259,
    "laps_total": 73,
    "time_status": "reliable",
-   "model_time": 102.922,
+   "model_time": 102.914,
    "prequal_position_now": 11,
    "expected_prequal": {
     "p10": 102.8259,
@@ -8663,7 +10257,7 @@
    "best_time": 102.8313,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 102.791,
+   "model_time": 102.783,
    "prequal_position_now": 12,
    "expected_prequal": {
     "p10": 102.8313,
@@ -8695,7 +10289,7 @@
    "best_time": 102.8384,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 103.588,
+   "model_time": 103.584,
    "prequal_position_now": 13,
    "expected_prequal": {
     "p10": 102.8384,
@@ -8727,7 +10321,7 @@
    "best_time": 102.7282,
    "laps_total": 20,
    "time_status": "reliable",
-   "model_time": 102.827,
+   "model_time": 102.818,
    "prequal_position_now": 14,
    "expected_prequal": {
     "p10": 102.8629,
@@ -8759,7 +10353,7 @@
    "best_time": 102.8646,
    "laps_total": 2,
    "time_status": "few_laps",
-   "model_time": 102.626,
+   "model_time": 102.62,
    "prequal_position_now": 15,
    "expected_prequal": {
     "p10": 102.8646,
@@ -8791,7 +10385,7 @@
    "best_time": 102.916,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 102.762,
+   "model_time": 102.754,
    "prequal_position_now": 16,
    "expected_prequal": {
     "p10": 102.916,
@@ -8823,7 +10417,7 @@
    "best_time": 102.937,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 103.467,
+   "model_time": 103.462,
    "prequal_position_now": 17,
    "expected_prequal": {
     "p10": 102.937,
@@ -8855,7 +10449,7 @@
    "best_time": 102.9564,
    "laps_total": 41,
    "time_status": "reliable",
-   "model_time": 103.342,
+   "model_time": 103.336,
    "prequal_position_now": 18,
    "expected_prequal": {
     "p10": 102.9564,
@@ -8887,7 +10481,7 @@
    "best_time": 102.9778,
    "laps_total": 4,
    "time_status": "few_laps",
-   "model_time": 102.805,
+   "model_time": 102.797,
    "prequal_position_now": 19,
    "expected_prequal": {
     "p10": 102.9778,
@@ -8919,7 +10513,7 @@
    "best_time": 103.0097,
    "laps_total": 15,
    "time_status": "few_laps",
-   "model_time": 103.013,
+   "model_time": 103.005,
    "prequal_position_now": 20,
    "expected_prequal": {
     "p10": 103.0097,
@@ -8951,7 +10545,7 @@
    "best_time": 103.0111,
    "laps_total": 161,
    "time_status": "reliable",
-   "model_time": 103.644,
+   "model_time": 103.641,
    "prequal_position_now": 21,
    "expected_prequal": {
     "p10": 103.0111,
@@ -8983,7 +10577,7 @@
    "best_time": 103.0337,
    "laps_total": 27,
    "time_status": "reliable",
-   "model_time": 103.509,
+   "model_time": 103.505,
    "prequal_position_now": 22,
    "expected_prequal": {
     "p10": 103.0337,
@@ -9015,7 +10609,7 @@
    "best_time": 103.0719,
    "laps_total": 55,
    "time_status": "reliable",
-   "model_time": 103.021,
+   "model_time": 103.013,
    "prequal_position_now": 23,
    "expected_prequal": {
     "p10": 103.0719,
@@ -9047,7 +10641,7 @@
    "best_time": 103.0782,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 103.332,
+   "model_time": 103.326,
    "prequal_position_now": 24,
    "expected_prequal": {
     "p10": 103.0782,
@@ -9079,7 +10673,7 @@
    "best_time": 103.0943,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 102.984,
+   "model_time": 102.975,
    "prequal_position_now": 25,
    "expected_prequal": {
     "p10": 103.0943,
@@ -9098,9 +10692,9 @@
   {
    "name": "Barry Arends",
    "car_number": "268",
-   "irating": 5051,
+   "irating": 4927,
    "license": "A",
-   "safety_rating": 3.57,
+   "safety_rating": 2.34,
    "team": "Red Eagle Racing",
    "car": "McLaren 720S GT3 EVO",
    "practice_best": 103.3951,
@@ -9111,7 +10705,7 @@
    "best_time": 103.1336,
    "laps_total": 62,
    "time_status": "reliable",
-   "model_time": 103.329,
+   "model_time": 103.36,
    "prequal_position_now": 26,
    "expected_prequal": {
     "p10": 103.1336,
@@ -9143,7 +10737,7 @@
    "best_time": 103.1433,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 103.362,
+   "model_time": 103.357,
    "prequal_position_now": 27,
    "expected_prequal": {
     "p10": 103.1433,
@@ -9162,9 +10756,9 @@
   {
    "name": "Joep van Tilburg",
    "car_number": "176",
-   "irating": 3817,
+   "irating": 3909,
    "license": "A",
-   "safety_rating": 2.24,
+   "safety_rating": 2.8,
    "team": "KNAF Digital Academy",
    "car": "Ferrari 296 GT3",
    "practice_best": 103.5707,
@@ -9175,7 +10769,7 @@
    "best_time": 103.1475,
    "laps_total": 126,
    "time_status": "reliable",
-   "model_time": 103.739,
+   "model_time": 103.701,
    "prequal_position_now": 28,
    "expected_prequal": {
     "p10": 103.1475,
@@ -9207,7 +10801,7 @@
    "best_time": 103.0825,
    "laps_total": 131,
    "time_status": "reliable",
-   "model_time": 103.432,
+   "model_time": 103.427,
    "prequal_position_now": 29,
    "expected_prequal": {
     "p10": 103.1541,
@@ -9239,7 +10833,7 @@
    "best_time": 103.161,
    "laps_total": 74,
    "time_status": "reliable",
-   "model_time": 103.383,
+   "model_time": 103.378,
    "prequal_position_now": 30,
    "expected_prequal": {
     "p10": 103.161,
@@ -9271,7 +10865,7 @@
    "best_time": 103.086,
    "laps_total": 57,
    "time_status": "reliable",
-   "model_time": 103.069,
+   "model_time": 103.062,
    "prequal_position_now": 31,
    "expected_prequal": {
     "p10": 103.1652,
@@ -9335,7 +10929,7 @@
    "best_time": 103.2154,
    "laps_total": 67,
    "time_status": "reliable",
-   "model_time": 103.328,
+   "model_time": 103.322,
    "prequal_position_now": 33,
    "expected_prequal": {
     "p10": 103.2154,
@@ -9367,7 +10961,7 @@
    "best_time": 103.2616,
    "laps_total": 14,
    "time_status": "few_laps",
-   "model_time": 103.865,
+   "model_time": 103.864,
    "prequal_position_now": 34,
    "expected_prequal": {
     "p10": 103.2616,
@@ -9399,7 +10993,7 @@
    "best_time": 103.2632,
    "laps_total": 78,
    "time_status": "reliable",
-   "model_time": 104.286,
+   "model_time": 104.288,
    "prequal_position_now": 35,
    "expected_prequal": {
     "p10": 103.2632,
@@ -9418,9 +11012,9 @@
   {
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3640,
+   "irating": 3554,
    "license": "A",
-   "safety_rating": 2.08,
+   "safety_rating": 1.36,
    "team": null,
    "car": "Lamborghini Huracan GT3 EVO",
    "practice_best": 103.2284,
@@ -9431,7 +11025,7 @@
    "best_time": 103.2284,
    "laps_total": 127,
    "time_status": "reliable",
-   "model_time": 103.808,
+   "model_time": 103.841,
    "prequal_position_now": 36,
    "expected_prequal": {
     "p10": 103.2781,
@@ -9450,9 +11044,9 @@
   {
    "name": "Niek Jacobs",
    "car_number": "274",
-   "irating": 4120,
+   "irating": 4145,
    "license": "A",
-   "safety_rating": 4.26,
+   "safety_rating": 4.3,
    "team": null,
    "car": null,
    "practice_best": 103.5085,
@@ -9463,7 +11057,7 @@
    "best_time": 103.2859,
    "laps_total": 133,
    "time_status": "reliable",
-   "model_time": 103.627,
+   "model_time": 103.615,
    "prequal_position_now": 37,
    "expected_prequal": {
     "p10": 103.2859,
@@ -9495,7 +11089,7 @@
    "best_time": 103.3325,
    "laps_total": 38,
    "time_status": "reliable",
-   "model_time": 103.865,
+   "model_time": 103.863,
    "prequal_position_now": 38,
    "expected_prequal": {
     "p10": 103.3325,
@@ -9527,7 +11121,7 @@
    "best_time": 103.3361,
    "laps_total": 23,
    "time_status": "reliable",
-   "model_time": 103.85,
+   "model_time": 103.849,
    "prequal_position_now": 39,
    "expected_prequal": {
     "p10": 103.3361,
@@ -9559,7 +11153,7 @@
    "best_time": 103.3964,
    "laps_total": 92,
    "time_status": "reliable",
-   "model_time": 104.147,
+   "model_time": 104.148,
    "prequal_position_now": 40,
    "expected_prequal": {
     "p10": 103.3964,
@@ -9591,7 +11185,7 @@
    "best_time": 103.3971,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 103.707,
+   "model_time": 103.704,
    "prequal_position_now": 41,
    "expected_prequal": {
     "p10": 103.3971,
@@ -9623,7 +11217,7 @@
    "best_time": 103.412,
    "laps_total": 153,
    "time_status": "reliable",
-   "model_time": 103.688,
+   "model_time": 103.685,
    "prequal_position_now": 42,
    "expected_prequal": {
     "p10": 103.412,
@@ -9655,7 +11249,7 @@
    "best_time": 103.4307,
    "laps_total": 143,
    "time_status": "reliable",
-   "model_time": 104.43,
+   "model_time": 104.433,
    "prequal_position_now": 43,
    "expected_prequal": {
     "p10": 103.4597,
@@ -9706,9 +11300,9 @@
   {
    "name": "Max De Rooij",
    "car_number": null,
-   "irating": 2641,
+   "irating": 2770,
    "license": "A",
-   "safety_rating": 4.28,
+   "safety_rating": 4.1,
    "team": "STROOPWAFEL RACING TEAM",
    "car": "BMW M4 GT3 EVO",
    "practice_best": 103.7169,
@@ -9719,7 +11313,7 @@
    "best_time": 103.501,
    "laps_total": 65,
    "time_status": "reliable",
-   "model_time": 104.277,
+   "model_time": 104.208,
    "prequal_position_now": 45,
    "expected_prequal": {
     "p10": 103.501,
@@ -9751,7 +11345,7 @@
    "best_time": 103.518,
    "laps_total": 249,
    "time_status": "reliable",
-   "model_time": 104.657,
+   "model_time": 104.662,
    "prequal_position_now": 46,
    "expected_prequal": {
     "p10": 103.518,
@@ -9783,7 +11377,7 @@
    "best_time": 103.5204,
    "laps_total": 72,
    "time_status": "reliable",
-   "model_time": 104.523,
+   "model_time": 104.527,
    "prequal_position_now": 47,
    "expected_prequal": {
     "p10": 103.5204,
@@ -9815,7 +11409,7 @@
    "best_time": 103.5942,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 103.965,
+   "model_time": 103.964,
    "prequal_position_now": 48,
    "expected_prequal": {
     "p10": 103.5942,
@@ -9879,7 +11473,7 @@
    "best_time": 103.6629,
    "laps_total": 38,
    "time_status": "reliable",
-   "model_time": 103.888,
+   "model_time": 103.886,
    "prequal_position_now": 50,
    "expected_prequal": {
     "p10": 103.6629,
@@ -9911,7 +11505,7 @@
    "best_time": 103.6721,
    "laps_total": 77,
    "time_status": "reliable",
-   "model_time": 104.085,
+   "model_time": 104.086,
    "prequal_position_now": 51,
    "expected_prequal": {
     "p10": 103.6721,
@@ -9943,7 +11537,7 @@
    "best_time": 103.7123,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 103.841,
+   "model_time": 103.839,
    "prequal_position_now": 52,
    "expected_prequal": {
     "p10": 103.7123,
@@ -9975,7 +11569,7 @@
    "best_time": 103.6382,
    "laps_total": 90,
    "time_status": "reliable",
-   "model_time": 104.483,
+   "model_time": 104.486,
    "prequal_position_now": 53,
    "expected_prequal": {
     "p10": 103.7513,
@@ -10039,7 +11633,7 @@
    "best_time": 103.763,
    "laps_total": 53,
    "time_status": "reliable",
-   "model_time": 104.392,
+   "model_time": 104.394,
    "prequal_position_now": 55,
    "expected_prequal": {
     "p10": 103.763,
@@ -10103,7 +11697,7 @@
    "best_time": 103.7983,
    "laps_total": 68,
    "time_status": "reliable",
-   "model_time": 103.596,
+   "model_time": 103.593,
    "prequal_position_now": 57,
    "expected_prequal": {
     "p10": 103.7983,
@@ -10135,7 +11729,7 @@
    "best_time": 103.827,
    "laps_total": 46,
    "time_status": "reliable",
-   "model_time": 104.345,
+   "model_time": 104.347,
    "prequal_position_now": 58,
    "expected_prequal": {
     "p10": 103.827,
@@ -10167,7 +11761,7 @@
    "best_time": 103.7874,
    "laps_total": 52,
    "time_status": "reliable",
-   "model_time": 104.426,
+   "model_time": 104.429,
    "prequal_position_now": 59,
    "expected_prequal": {
     "p10": 103.8329,
@@ -10199,7 +11793,7 @@
    "best_time": 103.8687,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.087,
+   "model_time": 104.088,
    "prequal_position_now": 60,
    "expected_prequal": {
     "p10": 103.8687,
@@ -10231,7 +11825,7 @@
    "best_time": 103.9308,
    "laps_total": 43,
    "time_status": "reliable",
-   "model_time": 103.685,
+   "model_time": 103.682,
    "prequal_position_now": 61,
    "expected_prequal": {
     "p10": 103.9308,
@@ -10263,7 +11857,7 @@
    "best_time": 103.9493,
    "laps_total": 59,
    "time_status": "reliable",
-   "model_time": 104.541,
+   "model_time": 104.545,
    "prequal_position_now": 62,
    "expected_prequal": {
     "p10": 103.9493,
@@ -10295,7 +11889,7 @@
    "best_time": 103.9863,
    "laps_total": 245,
    "time_status": "reliable",
-   "model_time": 104.931,
+   "model_time": 104.937,
    "prequal_position_now": 63,
    "expected_prequal": {
     "p10": 103.9863,
@@ -10327,7 +11921,7 @@
    "best_time": 104.0079,
    "laps_total": 115,
    "time_status": "reliable",
-   "model_time": 105.125,
+   "model_time": 105.133,
    "prequal_position_now": 64,
    "expected_prequal": {
     "p10": 104.0079,
@@ -10391,7 +11985,7 @@
    "best_time": 103.6077,
    "laps_total": 47,
    "time_status": "reliable",
-   "model_time": 103.528,
+   "model_time": 103.523,
    "prequal_position_now": 66,
    "expected_prequal": {
     "p10": 104.0361,
@@ -10423,7 +12017,7 @@
    "best_time": 104.0617,
    "laps_total": 35,
    "time_status": "reliable",
-   "model_time": 104.452,
+   "model_time": 104.455,
    "prequal_position_now": 67,
    "expected_prequal": {
     "p10": 104.171,
@@ -10455,7 +12049,7 @@
    "best_time": 104.1953,
    "laps_total": 3,
    "time_status": "few_laps",
-   "model_time": 104.407,
+   "model_time": 104.409,
    "prequal_position_now": 68,
    "expected_prequal": {
     "p10": 104.1953,
@@ -10474,7 +12068,7 @@
   {
    "name": "Jaimy Peters",
    "car_number": "134",
-   "irating": 1470,
+   "irating": 1555,
    "license": "A",
    "safety_rating": 2.49,
    "team": "3 Stripe Motorsport",
@@ -10487,7 +12081,7 @@
    "best_time": 104.2392,
    "laps_total": 152,
    "time_status": "reliable",
-   "model_time": 105.134,
+   "model_time": 105.059,
    "prequal_position_now": 69,
    "expected_prequal": {
     "p10": 104.2392,
@@ -10519,7 +12113,7 @@
    "best_time": 104.2288,
    "laps_total": 127,
    "time_status": "reliable",
-   "model_time": 104.977,
+   "model_time": 104.984,
    "prequal_position_now": 70,
    "expected_prequal": {
     "p10": 104.2862,
@@ -10551,7 +12145,7 @@
    "best_time": 104.3475,
    "laps_total": 149,
    "time_status": "reliable",
-   "model_time": 105.167,
+   "model_time": 105.175,
    "prequal_position_now": 71,
    "expected_prequal": {
     "p10": 104.3475,
@@ -10583,7 +12177,7 @@
    "best_time": 103.873,
    "laps_total": 42,
    "time_status": "reliable",
-   "model_time": 104.58,
+   "model_time": 104.584,
    "prequal_position_now": 72,
    "expected_prequal": {
     "p10": 104.4137,
@@ -10615,7 +12209,7 @@
    "best_time": 104.4219,
    "laps_total": 5,
    "time_status": "few_laps",
-   "model_time": 103.739,
+   "model_time": 103.737,
    "prequal_position_now": 73,
    "expected_prequal": {
     "p10": 104.4219,
@@ -10647,7 +12241,7 @@
    "best_time": 104.3513,
    "laps_total": 32,
    "time_status": "reliable",
-   "model_time": 104.504,
+   "model_time": 104.508,
    "prequal_position_now": 74,
    "expected_prequal": {
     "p10": 104.4931,
@@ -10679,7 +12273,7 @@
    "best_time": 104.5074,
    "laps_total": 40,
    "time_status": "reliable",
-   "model_time": 105.03,
+   "model_time": 105.037,
    "prequal_position_now": 75,
    "expected_prequal": {
     "p10": 104.5074,
@@ -10711,7 +12305,7 @@
    "best_time": 104.6155,
    "laps_total": 92,
    "time_status": "reliable",
-   "model_time": 104.547,
+   "model_time": 104.551,
    "prequal_position_now": 76,
    "expected_prequal": {
     "p10": 104.6747,
@@ -10743,7 +12337,7 @@
    "best_time": 104.7363,
    "laps_total": 37,
    "time_status": "reliable",
-   "model_time": 104.605,
+   "model_time": 104.609,
    "prequal_position_now": 77,
    "expected_prequal": {
     "p10": 104.7363,
@@ -10775,7 +12369,7 @@
    "best_time": 104.7606,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.906,
+   "model_time": 104.912,
    "prequal_position_now": 78,
    "expected_prequal": {
     "p10": 104.7606,
@@ -10807,7 +12401,7 @@
    "best_time": 104.7964,
    "laps_total": 30,
    "time_status": "reliable",
-   "model_time": 104.632,
+   "model_time": 104.636,
    "prequal_position_now": 79,
    "expected_prequal": {
     "p10": 104.7964,
@@ -10839,7 +12433,7 @@
    "best_time": 104.7554,
    "laps_total": 191,
    "time_status": "reliable",
-   "model_time": 104.851,
+   "model_time": 104.857,
    "prequal_position_now": 80,
    "expected_prequal": {
     "p10": 104.7989,
@@ -10871,7 +12465,7 @@
    "best_time": 104.613,
    "laps_total": 31,
    "time_status": "reliable",
-   "model_time": 104.245,
+   "model_time": 104.246,
    "prequal_position_now": 81,
    "expected_prequal": {
     "p10": 104.8173,
@@ -10903,7 +12497,7 @@
    "best_time": 104.5142,
    "laps_total": 57,
    "time_status": "reliable",
-   "model_time": 104.435,
+   "model_time": 104.438,
    "prequal_position_now": 82,
    "expected_prequal": {
     "p10": 104.8734,
@@ -10935,7 +12529,7 @@
    "best_time": 104.8904,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.381,
+   "model_time": 105.391,
    "prequal_position_now": 83,
    "expected_prequal": {
     "p10": 104.8904,
@@ -10967,7 +12561,7 @@
    "best_time": 104.8975,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.586,
+   "model_time": 104.59,
    "prequal_position_now": 84,
    "expected_prequal": {
     "p10": 104.8975,
@@ -10999,7 +12593,7 @@
    "best_time": 104.8016,
    "laps_total": 39,
    "time_status": "reliable",
-   "model_time": 105.114,
+   "model_time": 105.122,
    "prequal_position_now": 85,
    "expected_prequal": {
     "p10": 105.0197,
@@ -11031,7 +12625,7 @@
    "best_time": 104.906,
    "laps_total": 56,
    "time_status": "reliable",
-   "model_time": 104.632,
+   "model_time": 104.636,
    "prequal_position_now": 86,
    "expected_prequal": {
     "p10": 105.0623,
@@ -11063,7 +12657,7 @@
    "best_time": 105.1136,
    "laps_total": 10,
    "time_status": "few_laps",
-   "model_time": 105.078,
+   "model_time": 105.086,
    "prequal_position_now": 87,
    "expected_prequal": {
     "p10": 105.1136,
@@ -11095,7 +12689,7 @@
    "best_time": 105.1192,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.939,
+   "model_time": 104.946,
    "prequal_position_now": 88,
    "expected_prequal": {
     "p10": 105.1192,
@@ -11114,9 +12708,9 @@
   {
    "name": "J.T Korting",
    "car_number": "185",
-   "irating": 2613,
+   "irating": 2584,
    "license": "A",
-   "safety_rating": 2.4,
+   "safety_rating": 2.28,
    "team": "STROOPWAFEL RACING TEAM",
    "car": "McLaren 720S GT3 EVO",
    "practice_best": 104.6692,
@@ -11127,7 +12721,7 @@
    "best_time": 104.6692,
    "laps_total": 24,
    "time_status": "reliable",
-   "model_time": 104.293,
+   "model_time": 104.311,
    "prequal_position_now": 89,
    "expected_prequal": {
     "p10": 105.1262,
@@ -11146,9 +12740,9 @@
   {
    "name": "Thijmen Bakker",
    "car_number": null,
-   "irating": 995,
+   "irating": 1031,
    "license": "B",
-   "safety_rating": 3.59,
+   "safety_rating": 2.55,
    "team": null,
    "car": "BMW M4 GT3 EVO",
    "practice_best": 105.0543,
@@ -11159,7 +12753,7 @@
    "best_time": 105.0543,
    "laps_total": 100,
    "time_status": "reliable",
-   "model_time": 105.704,
+   "model_time": 105.664,
    "prequal_position_now": 90,
    "expected_prequal": {
     "p10": 105.1437,
@@ -11191,7 +12785,7 @@
    "best_time": 105.1565,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.956,
+   "model_time": 104.963,
    "prequal_position_now": 91,
    "expected_prequal": {
     "p10": 105.1565,
@@ -11223,7 +12817,7 @@
    "best_time": 105.2116,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 104.925,
+   "model_time": 104.932,
    "prequal_position_now": 92,
    "expected_prequal": {
     "p10": 105.2116,
@@ -11242,9 +12836,9 @@
   {
    "name": "Kaustubh Patil",
    "car_number": "347",
-   "irating": 2095,
+   "irating": 2026,
    "license": "A",
-   "safety_rating": 3.51,
+   "safety_rating": 3.09,
    "team": "Banker Lap",
    "car": "Mercedes-AMG GT3 2020",
    "practice_best": 104.8003,
@@ -11255,7 +12849,7 @@
    "best_time": 104.8003,
    "laps_total": 40,
    "time_status": "reliable",
-   "model_time": 104.616,
+   "model_time": 104.669,
    "prequal_position_now": 93,
    "expected_prequal": {
     "p10": 105.3167,
@@ -11287,7 +12881,7 @@
    "best_time": 105.0852,
    "laps_total": 107,
    "time_status": "reliable",
-   "model_time": 104.96,
+   "model_time": 104.967,
    "prequal_position_now": 94,
    "expected_prequal": {
     "p10": 105.4026,
@@ -11319,7 +12913,7 @@
    "best_time": 105.5941,
    "laps_total": 20,
    "time_status": "reliable",
-   "model_time": 105.23,
+   "model_time": 105.239,
    "prequal_position_now": 95,
    "expected_prequal": {
     "p10": 105.5941,
@@ -11338,9 +12932,9 @@
   {
    "name": "Jeffrey Mokum",
    "car_number": "323",
-   "irating": 1207,
+   "irating": 1248,
    "license": "A",
-   "safety_rating": 2.4,
+   "safety_rating": 2.38,
    "team": "STROOPWAFEL RACING TEAM",
    "car": "McLaren 720S GT3 EVO",
    "practice_best": 106.0338,
@@ -11351,7 +12945,7 @@
    "best_time": 105.6111,
    "laps_total": 21,
    "time_status": "reliable",
-   "model_time": 105.422,
+   "model_time": 105.383,
    "prequal_position_now": 96,
    "expected_prequal": {
     "p10": 105.6111,
@@ -11370,9 +12964,9 @@
   {
    "name": "Marco Vd Ven",
    "car_number": "102",
-   "irating": 2251,
+   "irating": 2180,
    "license": "A",
-   "safety_rating": 4.48,
+   "safety_rating": 4.1,
    "team": "G-Force Racing",
    "car": "McLaren 720S GT3 EVO",
    "practice_best": 106.7496,
@@ -11383,7 +12977,7 @@
    "best_time": 105.7977,
    "laps_total": 60,
    "time_status": "reliable",
-   "model_time": 104.511,
+   "model_time": 104.561,
    "prequal_position_now": 97,
    "expected_prequal": {
     "p10": 105.7977,
@@ -11415,7 +13009,7 @@
    "best_time": 105.3425,
    "laps_total": 123,
    "time_status": "reliable",
-   "model_time": 105.164,
+   "model_time": 105.172,
    "prequal_position_now": 98,
    "expected_prequal": {
     "p10": 105.8281,
@@ -11447,7 +13041,7 @@
    "best_time": 105.5078,
    "laps_total": 7,
    "time_status": "few_laps",
-   "model_time": 105.318,
+   "model_time": 105.327,
    "prequal_position_now": 99,
    "expected_prequal": {
     "p10": 105.8789,
@@ -11479,7 +13073,7 @@
    "best_time": 105.9104,
    "laps_total": 26,
    "time_status": "reliable",
-   "model_time": 105.32,
+   "model_time": 105.33,
    "prequal_position_now": 100,
    "expected_prequal": {
     "p10": 105.9104,
@@ -11511,7 +13105,7 @@
    "best_time": 105.9748,
    "laps_total": 50,
    "time_status": "reliable",
-   "model_time": 105.599,
+   "model_time": 105.611,
    "prequal_position_now": 101,
    "expected_prequal": {
     "p10": 105.9748,
@@ -11543,7 +13137,7 @@
    "best_time": 105.9777,
    "laps_total": 16,
    "time_status": "few_laps",
-   "model_time": 105.076,
+   "model_time": 105.084,
    "prequal_position_now": 102,
    "expected_prequal": {
     "p10": 105.9777,
@@ -11575,7 +13169,7 @@
    "best_time": 105.1552,
    "laps_total": 47,
    "time_status": "reliable",
-   "model_time": 104.932,
+   "model_time": 104.939,
    "prequal_position_now": 103,
    "expected_prequal": {
     "p10": 105.9888,
@@ -11607,7 +13201,7 @@
    "best_time": 106.1112,
    "laps_total": 5,
    "time_status": "few_laps",
-   "model_time": 105.789,
+   "model_time": 105.802,
    "prequal_position_now": 104,
    "expected_prequal": {
     "p10": 106.1112,
@@ -11639,7 +13233,7 @@
    "best_time": 106.2787,
    "laps_total": 6,
    "time_status": "few_laps",
-   "model_time": 105.214,
+   "model_time": 105.223,
    "prequal_position_now": 105,
    "expected_prequal": {
     "p10": 106.2787,
@@ -11658,9 +13252,9 @@
   {
    "name": "Dennis De Konink",
    "car_number": "75",
-   "irating": 1375,
+   "irating": 1384,
    "license": "B",
-   "safety_rating": 3.09,
+   "safety_rating": 3.01,
    "team": null,
    "car": "Porsche 911 GT3 R (992)",
    "practice_best": 106.0041,
@@ -11703,7 +13297,7 @@
    "best_time": 106.071,
    "laps_total": 54,
    "time_status": "reliable",
-   "model_time": 105.235,
+   "model_time": 105.245,
    "prequal_position_now": 107,
    "expected_prequal": {
     "p10": 106.5195,
@@ -11735,7 +13329,7 @@
    "best_time": 106.5256,
    "laps_total": 80,
    "time_status": "reliable",
-   "model_time": 105.47,
+   "model_time": 105.481,
    "prequal_position_now": 108,
    "expected_prequal": {
     "p10": 106.5256,
@@ -11767,7 +13361,7 @@
    "best_time": 106.5312,
    "laps_total": 9,
    "time_status": "few_laps",
-   "model_time": 105.179,
+   "model_time": 105.188,
    "prequal_position_now": 109,
    "expected_prequal": {
     "p10": 106.5312,
@@ -11799,7 +13393,7 @@
    "best_time": 107.0605,
    "laps_total": 37,
    "time_status": "reliable",
-   "model_time": 106.149,
+   "model_time": 106.165,
    "prequal_position_now": 110,
    "expected_prequal": {
     "p10": 107.0605,
@@ -11818,9 +13412,9 @@
   {
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 747,
+   "irating": 837,
    "license": "D",
-   "safety_rating": 2.43,
+   "safety_rating": 2.57,
    "team": null,
    "car": "Porsche 911 GT3 R (992)",
    "practice_best": 109.4139,
@@ -11831,7 +13425,7 @@
    "best_time": 108.4686,
    "laps_total": 28,
    "time_status": "reliable",
-   "model_time": 106.123,
+   "model_time": 105.971,
    "prequal_position_now": 111,
    "expected_prequal": {
     "p10": 108.4686,
@@ -11863,12 +13457,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 102.99,
+   "model_time": 102.982,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 102.99,
-    "p50": 102.99,
-    "p90": 102.99
+    "p10": 102.982,
+    "p50": 102.982,
+    "p90": 102.982
    },
    "expected_position": {
     "p10": 112,
@@ -11895,12 +13489,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.027,
+   "model_time": 103.019,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.027,
-    "p50": 103.027,
-    "p90": 103.027
+    "p10": 103.019,
+    "p50": 103.019,
+    "p90": 103.019
    },
    "expected_position": {
     "p10": 113,
@@ -11927,12 +13521,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.143,
+   "model_time": 103.136,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.143,
-    "p50": 103.143,
-    "p90": 103.143
+    "p10": 103.136,
+    "p50": 103.136,
+    "p90": 103.136
    },
    "expected_position": {
     "p10": 114,
@@ -11959,12 +13553,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.2,
+   "model_time": 103.193,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.2,
-    "p50": 103.2,
-    "p90": 103.2
+    "p10": 103.193,
+    "p50": 103.193,
+    "p90": 103.193
    },
    "expected_position": {
     "p10": 115,
@@ -11991,12 +13585,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.343,
+   "model_time": 103.337,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.343,
-    "p50": 103.343,
-    "p90": 103.343
+    "p10": 103.337,
+    "p50": 103.337,
+    "p90": 103.337
    },
    "expected_position": {
     "p10": 116,
@@ -12023,12 +13617,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.624,
+   "model_time": 103.62,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.624,
-    "p50": 103.624,
-    "p90": 103.624
+    "p10": 103.62,
+    "p50": 103.62,
+    "p90": 103.62
    },
    "expected_position": {
     "p10": 117,
@@ -12055,12 +13649,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.632,
+   "model_time": 103.628,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.632,
-    "p50": 103.632,
-    "p90": 103.632
+    "p10": 103.628,
+    "p50": 103.628,
+    "p90": 103.628
    },
    "expected_position": {
     "p10": 118,
@@ -12087,12 +13681,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.667,
+   "model_time": 103.664,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.667,
-    "p50": 103.667,
-    "p90": 103.667
+    "p10": 103.664,
+    "p50": 103.664,
+    "p90": 103.664
    },
    "expected_position": {
     "p10": 119,
@@ -12119,12 +13713,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 103.698,
+   "model_time": 103.695,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 103.698,
-    "p50": 103.698,
-    "p90": 103.698
+    "p10": 103.695,
+    "p50": 103.695,
+    "p90": 103.695
    },
    "expected_position": {
     "p10": 120,
@@ -12151,12 +13745,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 104.89,
+   "model_time": 104.896,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 104.89,
-    "p50": 104.89,
-    "p90": 104.89
+    "p10": 104.896,
+    "p50": 104.896,
+    "p90": 104.896
    },
    "expected_position": {
     "p10": 121,
@@ -12183,12 +13777,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 105.232,
+   "model_time": 105.241,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 105.232,
-    "p50": 105.232,
-    "p90": 105.232
+    "p10": 105.241,
+    "p50": 105.241,
+    "p90": 105.241
    },
    "expected_position": {
     "p10": 122,
@@ -12215,12 +13809,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 105.258,
+   "model_time": 105.267,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 105.258,
-    "p50": 105.258,
-    "p90": 105.258
+    "p10": 105.267,
+    "p50": 105.267,
+    "p90": 105.267
    },
    "expected_position": {
     "p10": 123,
@@ -12247,12 +13841,12 @@
    "best_time": null,
    "laps_total": 0,
    "time_status": "no_time",
-   "model_time": 105.265,
+   "model_time": 105.274,
    "prequal_position_now": null,
    "expected_prequal": {
-    "p10": 105.265,
-    "p50": 105.265,
-    "p90": 105.265
+    "p10": 105.274,
+    "p50": 105.274,
+    "p90": 105.274
    },
    "expected_position": {
     "p10": 124,
@@ -12269,19 +13863,19 @@
    "label": "< 1.500",
    "irating_from": 0,
    "irating_to": 1500,
-   "members": 23,
-   "measured_n": 15,
-   "measured_median": 105.611,
-   "expected_prequal_median": 105.828
+   "members": 22,
+   "measured_n": 14,
+   "measured_median": 105.761,
+   "expected_prequal_median": 105.853
   },
   {
    "label": "1.500–2.000",
    "irating_from": 1500,
    "irating_to": 2000,
-   "members": 13,
-   "measured_n": 6,
-   "measured_median": 104.631,
-   "expected_prequal_median": 105.114
+   "members": 14,
+   "measured_n": 7,
+   "measured_median": 104.507,
+   "expected_prequal_median": 105.005
   },
   {
    "label": "2.000–2.500",
@@ -12314,19 +13908,19 @@
    "label": "4.000–5.000",
    "irating_from": 4000,
    "irating_to": 5000,
-   "members": 13,
-   "measured_n": 7,
-   "measured_median": 103.161,
-   "expected_prequal_median": 103.161
+   "members": 14,
+   "measured_n": 8,
+   "measured_median": 103.147,
+   "expected_prequal_median": 103.158
   },
   {
    "label": "5.000–6.000",
    "irating_from": 5000,
    "irating_to": 6000,
-   "members": 8,
-   "measured_n": 4,
-   "measured_median": 103.045,
-   "expected_prequal_median": 103.138
+   "members": 7,
+   "measured_n": 3,
+   "measured_median": 102.956,
+   "expected_prequal_median": 103.136
   },
   {
    "label": "6.000–8.000",
@@ -12351,7 +13945,7 @@
   {
    "irating_from": 500,
    "irating_to": 1000,
-   "count": 4
+   "count": 3
   },
   {
    "irating_from": 1000,
@@ -12361,7 +13955,7 @@
   {
    "irating_from": 1500,
    "irating_to": 2000,
-   "count": 13
+   "count": 14
   },
   {
    "irating_from": 2000,
@@ -12391,12 +13985,12 @@
   {
    "irating_from": 4500,
    "irating_to": 5000,
-   "count": 4
+   "count": 5
   },
   {
    "irating_from": 5000,
    "irating_to": 5500,
-   "count": 6
+   "count": 5
   },
   {
    "irating_from": 5500,
@@ -12554,107 +14148,107 @@
    10500
   ],
   "expected_count_per_500": [
-   1.072,
-   2.573,
-   4.298,
-   6.273,
-   8.703,
-   11.486,
-   14.214,
-   16.446,
-   17.926,
-   18.624,
-   18.678,
-   18.286,
-   17.638,
-   16.875,
-   16.087,
-   15.323,
-   14.602,
-   13.931,
-   13.31,
-   12.737,
-   12.21,
-   11.726,
-   11.284,
-   10.88,
-   10.511,
-   10.172,
-   9.86,
-   9.569,
-   9.296,
-   9.035,
-   8.784,
-   8.539,
-   8.299,
-   8.062,
-   7.827,
-   7.594,
-   7.363,
-   7.135,
-   6.909,
-   6.686,
-   6.467,
-   6.253,
-   6.044,
-   5.841,
-   5.643,
-   5.452,
-   5.268,
-   5.09,
-   4.918,
-   4.753,
+   0.798,
+   2.147,
+   3.943,
+   6.098,
+   8.669,
+   11.523,
+   14.288,
+   16.553,
+   18.068,
+   18.798,
+   18.871,
+   18.48,
+   17.816,
+   17.025,
+   16.201,
+   15.4,
+   14.644,
+   13.944,
+   13.301,
+   12.713,
+   12.177,
+   11.69,
+   11.249,
+   10.849,
+   10.486,
+   10.154,
+   9.849,
+   9.565,
+   9.298,
+   9.042,
+   8.796,
+   8.555,
+   8.317,
+   8.082,
+   7.849,
+   7.617,
+   7.386,
+   7.156,
+   6.929,
+   6.705,
+   6.485,
+   6.269,
+   6.058,
+   5.852,
+   5.653,
+   5.46,
+   5.274,
+   5.094,
+   4.921,
+   4.754,
    4.594,
-   4.441,
-   4.295,
-   4.153,
-   4.017,
-   3.886,
-   3.76,
-   3.638,
-   3.52,
-   3.406,
-   3.295,
-   3.188,
-   3.084,
-   2.983,
-   2.884,
-   2.788,
-   2.695,
-   2.604,
-   2.515,
-   2.428,
-   2.344,
-   2.261,
-   2.181,
-   2.103,
-   2.026,
-   1.952,
-   1.879,
-   1.808,
-   1.739,
-   1.672,
-   1.607,
-   1.544,
-   1.482,
-   1.423,
-   1.365,
-   1.309,
-   1.254,
-   1.202,
-   1.151,
-   1.101,
-   1.054,
-   1.008,
-   0.964,
-   0.921,
-   0.88,
-   0.84,
-   0.802,
-   0.766,
-   0.73,
-   0.696,
-   0.664
+   4.44,
+   4.292,
+   4.15,
+   4.014,
+   3.882,
+   3.755,
+   3.633,
+   3.515,
+   3.401,
+   3.29,
+   3.183,
+   3.079,
+   2.978,
+   2.88,
+   2.784,
+   2.691,
+   2.6,
+   2.512,
+   2.425,
+   2.341,
+   2.259,
+   2.179,
+   2.1,
+   2.024,
+   1.95,
+   1.877,
+   1.806,
+   1.738,
+   1.671,
+   1.605,
+   1.542,
+   1.481,
+   1.421,
+   1.363,
+   1.307,
+   1.253,
+   1.2,
+   1.149,
+   1.1,
+   1.052,
+   1.006,
+   0.962,
+   0.919,
+   0.878,
+   0.838,
+   0.8,
+   0.764,
+   0.728,
+   0.694,
+   0.662
   ]
  },
  "irating_summary": {
