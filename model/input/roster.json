@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-16T07:51:38.820Z",
+ "fetched_at": "2026-11-17T06:02:38.545Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -57,9 +57,9 @@
    "cust_id": 203590,
    "name": "Barry Arends",
    "car_number": "268",
-   "irating": 4927,
+   "irating": 4946,
    "license": "A",
-   "safety_rating": 2.34
+   "safety_rating": 2.17
   },
   {
    "cust_id": 937690,
@@ -153,9 +153,9 @@
    "cust_id": 566271,
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5116,
+   "irating": 5103,
    "license": "A",
-   "safety_rating": 2.26
+   "safety_rating": 2.05
   },
   {
    "cust_id": 502029,
@@ -273,9 +273,9 @@
    "cust_id": 960839,
    "name": "Franklyn Nwanaforo",
    "car_number": "87",
-   "irating": 2343,
+   "irating": 2366,
    "license": "B",
-   "safety_rating": 2.42
+   "safety_rating": 2.3
   },
   {
    "cust_id": 1158266,
@@ -457,9 +457,9 @@
    "cust_id": 1557725,
    "name": "Kees Meurs",
    "car_number": "286",
-   "irating": 1655,
+   "irating": 1517,
    "license": "A",
-   "safety_rating": 1.96
+   "safety_rating": 2.21
   },
   {
    "cust_id": 761872,
@@ -633,17 +633,17 @@
    "cust_id": 1569414,
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 837,
+   "irating": 911,
    "license": "D",
-   "safety_rating": 2.57
+   "safety_rating": 2.6
   },
   {
    "cust_id": 1024584,
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3554,
+   "irating": 3569,
    "license": "A",
-   "safety_rating": 1.36
+   "safety_rating": 2.54
   },
   {
    "cust_id": 1176867,
@@ -801,9 +801,9 @@
    "cust_id": 1538667,
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1479,
+   "irating": 1393,
    "license": "A",
-   "safety_rating": 2.33
+   "safety_rating": 2.2
   },
   {
    "cust_id": 1062772,
@@ -993,9 +993,9 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 9140,
+   "irating": 9234,
    "license": "A",
-   "safety_rating": 2.39
+   "safety_rating": 2.88
   }
  ]
 }

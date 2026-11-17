@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-16T07:51:38.820Z",
+ "fetched_at": "2026-11-17T06:02:38.545Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -2203,27 +2203,31 @@
    "days": [
     "2026-11-13",
     "2026-11-14",
-    "2026-11-15"
+    "2026-11-15",
+    "2026-11-16"
    ],
    "sessions_used": [
     90093406,
     90118092,
-    90143256
+    90143256,
+    90166190
    ],
    "rain_by_day": [
     0,
     0,
-    45.7
+    45.7,
+    0
    ],
    "drivers": [
     {
      "cust_id": 203590,
-     "best": 122.0862,
-     "laps": 41,
+     "best": 121.925,
+     "laps": 65,
      "best_per_day": [
       122.0862,
       null,
-      140.2078
+      140.2078,
+      121.925
      ],
      "car": "McLaren 720S GT3 EVO"
     },
@@ -2234,20 +2238,46 @@
      "best_per_day": [
       122.4472,
       null,
-      122.0088
+      122.0088,
+      null
      ],
      "car": "Ferrari 296 GT3"
     },
     {
-     "cust_id": 377046,
-     "best": 139.0515,
-     "laps": 5,
+     "cust_id": 371410,
+     "best": 121.826,
+     "laps": 18,
      "best_per_day": [
       null,
       null,
-      139.0515
+      null,
+      121.826
+     ],
+     "car": "Lamborghini Huracán GT3 EVO"
+    },
+    {
+     "cust_id": 377046,
+     "best": 121.888,
+     "laps": 18,
+     "best_per_day": [
+      null,
+      null,
+      139.0515,
+      121.888
      ],
      "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 392585,
+     "best": 123.3598,
+     "laps": 33,
+     "best_per_day": [
+      null,
+      null,
+      null,
+      123.3598
+     ],
+     "car": "Porsche 911 GT3 R (992)"
     },
     {
      "cust_id": 500148,
@@ -2256,7 +2286,8 @@
      "best_per_day": [
       null,
       null,
-      122.8961
+      122.8961,
+      null
      ],
      "car": "Ferrari 296 GT3"
     },
@@ -2267,9 +2298,22 @@
      "best_per_day": [
       122.3865,
       null,
+      null,
       null
      ],
      "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 566271,
+     "best": 122.1163,
+     "laps": 27,
+     "best_per_day": [
+      null,
+      null,
+      null,
+      122.1163
+     ],
+     "car": "BMW M4 GT3 EVO"
     },
     {
      "cust_id": 619495,
@@ -2277,6 +2321,7 @@
      "laps": 16,
      "best_per_day": [
       122.5603,
+      null,
       null,
       null
      ],
@@ -2289,6 +2334,7 @@
      "best_per_day": [
       121.3978,
       120.9572,
+      null,
       null
      ],
      "car": "Ferrari 296 GT3"
@@ -2296,22 +2342,24 @@
     {
      "cust_id": 705452,
      "best": 121.6959,
-     "laps": 14,
+     "laps": 44,
      "best_per_day": [
       null,
       121.6959,
-      122.4558
+      122.4558,
+      121.8431
      ],
      "car": "Chevrolet Corvette Z06 GT3.R"
     },
     {
      "cust_id": 730321,
      "best": 121.0632,
-     "laps": 46,
+     "laps": 65,
      "best_per_day": [
       121.949,
       121.0632,
-      null
+      null,
+      121.6036
      ],
      "car": "Ferrari 296 GT3"
     },
@@ -2322,9 +2370,22 @@
      "best_per_day": [
       123.2159,
       122.4017,
-      144.9924
+      144.9924,
+      null
      ],
      "car": "Porsche 911 GT3 R (992)"
+    },
+    {
+     "cust_id": 761872,
+     "best": 122.9341,
+     "laps": 36,
+     "best_per_day": [
+      null,
+      null,
+      null,
+      122.9341
+     ],
+     "car": "Lamborghini Huracán GT3 EVO"
     },
     {
      "cust_id": 764408,
@@ -2333,20 +2394,46 @@
      "best_per_day": [
       null,
       121.4271,
-      122.1039
+      122.1039,
+      null
      ],
      "car": "Porsche 911 GT3 R (992)"
     },
     {
      "cust_id": 793423,
-     "best": 124.0124,
-     "laps": 21,
+     "best": 123.6404,
+     "laps": 30,
      "best_per_day": [
       null,
       124.0124,
-      null
+      null,
+      123.6404
      ],
      "car": "McLaren 720S GT3 EVO"
+    },
+    {
+     "cust_id": 864043,
+     "best": null,
+     "laps": 0,
+     "best_per_day": [
+      null,
+      null,
+      null,
+      null
+     ],
+     "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 885918,
+     "best": 123.1446,
+     "laps": 20,
+     "best_per_day": [
+      null,
+      null,
+      null,
+      123.1446
+     ],
+     "car": "BMW M4 GT3 EVO"
     },
     {
      "cust_id": 906989,
@@ -2355,29 +2442,32 @@
      "best_per_day": [
       null,
       null,
-      122.418
+      122.418,
+      null
      ],
      "car": "Ferrari 296 GT3"
     },
     {
      "cust_id": 912688,
-     "best": 122.2107,
-     "laps": 7,
+     "best": 121.5158,
+     "laps": 57,
      "best_per_day": [
       null,
       null,
-      122.2107
+      122.2107,
+      121.5158
      ],
      "car": "Ferrari 296 GT3"
     },
     {
      "cust_id": 937690,
-     "best": 139.5856,
-     "laps": 21,
+     "best": 123.6281,
+     "laps": 49,
      "best_per_day": [
       null,
       null,
-      139.5856
+      139.5856,
+      123.6281
      ],
      "car": "Porsche 911 GT3 R (992)"
     },
@@ -2388,7 +2478,8 @@
      "best_per_day": [
       122.7022,
       null,
-      121.9211
+      121.9211,
+      null
      ],
      "car": "Acura NSX GT3 EVO 22"
     },
@@ -2398,6 +2489,7 @@
      "laps": 3,
      "best_per_day": [
       122.8301,
+      null,
       null,
       null
      ],
@@ -2410,18 +2502,20 @@
      "best_per_day": [
       null,
       null,
-      143.3554
+      143.3554,
+      null
      ],
      "car": "Lamborghini Huracán GT3 EVO"
     },
     {
      "cust_id": 1028172,
-     "best": 124.8224,
-     "laps": 39,
+     "best": 123.2235,
+     "laps": 74,
      "best_per_day": [
       null,
       124.8224,
-      125.0072
+      125.0072,
+      123.2235
      ],
      "car": "Porsche 911 GT3 R (992)"
     },
@@ -2432,6 +2526,7 @@
      "best_per_day": [
       null,
       123.1892,
+      null,
       null
      ],
      "car": "Porsche 911 GT3 R (992)"
@@ -2443,6 +2538,7 @@
      "best_per_day": [
       null,
       122.9272,
+      null,
       null
      ],
      "car": "Ferrari 296 GT3"
@@ -2450,44 +2546,60 @@
     {
      "cust_id": 1051890,
      "best": 121.7237,
-     "laps": 42,
+     "laps": 57,
      "best_per_day": [
       null,
       121.7237,
-      141.6978
+      141.6978,
+      122.7315
      ],
      "car": "BMW M4 GT3 EVO"
     },
     {
      "cust_id": 1062772,
-     "best": 141.3797,
-     "laps": 21,
+     "best": 124.0595,
+     "laps": 25,
      "best_per_day": [
       null,
       null,
-      141.3797
+      141.3797,
+      124.0595
      ],
      "car": "Acura NSX GT3 EVO 22"
     },
     {
      "cust_id": 1070721,
-     "best": 122.0266,
-     "laps": 56,
+     "best": 122.0199,
+     "laps": 106,
      "best_per_day": [
       122.0266,
       null,
-      122.9997
+      122.9997,
+      122.0199
      ],
      "car": "Porsche 911 GT3 R (992)"
     },
     {
-     "cust_id": 1098342,
-     "best": 122.6123,
-     "laps": 12,
+     "cust_id": 1073252,
+     "best": 122.2291,
+     "laps": 28,
      "best_per_day": [
       null,
       null,
-      122.6123
+      null,
+      122.2291
+     ],
+     "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 1098342,
+     "best": 121.7487,
+     "laps": 21,
+     "best_per_day": [
+      null,
+      null,
+      122.6123,
+      121.7487
      ],
      "car": "Lamborghini Huracán GT3 EVO"
     },
@@ -2498,6 +2610,7 @@
      "best_per_day": [
       null,
       121.4399,
+      null,
       null
      ],
      "car": "Mercedes-AMG GT3 2020"
@@ -2509,7 +2622,8 @@
      "best_per_day": [
       null,
       null,
-      144.4026
+      144.4026,
+      null
      ],
      "car": "McLaren 720S GT3 EVO"
     },
@@ -2520,18 +2634,32 @@
      "best_per_day": [
       null,
       123.4737,
+      null,
       null
      ],
      "car": "BMW M4 GT3 EVO"
     },
     {
+     "cust_id": 1158266,
+     "best": 122.6535,
+     "laps": 16,
+     "best_per_day": [
+      null,
+      null,
+      null,
+      122.6535
+     ],
+     "car": "Mercedes-AMG GT3 2020"
+    },
+    {
      "cust_id": 1190039,
      "best": 121.941,
-     "laps": 36,
+     "laps": 51,
      "best_per_day": [
       null,
       121.941,
-      null
+      null,
+      122.5783
      ],
      "car": "BMW M4 GT3 EVO"
     },
@@ -2542,7 +2670,8 @@
      "best_per_day": [
       null,
       null,
-      124.2804
+      124.2804,
+      null
      ],
      "car": "Mercedes-AMG GT3 2020"
     },
@@ -2553,18 +2682,20 @@
      "best_per_day": [
       121.5972,
       null,
+      null,
       null
      ],
      "car": "Ferrari 296 GT3"
     },
     {
      "cust_id": 1228010,
-     "best": null,
-     "laps": 0,
+     "best": 122.1023,
+     "laps": 21,
      "best_per_day": [
       null,
       null,
-      null
+      null,
+      122.1023
      ],
      "car": "Ferrari 296 GT3"
     },
@@ -2575,29 +2706,32 @@
      "best_per_day": [
       null,
       122.1652,
+      null,
       null
      ],
      "car": "Ferrari 296 GT3"
     },
     {
      "cust_id": 1364568,
-     "best": 142.82,
-     "laps": 6,
+     "best": 122.5892,
+     "laps": 32,
      "best_per_day": [
       null,
       null,
-      142.82
+      142.82,
+      122.5892
      ],
      "car": "Audi R8 LMS EVO II GT3"
     },
     {
      "cust_id": 1398811,
-     "best": 143.737,
-     "laps": 6,
+     "best": 123.7175,
+     "laps": 37,
      "best_per_day": [
       null,
       null,
-      143.737
+      143.737,
+      123.7175
      ],
      "car": "Porsche 911 GT3 R (992)"
     },
@@ -2608,7 +2742,8 @@
      "best_per_day": [
       null,
       null,
-      123.9573
+      123.9573,
+      null
      ],
      "car": "Mercedes-AMG GT3 2020"
     },
@@ -2619,9 +2754,22 @@
      "best_per_day": [
       124.056,
       122.7133,
-      124.2953
+      124.2953,
+      null
      ],
      "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 1502285,
+     "best": 123.3944,
+     "laps": 39,
+     "best_per_day": [
+      null,
+      null,
+      null,
+      123.3944
+     ],
+     "car": "McLaren 720S GT3 EVO"
     },
     {
      "cust_id": 1538667,
@@ -2630,6 +2778,7 @@
      "best_per_day": [
       null,
       122.4672,
+      null,
       null
      ],
      "car": "Chevrolet Corvette Z06 GT3.R"
@@ -2641,18 +2790,20 @@
      "best_per_day": [
       null,
       null,
+      null,
       null
      ],
      "car": "Porsche 911 GT3 R (992)"
     },
     {
      "cust_id": 1569414,
-     "best": 134.7255,
-     "laps": 16,
+     "best": 129.3137,
+     "laps": 32,
      "best_per_day": [
       null,
       null,
-      134.7255
+      134.7255,
+      129.3137
      ],
      "car": "Porsche 911 GT3 R (992)"
     }
