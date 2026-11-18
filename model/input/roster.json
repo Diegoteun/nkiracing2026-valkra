@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-17T06:02:38.545Z",
+ "fetched_at": "2026-11-18T10:54:45.773Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -145,17 +145,17 @@
    "cust_id": 988732,
    "name": "Daan Van Zutphen",
    "car_number": null,
-   "irating": 6371,
+   "irating": 6532,
    "license": "A",
-   "safety_rating": 2.66
+   "safety_rating": 3.22
   },
   {
    "cust_id": 566271,
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5103,
+   "irating": 5131,
    "license": "A",
-   "safety_rating": 2.05
+   "safety_rating": 2.21
   },
   {
    "cust_id": 502029,
@@ -209,9 +209,9 @@
    "cust_id": 737386,
    "name": "Dick Jansen",
    "car_number": "346",
-   "irating": 3282,
+   "irating": 3222,
    "license": "A",
-   "safety_rating": 4.62
+   "safety_rating": 3.55
   },
   {
    "cust_id": 793423,
@@ -273,9 +273,9 @@
    "cust_id": 960839,
    "name": "Franklyn Nwanaforo",
    "car_number": "87",
-   "irating": 2366,
+   "irating": 2310,
    "license": "B",
-   "safety_rating": 2.3
+   "safety_rating": 2.42
   },
   {
    "cust_id": 1158266,
@@ -417,9 +417,9 @@
    "cust_id": 1228010,
    "name": "Jorrit Drent",
    "car_number": "210",
-   "irating": 3270,
+   "irating": 3352,
    "license": "A",
-   "safety_rating": 2.56
+   "safety_rating": 2.58
   },
   {
    "cust_id": 912688,
@@ -633,9 +633,9 @@
    "cust_id": 1569414,
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 911,
+   "irating": 934,
    "license": "D",
-   "safety_rating": 2.6
+   "safety_rating": 2.62
   },
   {
    "cust_id": 1024584,
@@ -729,17 +729,17 @@
    "cust_id": 1051890,
    "name": "Quinten Klumpert",
    "car_number": "80",
-   "irating": 2294,
+   "irating": 2204,
    "license": "A",
-   "safety_rating": 4.99
+   "safety_rating": 4.33
   },
   {
    "cust_id": 1028172,
    "name": "Raymon Van Zutphen",
    "car_number": "284",
-   "irating": 1783,
+   "irating": 1794,
    "license": "A",
-   "safety_rating": 4.99
+   "safety_rating": 4.29
   },
   {
    "cust_id": 239267,
@@ -795,7 +795,7 @@
    "car_number": "121",
    "irating": 2110,
    "license": "A",
-   "safety_rating": 3.42
+   "safety_rating": 3.43
   },
   {
    "cust_id": 1538667,
@@ -969,9 +969,9 @@
    "cust_id": 621119,
    "name": "Wulfert Van Goor",
    "car_number": "100",
-   "irating": 2624,
+   "irating": 2693,
    "license": "A",
-   "safety_rating": 1.14
+   "safety_rating": 1.29
   },
   {
    "cust_id": 928791,
@@ -993,9 +993,9 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 9234,
+   "irating": 9219,
    "license": "A",
-   "safety_rating": 2.88
+   "safety_rating": 3.52
   }
  ]
 }
