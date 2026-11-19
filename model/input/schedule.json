@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-19T08:49:03.810Z",
+ "fetched_at": "2026-11-19T21:05:13.855Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -22,8 +22,8 @@
    "split": 1,
    "start": "2026-11-19T18:30:00Z",
    "track": "Road America – Full Course",
-   "subsession_id": null,
-   "has_results": false
+   "subsession_id": 90237080,
+   "has_results": true
   },
   {
    "split": 2,
@@ -43,8 +43,8 @@
    "split": 2,
    "start": "2026-11-19T18:30:00Z",
    "track": "Road America – Full Course",
-   "subsession_id": null,
-   "has_results": false
+   "subsession_id": 90237082,
+   "has_results": true
   },
   {
    "split": 3,
@@ -64,8 +64,8 @@
    "split": 3,
    "start": "2026-11-19T18:30:00Z",
    "track": "Road America – Full Course",
-   "subsession_id": null,
-   "has_results": false
+   "subsession_id": 90237083,
+   "has_results": true
   },
   {
    "split": 4,
@@ -85,8 +85,8 @@
    "split": 4,
    "start": "2026-11-19T18:30:00Z",
    "track": "Road America – Full Course",
-   "subsession_id": null,
-   "has_results": false
+   "subsession_id": 90237085,
+   "has_results": true
   }
  ]
 }

@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-19T08:49:03.810Z",
+ "fetched_at": "2026-11-19T21:05:13.855Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -273,9 +273,9 @@
    "cust_id": 960839,
    "name": "Franklyn Nwanaforo",
    "car_number": "87",
-   "irating": 2392,
+   "irating": 2520,
    "license": "B",
-   "safety_rating": 2.49
+   "safety_rating": 2.8
   },
   {
    "cust_id": 1158266,
@@ -457,9 +457,9 @@
    "cust_id": 1557725,
    "name": "Kees Meurs",
    "car_number": "286",
-   "irating": 1517,
+   "irating": 1475,
    "license": "A",
-   "safety_rating": 2.21
+   "safety_rating": 2.22
   },
   {
    "cust_id": 761872,
@@ -641,9 +641,9 @@
    "cust_id": 1024584,
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3459,
+   "irating": 3550,
    "license": "A",
-   "safety_rating": 2.68
+   "safety_rating": 2.55
   },
   {
    "cust_id": 1176867,
@@ -673,9 +673,9 @@
    "cust_id": 332024,
    "name": "Niek Jacobs",
    "car_number": "274",
-   "irating": 4150,
+   "irating": 4192,
    "license": "A",
-   "safety_rating": 4.26
+   "safety_rating": 4.32
   },
   {
    "cust_id": 1151922,
@@ -993,9 +993,9 @@
    "cust_id": 602559,
    "name": "Yurica Kasdorp",
    "car_number": "171",
-   "irating": 9259,
+   "irating": 9237,
    "license": "A",
-   "safety_rating": 3.12
+   "safety_rating": 3.05
   }
  ]
 }
