@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-19T21:05:13.855Z",
+ "fetched_at": "2026-11-21T05:59:11.603Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -3190,6 +3190,56 @@
       null
      ],
      "car": "Porsche 911 GT3 R (992)"
+    }
+   ]
+  },
+  {
+   "track": "Road Atlanta – Full Course",
+   "days": [
+    "2026-11-20"
+   ],
+   "sessions_used": [
+    90259254
+   ],
+   "rain_by_day": [
+    0
+   ],
+   "drivers": [
+    {
+     "cust_id": 912688,
+     "best": 76.5551,
+     "laps": 22,
+     "best_per_day": [
+      76.5551
+     ],
+     "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 1051890,
+     "best": 77.5877,
+     "laps": 18,
+     "best_per_day": [
+      77.5877
+     ],
+     "car": "BMW M4 GT3 EVO"
+    },
+    {
+     "cust_id": 1190039,
+     "best": 77.4807,
+     "laps": 15,
+     "best_per_day": [
+      77.4807
+     ],
+     "car": "BMW M4 GT3 EVO"
+    },
+    {
+     "cust_id": 1361199,
+     "best": 76.346,
+     "laps": 10,
+     "best_per_day": [
+      76.346
+     ],
+     "car": "Ferrari 296 GT3"
     }
    ]
   }

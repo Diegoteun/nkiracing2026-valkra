@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-19T21:05:13.855Z",
+ "fetched_at": "2026-11-21T05:59:11.603Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -145,17 +145,17 @@
    "cust_id": 988732,
    "name": "Daan Van Zutphen",
    "car_number": null,
-   "irating": 6543,
+   "irating": 6628,
    "license": "A",
-   "safety_rating": 3.19
+   "safety_rating": 2.42
   },
   {
    "cust_id": 566271,
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5131,
+   "irating": 5153,
    "license": "A",
-   "safety_rating": 2.21
+   "safety_rating": 2.06
   },
   {
    "cust_id": 502029,
@@ -273,9 +273,9 @@
    "cust_id": 960839,
    "name": "Franklyn Nwanaforo",
    "car_number": "87",
-   "irating": 2520,
+   "irating": 2728,
    "license": "B",
-   "safety_rating": 2.8
+   "safety_rating": 2.97
   },
   {
    "cust_id": 1158266,
@@ -289,9 +289,9 @@
    "cust_id": 619495,
    "name": "Gert Bos",
    "car_number": "140",
-   "irating": 2385,
+   "irating": 2455,
    "license": "A",
-   "safety_rating": 3.26
+   "safety_rating": 3.18
   },
   {
    "cust_id": 906989,
@@ -641,9 +641,9 @@
    "cust_id": 1024584,
    "name": "Mika Van Den Hurk",
    "car_number": "126",
-   "irating": 3550,
+   "irating": 3566,
    "license": "A",
-   "safety_rating": 2.55
+   "safety_rating": 2.67
   },
   {
    "cust_id": 1176867,
@@ -801,9 +801,9 @@
    "cust_id": 1538667,
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1393,
+   "irating": 1478,
    "license": "A",
-   "safety_rating": 2.2
+   "safety_rating": 2.18
   },
   {
    "cust_id": 1062772,

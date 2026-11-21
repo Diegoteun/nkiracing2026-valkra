@@ -35,7 +35,8 @@ from pathlib import Path
 import numpy as np
 
 # (start, track) - fallback until the league schedule lists the round; the date is an assumption (weekly slot)
-PLANNED_ROUNDS = [("2026-11-19T18:30:00Z", "Road America \u2013 Full Course")]
+PLANNED_ROUNDS = [("2026-11-19T18:30:00Z", "Road America \u2013 Full Course"),
+                  ("2026-11-26T18:30:00Z", "Road Atlanta \u2013 Full Course")]
 TEAM = "Valkra Performance"
 N_SIM = 20000
 PRIOR_LAPS = 40          # eigen afwijking telt voor 50% bij 40 testronden (backtest Suzuka)

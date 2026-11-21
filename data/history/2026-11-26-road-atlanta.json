@@ -1,0 +1,60 @@
+{
+ "id": "2026-11-26-road-atlanta",
+ "track": "Road Atlanta – Full Course",
+ "race_start": "2026-11-26T18:30:00Z",
+ "fetched_at": "2026-11-21T05:59:11.603Z",
+ "tests": {
+  "days": [
+   "2026-11-20"
+  ],
+  "sessions_used": [
+   90259254
+  ],
+  "rain_by_day": [
+   0
+  ],
+  "drivers": [
+   {
+    "cust_id": 912688,
+    "best": 76.5551,
+    "laps": 22,
+    "best_per_day": [
+     76.5551
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Justin De Jong"
+   },
+   {
+    "cust_id": 1051890,
+    "best": 77.5877,
+    "laps": 18,
+    "best_per_day": [
+     77.5877
+    ],
+    "car": "BMW M4 GT3 EVO",
+    "name": "Quinten Klumpert"
+   },
+   {
+    "cust_id": 1190039,
+    "best": 77.4807,
+    "laps": 15,
+    "best_per_day": [
+     77.4807
+    ],
+    "car": "BMW M4 GT3 EVO",
+    "name": "Jeroen Wijnbergen"
+   },
+   {
+    "cust_id": 1361199,
+    "best": 76.346,
+    "laps": 10,
+    "best_per_day": [
+     76.346
+    ],
+    "car": "Ferrari 296 GT3",
+    "name": "Timur Aslan Overman"
+   }
+  ]
+ },
+ "race": []
+}
