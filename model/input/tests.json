@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-21T05:59:11.603Z",
+ "fetched_at": "2026-11-23T10:28:49.043Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -3196,50 +3196,174 @@
   {
    "track": "Road Atlanta – Full Course",
    "days": [
-    "2026-11-20"
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22"
    ],
    "sessions_used": [
-    90259254
+    90259254,
+    90282723,
+    90306899
    ],
    "rain_by_day": [
+    0,
+    0,
     0
    ],
    "drivers": [
     {
-     "cust_id": 912688,
-     "best": 76.5551,
-     "laps": 22,
+     "cust_id": 203590,
+     "best": 76.1129,
+     "laps": 30,
      "best_per_day": [
-      76.5551
+      null,
+      null,
+      76.1129
+     ],
+     "car": "McLaren 720S GT3 EVO"
+    },
+    {
+     "cust_id": 379980,
+     "best": 76.5393,
+     "laps": 12,
+     "best_per_day": [
+      null,
+      null,
+      76.5393
      ],
      "car": "Ferrari 296 GT3"
     },
     {
-     "cust_id": 1051890,
-     "best": 77.5877,
-     "laps": 18,
+     "cust_id": 566271,
+     "best": 76.4175,
+     "laps": 19,
      "best_per_day": [
-      77.5877
+      null,
+      null,
+      76.4175
      ],
      "car": "BMW M4 GT3 EVO"
+    },
+    {
+     "cust_id": 793423,
+     "best": 78.4993,
+     "laps": 43,
+     "best_per_day": [
+      null,
+      78.4993,
+      null
+     ],
+     "car": "McLaren 720S GT3 EVO"
+    },
+    {
+     "cust_id": 912688,
+     "best": 76.1481,
+     "laps": 78,
+     "best_per_day": [
+      76.5551,
+      null,
+      76.1481
+     ],
+     "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 975083,
+     "best": 76.9434,
+     "laps": 15,
+     "best_per_day": [
+      null,
+      null,
+      76.9434
+     ],
+     "car": "Porsche 911 GT3 R (992)"
+    },
+    {
+     "cust_id": 1019076,
+     "best": 76.6666,
+     "laps": 2,
+     "best_per_day": [
+      null,
+      null,
+      76.6666
+     ],
+     "car": "McLaren 720S GT3 EVO"
+    },
+    {
+     "cust_id": 1051890,
+     "best": 77.1006,
+     "laps": 45,
+     "best_per_day": [
+      77.5877,
+      77.1006,
+      null
+     ],
+     "car": "BMW M4 GT3 EVO"
+    },
+    {
+     "cust_id": 1062772,
+     "best": 77.6969,
+     "laps": 3,
+     "best_per_day": [
+      null,
+      77.6969,
+      null
+     ],
+     "car": "Acura NSX GT3 EVO 22"
+    },
+    {
+     "cust_id": 1070721,
+     "best": 77.2052,
+     "laps": 18,
+     "best_per_day": [
+      null,
+      null,
+      77.2052
+     ],
+     "car": "Porsche 911 GT3 R (992)"
+    },
+    {
+     "cust_id": 1098342,
+     "best": 79.4523,
+     "laps": 1,
+     "best_per_day": [
+      null,
+      null,
+      79.4523
+     ],
+     "car": "Lamborghini Huracán GT3 EVO"
     },
     {
      "cust_id": 1190039,
      "best": 77.4807,
      "laps": 15,
      "best_per_day": [
-      77.4807
+      77.4807,
+      null,
+      null
      ],
      "car": "BMW M4 GT3 EVO"
     },
     {
      "cust_id": 1361199,
-     "best": 76.346,
-     "laps": 10,
+     "best": 76.1124,
+     "laps": 31,
      "best_per_day": [
-      76.346
+      76.346,
+      76.2151,
+      76.1124
      ],
      "car": "Ferrari 296 GT3"
+    },
+    {
+     "cust_id": 1509116,
+     "best": 80.3312,
+     "laps": 43,
+     "best_per_day": [
+      null,
+      80.3312,
+      null
+     ],
+     "car": "McLaren 720S GT3 EVO"
     }
    ]
   }

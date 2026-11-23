@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-21T05:59:11.603Z",
+ "fetched_at": "2026-11-23T10:28:49.043Z",
  "league_id": 15445,
  "league_name": "SRVN.nl iRacing (Powered by KNAF)",
  "season_name": "NK iRacing 2026",
@@ -17,9 +17,9 @@
    "cust_id": 955204,
    "name": "Bram Lenten",
    "car_number": "142",
-   "irating": 7851,
+   "irating": 7874,
    "license": "A",
-   "safety_rating": 4.99
+   "safety_rating": 4.62
   },
   {
    "cust_id": 1486619,
@@ -145,17 +145,17 @@
    "cust_id": 988732,
    "name": "Daan Van Zutphen",
    "car_number": null,
-   "irating": 6628,
+   "irating": 6750,
    "license": "A",
-   "safety_rating": 2.42
+   "safety_rating": 3.31
   },
   {
    "cust_id": 566271,
    "name": "Daniel Morpey",
    "car_number": "283",
-   "irating": 5153,
+   "irating": 5115,
    "license": "A",
-   "safety_rating": 2.06
+   "safety_rating": 2.04
   },
   {
    "cust_id": 502029,
@@ -209,9 +209,9 @@
    "cust_id": 737386,
    "name": "Dick Jansen",
    "car_number": "346",
-   "irating": 3222,
+   "irating": 3191,
    "license": "A",
-   "safety_rating": 3.55
+   "safety_rating": 3.29
   },
   {
    "cust_id": 793423,
@@ -273,9 +273,9 @@
    "cust_id": 960839,
    "name": "Franklyn Nwanaforo",
    "car_number": "87",
-   "irating": 2728,
+   "irating": 2995,
    "license": "B",
-   "safety_rating": 2.97
+   "safety_rating": 3.47
   },
   {
    "cust_id": 1158266,
@@ -289,7 +289,7 @@
    "cust_id": 619495,
    "name": "Gert Bos",
    "car_number": "140",
-   "irating": 2455,
+   "irating": 2484,
    "license": "A",
    "safety_rating": 3.18
   },
@@ -297,17 +297,17 @@
    "cust_id": 906989,
    "name": "Gian Zoutewelle",
    "car_number": "335",
-   "irating": 4466,
+   "irating": 4700,
    "license": "A",
-   "safety_rating": 3.84
+   "safety_rating": 3.36
   },
   {
    "cust_id": 1202767,
    "name": "Ian Laurence Brown",
    "car_number": "299",
-   "irating": 7700,
+   "irating": 7721,
    "license": "A",
-   "safety_rating": 3.43
+   "safety_rating": 3.62
   },
   {
    "cust_id": 730321,
@@ -329,9 +329,9 @@
    "cust_id": 435662,
    "name": "J.T Korting",
    "car_number": "185",
-   "irating": 2584,
+   "irating": 2556,
    "license": "A",
-   "safety_rating": 2.28
+   "safety_rating": 2.61
   },
   {
    "cust_id": 1398811,
@@ -401,9 +401,9 @@
    "cust_id": 1043603,
    "name": "Joep van Tilburg",
    "car_number": "176",
-   "irating": 3909,
+   "irating": 3956,
    "license": "A",
-   "safety_rating": 2.8
+   "safety_rating": 2.9
   },
   {
    "cust_id": 1217836,
@@ -489,9 +489,9 @@
    "cust_id": 1019076,
    "name": "Kevin Versantvoort",
    "car_number": "207",
-   "irating": 3500,
+   "irating": 3519,
    "license": "A",
-   "safety_rating": 4.04
+   "safety_rating": 4.13
   },
   {
    "cust_id": 1342343,
@@ -633,7 +633,7 @@
    "cust_id": 1569414,
    "name": "Michiel De Jong",
    "car_number": "261",
-   "irating": 934,
+   "irating": 959,
    "license": "D",
    "safety_rating": 2.62
   },
@@ -729,9 +729,9 @@
    "cust_id": 1051890,
    "name": "Quinten Klumpert",
    "car_number": "80",
-   "irating": 2204,
+   "irating": 2222,
    "license": "A",
-   "safety_rating": 4.33
+   "safety_rating": 4.24
   },
   {
    "cust_id": 1028172,
@@ -769,9 +769,9 @@
    "cust_id": 705452,
    "name": "Rick Postema",
    "car_number": "238",
-   "irating": 4707,
+   "irating": 4713,
    "license": "A",
-   "safety_rating": 2.96
+   "safety_rating": 2.71
   },
   {
    "cust_id": 1131203,
@@ -801,9 +801,9 @@
    "cust_id": 1538667,
    "name": "Roy Van Veenendaal",
    "car_number": "309",
-   "irating": 1478,
+   "irating": 1520,
    "license": "A",
-   "safety_rating": 2.18
+   "safety_rating": 2.67
   },
   {
    "cust_id": 1062772,
@@ -833,9 +833,9 @@
    "cust_id": 401432,
    "name": "Stefan van der Velde",
    "car_number": "161",
-   "irating": 4208,
+   "irating": 4171,
    "license": "A",
-   "safety_rating": 4.65
+   "safety_rating": 4.18
   },
   {
    "cust_id": 1201016,
@@ -921,9 +921,9 @@
    "cust_id": 355420,
    "name": "Tom Walstra",
    "car_number": "270",
-   "irating": 7214,
+   "irating": 7233,
    "license": "A",
-   "safety_rating": 4.99
+   "safety_rating": 4.62
   },
   {
    "cust_id": 1504412,
@@ -945,9 +945,9 @@
    "cust_id": 1502285,
    "name": "Tycho Van Dijk",
    "car_number": "343",
-   "irating": 1636,
+   "irating": 1736,
    "license": "A",
-   "safety_rating": 3.09
+   "safety_rating": 3.49
   },
   {
    "cust_id": 1325013,
@@ -969,9 +969,9 @@
    "cust_id": 621119,
    "name": "Wulfert Van Goor",
    "car_number": "100",
-   "irating": 2693,
+   "irating": 2749,
    "license": "A",
-   "safety_rating": 1.29
+   "safety_rating": 2.76
   },
   {
    "cust_id": 928791,
